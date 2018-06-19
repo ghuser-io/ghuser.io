@@ -1,0 +1,27 @@
+{
+  "name": "@ghuser/ghuser.io",
+  "version": "0.0.1",
+  "description": "Better GitHub profiles.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AurelienLourot/ghuser.io.git"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "start": "reframe server",
+    "local": "PORT=3000 reframe start",
+    "deploy": "rm -rf dist/previous/ && reframe build && ./up && ./up production && ./up stack status"
+  },
+  "dependencies": {
+    "@brillout/fetch": "^0.1.0",
+    "@reframe/cli": "^0.1.13-next.0",
+    "@reframe/react-kit": "0.1.13-next.0",
+    "react": "^16.3.2",
+    "hapi": "^17.3.1",
+    "@brillout/reconfig": "0.1.13-next.0",
+    "@brillout/cli-theme": "0.1.13-next.0"
+  }
+}

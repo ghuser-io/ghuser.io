@@ -1,0 +1,53 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "acm:*",
+                "cloudformation:Create*",
+                "cloudformation:Delete*",
+                "cloudformation:Describe*",
+                "cloudformation:ExecuteChangeSet",
+                "cloudformation:Update*",
+                "cloudfront:*",
+                "cloudwatch:*",
+                "ec2:*",
+                "ecs:*",
+                "events:*",
+                "iam:AttachRolePolicy",
+                "iam:CreatePolicy",
+                "iam:CreateRole",
+                "iam:DeleteRole",
+                "iam:DeleteRolePolicy",
+                "iam:GetRole",
+                "iam:PassRole",
+                "iam:PutRolePolicy",
+                "lambda:AddPermission",
+                "lambda:Create*",
+                "lambda:Delete*",
+                "lambda:Get*",
+                "lambda:InvokeFunction",
+                "lambda:List*",
+                "lambda:RemovePermission",
+                "lambda:Update*",
+                "logs:Create*",
+                "logs:Describe*",
+                "logs:FilterLogEvents",
+                "logs:Put*",
+                "logs:Test*",
+                "route53:*",
+                "route53domains:*",
+                "s3:*",
+                "ssm:*",
+                "sns:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "apigateway:*",
+            "Resource": "arn:aws:apigateway:*::/*"
+        }
+    ]
+}

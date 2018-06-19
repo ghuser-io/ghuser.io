@@ -1,0 +1,18 @@
+{
+  "Comment": "Updates existing CNAME record for ACM validation",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "_fd72780b18076ccf5f75a49256c69353.ghuser.io.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_263f4205641205f64761418f33de1366.acm-validations.aws."
+          }
+        ]
+      }
+    }
+  ]
+}

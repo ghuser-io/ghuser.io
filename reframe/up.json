@@ -1,0 +1,19 @@
+{
+  "name": "ghuser",
+  "profile": "default",
+  "_comment": "Only us-east-1 works properly, see https://github.com/apex/up/issues/501#issuecomment-361103668",
+  "regions": [
+    "us-east-1"
+  ],
+  "lambda": {
+    "memory": 128
+  },
+  "stages": {
+    "staging": {
+      "domain": "www.ghuser.io"
+    },
+    "production": {
+      "domain": "ghuser.io"
+    }
+  }
+}
