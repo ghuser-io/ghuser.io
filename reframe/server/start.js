@@ -6,7 +6,7 @@ module.exports = start();
 
 async function start() {
     const server = Hapi.Server({
-        port: process.env.PORT,
+        port: process.env.PORT || 3000,
         debug: {request: ['internal']},
     });
 

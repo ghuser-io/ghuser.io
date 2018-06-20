@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "reframe server",
-    "local": "PORT=3000 reframe start",
+    "local": "reframe start",
     "deploy": "rm -rf dist/previous/ && reframe build && ./up && ./up production && ./up stack status"
   },
   "dependencies": {
