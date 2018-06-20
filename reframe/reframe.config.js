@@ -3,5 +3,3 @@ module.exports = {
         require('@reframe/react-kit')
     ]
 };
-
-module.exports['serverStartFile'] = require.resolve('./server/start.js');
