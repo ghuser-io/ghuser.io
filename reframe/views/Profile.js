@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from './NavBar';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -27,7 +28,10 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div>Hello {this.props.route.args.name} {this.state.later}</div>
+      <div>
+        <NavBar/>
+        Hello {this.props.route.args.name} {this.state.later}
+      </div>
     );
   }
 }
