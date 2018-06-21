@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from './NavBar';
+import './All.css';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -30,7 +31,9 @@ class Profile extends React.Component {
     return (
       <div>
         <NavBar/>
-        Hello {this.props.route.args.name} {this.state.later}
+        <div className="container-lg">
+          Hello {this.props.route.args.name} {this.state.later}
+        </div>
       </div>
     );
   }

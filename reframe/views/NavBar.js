@@ -4,7 +4,9 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="/"><b>gh</b>user</a>
+        <div className="container-lg">
+          <a className="navbar-brand" href="/"><b>gh</b>user</a>
+        </div>
       </nav>
     );
   }
