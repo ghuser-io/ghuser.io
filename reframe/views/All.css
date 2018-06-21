@@ -4,3 +4,7 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+.bg-dark {
+  background-color: #24292e !important;
+}
