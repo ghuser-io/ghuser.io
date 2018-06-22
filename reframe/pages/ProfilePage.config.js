@@ -1,4 +1,4 @@
-import Profile from '../views/Profile';
+import Profile from '../views/profile/Profile';
 
 const ProfilePage = {
   route: '/:name',

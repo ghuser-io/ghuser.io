@@ -1,8 +1,11 @@
 import React from 'react';
+
+import Content from '../Content';
+import NavBar from '../NavBar';
+import PageContent from '../PageContent';
+import '../All.css';
+
 import LeftPanel from './LeftPanel';
-import NavBar from './NavBar';
-import PageContent from './PageContent';
-import './All.css';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -33,12 +36,14 @@ class Profile extends React.Component {
     return (
       <PageContent>
         <NavBar/>
-        <div className="container container-lg">
-          <div className="row">
-            <LeftPanel/>
-            <div className="col-9">Hello {this.props.route.args.name} {this.state.later}</div>
+        <Content>
+          <div className="container container-lg">
+            <div className="row">
+              <LeftPanel/>
+              <div className="col-9">Hello {this.props.route.args.name} {this.state.later}</div>
+            </div>
           </div>
-        </div>
+        </Content>
       </PageContent>
     );
   }
