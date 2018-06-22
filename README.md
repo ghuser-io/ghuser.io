@@ -1,5 +1,10 @@
 > Work in progress
 
-[ghuser.io](https://ghuser.io) - Better GitHub profiles.
-
-Made with [Reframe](https://github.com/reframejs/reframe)
+<p align="center">
+  <a href="https://github.com/AurelienLourot/ghuser.io">
+    <img src="https://rawgit.com/AurelienLourot/ghuser.io/master/logo.png" />
+  </a>
+</p>
+<p align="center">
+  <b>Better GitHub profiles</b>
+</p>

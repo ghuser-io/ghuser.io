@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'ApexSans';
+  src: url('./thirdparty/ApexSans-Bold.eot');
+  src: url('./thirdparty/ApexSans-Bold.eot?#iefix') format('embedded-opentype'),
+       url('./thirdparty/ApexSans-Bold.woff') format('woff'),
+       url('./thirdparty/ApexSans-Bold.ttf') format('truetype'),
+       url('./thirdparty/ApexSans-Bold.svg#ApexSans-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ApexSans';
+  src: url('./thirdparty/ApexSans-Book.eot');
+  src: url('./thirdparty/ApexSans-Book.eot?#iefix') format('embedded-opentype'),
+       url('./thirdparty/ApexSans-Book.woff') format('woff'),
+       url('./thirdparty/ApexSans-Book.ttf') format('truetype'),
+       url('./thirdparty/ApexSans-Book.svg#ApexSans-Book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo {
+  font-family: ApexSans;
+}
