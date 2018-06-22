@@ -9,12 +9,13 @@
 <p align="center">
   <b>Better GitHub profiles</b>
 </p>
+<br />
 
 # What we are building
 
 Better profile pages for **all** GitHub users:
 
-* Accessible at https://ghuser.io/<github-username> .
+* Accessible at https://ghuser.io/github-username .
 * UI/layout as close as possible from the official profiles.
 * Shows **all** repos the user has pushed to since the beginning of time, even if they aren't
   affiliated in any way to these repos.
@@ -26,8 +27,8 @@ Better profile pages for **all** GitHub users:
 * Shows the user's total amount of stars.
 * Shows not only programming languages but also technologies/frameworks, e.g. "react", "docker",
   etc. Can be achieved with a config file on each repo
-  named https://github.com/<orga-or-user>/<project>/.ghuser.io.json
+  named https://github.com/org-or-user/project/.ghuser.io.json
 * Can be filtered by language/tech/framework.
 * Each user can tweak their profile by creating the config file
-  https://github.com/<user>/ghuser.io.settings/ghuser.io.json
+  https://github.com/user/ghuser.io.settings/ghuser.io.json
 * Repos can have a logo.
