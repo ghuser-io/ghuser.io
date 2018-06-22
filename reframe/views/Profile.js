@@ -1,6 +1,7 @@
 import React from 'react';
 import LeftPanel from './LeftPanel';
 import NavBar from './NavBar';
+import PageContent from './PageContent';
 import './All.css';
 
 class Profile extends React.Component {
@@ -30,7 +31,7 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div>
+      <PageContent>
         <NavBar/>
         <div className="container container-lg">
           <div className="row">
@@ -38,7 +39,7 @@ class Profile extends React.Component {
             <div className="col-9">Hello {this.props.route.args.name} {this.state.later}</div>
           </div>
         </div>
-      </div>
+      </PageContent>
     );
   }
 }

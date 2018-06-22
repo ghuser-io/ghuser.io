@@ -1,11 +1,12 @@
 import React from 'react';
 import NavBar from './NavBar';
+import PageContent from './PageContent';
 import './All.css';
 
 class Landing extends React.Component {
   render() {
     return (
-      <div>
+      <PageContent>
         <NavBar/>
         <div className="container-lg">
           <p>Work in progress...</p>
@@ -13,7 +14,7 @@ class Landing extends React.Component {
           <p><a href="https://github.com/AurelienLourot/ghuser.io">AurelienLourot/ghuser.io</a></p>
           <p>Made with <a href="https://github.com/reframejs/reframe">Reframe</a></p>
         </div>
-      </div>
+      </PageContent>
     );
   }
 }
