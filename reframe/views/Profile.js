@@ -1,4 +1,5 @@
 import React from 'react';
+import LeftPanel from './LeftPanel';
 import NavBar from './NavBar';
 import './All.css';
 
@@ -31,8 +32,11 @@ class Profile extends React.Component {
     return (
       <div>
         <NavBar/>
-        <div className="container-lg">
-          Hello {this.props.route.args.name} {this.state.later}
+        <div className="container container-lg">
+          <div className="row">
+            <LeftPanel/>
+            <div className="col-9">Hello {this.props.route.args.name} {this.state.later}</div>
+          </div>
         </div>
       </div>
     );
