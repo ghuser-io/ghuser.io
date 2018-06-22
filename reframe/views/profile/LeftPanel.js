@@ -6,7 +6,7 @@ class LeftPanel extends React.Component {
   render() {
     return (
       <div className="col-3 p-0">
-        <Avatar/>
+        <Avatar url={this.props.avatar} />
       </div>
     );
   }

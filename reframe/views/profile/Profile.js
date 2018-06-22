@@ -11,24 +11,15 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      later: 'later',
+      user: {},
     };
   }
 
-  componentDidMount() {
-    this.timerId = setTimeout(
-      () => this.update(),
-      5000,
-    );
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timerId);
-  }
-
-  update() {
+  async componentDidMount() {
+    const user = await fetch(`/api/0.1/u/${this.props.route.args.name}`);
+    const userJson = await user.json();
     this.setState({
-      later: 'updated',
+      user: userJson,
     });
   }
 
@@ -39,8 +30,8 @@ class Profile extends React.Component {
         <Content>
           <div className="container container-lg">
             <div className="row">
-              <LeftPanel/>
-              <div className="col-9">Hello {this.props.route.args.name} {this.state.later}</div>
+              <LeftPanel avatar={this.state.user.avatar} />
+              <div className="col-9">Hello {this.state.user.username}</div>
             </div>
           </div>
         </Content>
