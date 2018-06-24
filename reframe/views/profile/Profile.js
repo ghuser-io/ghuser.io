@@ -16,7 +16,7 @@ class Profile extends React.Component {
   }
 
   async componentDidMount() {
-    const user = await fetch(`/api/0.1/u/${this.props.route.args.name}`);
+    const user = await fetch(`/api/v0/u/${this.props.route.args.name}`);
     const userJson = await user.json();
     this.setState({
       user: userJson,

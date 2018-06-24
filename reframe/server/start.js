@@ -12,7 +12,7 @@ async function start() {
 
     server.route({
       method: 'GET',
-      path: '/api/0.1/u/{name}',
+      path: '/api/v0/u/{name}',
       handler: request => ({
         username: request.params.name,
         avatar: 'https://avatars2.githubusercontent.com/u/11795312'
