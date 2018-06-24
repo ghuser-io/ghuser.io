@@ -8,21 +8,6 @@ import '../All.css';
 import LeftPanel from './LeftPanel';
 
 class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: {},
-    };
-  }
-
-  async componentDidMount() {
-    const user = await fetch(`/api/v0/u/${this.props.route.args.name}`);
-    const userJson = await user.json();
-    this.setState({
-      user: userJson,
-    });
-  }
-
   render() {
     return (
       <PageContent>
@@ -30,8 +15,8 @@ class Profile extends React.Component {
         <Content>
           <div className="container container-lg">
             <div className="row">
-              <LeftPanel avatar={this.state.user.avatar} />
-              <div className="col-9">Hello {this.state.user.username}</div>
+              <LeftPanel avatar={this.props.avatar} />
+              <div className="col-9">Hello {this.props.username}</div>
             </div>
           </div>
         </Content>
