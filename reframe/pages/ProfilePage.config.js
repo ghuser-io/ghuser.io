@@ -2,12 +2,7 @@ import React from 'react';
 
 import Profile from '../views/profile/Profile';
 
-const profiles = {
-  AurelienLourot: {
-    username: 'AurelienLourot',
-    avatar: 'https://avatars2.githubusercontent.com/u/11795312'
-  }
-};
+import profiles from '../../static_profiles/';
 
 const ProfilePage = {
   route: '/:username',

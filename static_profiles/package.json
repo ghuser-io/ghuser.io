@@ -1,0 +1,6 @@
+{
+  "description": "Fetch information about a GitHub user and dump it to a JSON file.",
+  "dependencies": {
+    "meow": "^3.3.0"
+  }
+}
