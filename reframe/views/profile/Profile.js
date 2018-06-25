@@ -5,7 +5,7 @@ import NavBar from '../NavBar';
 import PageContent from '../PageContent';
 import '../All.css';
 
-import LeftPanel from './LeftPanel';
+import LeftPanel from './leftpanel/LeftPanel';
 import RightPanel from './RightPanel';
 
 const Profile = props => (
@@ -14,7 +14,7 @@ const Profile = props => (
     <Content>
       <div className="container container-lg">
         <div className="row">
-          <LeftPanel avatar={props.avatar_url} />
+          <LeftPanel user={props} />
           <RightPanel contribs={props.contribs} />
         </div>
       </div>
