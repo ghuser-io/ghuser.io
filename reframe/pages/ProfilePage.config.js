@@ -2,7 +2,7 @@ import React from 'react';
 
 import Profile from '../views/profile/Profile';
 
-import profiles from '../../static_profiles/';
+import profiles from './static_profiles/profiles.generated.json';
 
 const ProfilePage = {
   route: '/:username',
