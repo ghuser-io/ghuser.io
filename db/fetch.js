@@ -11,11 +11,7 @@
   const dbPath = './db.json';
   const db = require(dbPath);
 
-  // See https://stackoverflow.com/a/28431880/1855917
-  const dateToString = date => {
-    return date.toISOString().substring(0, 10);
-  };
-  const today = dateToString(new Date());
+  const today = githubContribs.dateToString(new Date());
 
   for (const user in db.users) {
     console.log(`Fetching ${user}...`);
@@ -32,7 +28,17 @@
         repos: []
       };
     }
-    const repos = await githubContribs(user, db.users[user].contribs.fetched_at, null, ora);
+
+    // GitHub users might push today a commit authored for example yesterday, so to be on the safe
+    // side we always re-fetch at least the contributions of the last few days:
+    let since = db.users[user].contribs.fetched_at;
+    for (let i = 0; i < 7; ++i) {
+      since = githubContribs.dateToString(
+        githubContribs.prevDay(githubContribs.stringToDate(since))
+      );
+    }
+
+    const repos = await githubContribs.fetch(user, since, null, ora);
     db.users[user].contribs.repos = [
       ...new Set([...db.users[user].contribs.repos, ...repos])
     ].sort();
