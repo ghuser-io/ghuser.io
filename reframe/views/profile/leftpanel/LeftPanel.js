@@ -6,7 +6,7 @@ import VCard from './VCard';
 const LeftPanel = props => (
   <div className="col-3 p-0 pr-3">
     <Avatar url={props.user.avatar_url} />
-    <VCard login={props.user.login} name={props.user.name} />
+    <VCard login={props.user.login} name={props.user.name} url={props.user.html_url} />
   </div>
 );
 
