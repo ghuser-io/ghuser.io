@@ -16,11 +16,24 @@
   for (const user in db.users) {
     console.log(`Fetching ${user}...`);
 
-    const githubSpinner = ora(`Fetching api.github.com/users/${user}...`).start();
-    const ghData = await fetch(`https://api.github.com/users/${user}`);
+    const ghUserUrl = `https://api.github.com/users/${user}`;
+    const githubSpinner = ora(`Fetching ${ghUserUrl}...`).start();
+    const ghData = await fetch(ghUserUrl);
     const ghDataJson = await ghData.json();
     db.users[user] = {...db.users[user], ...ghDataJson};
-    githubSpinner.succeed(`Fetched api.github.com/users/${user}`);
+    githubSpinner.succeed(`Fetched ${ghUserUrl}`);
+
+    const orgsUrl = db.users[user].organizations_url;
+    const orgsSpinner = ora(`Fetching ${orgsUrl}...`).start();
+    const orgsData = await fetch(orgsUrl);
+    const orgsDataJson = await orgsData.json();
+    if (!db.users[user].organizations) {
+      db.users[user].organizations = {};
+    }
+    for (const org of orgsDataJson) {
+      db.users[user].organizations[org.login] = org;
+    }
+    orgsSpinner.succeed(`Fetched ${orgsUrl}`);
 
     if (!db.users[user].contribs) {
       db.users[user].contribs = {
