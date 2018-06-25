@@ -15,8 +15,8 @@ class Profile extends React.Component {
         <Content>
           <div className="container container-lg">
             <div className="row">
-              <LeftPanel avatar={this.props.avatar} />
-              <div className="col-9">Hello {this.props.username}</div>
+              <LeftPanel avatar={this.props.avatar_url} />
+              <div className="col-9">Hello {this.props.login}</div>
             </div>
           </div>
         </Content>

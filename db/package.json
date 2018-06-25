@@ -1,0 +1,6 @@
+{
+  "description": "Update db.json",
+  "dependencies": {
+    "fetch-retry": "^1.2.1"
+  }
+}
