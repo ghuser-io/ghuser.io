@@ -34,7 +34,7 @@
       "created_at": "2015-04-04T09:08:20Z",
       "updated_at": "2018-05-11T12:26:47Z",
       "contribs": {
-        "fetched_at": "2018-06-25",
+        "fetched_at": "2018-06-26",
         "repos": [
           "AurelienLourot/AurelienLourot.github.io",
           "AurelienLourot/crouton-articles",
@@ -75,64 +75,12 @@
           "tt-gf/quickbuild-plugins"
         ]
       },
-      "organizations": {
-        "tt-gf": {
-          "login": "tt-gf",
-          "id": 14891304,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0ODkxMzA0",
-          "url": "https://api.github.com/orgs/tt-gf",
-          "repos_url": "https://api.github.com/orgs/tt-gf/repos",
-          "events_url": "https://api.github.com/orgs/tt-gf/events",
-          "hooks_url": "https://api.github.com/orgs/tt-gf/hooks",
-          "issues_url": "https://api.github.com/orgs/tt-gf/issues",
-          "members_url": "https://api.github.com/orgs/tt-gf/members{/member}",
-          "public_members_url": "https://api.github.com/orgs/tt-gf/public_members{/member}",
-          "avatar_url": "https://avatars1.githubusercontent.com/u/14891304?v=4",
-          "description": null
-        },
-        "dracula": {
-          "login": "dracula",
-          "id": 19436447,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjE5NDM2NDQ3",
-          "url": "https://api.github.com/orgs/dracula",
-          "repos_url": "https://api.github.com/orgs/dracula/repos",
-          "events_url": "https://api.github.com/orgs/dracula/events",
-          "hooks_url": "https://api.github.com/orgs/dracula/hooks",
-          "issues_url": "https://api.github.com/orgs/dracula/issues",
-          "members_url": "https://api.github.com/orgs/dracula/members{/member}",
-          "public_members_url": "https://api.github.com/orgs/dracula/public_members{/member}",
-          "avatar_url": "https://avatars3.githubusercontent.com/u/19436447?v=4",
-          "description": "A dark theme for many editors, shells, and more."
-        },
-        "quizl": {
-          "login": "quizl",
-          "id": 34978882,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM0OTc4ODgy",
-          "url": "https://api.github.com/orgs/quizl",
-          "repos_url": "https://api.github.com/orgs/quizl/repos",
-          "events_url": "https://api.github.com/orgs/quizl/events",
-          "hooks_url": "https://api.github.com/orgs/quizl/hooks",
-          "issues_url": "https://api.github.com/orgs/quizl/issues",
-          "members_url": "https://api.github.com/orgs/quizl/members{/member}",
-          "public_members_url": "https://api.github.com/orgs/quizl/public_members{/member}",
-          "avatar_url": "https://avatars2.githubusercontent.com/u/34978882?v=4",
-          "description": null
-        },
-        "reframejs": {
-          "login": "reframejs",
-          "id": 36308163,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM2MzA4MTYz",
-          "url": "https://api.github.com/orgs/reframejs",
-          "repos_url": "https://api.github.com/orgs/reframejs/repos",
-          "events_url": "https://api.github.com/orgs/reframejs/events",
-          "hooks_url": "https://api.github.com/orgs/reframejs/hooks",
-          "issues_url": "https://api.github.com/orgs/reframejs/issues",
-          "members_url": "https://api.github.com/orgs/reframejs/members{/member}",
-          "public_members_url": "https://api.github.com/orgs/reframejs/public_members{/member}",
-          "avatar_url": "https://avatars0.githubusercontent.com/u/36308163?v=4",
-          "description": "Framework to create web apps."
-        }
-      }
+      "organizations": [
+        "tt-gf",
+        "dracula",
+        "quizl",
+        "reframejs"
+      ]
     },
     "brillout": {
       "login": "brillout",
@@ -167,7 +115,7 @@
       "created_at": "2011-08-26T03:08:46Z",
       "updated_at": "2018-05-11T15:13:11Z",
       "contribs": {
-        "fetched_at": "2018-06-25",
+        "fetched_at": "2018-06-26",
         "repos": [
           "JoshSimon/my_homepage",
           "KIWIKIGMBH/frontend-kiwilib",
@@ -238,50 +186,97 @@
           "vuejs/awesome-vue"
         ]
       },
-      "organizations": {
-        "keymaerad": {
-          "login": "keymaerad",
-          "id": 934166,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjkzNDE2Ng==",
-          "url": "https://api.github.com/orgs/keymaerad",
-          "repos_url": "https://api.github.com/orgs/keymaerad/repos",
-          "events_url": "https://api.github.com/orgs/keymaerad/events",
-          "hooks_url": "https://api.github.com/orgs/keymaerad/hooks",
-          "issues_url": "https://api.github.com/orgs/keymaerad/issues",
-          "members_url": "https://api.github.com/orgs/keymaerad/members{/member}",
-          "public_members_url": "https://api.github.com/orgs/keymaerad/public_members{/member}",
-          "avatar_url": "https://avatars3.githubusercontent.com/u/934166?v=4",
-          "description": null
-        },
-        "devarchy": {
-          "login": "devarchy",
-          "id": 17671799,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjE3NjcxNzk5",
-          "url": "https://api.github.com/orgs/devarchy",
-          "repos_url": "https://api.github.com/orgs/devarchy/repos",
-          "events_url": "https://api.github.com/orgs/devarchy/events",
-          "hooks_url": "https://api.github.com/orgs/devarchy/hooks",
-          "issues_url": "https://api.github.com/orgs/devarchy/issues",
-          "members_url": "https://api.github.com/orgs/devarchy/members{/member}",
-          "public_members_url": "https://api.github.com/orgs/devarchy/public_members{/member}",
-          "avatar_url": "https://avatars3.githubusercontent.com/u/17671799?v=4",
-          "description": "Catalog of programming libraries"
-        },
-        "reframejs": {
-          "login": "reframejs",
-          "id": 36308163,
-          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM2MzA4MTYz",
-          "url": "https://api.github.com/orgs/reframejs",
-          "repos_url": "https://api.github.com/orgs/reframejs/repos",
-          "events_url": "https://api.github.com/orgs/reframejs/events",
-          "hooks_url": "https://api.github.com/orgs/reframejs/hooks",
-          "issues_url": "https://api.github.com/orgs/reframejs/issues",
-          "members_url": "https://api.github.com/orgs/reframejs/members{/member}",
-          "public_members_url": "https://api.github.com/orgs/reframejs/public_members{/member}",
-          "avatar_url": "https://avatars0.githubusercontent.com/u/36308163?v=4",
-          "description": "Framework to create web apps."
-        }
-      }
+      "organizations": [
+        "keymaerad",
+        "devarchy",
+        "reframejs"
+      ]
+    }
+  },
+  "orgs": {
+    "tt-gf": {
+      "login": "tt-gf",
+      "id": 14891304,
+      "node_id": "MDEyOk9yZ2FuaXphdGlvbjE0ODkxMzA0",
+      "url": "https://api.github.com/orgs/tt-gf",
+      "repos_url": "https://api.github.com/orgs/tt-gf/repos",
+      "events_url": "https://api.github.com/orgs/tt-gf/events",
+      "hooks_url": "https://api.github.com/orgs/tt-gf/hooks",
+      "issues_url": "https://api.github.com/orgs/tt-gf/issues",
+      "members_url": "https://api.github.com/orgs/tt-gf/members{/member}",
+      "public_members_url": "https://api.github.com/orgs/tt-gf/public_members{/member}",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/14891304?v=4",
+      "description": null
+    },
+    "dracula": {
+      "login": "dracula",
+      "id": 19436447,
+      "node_id": "MDEyOk9yZ2FuaXphdGlvbjE5NDM2NDQ3",
+      "url": "https://api.github.com/orgs/dracula",
+      "repos_url": "https://api.github.com/orgs/dracula/repos",
+      "events_url": "https://api.github.com/orgs/dracula/events",
+      "hooks_url": "https://api.github.com/orgs/dracula/hooks",
+      "issues_url": "https://api.github.com/orgs/dracula/issues",
+      "members_url": "https://api.github.com/orgs/dracula/members{/member}",
+      "public_members_url": "https://api.github.com/orgs/dracula/public_members{/member}",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19436447?v=4",
+      "description": "A dark theme for many editors, shells, and more."
+    },
+    "quizl": {
+      "login": "quizl",
+      "id": 34978882,
+      "node_id": "MDEyOk9yZ2FuaXphdGlvbjM0OTc4ODgy",
+      "url": "https://api.github.com/orgs/quizl",
+      "repos_url": "https://api.github.com/orgs/quizl/repos",
+      "events_url": "https://api.github.com/orgs/quizl/events",
+      "hooks_url": "https://api.github.com/orgs/quizl/hooks",
+      "issues_url": "https://api.github.com/orgs/quizl/issues",
+      "members_url": "https://api.github.com/orgs/quizl/members{/member}",
+      "public_members_url": "https://api.github.com/orgs/quizl/public_members{/member}",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/34978882?v=4",
+      "description": null
+    },
+    "reframejs": {
+      "login": "reframejs",
+      "id": 36308163,
+      "node_id": "MDEyOk9yZ2FuaXphdGlvbjM2MzA4MTYz",
+      "url": "https://api.github.com/orgs/reframejs",
+      "repos_url": "https://api.github.com/orgs/reframejs/repos",
+      "events_url": "https://api.github.com/orgs/reframejs/events",
+      "hooks_url": "https://api.github.com/orgs/reframejs/hooks",
+      "issues_url": "https://api.github.com/orgs/reframejs/issues",
+      "members_url": "https://api.github.com/orgs/reframejs/members{/member}",
+      "public_members_url": "https://api.github.com/orgs/reframejs/public_members{/member}",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/36308163?v=4",
+      "description": "Framework to create web apps."
+    },
+    "keymaerad": {
+      "login": "keymaerad",
+      "id": 934166,
+      "node_id": "MDEyOk9yZ2FuaXphdGlvbjkzNDE2Ng==",
+      "url": "https://api.github.com/orgs/keymaerad",
+      "repos_url": "https://api.github.com/orgs/keymaerad/repos",
+      "events_url": "https://api.github.com/orgs/keymaerad/events",
+      "hooks_url": "https://api.github.com/orgs/keymaerad/hooks",
+      "issues_url": "https://api.github.com/orgs/keymaerad/issues",
+      "members_url": "https://api.github.com/orgs/keymaerad/members{/member}",
+      "public_members_url": "https://api.github.com/orgs/keymaerad/public_members{/member}",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/934166?v=4",
+      "description": null
+    },
+    "devarchy": {
+      "login": "devarchy",
+      "id": 17671799,
+      "node_id": "MDEyOk9yZ2FuaXphdGlvbjE3NjcxNzk5",
+      "url": "https://api.github.com/orgs/devarchy",
+      "repos_url": "https://api.github.com/orgs/devarchy/repos",
+      "events_url": "https://api.github.com/orgs/devarchy/events",
+      "hooks_url": "https://api.github.com/orgs/devarchy/hooks",
+      "issues_url": "https://api.github.com/orgs/devarchy/issues",
+      "members_url": "https://api.github.com/orgs/devarchy/members{/member}",
+      "public_members_url": "https://api.github.com/orgs/devarchy/public_members{/member}",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17671799?v=4",
+      "description": "Catalog of programming libraries"
     }
   }
 }
