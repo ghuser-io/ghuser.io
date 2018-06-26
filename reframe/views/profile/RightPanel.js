@@ -24,7 +24,8 @@ const RightPanel = props => {
       <div key={contrib.full_name} className="border-bottom border-gray-light">
         <div>
           <a href={`https://github.com/${contrib.full_name}`}
-             target="_blank">{contrib.full_name}</a>
+             target="_blank" className="text-bold"
+             title={contrib.full_name}>{props.repos[contrib.full_name].name}</a>
         </div>
         <div><small>project popularity (based on stars): {roundHalf(contrib.popularity)} / 5</small></div>
         <div><small>project maturity (based on num of commits): {roundHalf(contrib.maturity)} / 5</small></div>
@@ -47,7 +48,7 @@ const RightPanel = props => {
           </a>
         </nav>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 contribs">
         {repos}
       </div>
     </div>

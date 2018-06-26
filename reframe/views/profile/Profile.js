@@ -19,7 +19,8 @@ const Profile = props => {
         <div className="container container-lg">
           <div className="row">
             <LeftPanel user={props.user} orgs={props.orgs} />
-            <RightPanel username={props.user.login} contribs={props.user.contribs} />
+            <RightPanel username={props.user.login} contribs={props.user.contribs}
+                        repos={props.repos} />
           </div>
         </div>
       </Content>
