@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './RightPanel.css';
+
 const RightPanel = props => {
   const compare = (a, b) => {
     if (a.total_score < b.total_score) {
@@ -34,7 +36,21 @@ const RightPanel = props => {
   }
 
   return (
-    <div className="col-9 pl-2">{repos}</div>
+    <div className="col-9 pl-2">
+      <div className="user-profile-nav">
+        <nav className="UnderlineNav-body">
+          <a href="javascript:;" className="UnderlineNav-item selected" aria-selected="true" role="tab">
+            Contributions
+          </a>
+          <a href="javascript:;" className="UnderlineNav-item " aria-selected="false" role="tab">
+            Earned stars
+          </a>
+        </nav>
+      </div>
+      <div className="mt-4">
+        {repos}
+      </div>
+    </div>
   );
 };
 
