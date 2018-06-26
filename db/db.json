@@ -40,33 +40,41 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 3.0107603634824787,
-            "activity": 1.8035650633448004,
-            "total_score": 4.8143254268272795,
-            "full_name": "AurelienLourot/AurelienLourot.github.io"
+            "activity": 1.8030337568083912,
+            "total_score": 7.8245544837733485,
+            "full_name": "AurelienLourot/AurelienLourot.github.io",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/crouton-articles": {
             "popularity": 1.0414282204429401,
             "percentage": 83.33333333333333,
             "maturity": 0,
-            "activity": 1.795768880872239,
-            "total_score": 2.3643309177626493,
-            "full_name": "AurelienLourot/crouton-articles"
+            "activity": 1.7952470214170217,
+            "total_score": 16.201670737544358,
+            "full_name": "AurelienLourot/crouton-articles",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/crouton-emacs-conf": {
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.6710647632302256,
-            "total_score": 2.7124929836731657,
-            "full_name": "AurelienLourot/crouton-emacs-conf"
+            "activity": 1.670673098425174,
+            "total_score": 18.333524625512215,
+            "full_name": "AurelienLourot/crouton-emacs-conf",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/fork-me-on-gitlab": {
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.623223002917884,
-            "total_score": 1.664651223360824,
-            "full_name": "AurelienLourot/fork-me-on-gitlab"
+            "activity": 0.6231879074459661,
+            "total_score": 17.28603943453301,
+            "full_name": "AurelienLourot/fork-me-on-gitlab",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/ghuser.io": {
             "popularity": 0,
@@ -74,55 +82,69 @@
             "maturity": 0,
             "activity": 5,
             "total_score": 5,
-            "full_name": "AurelienLourot/ghuser.io"
+            "full_name": "AurelienLourot/ghuser.io",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/github-commit-watcher": {
             "popularity": 2.0828241359374196,
             "percentage": 98.9795918367347,
             "maturity": 2.765909468455758,
-            "activity": 2.32681968742045,
-            "total_score": 7.10233336026451,
-            "full_name": "AurelienLourot/github-commit-watcher"
+            "activity": 2.325049659957828,
+            "total_score": 40.9057617742437,
+            "full_name": "AurelienLourot/github-commit-watcher",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/github-contribs": {
             "popularity": 2.2330349704670382,
             "percentage": 100,
             "maturity": 1.9101999437230757,
             "activity": 5,
-            "total_score": 9.143234914190113,
-            "full_name": "AurelienLourot/github-contribs"
+            "total_score": 44.54895941491876,
+            "full_name": "AurelienLourot/github-contribs",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/google-input-tools-large-keyboard": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.999714534665228,
-            "total_score": 1.999714534665228,
-            "full_name": "AurelienLourot/google-input-tools-large-keyboard"
+            "activity": 1.9988801949255661,
+            "total_score": 1.9988801949255661,
+            "full_name": "AurelienLourot/google-input-tools-large-keyboard",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/iqa-hello-world": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.7299467651033966,
-            "total_score": 0.7299467651033966,
-            "full_name": "AurelienLourot/iqa-hello-world"
+            "activity": 0.7299018936681767,
+            "total_score": 0.7299018936681767,
+            "full_name": "AurelienLourot/iqa-hello-world",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/lsankidb": {
             "popularity": 1.7076084983408428,
             "percentage": 100,
             "maturity": 0,
             "activity": 5,
-            "total_score": 6.707608498340843,
-            "full_name": "AurelienLourot/lsankidb"
+            "total_score": 32.321735973453485,
+            "full_name": "AurelienLourot/lsankidb",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/my-ansible-setup": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 3.2572490692670404,
             "activity": 5,
-            "total_score": 8.25724906926704,
-            "full_name": "AurelienLourot/my-ansible-setup"
+            "total_score": 11.51449813853408,
+            "full_name": "AurelienLourot/my-ansible-setup",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/my-emacs-config": {
             "popularity": 0,
@@ -130,199 +152,249 @@
             "maturity": 0,
             "activity": 5,
             "total_score": 5,
-            "full_name": "AurelienLourot/my-emacs-config"
+            "full_name": "AurelienLourot/my-emacs-config",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/mybeir.ut": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 3.669282285544837,
             "activity": 5,
-            "total_score": 8.669282285544837,
-            "full_name": "AurelienLourot/mybeir.ut"
+            "total_score": 12.338564571089673,
+            "full_name": "AurelienLourot/mybeir.ut",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/myberl.in": {
             "popularity": 1.49139952161816,
             "percentage": 100,
             "maturity": 3.5384204876406606,
-            "activity": 1.9876454985771228,
-            "total_score": 7.017465507835944,
-            "full_name": "AurelienLourot/myberl.in"
+            "activity": 1.9868340045643493,
+            "total_score": 32.92606732573623,
+            "full_name": "AurelienLourot/myberl.in",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "AurelienLourot/reframe-on-up": {
             "popularity": 1.8512968868523627,
             "percentage": 100,
             "maturity": 1.7870377452764827,
             "activity": 5,
-            "total_score": 8.638334632128846,
-            "full_name": "AurelienLourot/reframe-on-up"
+            "total_score": 38.19482568019077,
+            "full_name": "AurelienLourot/reframe-on-up",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "RichardLitt/low-resource-languages": {
             "popularity": 3.217786138241388,
             "percentage": 0.2976190476190476,
             "maturity": 3.473174140773305,
-            "activity": 2.7053726053218807,
-            "total_score": 0.027965276441477897,
-            "full_name": "RichardLitt/low-resource-languages"
+            "activity": 2.701152662592642,
+            "total_score": 19.425357036831087,
+            "full_name": "RichardLitt/low-resource-languages",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brandon-rhodes/uncommitted": {
             "popularity": 2.5694128929127964,
             "percentage": 17.80821917808219,
             "maturity": 2.5215590771505747,
-            "activity": 1.7022443199049122,
-            "total_score": 1.2097508461587352,
-            "full_name": "brandon-rhodes/uncommitted"
+            "activity": 1.701823516221542,
+            "total_score": 20.40154718353865,
+            "full_name": "brandon-rhodes/uncommitted",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/timerlog": {
             "popularity": 1.3222565221025262,
             "percentage": 3.7037037037037037,
             "maturity": 0,
-            "activity": 1.1805500871676173,
-            "total_score": 0.09269654108407938,
-            "full_name": "brillout/timerlog"
+            "activity": 1.1804234583934234,
+            "total_score": 5.783835053861477,
+            "full_name": "brillout/timerlog",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "dnschneid/crouton": {
             "popularity": 4.820903637792603,
             "percentage": 0.06305170239596469,
             "maturity": 4.190973786697656,
             "activity": 5,
-            "total_score": 0.00883472725377696,
-            "full_name": "dnschneid/crouton"
+            "total_score": 27.884174090361583,
+            "full_name": "dnschneid/crouton",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "dracula/fb-messenger": {
             "popularity": 0,
             "percentage": 18.75,
             "maturity": 0,
-            "activity": 1.9463479557827665,
-            "total_score": 0.3649402417092687,
-            "full_name": "dracula/fb-messenger"
+            "activity": 1.945610009818306,
+            "total_score": 1.945610009818306,
+            "full_name": "dracula/fb-messenger",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "dracula/gitk": {
             "popularity": 1.7076084983408428,
             "percentage": 88.88888888888889,
             "maturity": 0,
-            "activity": 1.969203413926099,
-            "total_score": 3.2682772553483925,
-            "full_name": "dracula/gitk"
+            "activity": 1.9684256279748258,
+            "total_score": 26.823615992713755,
+            "full_name": "dracula/gitk",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "dracula/mutt": {
             "popularity": 1.6128219920330789,
             "percentage": 10,
             "maturity": 0,
-            "activity": 1.9611180388535967,
-            "total_score": 0.35739400308866753,
-            "full_name": "dracula/mutt"
+            "activity": 1.9603545865878047,
+            "total_score": 8.895489152330043,
+            "full_name": "dracula/mutt",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "dracula/prism": {
             "popularity": 1.0414282204429401,
             "percentage": 26.666666666666668,
             "maturity": 1.709272515882201,
             "activity": 5,
-            "total_score": 2.0668535296867048,
-            "full_name": "dracula/prism"
+            "total_score": 15.153114190628749,
+            "full_name": "dracula/prism",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "dracula/termite": {
             "popularity": 1.49139952161816,
             "percentage": 50,
             "maturity": 0,
-            "activity": 1.9659245525019737,
-            "total_score": 1.728662037060067,
-            "full_name": "dracula/termite"
+            "activity": 1.9651526114163609,
+            "total_score": 16.13344806678888,
+            "full_name": "dracula/termite",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "jfrog/artifactory-user-plugins": {
             "popularity": 3.1617064741531076,
             "percentage": 0.12422360248447205,
             "maturity": 3.885454294086632,
             "activity": 5,
-            "total_score": 0.014965417103403404,
-            "full_name": "jfrog/artifactory-user-plugins"
+            "total_score": 22.307086624500897,
+            "full_name": "jfrog/artifactory-user-plugins",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "jfrog/build-info": {
             "popularity": 2.8639564121406873,
             "percentage": 0.315955766192733,
             "maturity": 3.7748639504743458,
             "activity": 5,
-            "total_score": 0.03677352405249615,
-            "full_name": "jfrog/build-info"
+            "total_score": 21.25923199790102,
+            "full_name": "jfrog/build-info",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "jordansissel/xdotool": {
             "popularity": 3.81435328286673,
             "percentage": 0.3656307129798903,
             "maturity": 3.7068295874394406,
             "activity": 5,
-            "total_score": 0.045781290202216336,
-            "full_name": "jordansissel/xdotool"
+            "total_score": 24.038022835827398,
+            "full_name": "jordansissel/xdotool",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "ppartarr/dracula-messenger": {
             "popularity": 0,
             "percentage": 7.142857142857143,
             "maturity": 0,
-            "activity": 1.8788517899943904,
-            "total_score": 0.13420369928531362,
-            "full_name": "ppartarr/dracula-messenger"
+            "activity": 1.8782199872880403,
+            "total_score": 1.8782199872880403,
+            "full_name": "ppartarr/dracula-messenger",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "quizl/backend": {
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.4622421692244458,
-            "total_score": 2.503670389667386,
-            "full_name": "quizl/backend"
+            "activity": 1.4619999733744815,
+            "total_score": 18.124851500461524,
+            "full_name": "quizl/backend",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "quizl/quizler": {
             "popularity": 1.3222565221025262,
             "percentage": 22.22222222222222,
             "maturity": 2.508235952687284,
-            "activity": 1.417932938770167,
-            "total_score": 1.1663167585688838,
-            "full_name": "quizl/quizler"
+            "activity": 1.4177142284831166,
+            "total_score": 14.220807875128116,
+            "full_name": "quizl/quizler",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "reframejs/reframe": {
             "popularity": 2.9450149526988105,
             "percentage": 0.24585125998770743,
             "maturity": 4.2023405010707435,
             "activity": 5,
-            "total_score": 0.029864426438277945,
-            "full_name": "reframejs/reframe"
+            "total_score": 22.33385049302239,
+            "full_name": "reframejs/reframe",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "tianshanghong/awesome-anki": {
             "popularity": 2.463931943319936,
             "percentage": 31.818181818181817,
             "maturity": 0,
-            "activity": 2.1670328758674473,
-            "total_score": 1.4734888061050766,
-            "full_name": "tianshanghong/awesome-anki"
+            "activity": 2.1658069466416845,
+            "total_score": 19.749321269424865,
+            "full_name": "tianshanghong/awesome-anki",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "tt-gf/ant-ivy": {
             "popularity": 0,
             "percentage": 0.8264462809917356,
             "maturity": 3.307301774701013,
-            "activity": 1.1250221819446944,
-            "total_score": 0.03663077650120419,
-            "full_name": "tt-gf/ant-ivy"
+            "activity": 1.1249107493877464,
+            "total_score": 7.739514298789772,
+            "full_name": "tt-gf/ant-ivy",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "tt-gf/artifactory-client-java-example": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.598824038079532,
-            "total_score": 0.598824038079532,
-            "full_name": "tt-gf/artifactory-client-java-example"
+            "activity": 0.5987908598596965,
+            "total_score": 0.5987908598596965,
+            "full_name": "tt-gf/artifactory-client-java-example",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "tt-gf/ivy-dependency-parser": {
             "popularity": 1.49139952161816,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.6034650129157964,
-            "total_score": 2.094864534533956,
-            "full_name": "tt-gf/ivy-dependency-parser"
+            "activity": 0.6034314782581491,
+            "total_score": 24.465823824148707,
+            "full_name": "tt-gf/ivy-dependency-parser",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "tt-gf/quickbuild-plugins": {
             "popularity": 0,
             "percentage": 12.5,
             "maturity": 0,
-            "activity": 0.5836453568619806,
-            "total_score": 0.07295566960774758,
-            "full_name": "tt-gf/quickbuild-plugins"
+            "activity": 0.5836133181558516,
+            "total_score": 0.5836133181558516,
+            "full_name": "tt-gf/quickbuild-plugins",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           }
         },
         "organizations": [
@@ -379,97 +451,121 @@
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.3739257559058382,
-            "total_score": 1.4153539763487784,
-            "full_name": "KIWIKIGMBH/frontend-kiwilib"
+            "activity": 0.37390598798805197,
+            "total_score": 17.036757515075095,
+            "full_name": "KIWIKIGMBH/frontend-kiwilib",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "Thermondo/closeio": {
             "popularity": 1.0414282204429401,
             "percentage": 0.6024096385542169,
             "maturity": 3.102450030991689,
             "activity": 5,
-            "total_score": 0.055083603924304995,
-            "full_name": "Thermondo/closeio"
+            "total_score": 14.410742355033634,
+            "full_name": "Thermondo/closeio",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "YuzuJS/setImmediate": {
             "popularity": 4.017531531376164,
             "percentage": 0,
             "maturity": 2.8348808859448904,
-            "activity": 1.74519108587298,
-            "total_score": 0,
-            "full_name": "YuzuJS/setImmediate"
+            "activity": 1.7447265664694211,
+            "total_score": 19.467082932487696,
+            "full_name": "YuzuJS/setImmediate",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/FasterWeb": {
             "popularity": 1.6128219920330789,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.5420791282645174,
-            "total_score": 2.1549011202975965,
-            "full_name": "brillout/FasterWeb"
+            "activity": 0.542050013745139,
+            "total_score": 26.3472018862744,
+            "full_name": "brillout/FasterWeb",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/awesome-angular-components": {
             "popularity": 4.355126467002563,
             "percentage": 39.50617283950617,
             "maturity": 3.088450563344869,
             "activity": 5,
-            "total_score": 4.915981049026146,
-            "full_name": "brillout/awesome-angular-components"
+            "total_score": 46.60934979032787,
+            "full_name": "brillout/awesome-angular-components",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/awesome-frontend-libraries": {
             "popularity": 2.045361715305606,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.9266645015249546,
-            "total_score": 2.9720262168305607,
-            "full_name": "brillout/awesome-frontend-libraries"
+            "activity": 0.9265939227256341,
+            "total_score": 33.652381367615334,
+            "full_name": "brillout/awesome-frontend-libraries",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/awesome-react-components": {
             "popularity": 5,
             "percentage": 28.7292817679558,
             "maturity": 3.151262104260103,
             "activity": 5,
-            "total_score": 3.7782631459752776,
-            "full_name": "brillout/awesome-react-components"
+            "total_score": 44.976557357691476,
+            "full_name": "brillout/awesome-react-components",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/awesome-redux": {
             "popularity": 3.378618648421539,
             "percentage": 92.85714285714286,
             "maturity": 0,
             "activity": 5,
-            "total_score": 7.780145887820002,
-            "full_name": "brillout/awesome-redux"
+            "total_score": 55.920609629781765,
+            "full_name": "brillout/awesome-redux",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/awesome-vue-refactor": {
             "popularity": 2.2810722512575277,
             "percentage": 7.175925925925926,
             "maturity": 3.5951327189683284,
-            "activity": 1.9141187855172137,
-            "total_score": 0.5590278621019332,
-            "full_name": "brillout/awesome-vue-refactor"
+            "activity": 1.9134335794627741,
+            "total_score": 18.074860487044198,
+            "full_name": "brillout/awesome-vue-refactor",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/awesome-web-apps": {
             "popularity": 2.5575461822849728,
             "percentage": 86.66666666666667,
             "maturity": 0,
-            "activity": 0.9055898275032259,
-            "total_score": 3.001384541816439,
-            "full_name": "brillout/awesome-web-apps"
+            "activity": 0.9055225915969114,
+            "total_score": 37.39318145886253,
+            "full_name": "brillout/awesome-web-apps",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/clean-sentence": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.9629694166395666,
-            "total_score": 0.9629694166395666,
-            "full_name": "brillout/clean-sentence"
+            "activity": 0.962892684712668,
+            "total_score": 0.962892684712668,
+            "full_name": "brillout/clean-sentence",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/extendable-error-class": {
             "popularity": 2.045361715305606,
             "percentage": 66.66666666666667,
             "maturity": 0,
-            "activity": 0.9690378327999563,
-            "total_score": 2.0095996987370417,
-            "full_name": "brillout/extendable-error-class"
+            "activity": 0.9689600212653282,
+            "total_score": 24.8315133664974,
+            "full_name": "brillout/extendable-error-class",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/fetch": {
             "popularity": 0,
@@ -477,39 +573,49 @@
             "maturity": 0,
             "activity": 5,
             "total_score": 5,
-            "full_name": "brillout/fetch"
+            "full_name": "brillout/fetch",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/find": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.9781639911967197,
-            "total_score": 1.97816399119672,
-            "full_name": "brillout/find"
+            "activity": 1.9773700067543913,
+            "total_score": 1.9773700067543913,
+            "full_name": "brillout/find",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/forge-sha256": {
             "popularity": 2.149257924096549,
             "percentage": 90,
             "maturity": 0,
-            "activity": 1.0444266843538434,
-            "total_score": 2.874316147605353,
-            "full_name": "brillout/forge-sha256"
+            "activity": 1.044334123903797,
+            "total_score": 32.638425608123065,
+            "full_name": "brillout/forge-sha256",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/get-parent-dirname": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.6245352372221404,
-            "total_score": 1.6245352372221404,
-            "full_name": "brillout/get-parent-dirname"
+            "activity": 1.6241833493203632,
+            "total_score": 1.6241833493203632,
+            "full_name": "brillout/get-parent-dirname",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/gulp-jspm": {
             "popularity": 2.5453460937604104,
             "percentage": 92.53731343283582,
             "maturity": 2.4346992151481284,
-            "activity": 0.90530954593775,
-            "total_score": 5.446149268663729,
-            "full_name": "brillout/gulp-jspm"
+            "activity": 0.9052423534062619,
+            "total_score": 44.03081267051944,
+            "full_name": "brillout/gulp-jspm",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/index-html": {
             "popularity": 0,
@@ -517,23 +623,29 @@
             "maturity": 0,
             "activity": 5,
             "total_score": 5,
-            "full_name": "brillout/index-html"
+            "full_name": "brillout/index-html",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/libraries": {
             "popularity": 1.3222565221025262,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.8719196925564789,
-            "total_score": 2.194176214659005,
-            "full_name": "brillout/libraries"
+            "activity": 0.8718574720365009,
+            "total_score": 22.02796182567692,
+            "full_name": "brillout/libraries",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/npm-download-count": {
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.7375908531491397,
-            "total_score": 0.7375908531491397,
-            "full_name": "brillout/npm-download-count"
+            "activity": 0.7375451850354917,
+            "total_score": 0.7375451850354917,
+            "full_name": "brillout/npm-download-count",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/parse-uri": {
             "popularity": 0,
@@ -541,15 +653,19 @@
             "maturity": 0,
             "activity": 5,
             "total_score": 5,
-            "full_name": "brillout/parse-uri"
+            "full_name": "brillout/parse-uri",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/promise-serial": {
             "popularity": 1.7076084983408428,
             "percentage": 93.75,
             "maturity": 0,
-            "activity": 1.4679255023782236,
-            "total_score": 2.9770631256741247,
-            "full_name": "brillout/promise-serial"
+            "activity": 1.4676801175054615,
+            "total_score": 27.401984186057014,
+            "full_name": "brillout/promise-serial",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/reassert": {
             "popularity": 0,
@@ -557,159 +673,199 @@
             "maturity": 0,
             "activity": 5,
             "total_score": 5,
-            "full_name": "brillout/reassert"
+            "full_name": "brillout/reassert",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/reprop": {
             "popularity": 1.7853682828948099,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.2345638170847542,
-            "total_score": 3.019932099979564,
-            "full_name": "brillout/reprop"
+            "activity": 1.2344204210641987,
+            "total_score": 29.80031294738116,
+            "full_name": "brillout/reprop",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/set-text-dimensions": {
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.5329025951578368,
-            "total_score": 1.574330815600777,
-            "full_name": "brillout/set-text-dimensions"
+            "activity": 0.5328740893518944,
+            "total_score": 17.195725616438935,
+            "full_name": "brillout/set-text-dimensions",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/test-javascript-hash-implementations": {
             "popularity": 1.3222565221025262,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.5419633829345161,
-            "total_score": 1.8642199050370423,
-            "full_name": "brillout/test-javascript-hash-implementations"
+            "activity": 0.5419342761780914,
+            "total_score": 21.698038629818512,
+            "full_name": "brillout/test-javascript-hash-implementations",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/timerlog": {
             "popularity": 1.3222565221025262,
             "percentage": 96.29629629629629,
             "maturity": 0,
-            "activity": 1.1805500866625853,
-            "total_score": 2.410110067699737,
-            "full_name": "brillout/timerlog"
+            "activity": 1.1804234580778705,
+            "total_score": 21.699885782557814,
+            "full_name": "brillout/timerlog",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "brillout/website-dependency-tree": {
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 3.0513403853926127,
-            "activity": 0.7577601771498026,
-            "total_score": 4.850528782985355,
-            "full_name": "brillout/website-dependency-tree"
+            "activity": 0.75771233824379,
+            "total_score": 23.52324463611606,
+            "full_name": "brillout/website-dependency-tree",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "devarchy/frontend-catalogs": {
             "popularity": 1.9590800514478444,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.9363141847034235,
-            "total_score": 2.895394236151268,
-            "full_name": "devarchy/frontend-catalogs"
+            "activity": 0.9362420202902957,
+            "total_score": 32.281522843455804,
+            "full_name": "devarchy/frontend-catalogs",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "devarchy/website": {
             "popularity": 2.580963961738607,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.017344867364994,
-            "total_score": 3.598308829103601,
-            "full_name": "devarchy/website"
+            "activity": 1.0172579019915848,
+            "total_score": 42.3126812898093,
+            "full_name": "devarchy/website",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "enaqx/awesome-react": {
             "popularity": 5,
             "percentage": 0,
             "maturity": 3.8317469982446246,
             "activity": 5,
-            "total_score": 0,
-            "full_name": "enaqx/awesome-react"
+            "total_score": 27.66349399648925,
+            "full_name": "enaqx/awesome-react",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "facebook/create-react-app": {
             "popularity": 5,
             "percentage": 0,
             "maturity": 4.03520012425271,
             "activity": 5,
-            "total_score": 0,
-            "full_name": "facebook/create-react-app"
+            "total_score": 28.070400248505422,
+            "full_name": "facebook/create-react-app",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "facebook/react": {
             "popularity": 5,
             "percentage": 0,
             "maturity": 4.765620800293493,
             "activity": 5,
-            "total_score": 0,
-            "full_name": "facebook/react"
+            "total_score": 29.531241600586988,
+            "full_name": "facebook/react",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "gdi2290/awesome-angular": {
             "popularity": 4.757822164846034,
             "percentage": 0,
             "maturity": 3.436464223545136,
             "activity": 5,
-            "total_score": 0,
-            "full_name": "gdi2290/awesome-angular"
+            "total_score": 26.146394941628373,
+            "full_name": "gdi2290/awesome-angular",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "gmarty/grunt-closure-compiler": {
             "popularity": 3.279021184957488,
             "percentage": 0,
             "maturity": 1.9607586681802867,
-            "activity": 1.6000465289744588,
-            "total_score": 0,
-            "full_name": "gmarty/grunt-closure-compiler"
+            "activity": 1.5997139267118143,
+            "total_score": 15.358294817944852,
+            "full_name": "gmarty/grunt-closure-compiler",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "jnv/lists": {
             "popularity": 4.702908866780051,
             "percentage": 0.15337423312883436,
             "maturity": 3.788558415009318,
             "activity": 5,
-            "total_score": 0.02069243448127204,
-            "full_name": "jnv/lists"
+            "total_score": 26.779613085678026,
+            "full_name": "jnv/lists",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "jspm/jspm-cli": {
             "popularity": 4.564124916183525,
             "percentage": 0.09852216748768473,
             "maturity": 3.990785297337736,
-            "activity": 2.181531533113081,
-            "total_score": 0.010577775119836789,
-            "full_name": "jspm/jspm-cli"
+            "activity": 2.1802640485142204,
+            "total_score": 23.912666164065772,
+            "full_name": "jspm/jspm-cli",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "reframejs/reframe": {
             "popularity": 2.9450149526988105,
             "percentage": 98.4019668100799,
             "maturity": 4.2023405010707435,
             "activity": 5,
-            "total_score": 11.953236681920748,
-            "full_name": "reframejs/reframe"
+            "total_score": 59.91311013222338,
+            "full_name": "reframejs/reframe",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "sindresorhus/awesome": {
             "popularity": 5,
             "percentage": 0,
             "maturity": 3.4459366843694483,
             "activity": 5,
-            "total_score": 0,
-            "full_name": "sindresorhus/awesome"
+            "total_score": 26.891873368738896,
+            "full_name": "sindresorhus/awesome",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "systemjs/builder": {
             "popularity": 3.6600503013915446,
             "percentage": 0.09633911368015415,
             "maturity": 4.000910200583117,
-            "activity": 2.1812085450666383,
-            "total_score": 0.009481858426822063,
-            "full_name": "systemjs/builder"
+            "activity": 2.179942001382421,
+            "total_score": 21.2077520869912,
+            "full_name": "systemjs/builder",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "theoldreader/api": {
             "popularity": 3.1495660747060654,
             "percentage": 0,
             "maturity": 2.208551431450411,
-            "activity": 0.7804275011943789,
-            "total_score": 0,
-            "full_name": "theoldreader/api"
+            "activity": 0.7803770992426307,
+            "total_score": 14.64617818626165,
+            "full_name": "theoldreader/api",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           },
           "vuejs/awesome-vue": {
             "popularity": 5,
             "percentage": 0,
             "maturity": 3.728544676082591,
             "activity": 5,
-            "total_score": 0,
-            "full_name": "vuejs/awesome-vue"
+            "total_score": 27.457089352165184,
+            "full_name": "vuejs/awesome-vue",
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
           }
         },
         "organizations": [

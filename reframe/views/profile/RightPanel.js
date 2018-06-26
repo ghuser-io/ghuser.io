@@ -28,7 +28,7 @@ const RightPanel = props => {
         <div><small>project maturity (based on num of commits): {roundHalf(contrib.maturity)} / 5</small></div>
         <div><small>project activity (based on age of last push): {roundHalf(contrib.activity)} / 5</small></div>
         <div><small>{props.username} made {roundHalf(contrib.percentage)} % of this project</small></div>
-        <div><small>=> sorting score for this contribution: {roundHalf(contrib.total_score)} / 15</small></div>
+        <div><small>=> sorting score for this contribution: {roundHalf(contrib.total_score)} / {contrib.max_total_score} // {contrib.total_score_human_formula}</small></div>
       </div>
     );
   }

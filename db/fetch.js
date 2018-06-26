@@ -223,8 +223,17 @@
                 (new Date - Date.parse(db.repos[repo].pushed_at)) / (24 * 60 * 60 * 1000);
         score.activity = logarithmicScoreDescending(3650, 30, daysOfInactivity);
 
+        // When tweaking the total score, validate that:
+        // * for brillout:
+        //   * devarchy/website is higher than facebook/react
+        //   * brillout/awesome-frontend-libraries is higher than facebook/react
+        //   * brillout/frontend-catalogs is higher than facebook/react
+        //   * brillout/reprop is higher than facebook/react
+
         score.total_score =
-          (score.popularity + score.maturity + score.activity) * score.percentage / 100;
+          (3 + score.percentage * 13 / 100) * score.popularity + 2 * score.maturity + score.activity;
+        score.total_score_human_formula = "(3 + percentage * 13) * popularity + 2 * maturity + activity";
+        score.max_total_score = 95;
       }
 
       spinner.succeed(`Calculated scores for ${user}`);
