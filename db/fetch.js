@@ -28,11 +28,14 @@
 
     for (const repo in db.repos) {
       await fetchRepo(repo);
+      await fetchRepoContributors(repo);
     }
 
     for (const user in db.users) {
       // must be done after fetchRepo() so that we are able to ignore repos without stars:
       await fetchUserContribsOrgs(user);
+
+      calculateUserContribsScores(user);
     }
 
     async function fetchUser(user) {
@@ -61,7 +64,7 @@
       db.orgs = db.orgs || {};
       for (const org of orgsDataJson) {
         db.users[user].organizations.push(org.login);
-        db.orgs[org.login] = {...db.orgs[org.login], ...org};
+        db.orgs[org.login] = {...db.orgs[org.login], ...filterOrgInPlace(org)};
       }
       writeToDb();
     }
@@ -79,7 +82,9 @@
 
       const repos = await githubContribs.fetch(user, since, null, ora);
       for (const repo of repos) {
-        db.users[user].contribs.repos[repo] = db.users[user].contribs.repos[repo] || {};
+        db.users[user].contribs.repos[repo] = db.users[user].contribs.repos[repo] || {
+          full_name: repo
+        };
       }
       const today = githubContribs.dateToString(new Date());
       db.users[user].contribs.fetched_at = today;
@@ -99,7 +104,42 @@
       const ghDataJson = await ghData.json();
       githubSpinner.succeed(`Fetched ${ghRepoUrl}`);
 
-      db.repos[repo] = ghDataJson;
+      // Keep the DB small:
+      ghDataJson.owner = ghDataJson.owner.login;
+      for (const field of ["node_id", "keys_url", "collaborators_url", "teams_url", "hooks_url",
+                           "issue_events_url", "events_url", "assignees_url", "branches_url",
+                           "tags_url", "blobs_url", "git_tags_url", "git_refs_url", "trees_url",
+                           "statuses_url", "contributors_url", "subscribers_url",
+                           "subscription_url", "commits_url", "git_commits_url", "comments_url",
+                           "issue_comment_url", "contents_url", "compare_url", "merges_url",
+                           "archive_url", "downloads_url", "issues_url", "pulls_url",
+                           "milestones_url", "notifications_url", "labels_url", "releases_url",
+                           "deployments_url", "ssh_url", "git_url", "clone_url", "svn_url",
+                           "has_issues", "has_projects", "has_downloads", "has_wiki",
+                           "has_pages"]) {
+        delete ghDataJson[field];
+      }
+
+      db.repos[repo] = {...db.repos[repo], ...ghDataJson};
+
+      writeToDb();
+    }
+
+    async function fetchRepoContributors(repo) {
+      const ghUrl = `https://api.github.com/repos/${repo}/stats/contributors`;
+      const githubSpinner = ora(`Fetching ${ghUrl}...`).start();
+      const ghData = await fetch(`${ghUrl}${urlSuffix}`);
+      const ghDataJson = await ghData.json();
+      githubSpinner.succeed(`Fetched ${ghUrl}`);
+
+      db.repos[repo].contributors = ghDataJson;
+
+      // Keep the DB small:
+      for (const contributor of db.repos[repo].contributors) {
+        delete contributor.weeks;
+        contributor.author = contributor.author.login;
+      }
+
       writeToDb();
     }
 
@@ -137,7 +177,7 @@
             if (orgsDataJson.login) {
               // it's an org that we didn't know yet
               isOrg = true;
-              db.orgs[orgsDataJson.login] = orgsDataJson;
+              db.orgs[orgsDataJson.login] = filterOrgInPlace(orgsDataJson);
             }
           }
         }
@@ -150,6 +190,65 @@
       orgsSpinner.succeed(`Checked all contribution' orgs of ${user}`);
 
       writeToDb();
+    }
+
+    function filterOrgInPlace(org) { // to keep the DB small
+      delete org.id;
+      delete org.node_id;
+      delete org.events_url;
+      delete org.hooks_url;
+      delete org.issues_url;
+      return org;
+    }
+
+    function calculateUserContribsScores(user) {
+      const spinner = ora(`Calculating scores for ${user}...`).start();
+
+      for (const repo in db.users[user].contribs.repos) {
+        const score = db.users[user].contribs.repos[repo];
+        score.popularity = logarithmicScoreAscending(1, 10000, db.repos[repo].stargazers_count);
+
+        let totalContribs = 0;
+        let userContribs = 0;
+        for (const contributor of db.repos[repo].contributors) {
+          totalContribs += contributor.total;
+          if (contributor.author == user) {
+            userContribs = contributor.total;
+          }
+        }
+        score.percentage = 100 * userContribs / totalContribs;
+        score.maturity = logarithmicScoreAscending(40, 10000, totalContribs);
+
+        const daysOfInactivity =
+                (new Date - Date.parse(db.repos[repo].pushed_at)) / (24 * 60 * 60 * 1000);
+        score.activity = logarithmicScoreDescending(3650, 30, daysOfInactivity);
+
+        score.total_score =
+          (score.popularity + score.maturity + score.activity) * score.percentage / 100;
+      }
+
+      spinner.succeed(`Calculated scores for ${user}`);
+      writeToDb();
+
+      function logarithmicScoreAscending(valFor0, valFor5, val) {
+        // For example with valFor0=1, valFor5=100000, val being the number of stars on a
+        // project and the result being the project popularity:
+        //      1 star  => popularity=0
+        //     10 stars => popularity=1
+        //    100 stars => popularity=2
+        //   1000 stars => popularity=3
+        //  10000 stars => popularity=4
+        // 100000 stars => popularity=5
+
+        let logInput = (val - valFor0) * 99999 / (valFor5 - valFor0) + 1;
+        logInput = Math.max(1, logInput);
+        logInput = Math.min(100000, logInput);
+        return Math.log10(logInput);
+      }
+
+      function logarithmicScoreDescending(valFor0, valFor5, val) {
+        return 5 - logarithmicScoreAscending(valFor5, valFor0, val);
+      }
     }
   }
 
