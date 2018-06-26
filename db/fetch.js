@@ -45,7 +45,7 @@
       db.users[user] = {...db.users[user], ...ghDataJson};
       db.users[user].contribs = db.users[user].contribs || {
         fetched_at: '2000-01-01',
-        repos: []
+        repos: {}
       };
       writeToDb();
     }
@@ -78,14 +78,14 @@
       }
 
       const repos = await githubContribs.fetch(user, since, null, ora);
-      db.users[user].contribs.repos = [
-        ...new Set([...db.users[user].contribs.repos, ...repos])
-      ].sort();
+      for (const repo of repos) {
+        db.users[user].contribs.repos[repo] = db.users[user].contribs.repos[repo] || {};
+      }
       const today = githubContribs.dateToString(new Date());
       db.users[user].contribs.fetched_at = today;
 
       db.repos = db.repos || {};
-      for (const repo of db.users[user].contribs.repos) {
+      for (const repo in db.users[user].contribs.repos) {
         db.repos[repo] = db.repos[repo] || {};
       }
 
@@ -107,17 +107,19 @@
       const orgsSpinner = ora(
         `For each contribution of ${user}, checking if the repo belongs to an org...`).start();
 
-      const usersAndOrgs = new Set([]);
-      for (let i = db.users[user].contribs.repos.length - 1; i >= 0; --i) {
-        const repo = db.users[user].contribs.repos[i];
-
-        // While we get the list of organizations the user has contributed to, we use the
-        // opportunity to get rid of contributions to repos that have no stars:
+      // Get rid of all contribs to repos without stars:
+      const contribsToRemove = [];
+      for (const repo in db.users[user].contribs.repos) {
         if (!db.repos[repo].stargazers_count) {
-          db.users[user].contribs.repos.splice(i, 1); // remove repo
-          continue;
+          contribsToRemove.push(repo);
         }
+      }
+      for (const repo of contribsToRemove) {
+        delete db.users[user].contribs.repos[repo];
+      }
 
+      const usersAndOrgs = new Set([]);
+      for (const repo in db.users[user].contribs.repos) {
         const userOrOrg = repo.split('/')[0];
         usersAndOrgs.add(userOrOrg);
       }

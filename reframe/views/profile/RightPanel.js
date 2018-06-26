@@ -2,7 +2,7 @@ import React from 'react';
 
 const RightPanel = props => {
   const repos = [];
-  for (const repo of props.contribs && props.contribs.repos || []) {
+  for (const repo in props.contribs.repos) {
     repos.push(
       <li key={repo}><a href={`https://github.com/${repo}`} target="_blank">{repo}</a></li>
     );
