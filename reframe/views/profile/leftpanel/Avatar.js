@@ -2,12 +2,8 @@ import React from 'react';
 
 import './Avatar.css';
 
-class Avatar extends React.Component {
-  render() {
-    return (
-      <img className="avatar border border-white rounded" src={this.props.url} />
-    );
-  }
-}
+const Avatar = props => (
+  <img className={`avatar border border-white rounded ${props.classes}`} src={props.url} />
+);
 
 export default Avatar;

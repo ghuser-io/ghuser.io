@@ -3,6 +3,11 @@ h1 {
   margin-bottom: 0;
 }
 
+h4 {
+  font-weight: 600;
+  font-size: 16px;
+}
+
 .container-lg {
   max-width: 1012px;
   width: 1012px;
