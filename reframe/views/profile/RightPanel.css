@@ -36,3 +36,11 @@
 .contribs {
   font-size: 14px;
 }
+
+.avatar-repo {
+  float: left;
+  width: 50px;
+  height: auto;
+  margin-top: .5em;
+  margin-right: .5em;
+}

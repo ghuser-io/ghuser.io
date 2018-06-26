@@ -1,11 +1,12 @@
 import React from 'react';
 
-import Avatar from './Avatar';
 import Bio from './Bio';
 import Orgs from './Orgs';
 import VCard from './VCard';
 import VCardDetails from './VCardDetails';
 import './LeftPanel.css';
+
+import Avatar from '../Avatar';
 
 const LeftPanel = props => (
   <div className="col-3 p-0 pr-4">

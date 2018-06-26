@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Avatar from './Avatar';
 import './RightPanel.css';
 
 const RightPanel = props => {
@@ -17,11 +18,18 @@ const RightPanel = props => {
   contribs.sort(compare);
 
   const roundHalf = num => Math.round(num * 2) / 2;
+  const avatar = full_name => {
+    if (props.repos[full_name].organization && props.repos[full_name].organization.avatar_url) {
+      return <Avatar url={props.repos[full_name].organization.avatar_url} classes="avatar-repo" />;
+    }
+    return '';
+  };
 
   const repos = [];
   for (const contrib of contribs) {
     repos.push(
-      <div key={contrib.full_name} className="border-bottom border-gray-light">
+      <div key={contrib.full_name} className="border-bottom border-gray-light py-4">
+        {avatar(contrib.full_name)}
         <div>
           <a href={`https://github.com/${contrib.full_name}`}
              target="_blank" className="text-bold"
@@ -48,7 +56,7 @@ const RightPanel = props => {
           </a>
         </nav>
       </div>
-      <div className="mt-4 contribs">
+      <div className="contribs">
         {repos}
       </div>
     </div>

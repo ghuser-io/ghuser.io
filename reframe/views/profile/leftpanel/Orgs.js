@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Avatar from './Avatar';
 import './Orgs.css';
+import Avatar from '../Avatar';
 
 const Orgs = props => {
   const orgAvatar = org => (
