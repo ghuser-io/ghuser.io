@@ -30,11 +30,12 @@ const RightPanel = props => {
     repos.push(
       <div key={contrib.full_name} className="border-bottom border-gray-light py-4">
         {avatar(contrib.full_name)}
-        <div>
+        <h4>
           <a href={`https://github.com/${contrib.full_name}`}
              target="_blank" className="text-bold"
              title={contrib.full_name}>{props.repos[contrib.full_name].name}</a>
-        </div>
+        </h4>
+        <div className="text-gray">{props.repos[contrib.full_name].description}</div>
         <div><small>project popularity (based on stars): {roundHalf(contrib.popularity)} / 5</small></div>
         <div><small>project maturity (based on num of commits): {roundHalf(contrib.maturity)} / 5</small></div>
         <div><small>project activity (based on age of last push): {roundHalf(contrib.activity)} / 5</small></div>

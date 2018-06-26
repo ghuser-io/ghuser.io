@@ -41,6 +41,10 @@
   float: left;
   width: 50px;
   height: auto;
-  margin-top: .5em;
   margin-right: .5em;
+  margin-bottom: -.5em;
+}
+
+.text-gray {
+  color: #586069;
 }
