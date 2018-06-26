@@ -5,7 +5,7 @@ import './Orgs.css';
 
 const Orgs = props => {
   const orgAvatar = org => (
-    <a key={org} href={`https://github.com/${org}`} target="_blank">
+    <a key={org} href={`https://github.com/${org}`} target="_blank" title={org}>
       <Avatar url={props.allOrgs[org].avatar_url} classes="avatar-org" />
     </a>
   );
