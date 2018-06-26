@@ -34,7 +34,7 @@ const RightPanel = props => {
   }
 
   return (
-    <div className="col-9"><ul>{repos}</ul></div>
+    <div className="col-9 pl-2">{repos}</div>
   );
 };
 
