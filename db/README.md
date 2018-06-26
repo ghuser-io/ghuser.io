@@ -4,8 +4,12 @@ During the prototyping phrase, it's just a JSON file that we update once per day
 
 ```bash
 $ npm install
+$ export GITHUB_CLIENT_ID=0123456789abcdef0123
+$ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
 $ ./fetch.js
 ```
+
+> **NOTE**: API keys can be created [here](https://github.com/settings/developers).
 
 To serve one more user, add an empty user to `db.json`:
 
@@ -25,5 +29,7 @@ To serve one more user, add an empty user to `db.json`:
 and run
 
 ```bash
+$ export GITHUB_CLIENT_ID=0123456789abcdef0123
+$ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
 $ ./fetch.js
 ```

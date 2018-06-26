@@ -14,16 +14,23 @@
   await fetchUsers();
 
   async function fetchUsers() {
+    let urlSuffix = '';
+    if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
+      console.log('GitHub API key found.');
+      urlSuffix = `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`;
+    }
+
     for (const user in db.users) {
       await fetchUser(user);
       await fetchUserOrgs(user);
       await fetchUserContribs(user);
+      await fetchUserContribsOrgs(user);
     }
 
     async function fetchUser(user) {
       const ghUserUrl = `https://api.github.com/users/${user}`;
       const githubSpinner = ora(`Fetching ${ghUserUrl}...`).start();
-      const ghData = await fetch(ghUserUrl);
+      const ghData = await fetch(`${ghUserUrl}${urlSuffix}`);
       const ghDataJson = await ghData.json();
       githubSpinner.succeed(`Fetched ${ghUserUrl}`);
 
@@ -38,7 +45,7 @@
     async function fetchUserOrgs(user) {
       const orgsUrl = db.users[user].organizations_url;
       const orgsSpinner = ora(`Fetching ${orgsUrl}...`).start();
-      const orgsData = await fetch(orgsUrl);
+      const orgsData = await fetch(`${orgsUrl}${urlSuffix}`);
       const orgsDataJson = await orgsData.json();
       orgsSpinner.succeed(`Fetched ${orgsUrl}`);
 
@@ -68,6 +75,44 @@
       ].sort();
       const today = githubContribs.dateToString(new Date());
       db.users[user].contribs.fetched_at = today;
+      writeToDb();
+    }
+
+    async function fetchUserContribsOrgs(user) {
+      const orgsSpinner = ora(
+        `For each contribution of ${user}, checking if the repo belongs to an org...`).start();
+
+      const usersAndOrgs = new Set([]);
+      for (const repo of db.users[user].contribs.repos) {
+        const userOrOrg = repo.split('/')[0];
+        usersAndOrgs.add(userOrOrg);
+      }
+
+      db.users[user].contribs.organizations = [];
+      for (const userOrOrg of usersAndOrgs) {
+        let isOrg = false;
+        if (!(userOrOrg in db.users)) { // otherwise it's a user that we know already
+          if (userOrOrg in db.orgs) {
+            isOrg = true; // it's an org that we know already
+          } else {
+            // it might be an org that we don't know yet
+            const orgsData = await fetch(`https://api.github.com/orgs/${userOrOrg}${urlSuffix}`);
+            const orgsDataJson = await orgsData.json();
+            if (orgsDataJson.login) {
+              // it's an org that we didn't know yet
+              isOrg = true;
+              db.orgs[orgsDataJson.login] = orgsDataJson;
+            }
+          }
+        }
+
+        if (isOrg) {
+          db.users[user].contribs.organizations.push(userOrOrg);
+        }
+      }
+
+      orgsSpinner.succeed(`Checked all contribution' orgs of ${user}`);
+
       writeToDb();
     }
   }
