@@ -24,6 +24,14 @@
       await fetchUser(user);
       await fetchUserOrgs(user);
       await fetchUserContribs(user);
+    }
+
+    for (const repo in db.repos) {
+      await fetchRepo(repo);
+    }
+
+    for (const user in db.users) {
+      // must be done after fetchRepo() so that we are able to ignore repos without stars:
       await fetchUserContribsOrgs(user);
     }
 
@@ -75,6 +83,23 @@
       ].sort();
       const today = githubContribs.dateToString(new Date());
       db.users[user].contribs.fetched_at = today;
+
+      db.repos = db.repos || {};
+      for (const repo of db.users[user].contribs.repos) {
+        db.repos[repo] = db.repos[repo] || {};
+      }
+
+      writeToDb();
+    }
+
+    async function fetchRepo(repo) {
+      const ghRepoUrl = `https://api.github.com/repos/${repo}`;
+      const githubSpinner = ora(`Fetching ${ghRepoUrl}...`).start();
+      const ghData = await fetch(`${ghRepoUrl}${urlSuffix}`);
+      const ghDataJson = await ghData.json();
+      githubSpinner.succeed(`Fetched ${ghRepoUrl}`);
+
+      db.repos[repo] = ghDataJson;
       writeToDb();
     }
 
@@ -83,7 +108,16 @@
         `For each contribution of ${user}, checking if the repo belongs to an org...`).start();
 
       const usersAndOrgs = new Set([]);
-      for (const repo of db.users[user].contribs.repos) {
+      for (let i = db.users[user].contribs.repos.length - 1; i >= 0; --i) {
+        const repo = db.users[user].contribs.repos[i];
+
+        // While we get the list of organizations the user has contributed to, we use the
+        // opportunity to get rid of contributions to repos that have no stars:
+        if (!db.repos[repo].stargazers_count) {
+          db.users[user].contribs.repos.splice(i, 1); // remove repo
+          continue;
+        }
+
         const userOrOrg = repo.split('/')[0];
         usersAndOrgs.add(userOrOrg);
       }
