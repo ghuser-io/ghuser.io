@@ -37,6 +37,11 @@
   font-size: 14px;
 }
 
+.contrib-name {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .avatar-repo {
   float: left;
   width: 50px;

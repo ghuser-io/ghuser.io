@@ -29,16 +29,27 @@ const RightPanel = props => {
               title="Add an avatar" target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
   };
 
+  const badges = (owner, percentage) => {
+    const result = [];
+    if (props.username == owner || percentage >= 80) {
+      result.push(
+        <span key="percentage" className="badge badge-success contrib-name ml-2 mb-2"
+              title={`${props.username} wrote ${roundHalf(percentage)}% of it`}>owner</span>);
+    }
+    return result;
+  };
+
   const repos = [];
   for (const contrib of contribs) {
     repos.push(
       <div key={contrib.full_name} className="border-bottom border-gray-light py-4">
         {avatar(contrib.full_name)}
-        <h4>
+        <h4 className="contrib-name">
           <a href={`https://github.com/${contrib.full_name}`}
-             target="_blank" className="text-bold"
+             target="_blank" className="text-bold contrib-name"
              title={contrib.full_name}>{props.repos[contrib.full_name].name}</a>
         </h4>
+        {badges(props.repos[contrib.full_name].owner, contrib.percentage)}
         <div className="text-gray">{props.repos[contrib.full_name].description}</div>
         <div><small>project popularity (based on stars): {roundHalf(contrib.popularity)} / 5</small></div>
         <div><small>project maturity (based on num of commits): {roundHalf(contrib.maturity)} / 5</small></div>
