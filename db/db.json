@@ -1372,7 +1372,11 @@
           "total": 50,
           "author": "AurelienLourot"
         }
-      ]
+      ],
+      "settings": {
+        "_comment": "Settings for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md",
+        "avatar_url": "https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo_square.png"
+      }
     },
     "AurelienLourot/github-commit-watcher": {
       "id": 38563121,

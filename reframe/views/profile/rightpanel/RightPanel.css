@@ -40,9 +40,18 @@
 .avatar-repo {
   float: left;
   width: 50px;
-  height: auto;
   margin-right: .5em;
   margin-bottom: -.5em;
+}
+
+.avatar-add {
+  border-width: medium !important;
+  background-color: #eee;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: -3px;
 }
 
 .text-gray {

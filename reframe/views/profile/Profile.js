@@ -6,7 +6,7 @@ import PageContent from '../PageContent';
 import '../All.css';
 
 import LeftPanel from './leftpanel/LeftPanel';
-import RightPanel from './RightPanel';
+import RightPanel from './rightpanel/RightPanel';
 
 const Profile = props => {
   if (!props.user) {

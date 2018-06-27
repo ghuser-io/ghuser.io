@@ -20,6 +20,8 @@
       urlSuffix = `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`;
     }
 
+    const now = new Date;
+
     for (const user in db.users) {
       await fetchUser(user);
       await fetchUserOrgs(user);
@@ -28,6 +30,7 @@
 
     for (const repo in db.repos) {
       await fetchRepo(repo);
+      await fetchRepoSettings(repo);
       await fetchRepoContributors(repo);
     }
 
@@ -37,6 +40,11 @@
 
       calculateUserContribsScores(user);
     }
+
+    console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
+    console.log(`DB size: ${dbSizeKB()} KB`);
+
+    return;
 
     async function fetchUser(user) {
       const ghUserUrl = `https://api.github.com/users/${user}`;
@@ -86,7 +94,7 @@
           full_name: repo
         };
       }
-      const today = githubContribs.dateToString(new Date());
+      const today = githubContribs.dateToString(now);
       db.users[user].contribs.fetched_at = today;
 
       db.repos = db.repos || {};
@@ -122,6 +130,21 @@
 
       db.repos[repo] = {...db.repos[repo], ...ghDataJson};
 
+      writeToDb();
+    }
+
+    async function fetchRepoSettings(repo) {
+      const url = `https://rawgit.com/${repo}/master/.ghuser.io.json`;
+      const spinner = ora(`Fetching ${repo}'s settings...`).start();
+      const data = await fetch(`${url}`);
+      if (data.status == 404) {
+        spinner.succeed(`No settings found for ${repo}`);
+        return;
+      }
+      const dataJson = await data.json();
+      spinner.succeed(`Fetched ${repo}'s settings`);
+
+      db.repos[repo].settings = dataJson;
       writeToDb();
     }
 
@@ -238,7 +261,7 @@
         score.maturity = logarithmicScoreAscending(40, 10000, totalContribs);
 
         const daysOfInactivity =
-                (new Date - Date.parse(db.repos[repo].pushed_at)) / (24 * 60 * 60 * 1000);
+                (now - Date.parse(db.repos[repo].pushed_at)) / (24 * 60 * 60 * 1000);
         score.activity = logarithmicScoreDescending(3650, 30, daysOfInactivity);
 
         // When tweaking the total score, validate that:
@@ -281,6 +304,10 @@
 
   function writeToDb() {
     fs.writeFileSync(dbPath, JSON.stringify(db, null, 2) + '\n', 'utf-8');
+  };
+
+  function dbSizeKB() {
+    return Math.round(fs.statSync(dbPath).size / 1024);
   };
 
 })();

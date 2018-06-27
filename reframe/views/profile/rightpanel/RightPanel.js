@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Avatar from './Avatar';
 import './RightPanel.css';
+import Avatar from '../Avatar';
 
 const RightPanel = props => {
   const compare = (a, b) => {
@@ -19,10 +19,14 @@ const RightPanel = props => {
 
   const roundHalf = num => Math.round(num * 2) / 2;
   const avatar = full_name => {
+    if (props.repos[full_name].settings && props.repos[full_name].settings.avatar_url) {
+      return <Avatar url={props.repos[full_name].settings.avatar_url} classes="avatar-repo" />;
+    }
     if (props.repos[full_name].organization && props.repos[full_name].organization.avatar_url) {
       return <Avatar url={props.repos[full_name].organization.avatar_url} classes="avatar-repo" />;
     }
-    return '';
+    return <a href="https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md"
+              title="Add an avatar" target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
   };
 
   const repos = [];
