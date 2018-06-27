@@ -29,7 +29,7 @@ const RightPanel = props => {
               title="Add an avatar" target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
   };
 
-  const badges = (owner, percentage) => {
+  const badges = (owner, percentage, numContributors) => {
     const result = [];
     if (props.username == owner || percentage >= 80) {
       result.push(
@@ -39,6 +39,11 @@ const RightPanel = props => {
       result.push(
         <span key="percentage" className="badge badge-danger contrib-name ml-2 mb-2"
               title={`${props.username} wrote ${roundHalf(percentage)}% of it`}>maintainer</span>);
+    }
+    if (numContributors > 1) {
+      result.push(
+        <span key="collaborative" className="badge badge-secondary contrib-name ml-1 mb-2"
+              title={`${numContributors} people worked on it`}>collaborative</span>);
     }
     return result;
   };
@@ -53,7 +58,8 @@ const RightPanel = props => {
              target="_blank" className="text-bold contrib-name"
              title={contrib.full_name}>{props.repos[contrib.full_name].name}</a>
         </h4>
-        {badges(props.repos[contrib.full_name].owner, contrib.percentage)}
+        {badges(props.repos[contrib.full_name].owner, contrib.percentage,
+                props.repos[contrib.full_name].contributors.length)}
         <div className="text-gray">{props.repos[contrib.full_name].description}</div>
         <div><small>project popularity (based on stars): {roundHalf(contrib.popularity)} / 5</small></div>
         <div><small>project maturity (based on num of commits): {roundHalf(contrib.maturity)} / 5</small></div>
