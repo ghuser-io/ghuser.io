@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://ghuser.io">
-    <img src="https://rawgit.com/AurelienLourot/ghuser.io/master/logo.png"
+    <img src="https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo.png"
          width="400" height="108" />
   </a>
 </p>
