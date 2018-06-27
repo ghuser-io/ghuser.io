@@ -22,6 +22,9 @@ To serve one more user, add an empty user to `db.json`:
     }.
     "myNewUser": {}
   },
+  "orgs": {
+    "...": "..."
+  },
   "...": "..."
 }
 ```

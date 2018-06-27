@@ -128,8 +128,26 @@
     async function fetchRepoContributors(repo) {
       const ghUrl = `https://api.github.com/repos/${repo}/stats/contributors`;
       const githubSpinner = ora(`Fetching ${ghUrl}...`).start();
-      const ghData = await fetch(`${ghUrl}${urlSuffix}`);
-      const ghDataJson = await ghData.json();
+
+      let ghDataJson;
+      for (let i = 3; i >= 0; --i) {
+        const ghData = await fetch(`${ghUrl}${urlSuffix}`);
+        ghDataJson = await ghData.json();
+
+        if (!Object.keys(ghDataJson).length) {
+          // GitHub is still calculating the stats and we need to wait a bit and try again, see
+          // https://developer.github.com/v3/repos/statistics/
+
+          if (!i) { // enough retries
+            const error = `Failed to fetch https://api.github.com/repos/${repo}/stats/contributors`;
+            githubSpinner.fail(error);
+            throw error;
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 5000));
+        }
+      }
+
       githubSpinner.succeed(`Fetched ${ghUrl}`);
 
       db.repos[repo].contributors = ghDataJson;
