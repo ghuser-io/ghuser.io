@@ -13,7 +13,7 @@
   "scripts": {
     "start": "reframe server",
     "local": "reframe start",
-    "deploy": "rm -rf dist/previous/ && reframe build && ./up && ./up production && ./up stack status"
+    "deploy": "reframe build && rm -rf dist/previous/ && ./up && ./up production && ./up stack status"
   },
   "dependencies": {
     "@brillout/fetch": "^0.1.0",
