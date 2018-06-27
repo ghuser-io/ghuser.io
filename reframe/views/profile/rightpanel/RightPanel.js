@@ -35,6 +35,10 @@ const RightPanel = props => {
       result.push(
         <span key="percentage" className="badge badge-success contrib-name ml-2 mb-2"
               title={`${props.username} wrote ${roundHalf(percentage)}% of it`}>owner</span>);
+    } else if (percentage >= 15) {
+      result.push(
+        <span key="percentage" className="badge badge-danger contrib-name ml-2 mb-2"
+              title={`${props.username} wrote ${roundHalf(percentage)}% of it`}>maintainer</span>);
     }
     return result;
   };
