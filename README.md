@@ -32,3 +32,18 @@ Better profile pages for **all** GitHub users:
 * Each user can tweak their profile by creating the config file
   https://github.com/user/ghuser.io.settings/ghuser.io.json
 * Repos can have a logo.
+
+# Build and run locally
+
+[ghuser.io](https://ghuser.io) is a [Reframe](https://github.com/reframejs/reframe) web app:
+
+```bash
+$ cd reframe/
+$ npm install
+$ npm run local
+...
+ ✔ Server running (for development)
+     http://localhost:3000/ -> LandingPage
+     http://localhost:3000/:username -> ProfilePage
+     http://localhost:3000/logo -> LogoPage
+```
