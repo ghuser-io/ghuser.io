@@ -44,7 +44,8 @@ const RightPanel = props => {
               title="Add an avatar" target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
   };
 
-  const badges = (owner, percentage, numContributors, popularity, numStars, activity, pushedAt) => {
+  const badges = (owner, percentage, numContributors, popularity, numStars, activity, pushedAt,
+                  maturity, numCommits) => {
     const result = [];
     if (props.username == owner || percentage >= 80) {
       result.push(<Badge key="percentage" classes="badge-success contrib-name" text="owner"
@@ -65,6 +66,10 @@ const RightPanel = props => {
       result.push(<Badge key="active" classes="badge-secondary contrib-name" text="active"
                          tooltip={`Last pushed ${moment(pushedAt).fromNow()}`}/>);
     }
+    if (maturity > 2.5) {
+      result.push(<Badge key="mature" classes="badge-secondary contrib-name" text="mature"
+                         tooltip={`${bigNum(numCommits)} non-merge commits`}/>);
+    }
     return result;
   };
 
@@ -81,7 +86,7 @@ const RightPanel = props => {
         {badges(props.repos[contrib.full_name].owner, contrib.percentage,
                 props.repos[contrib.full_name].contributors.length, contrib.popularity,
                 props.repos[contrib.full_name].stargazers_count, contrib.activity,
-                props.repos[contrib.full_name].pushed_at)}
+                props.repos[contrib.full_name].pushed_at, contrib.maturity, contrib.commits_count)}
         <div className="text-gray">{props.repos[contrib.full_name].description}</div>
         <div><small>project popularity (based on stars): {roundHalf(contrib.popularity)} / 5</small></div>
         <div><small>project maturity (based on num of commits): {roundHalf(contrib.maturity)} / 5</small></div>
