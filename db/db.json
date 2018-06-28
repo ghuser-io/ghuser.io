@@ -29,8 +29,8 @@
       "bio": "Software developer. Quite into JavaScript at the moment. Building ghuser.io",
       "public_repos": 17,
       "public_gists": 2,
-      "followers": 19,
-      "following": 22,
+      "followers": 20,
+      "following": 24,
       "created_at": "2015-04-04T09:08:20Z",
       "updated_at": "2018-06-27T09:05:36Z",
       "contribs": {
@@ -40,8 +40,8 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 3.0107603634824787,
-            "activity": 1.7912835967156449,
-            "total_score": 7.812804323680602,
+            "activity": 1.7888076829402024,
+            "total_score": 7.81032840990516,
             "full_name": "AurelienLourot/AurelienLourot.github.io",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -51,8 +51,8 @@
             "popularity": 1.0414282204429401,
             "percentage": 83.33333333333333,
             "maturity": 0,
-            "activity": 1.7837029094662564,
-            "total_score": 16.190126625593592,
+            "activity": 1.7812697184159179,
+            "total_score": 16.187693434543256,
             "full_name": "AurelienLourot/crouton-articles",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -62,8 +62,8 @@
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.6619791467694016,
-            "total_score": 18.324830673856443,
+            "activity": 1.6601394365052666,
+            "total_score": 18.32299096359231,
             "full_name": "AurelienLourot/crouton-emacs-conf",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -73,41 +73,41 @@
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.6224014179019282,
-            "total_score": 17.28525294498897,
+            "activity": 0.6222331474952103,
+            "total_score": 17.28508467458225,
             "full_name": "AurelienLourot/fork-me-on-gitlab",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
             "commits_count": 17
           },
           "AurelienLourot/ghuser.io": {
-            "popularity": 0,
+            "popularity": 1.0414282204429401,
             "percentage": 100,
-            "maturity": 2.2827606132375395,
+            "maturity": 2.3653407969119673,
             "activity": 5,
-            "total_score": 9.565521226475079,
+            "total_score": 26.393533120910977,
             "full_name": "AurelienLourot/ghuser.io",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 59
+            "commits_count": 63
           },
           "AurelienLourot/github-commit-watcher": {
             "popularity": 2.0828241359374196,
             "percentage": 98.9795918367347,
             "maturity": 2.765909468455758,
-            "activity": 2.2871311871745648,
-            "total_score": 40.86784330146044,
+            "activity": 2.279422831012673,
+            "total_score": 40.86013494529855,
             "full_name": "AurelienLourot/github-commit-watcher",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
             "commits_count": 98
           },
           "AurelienLourot/github-contribs": {
-            "popularity": 2.2330349704670382,
+            "popularity": 2.2577174475727126,
             "percentage": 100,
             "maturity": 1.9101999437230757,
             "activity": 5,
-            "total_score": 44.54895941491876,
+            "total_score": 44.94387904860955,
             "full_name": "AurelienLourot/github-contribs",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -117,8 +117,8 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.9805741975440125,
-            "total_score": 1.9805741975440125,
+            "activity": 1.9767516579693751,
+            "total_score": 1.9767516579693751,
             "full_name": "AurelienLourot/google-input-tools-large-keyboard",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -128,8 +128,8 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.7288965894737496,
-            "total_score": 0.7288965894737496,
+            "activity": 0.7286815691361861,
+            "total_score": 0.7286815691361861,
             "full_name": "AurelienLourot/iqa-hello-world",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -183,8 +183,8 @@
             "popularity": 1.49139952161816,
             "percentage": 100,
             "maturity": 3.5384204876406606,
-            "activity": 1.9690186597641848,
-            "total_score": 32.908251980936065,
+            "activity": 1.9652960587255803,
+            "total_score": 32.90452937989746,
             "full_name": "AurelienLourot/myberl.in",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -205,8 +205,8 @@
             "popularity": 3.217786138241388,
             "percentage": 0.2976190476190476,
             "maturity": 3.473174140773305,
-            "activity": 2.6158964972024727,
-            "total_score": 19.34010087144092,
+            "activity": 2.599625062662149,
+            "total_score": 19.323829436900596,
             "full_name": "RichardLitt/low-resource-languages",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -216,8 +216,8 @@
             "popularity": 2.5694128929127964,
             "percentage": 17.80821917808219,
             "maturity": 2.5215590771505747,
-            "activity": 1.6924899688804116,
-            "total_score": 20.39221363619752,
+            "activity": 1.6905166675481924,
+            "total_score": 20.3902403348653,
             "full_name": "brandon-rhodes/uncommitted",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -227,19 +227,19 @@
             "popularity": 1.3222565221025262,
             "percentage": 3.7037037037037037,
             "maturity": 0,
-            "activity": 1.1775926814406605,
-            "total_score": 5.781004276908714,
+            "activity": 1.1769887590247539,
+            "total_score": 5.780400354492808,
             "full_name": "brillout/timerlog",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
             "commits_count": 27
           },
           "dnschneid/crouton": {
-            "popularity": 4.821231526011069,
+            "popularity": 4.821165968168585,
             "percentage": 0.06305170239596469,
             "maturity": 4.190973786697656,
             "activity": 5,
-            "total_score": 27.88516044262533,
+            "total_score": 27.884963231738514,
             "full_name": "dnschneid/crouton",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -249,19 +249,19 @@
             "popularity": 0,
             "percentage": 18.75,
             "maturity": 0,
-            "activity": 1.92937819149584,
-            "total_score": 1.92937819149584,
+            "activity": 1.9259790598748663,
+            "total_score": 1.9259790598748663,
             "full_name": "dracula/fb-messenger",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
             "commits_count": 16
           },
           "dracula/gitk": {
-            "popularity": 1.7076084983408428,
+            "popularity": 1.7853682828948099,
             "percentage": 88.88888888888889,
             "maturity": 0,
-            "activity": 1.9513352847691654,
-            "total_score": 26.806525649508096,
+            "activity": 1.9477606046644271,
+            "total_score": 27.934787833466658,
             "full_name": "dracula/gitk",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -271,8 +271,8 @@
             "popularity": 1.6128219920330789,
             "percentage": 10,
             "maturity": 0,
-            "activity": 1.9435729201584664,
-            "total_score": 8.878707485900705,
+            "activity": 1.9400613091966141,
+            "total_score": 8.875195874938854,
             "full_name": "dracula/mutt",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -293,8 +293,8 @@
             "popularity": 1.49139952161816,
             "percentage": 50,
             "maturity": 0,
-            "activity": 1.948188110023187,
-            "total_score": 16.116483565395704,
+            "activity": 1.9446391355235289,
+            "total_score": 16.112934590896046,
             "full_name": "dracula/termite",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -337,8 +337,8 @@
             "popularity": 0,
             "percentage": 7.142857142857143,
             "maturity": 0,
-            "activity": 1.8642841904425924,
-            "total_score": 1.8642841904425924,
+            "activity": 1.8613566019033088,
+            "total_score": 1.8613566019033088,
             "full_name": "ppartarr/dracula-messenger",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -348,8 +348,8 @@
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.456602422397062,
-            "total_score": 18.119453949484104,
+            "activity": 1.4554550112757294,
+            "total_score": 18.118306538362773,
             "full_name": "quizl/backend",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -359,19 +359,19 @@
             "popularity": 1.3222565221025262,
             "percentage": 22.22222222222222,
             "maturity": 2.508235952687284,
-            "activity": 1.4128370158511205,
-            "total_score": 14.21593066249612,
+            "activity": 1.4117994668836382,
+            "total_score": 14.214893113528637,
             "full_name": "quizl/quizler",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
             "commits_count": 72
           },
           "reframejs/reframe": {
-            "popularity": 2.9450149526988105,
+            "popularity": 2.9400571987850515,
             "percentage": 0.24585125998770743,
             "maturity": 4.2023405010707435,
             "activity": 5,
-            "total_score": 22.33385049302239,
+            "total_score": 22.318818778175082,
             "full_name": "reframejs/reframe",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -381,8 +381,8 @@
             "popularity": 2.463931943319936,
             "percentage": 31.818181818181817,
             "maturity": 0,
-            "activity": 2.1391798551469208,
-            "total_score": 19.7226941779301,
+            "activity": 2.1336829408799036,
+            "total_score": 19.717197263663085,
             "full_name": "tianshanghong/awesome-anki",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -392,8 +392,8 @@
             "popularity": 0,
             "percentage": 0.8264462809917356,
             "maturity": 3.307301774701013,
-            "activity": 1.122418666620097,
-            "total_score": 7.7370222160221225,
+            "activity": 1.1218867505076484,
+            "total_score": 7.736490299909674,
             "full_name": "tt-gf/ant-ivy",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -403,8 +403,8 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.5980472975365947,
-            "total_score": 0.5980472975365947,
+            "activity": 0.5978882019208651,
+            "total_score": 0.5978882019208651,
             "full_name": "tt-gf/artifactory-client-java-example",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -414,8 +414,8 @@
             "popularity": 1.49139952161816,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.602679934966881,
-            "total_score": 24.46507228085744,
+            "activity": 0.602519133503697,
+            "total_score": 24.464911479394257,
             "full_name": "tt-gf/ivy-dependency-parser",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -425,8 +425,8 @@
             "popularity": 0,
             "percentage": 12.5,
             "maturity": 0,
-            "activity": 0.5828952716133147,
-            "total_score": 0.5828952716133147,
+            "activity": 0.5827416299808386,
+            "total_score": 0.5827416299808386,
             "full_name": "tt-gf/quickbuild-plugins",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -487,8 +487,8 @@
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.373462805409952,
-            "total_score": 17.036314332496993,
+            "activity": 0.3733679404480741,
+            "total_score": 17.036219467535116,
             "full_name": "KIWIKIGMBH/frontend-kiwilib",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -509,8 +509,8 @@
             "popularity": 4.018365030309009,
             "percentage": 0,
             "maturity": 2.8348808859448904,
-            "activity": 1.7344352941357677,
-            "total_score": 19.459292156952575,
+            "activity": 1.7322623985491683,
+            "total_score": 19.457119261365975,
             "full_name": "YuzuJS/setImmediate",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -520,19 +520,19 @@
             "popularity": 1.6128219920330789,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.5413974514249622,
-            "total_score": 26.346549323954225,
+            "activity": 0.5412578087714719,
+            "total_score": 26.346409681300734,
             "full_name": "brillout/FasterWeb",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
             "commits_count": 10
           },
           "brillout/awesome-angular-components": {
-            "popularity": 4.356084075618689,
+            "popularity": 4.357039577376166,
             "percentage": 39.50617283950617,
             "maturity": 3.088450563344869,
             "activity": 5,
-            "total_score": 46.61714070487142,
+            "total_score": 46.624914478429154,
             "full_name": "brillout/awesome-angular-components",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -542,8 +542,8 @@
             "popularity": 2.045361715305606,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.9250137596714181,
-            "total_score": 33.65080120456111,
+            "activity": 0.9246760563271081,
+            "total_score": 33.650463501216805,
             "full_name": "brillout/awesome-frontend-libraries",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -575,8 +575,8 @@
             "popularity": 2.2810722512575277,
             "percentage": 7.175925925925926,
             "maturity": 3.5951327189683284,
-            "activity": 1.898340990896756,
-            "total_score": 18.05976789847818,
+            "activity": 1.8951754514901218,
+            "total_score": 18.056602359071547,
             "full_name": "brillout/awesome-vue-refactor",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -586,8 +586,8 @@
             "popularity": 2.5575461822849728,
             "percentage": 86.66666666666667,
             "maturity": 0,
-            "activity": 0.9040171360088483,
-            "total_score": 37.39167600327446,
+            "activity": 0.9036953651534025,
+            "total_score": 37.39135423241902,
             "full_name": "brillout/awesome-web-apps",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -597,8 +597,8 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.9611750457465797,
-            "total_score": 0.9611750457465797,
+            "activity": 0.9608080322878312,
+            "total_score": 0.9608080322878312,
             "full_name": "brillout/clean-sentence",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -608,8 +608,8 @@
             "popularity": 2.045361715305606,
             "percentage": 66.66666666666667,
             "maturity": 0,
-            "activity": 0.9672182659111677,
-            "total_score": 24.82977161114324,
+            "activity": 0.9668461119549967,
+            "total_score": 24.82939945718707,
             "full_name": "brillout/extendable-error-class",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -630,8 +630,8 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.9599310833590549,
-            "total_score": 1.9599310833590549,
+            "activity": 1.956285245473155,
+            "total_score": 1.956285245473155,
             "full_name": "brillout/find",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -641,8 +641,8 @@
             "popularity": 2.149257924096549,
             "percentage": 90,
             "maturity": 0,
-            "activity": 1.042263045810194,
-            "total_score": 32.636354530029465,
+            "activity": 1.0418207301318558,
+            "total_score": 32.63591221435112,
             "full_name": "brillout/forge-sha256",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -652,8 +652,8 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.616364080382124,
-            "total_score": 1.616364080382124,
+            "activity": 1.6147074486887139,
+            "total_score": 1.6147074486887139,
             "full_name": "brillout/get-parent-dirname",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -663,8 +663,8 @@
             "popularity": 2.5453460937604104,
             "percentage": 92.53731343283582,
             "maturity": 2.4346992151481284,
-            "activity": 0.9037378672534775,
-            "total_score": 44.02930818436665,
+            "activity": 0.9034163031665159,
+            "total_score": 44.02898662027969,
             "full_name": "brillout/gulp-jspm",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -685,8 +685,8 @@
             "popularity": 1.3222565221025262,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.8704641262309121,
-            "total_score": 22.02656847987133,
+            "activity": 0.8701662707099809,
+            "total_score": 22.0262706243504,
             "full_name": "brillout/libraries",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -696,8 +696,8 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.73652205267733,
-            "total_score": 0.73652205267733,
+            "activity": 0.73630322457283,
+            "total_score": 0.73630322457283,
             "full_name": "brillout/npm-download-count",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -718,8 +718,8 @@
             "popularity": 1.7076084983408428,
             "percentage": 93.75,
             "maturity": 0,
-            "activity": 1.4622119542920156,
-            "total_score": 27.396516022843567,
+            "activity": 1.4610496465375369,
+            "total_score": 27.395353715089087,
             "full_name": "brillout/promise-serial",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -740,8 +740,8 @@
             "popularity": 1.7853682828948099,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.231216250307992,
-            "total_score": 29.79710877662495,
+            "activity": 1.230533023251616,
+            "total_score": 29.796425549568575,
             "full_name": "brillout/reprop",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -751,8 +751,8 @@
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.5322351599301927,
-            "total_score": 17.195086687017234,
+            "activity": 0.5320984319939575,
+            "total_score": 17.194949959081,
             "full_name": "brillout/set-text-dimensions",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -762,8 +762,8 @@
             "popularity": 1.3222565221025262,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.5412818876091938,
-            "total_score": 21.697386241249614,
+            "activity": 0.5411422821030731,
+            "total_score": 21.697246635743493,
             "full_name": "brillout/test-javascript-hash-implementations",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -773,8 +773,8 @@
             "popularity": 1.3222565221025262,
             "percentage": 96.29629629629629,
             "maturity": 0,
-            "activity": 1.1775926814406605,
-            "total_score": 21.697055005920603,
+            "activity": 1.1769887590247539,
+            "total_score": 21.696451083504698,
             "full_name": "brillout/timerlog",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -784,8 +784,8 @@
             "popularity": 1.0414282204429401,
             "percentage": 100,
             "maturity": 3.0513403853926127,
-            "activity": 0.7566406346724266,
-            "total_score": 23.522172932544695,
+            "activity": 0.7564114336800909,
+            "total_score": 23.521943731552362,
             "full_name": "brillout/website-dependency-tree",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -795,8 +795,8 @@
             "popularity": 1.9590800514478444,
             "percentage": 100,
             "maturity": 0,
-            "activity": 0.9346264261308006,
-            "total_score": 32.27990724929631,
+            "activity": 0.9342811677336913,
+            "total_score": 32.279561990899204,
             "full_name": "devarchy/frontend-catalogs",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -806,8 +806,8 @@
             "popularity": 2.580963961738607,
             "percentage": 100,
             "maturity": 0,
-            "activity": 1.0153117231312727,
-            "total_score": 42.31073511094898,
+            "activity": 1.0148960094531994,
+            "total_score": 42.310319397270916,
             "full_name": "devarchy/website",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -847,11 +847,11 @@
             "commits_count": 5852
           },
           "gdi2290/awesome-angular": {
-            "popularity": 4.758277074350715,
+            "popularity": 4.758504350539092,
             "percentage": 0,
             "maturity": 3.436464223545136,
             "activity": 5,
-            "total_score": 26.147759670142413,
+            "total_score": 26.148441498707548,
             "full_name": "gdi2290/awesome-angular",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -861,19 +861,19 @@
             "popularity": 3.279021184957488,
             "percentage": 0,
             "maturity": 1.9607586681802867,
-            "activity": 1.5923194111931855,
-            "total_score": 15.350900302426224,
+            "activity": 1.590751845115003,
+            "total_score": 15.34933273634804,
             "full_name": "gmarty/grunt-closure-compiler",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
             "commits_count": 49
           },
           "jnv/lists": {
-            "popularity": 4.703253060083461,
+            "popularity": 4.703425054494801,
             "percentage": 0.15337423312883436,
             "maturity": 3.788558415009318,
             "activity": 5,
-            "total_score": 26.78065252833817,
+            "total_score": 26.78117194090861,
             "full_name": "jnv/lists",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -883,19 +883,19 @@
             "popularity": 4.564243394600609,
             "percentage": 0.09852216748768473,
             "maturity": 3.990785297337736,
-            "activity": 2.1527636128585543,
-            "total_score": 23.885522681118918,
+            "activity": 2.1470931856617703,
+            "total_score": 23.879852253922135,
             "full_name": "jspm/jspm-cli",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
             "commits_count": 1015
           },
           "reframejs/reframe": {
-            "popularity": 2.9450149526988105,
+            "popularity": 2.9400571987850515,
             "percentage": 98.4019668100799,
             "maturity": 4.2023405010707435,
             "activity": 5,
-            "total_score": 59.91311013222338,
+            "total_score": 59.834816014792445,
             "full_name": "reframejs/reframe",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -916,8 +916,8 @@
             "popularity": 3.6600503013915446,
             "percentage": 0.09633911368015415,
             "maturity": 4.000910200583117,
-            "activity": 2.1524613193105404,
-            "total_score": 21.180271404919317,
+            "activity": 2.1467948120503184,
+            "total_score": 21.174604897659094,
             "full_name": "systemjs/builder",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -927,8 +927,8 @@
             "popularity": 3.1495660747060654,
             "percentage": 0,
             "maturity": 2.208551431450411,
-            "activity": 0.7792480555379111,
-            "total_score": 14.64504914255693,
+            "activity": 0.7790066107737186,
+            "total_score": 14.644807697792737,
             "full_name": "theoldreader/api",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
@@ -937,13 +937,13 @@
           "vuejs/awesome-vue": {
             "popularity": 5,
             "percentage": 0,
-            "maturity": 3.728544676082591,
+            "maturity": 3.7301709457468033,
             "activity": 5,
-            "total_score": 27.457089352165184,
+            "total_score": 27.460341891493606,
             "full_name": "vuejs/awesome-vue",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 573
+            "commits_count": 575
           }
         },
         "organizations": [
@@ -964,6 +964,104 @@
         "devarchy",
         "reframejs"
       ]
+    },
+    "hakabuk": {
+      "login": "hakabuk",
+      "id": 16784959,
+      "node_id": "MDQ6VXNlcjE2Nzg0OTU5",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/16784959?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/hakabuk",
+      "html_url": "https://github.com/hakabuk",
+      "followers_url": "https://api.github.com/users/hakabuk/followers",
+      "following_url": "https://api.github.com/users/hakabuk/following{/other_user}",
+      "gists_url": "https://api.github.com/users/hakabuk/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/hakabuk/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/hakabuk/subscriptions",
+      "organizations_url": "https://api.github.com/users/hakabuk/orgs",
+      "repos_url": "https://api.github.com/users/hakabuk/repos",
+      "events_url": "https://api.github.com/users/hakabuk/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/hakabuk/received_events",
+      "type": "User",
+      "site_admin": false,
+      "name": "Michal Weizman",
+      "company": null,
+      "blog": "hakabuk.com",
+      "location": "London",
+      "email": "m.weizman@gmail.com",
+      "hireable": true,
+      "bio": "Enjoying the ride, always learning, and generally happy; MOOC enthusiast\r\n",
+      "public_repos": 31,
+      "public_gists": 0,
+      "followers": 5,
+      "following": 8,
+      "created_at": "2016-01-19T20:05:10Z",
+      "updated_at": "2018-06-20T11:27:02Z",
+      "contribs": {
+        "fetched_at": "2018-06-28",
+        "repos": {
+          "austintackaberry/ydkjs-exercises": {
+            "full_name": "austintackaberry/ydkjs-exercises",
+            "popularity": 2.7490018802358214,
+            "percentage": 0,
+            "maturity": 3.105880505784522,
+            "commits_count": 167,
+            "activity": 5,
+            "total_score": 19.45876665227651,
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
+          },
+          "Cloud-CV/EvalAI-ngx": {
+            "full_name": "Cloud-CV/EvalAI-ngx",
+            "popularity": 2.206864721909315,
+            "percentage": 2.380952380952381,
+            "maturity": 1.323873088726792,
+            "commits_count": 42,
+            "activity": 5,
+            "total_score": 14.951417519010601,
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
+          },
+          "btholt/pull-requests": {
+            "full_name": "btholt/pull-requests",
+            "popularity": 2.045361715305606,
+            "percentage": 0,
+            "maturity": 2.8656513250381606,
+            "commits_count": 113,
+            "activity": 5,
+            "total_score": 16.86738779599314,
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
+          },
+          "dataquestio/solutions": {
+            "full_name": "dataquestio/solutions",
+            "popularity": 3.363839017218971,
+            "percentage": 0,
+            "maturity": 1.9101999437230757,
+            "commits_count": 48,
+            "activity": 5,
+            "total_score": 18.911916939103065,
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
+          },
+          "hakabuk/thinkStats2": {
+            "full_name": "hakabuk/thinkStats2",
+            "popularity": 0,
+            "percentage": 100,
+            "maturity": 0,
+            "commits_count": 4,
+            "activity": 0.8021306120001759,
+            "total_score": 0.8021306120001759,
+            "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
+            "max_total_score": 95
+          }
+        },
+        "organizations": [
+          "Cloud-CV",
+          "dataquestio"
+        ]
+      },
+      "organizations": []
     }
   },
   "orgs": {
@@ -1226,6 +1324,54 @@
       "created_at": "2013-12-07T06:13:00Z",
       "updated_at": "2018-06-26T13:08:12Z",
       "type": "Organization"
+    },
+    "Cloud-CV": {
+      "login": "Cloud-CV",
+      "url": "https://api.github.com/orgs/Cloud-CV",
+      "repos_url": "https://api.github.com/orgs/Cloud-CV/repos",
+      "members_url": "https://api.github.com/orgs/Cloud-CV/members{/member}",
+      "public_members_url": "https://api.github.com/orgs/Cloud-CV/public_members{/member}",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/20895851?v=4",
+      "description": "Building platforms for reproducible AI research",
+      "name": "CloudCV",
+      "company": null,
+      "blog": "https://cloudcv.org",
+      "location": "Georgia Tech",
+      "email": "team@cloudcv.org",
+      "has_organization_projects": true,
+      "has_repository_projects": true,
+      "public_repos": 28,
+      "public_gists": 0,
+      "followers": 0,
+      "following": 0,
+      "html_url": "https://github.com/Cloud-CV",
+      "created_at": "2016-08-08T02:17:45Z",
+      "updated_at": "2017-10-21T08:44:46Z",
+      "type": "Organization"
+    },
+    "dataquestio": {
+      "login": "dataquestio",
+      "url": "https://api.github.com/orgs/dataquestio",
+      "repos_url": "https://api.github.com/orgs/dataquestio/repos",
+      "members_url": "https://api.github.com/orgs/dataquestio/members{/member}",
+      "public_members_url": "https://api.github.com/orgs/dataquestio/public_members{/member}",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11148054?v=4",
+      "description": "Learn data science online",
+      "name": "Dataquest",
+      "company": null,
+      "blog": "https://www.dataquest.io",
+      "location": "San Francisco, CA",
+      "email": "",
+      "has_organization_projects": true,
+      "has_repository_projects": false,
+      "public_repos": 36,
+      "public_gists": 0,
+      "followers": 0,
+      "following": 0,
+      "html_url": "https://github.com/dataquestio",
+      "created_at": "2015-02-22T16:34:43Z",
+      "updated_at": "2018-06-25T04:47:47Z",
+      "type": "Organization"
     }
   },
   "repos": {
@@ -1421,17 +1567,17 @@
       "languages_url": "https://api.github.com/repos/AurelienLourot/ghuser.io/languages",
       "stargazers_url": "https://api.github.com/repos/AurelienLourot/ghuser.io/stargazers",
       "created_at": "2018-06-19T11:36:58Z",
-      "updated_at": "2018-06-27T21:57:10Z",
-      "pushed_at": "2018-06-27T21:57:09Z",
+      "updated_at": "2018-06-28T16:53:07Z",
+      "pushed_at": "2018-06-28T08:22:43Z",
       "homepage": "https://ghuser.io",
-      "size": 10486,
-      "stargazers_count": 1,
-      "watchers_count": 1,
+      "size": 10546,
+      "stargazers_count": 2,
+      "watchers_count": 2,
       "language": "JavaScript",
-      "forks_count": 0,
+      "forks_count": 2,
       "mirror_url": null,
       "archived": false,
-      "open_issues_count": 22,
+      "open_issues_count": 24,
       "license": {
         "key": "mit",
         "name": "MIT License",
@@ -1439,15 +1585,15 @@
         "url": "https://api.github.com/licenses/mit",
         "node_id": "MDc6TGljZW5zZTEz"
       },
-      "forks": 0,
-      "open_issues": 22,
-      "watchers": 1,
+      "forks": 2,
+      "open_issues": 24,
+      "watchers": 2,
       "default_branch": "master",
-      "network_count": 0,
-      "subscribers_count": 1,
+      "network_count": 2,
+      "subscribers_count": 2,
       "contributors": [
         {
-          "total": 59,
+          "total": 63,
           "author": "AurelienLourot"
         }
       ],
@@ -1519,12 +1665,12 @@
       "languages_url": "https://api.github.com/repos/AurelienLourot/github-contribs/languages",
       "stargazers_url": "https://api.github.com/repos/AurelienLourot/github-contribs/stargazers",
       "created_at": "2018-05-16T23:18:05Z",
-      "updated_at": "2018-06-25T23:29:15Z",
+      "updated_at": "2018-06-28T14:47:58Z",
       "pushed_at": "2018-06-25T18:41:25Z",
       "homepage": "",
       "size": 78,
-      "stargazers_count": 18,
-      "watchers_count": 18,
+      "stargazers_count": 19,
+      "watchers_count": 19,
       "language": "JavaScript",
       "forks_count": 0,
       "mirror_url": null,
@@ -1539,7 +1685,7 @@
       },
       "forks": 0,
       "open_issues": 0,
-      "watchers": 18,
+      "watchers": 19,
       "default_branch": "master",
       "network_count": 0,
       "subscribers_count": 2,
@@ -2155,12 +2301,12 @@
       "languages_url": "https://api.github.com/repos/dnschneid/crouton/languages",
       "stargazers_url": "https://api.github.com/repos/dnschneid/crouton/stargazers",
       "created_at": "2012-12-18T19:31:14Z",
-      "updated_at": "2018-06-28T06:45:32Z",
+      "updated_at": "2018-06-28T13:34:30Z",
       "pushed_at": "2018-06-11T14:48:10Z",
       "homepage": "https://goo.gl/fd3zc",
       "size": 19363,
-      "stargazers_count": 6626,
-      "watchers_count": 6626,
+      "stargazers_count": 6625,
+      "watchers_count": 6625,
       "language": "Shell",
       "forks_count": 864,
       "mirror_url": null,
@@ -2175,7 +2321,7 @@
       },
       "forks": 864,
       "open_issues": 588,
-      "watchers": 6626,
+      "watchers": 6625,
       "default_branch": "master",
       "network_count": 864,
       "subscribers_count": 425,
@@ -2509,12 +2655,12 @@
       "languages_url": "https://api.github.com/repos/dracula/gitk/languages",
       "stargazers_url": "https://api.github.com/repos/dracula/gitk/stargazers",
       "created_at": "2018-04-14T17:24:07Z",
-      "updated_at": "2018-05-28T09:12:09Z",
+      "updated_at": "2018-06-28T14:27:39Z",
       "pushed_at": "2018-04-18T21:15:32Z",
       "homepage": null,
       "size": 77,
-      "stargazers_count": 6,
-      "watchers_count": 6,
+      "stargazers_count": 7,
+      "watchers_count": 7,
       "language": null,
       "forks_count": 0,
       "mirror_url": null,
@@ -2529,7 +2675,7 @@
       },
       "forks": 0,
       "open_issues": 0,
-      "watchers": 6,
+      "watchers": 7,
       "default_branch": "master",
       "organization": {
         "login": "dracula",
@@ -3618,12 +3764,12 @@
       "languages_url": "https://api.github.com/repos/reframejs/reframe/languages",
       "stargazers_url": "https://api.github.com/repos/reframejs/reframe/stargazers",
       "created_at": "2018-01-22T23:03:59Z",
-      "updated_at": "2018-06-25T16:48:27Z",
-      "pushed_at": "2018-06-27T18:23:39Z",
+      "updated_at": "2018-06-28T09:41:26Z",
+      "pushed_at": "2018-06-28T17:00:46Z",
       "homepage": "",
-      "size": 3120,
-      "stargazers_count": 89,
-      "watchers_count": 89,
+      "size": 3131,
+      "stargazers_count": 88,
+      "watchers_count": 88,
       "language": "JavaScript",
       "forks_count": 4,
       "mirror_url": null,
@@ -3638,7 +3784,7 @@
       },
       "forks": 4,
       "open_issues": 2,
-      "watchers": 89,
+      "watchers": 88,
       "default_branch": "master",
       "organization": {
         "login": "reframejs",
@@ -4851,12 +4997,12 @@
       "languages_url": "https://api.github.com/repos/brillout/awesome-angular-components/languages",
       "stargazers_url": "https://api.github.com/repos/brillout/awesome-angular-components/stargazers",
       "created_at": "2017-02-02T14:58:18Z",
-      "updated_at": "2018-06-27T17:56:23Z",
+      "updated_at": "2018-06-28T14:15:46Z",
       "pushed_at": "2018-06-25T08:18:30Z",
       "homepage": "https://devarchy.com/angular",
       "size": 138,
-      "stargazers_count": 2271,
-      "watchers_count": 2271,
+      "stargazers_count": 2276,
+      "watchers_count": 2276,
       "language": null,
       "forks_count": 266,
       "mirror_url": null,
@@ -4871,7 +5017,7 @@
       },
       "forks": 266,
       "open_issues": 8,
-      "watchers": 2271,
+      "watchers": 2276,
       "default_branch": "master",
       "network_count": 266,
       "subscribers_count": 187,
@@ -4979,12 +5125,12 @@
       "languages_url": "https://api.github.com/repos/brillout/awesome-react-components/languages",
       "stargazers_url": "https://api.github.com/repos/brillout/awesome-react-components/stargazers",
       "created_at": "2016-06-24T15:19:33Z",
-      "updated_at": "2018-06-28T05:13:23Z",
+      "updated_at": "2018-06-28T16:48:18Z",
       "pushed_at": "2018-06-20T07:32:26Z",
       "homepage": "https://devarchy.com/react",
       "size": 169,
-      "stargazers_count": 14451,
-      "watchers_count": 14451,
+      "stargazers_count": 14456,
+      "watchers_count": 14456,
       "language": null,
       "forks_count": 987,
       "mirror_url": null,
@@ -4999,7 +5145,7 @@
       },
       "forks": 987,
       "open_issues": 11,
-      "watchers": 14451,
+      "watchers": 14456,
       "default_branch": "master",
       "network_count": 987,
       "subscribers_count": 552,
@@ -7161,23 +7307,23 @@
       "languages_url": "https://api.github.com/repos/enaqx/awesome-react/languages",
       "stargazers_url": "https://api.github.com/repos/enaqx/awesome-react/stargazers",
       "created_at": "2014-08-06T05:31:44Z",
-      "updated_at": "2018-06-28T06:57:27Z",
+      "updated_at": "2018-06-28T16:04:56Z",
       "pushed_at": "2018-06-27T06:06:28Z",
       "homepage": "",
       "size": 2328,
-      "stargazers_count": 26306,
-      "watchers_count": 26306,
+      "stargazers_count": 26318,
+      "watchers_count": 26318,
       "language": null,
-      "forks_count": 2966,
+      "forks_count": 2970,
       "mirror_url": null,
       "archived": false,
       "open_issues_count": 65,
       "license": null,
-      "forks": 2966,
+      "forks": 2970,
       "open_issues": 65,
-      "watchers": 26306,
+      "watchers": 26318,
       "default_branch": "master",
-      "network_count": 2966,
+      "network_count": 2970,
       "subscribers_count": 1215,
       "contributors": [
         {
@@ -7596,17 +7742,17 @@
       "languages_url": "https://api.github.com/repos/facebook/create-react-app/languages",
       "stargazers_url": "https://api.github.com/repos/facebook/create-react-app/stargazers",
       "created_at": "2016-07-17T14:55:11Z",
-      "updated_at": "2018-06-28T06:47:18Z",
-      "pushed_at": "2018-06-27T21:14:40Z",
+      "updated_at": "2018-06-28T17:10:09Z",
+      "pushed_at": "2018-06-28T11:07:28Z",
       "homepage": null,
       "size": 5838,
-      "stargazers_count": 51253,
-      "watchers_count": 51253,
+      "stargazers_count": 51282,
+      "watchers_count": 51282,
       "language": "JavaScript",
-      "forks_count": 10831,
+      "forks_count": 10843,
       "mirror_url": null,
       "archived": false,
-      "open_issues_count": 376,
+      "open_issues_count": 378,
       "license": {
         "key": "mit",
         "name": "MIT License",
@@ -7614,9 +7760,9 @@
         "url": "https://api.github.com/licenses/mit",
         "node_id": "MDc6TGljZW5zZTEz"
       },
-      "forks": 10831,
-      "open_issues": 376,
-      "watchers": 51253,
+      "forks": 10843,
+      "open_issues": 378,
+      "watchers": 51282,
       "default_branch": "next",
       "organization": {
         "login": "facebook",
@@ -7638,7 +7784,7 @@
         "type": "Organization",
         "site_admin": false
       },
-      "network_count": 10831,
+      "network_count": 10843,
       "subscribers_count": 1535,
       "contributors": [
         {
@@ -8057,17 +8203,17 @@
       "languages_url": "https://api.github.com/repos/facebook/react/languages",
       "stargazers_url": "https://api.github.com/repos/facebook/react/stargazers",
       "created_at": "2013-05-24T16:15:54Z",
-      "updated_at": "2018-06-28T07:02:17Z",
-      "pushed_at": "2018-06-28T05:15:25Z",
+      "updated_at": "2018-06-28T17:10:31Z",
+      "pushed_at": "2018-06-28T17:00:57Z",
       "homepage": "https://reactjs.org",
       "size": 136682,
-      "stargazers_count": 104818,
-      "watchers_count": 104818,
+      "stargazers_count": 104890,
+      "watchers_count": 104890,
       "language": "JavaScript",
-      "forks_count": 18727,
+      "forks_count": 18738,
       "mirror_url": null,
       "archived": false,
-      "open_issues_count": 472,
+      "open_issues_count": 473,
       "license": {
         "key": "mit",
         "name": "MIT License",
@@ -8075,9 +8221,9 @@
         "url": "https://api.github.com/licenses/mit",
         "node_id": "MDc6TGljZW5zZTEz"
       },
-      "forks": 18727,
-      "open_issues": 472,
-      "watchers": 104818,
+      "forks": 18738,
+      "open_issues": 473,
+      "watchers": 104890,
       "default_branch": "master",
       "organization": {
         "login": "facebook",
@@ -8099,8 +8245,8 @@
         "type": "Organization",
         "site_admin": false
       },
-      "network_count": 18727,
-      "subscribers_count": 6061,
+      "network_count": 18738,
+      "subscribers_count": 6063,
       "contributors": [
         {
           "total": 5,
@@ -8561,12 +8707,12 @@
       "languages_url": "https://api.github.com/repos/gdi2290/awesome-angular/languages",
       "stargazers_url": "https://api.github.com/repos/gdi2290/awesome-angular/stargazers",
       "created_at": "2015-09-01T05:12:10Z",
-      "updated_at": "2018-06-28T03:35:57Z",
+      "updated_at": "2018-06-28T17:10:57Z",
       "pushed_at": "2018-06-25T08:36:24Z",
       "homepage": "https://tipe.io",
       "size": 706,
-      "stargazers_count": 5732,
-      "watchers_count": 5732,
+      "stargazers_count": 5735,
+      "watchers_count": 5735,
       "language": "HTML",
       "forks_count": 865,
       "mirror_url": null,
@@ -8581,7 +8727,7 @@
       },
       "forks": 865,
       "open_issues": 4,
-      "watchers": 5732,
+      "watchers": 5735,
       "default_branch": "gh-pages",
       "network_count": 865,
       "subscribers_count": 468,
@@ -9079,14 +9225,14 @@
       "languages_url": "https://api.github.com/repos/jnv/lists/languages",
       "stargazers_url": "https://api.github.com/repos/jnv/lists/stargazers",
       "created_at": "2013-11-14T22:25:24Z",
-      "updated_at": "2018-06-27T17:14:46Z",
+      "updated_at": "2018-06-28T16:11:52Z",
       "pushed_at": "2018-06-28T00:06:03Z",
       "homepage": "",
       "size": 5785,
-      "stargazers_count": 5050,
-      "watchers_count": 5050,
+      "stargazers_count": 5052,
+      "watchers_count": 5052,
       "language": null,
-      "forks_count": 455,
+      "forks_count": 457,
       "mirror_url": null,
       "archived": false,
       "open_issues_count": 1,
@@ -9097,11 +9243,11 @@
         "url": "https://api.github.com/licenses/cc0-1.0",
         "node_id": "MDc6TGljZW5zZTY="
       },
-      "forks": 455,
+      "forks": 457,
       "open_issues": 1,
-      "watchers": 5050,
+      "watchers": 5052,
       "default_branch": "master",
-      "network_count": 455,
+      "network_count": 457,
       "subscribers_count": 284,
       "contributors": [
         {
@@ -9444,7 +9590,7 @@
       "languages_url": "https://api.github.com/repos/jspm/jspm-cli/languages",
       "stargazers_url": "https://api.github.com/repos/jspm/jspm-cli/stargazers",
       "created_at": "2013-03-22T23:20:12Z",
-      "updated_at": "2018-06-26T15:53:12Z",
+      "updated_at": "2018-06-28T11:48:04Z",
       "pushed_at": "2018-05-03T21:55:04Z",
       "homepage": "https://jspm.org",
       "size": 3433,
@@ -9745,24 +9891,24 @@
       "languages_url": "https://api.github.com/repos/sindresorhus/awesome/languages",
       "stargazers_url": "https://api.github.com/repos/sindresorhus/awesome/stargazers",
       "created_at": "2014-07-11T13:42:37Z",
-      "updated_at": "2018-06-28T06:51:49Z",
+      "updated_at": "2018-06-28T16:36:14Z",
       "pushed_at": "2018-06-27T04:56:58Z",
       "homepage": "",
       "size": 569,
-      "stargazers_count": 88009,
-      "watchers_count": 88009,
+      "stargazers_count": 88034,
+      "watchers_count": 88034,
       "language": null,
-      "forks_count": 11614,
+      "forks_count": 11619,
       "mirror_url": null,
       "archived": false,
       "open_issues_count": 194,
       "license": null,
-      "forks": 11614,
+      "forks": 11619,
       "open_issues": 194,
-      "watchers": 88009,
+      "watchers": 88034,
       "default_branch": "master",
-      "network_count": 11614,
-      "subscribers_count": 5567,
+      "network_count": 11619,
+      "subscribers_count": 5572,
       "contributors": [
         {
           "total": 1,
@@ -10546,21 +10692,21 @@
       "languages_url": "https://api.github.com/repos/vuejs/awesome-vue/languages",
       "stargazers_url": "https://api.github.com/repos/vuejs/awesome-vue/stargazers",
       "created_at": "2015-10-20T00:16:14Z",
-      "updated_at": "2018-06-28T06:54:51Z",
-      "pushed_at": "2018-06-27T15:45:46Z",
+      "updated_at": "2018-06-28T17:13:04Z",
+      "pushed_at": "2018-06-28T10:57:26Z",
       "homepage": "",
-      "size": 2850,
-      "stargazers_count": 34462,
-      "watchers_count": 34462,
+      "size": 2805,
+      "stargazers_count": 34489,
+      "watchers_count": 34489,
       "language": null,
-      "forks_count": 4717,
+      "forks_count": 4722,
       "mirror_url": null,
       "archived": false,
-      "open_issues_count": 47,
+      "open_issues_count": 46,
       "license": null,
-      "forks": 4717,
-      "open_issues": 47,
-      "watchers": 34462,
+      "forks": 4722,
+      "open_issues": 46,
+      "watchers": 34489,
       "default_branch": "master",
       "organization": {
         "login": "vuejs",
@@ -10582,8 +10728,8 @@
         "type": "Organization",
         "site_admin": false
       },
-      "network_count": 4717,
-      "subscribers_count": 1794,
+      "network_count": 4722,
+      "subscribers_count": 1793,
       "contributors": [
         {
           "total": 3,
@@ -10703,10 +10849,6 @@
         },
         {
           "total": 4,
-          "author": "totalamd"
-        },
-        {
-          "total": 4,
           "author": "julon"
         },
         {
@@ -10788,6 +10930,10 @@
         {
           "total": 4,
           "author": "sagalbot"
+        },
+        {
+          "total": 5,
+          "author": "totalamd"
         },
         {
           "total": 5,
@@ -10939,11 +11085,11 @@
         },
         {
           "total": 10,
-          "author": "ankurk91"
+          "author": "miljan-aleksic"
         },
         {
-          "total": 10,
-          "author": "miljan-aleksic"
+          "total": 11,
+          "author": "ankurk91"
         },
         {
           "total": 11,
@@ -10984,6 +11130,963 @@
         {
           "total": 25,
           "author": "yyx990803"
+        }
+      ]
+    },
+    "austintackaberry/ydkjs-exercises": {
+      "id": 126095293,
+      "name": "ydkjs-exercises",
+      "full_name": "austintackaberry/ydkjs-exercises",
+      "owner": "austintackaberry",
+      "private": false,
+      "html_url": "https://github.com/austintackaberry/ydkjs-exercises",
+      "description": "Exercises to go along with You Don't Know JavaScript",
+      "fork": false,
+      "url": "https://api.github.com/repos/austintackaberry/ydkjs-exercises",
+      "forks_url": "https://api.github.com/repos/austintackaberry/ydkjs-exercises/forks",
+      "languages_url": "https://api.github.com/repos/austintackaberry/ydkjs-exercises/languages",
+      "stargazers_url": "https://api.github.com/repos/austintackaberry/ydkjs-exercises/stargazers",
+      "created_at": "2018-03-20T23:22:10Z",
+      "updated_at": "2018-06-28T08:39:40Z",
+      "pushed_at": "2018-06-28T15:41:09Z",
+      "homepage": null,
+      "size": 804,
+      "stargazers_count": 57,
+      "watchers_count": 57,
+      "language": "JavaScript",
+      "forks_count": 33,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 13,
+      "license": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "forks": 33,
+      "open_issues": 13,
+      "watchers": 57,
+      "default_branch": "master",
+      "network_count": 33,
+      "subscribers_count": 13,
+      "contributors": [
+        {
+          "total": 1,
+          "author": "esthercuan"
+        },
+        {
+          "total": 1,
+          "author": "jrobind"
+        },
+        {
+          "total": 1,
+          "author": "nutgaard"
+        },
+        {
+          "total": 1,
+          "author": "IrritatedEllipses"
+        },
+        {
+          "total": 1,
+          "author": "rosaxny"
+        },
+        {
+          "total": 1,
+          "author": "tlee38"
+        },
+        {
+          "total": 2,
+          "author": "kevinsmithwebdev"
+        },
+        {
+          "total": 2,
+          "author": "Asha20"
+        },
+        {
+          "total": 3,
+          "author": "mkozlows21"
+        },
+        {
+          "total": 3,
+          "author": "elloo"
+        },
+        {
+          "total": 4,
+          "author": "energydev"
+        },
+        {
+          "total": 5,
+          "author": "mdncs"
+        },
+        {
+          "total": 5,
+          "author": "jarrodyellets"
+        },
+        {
+          "total": 18,
+          "author": "kevinYCKim33"
+        },
+        {
+          "total": 29,
+          "author": "nikrb"
+        },
+        {
+          "total": 90,
+          "author": "austintackaberry"
+        }
+      ]
+    },
+    "Cloud-CV/EvalAI-ngx": {
+      "id": 118357597,
+      "name": "EvalAI-ngx",
+      "full_name": "Cloud-CV/EvalAI-ngx",
+      "owner": "Cloud-CV",
+      "private": false,
+      "html_url": "https://github.com/Cloud-CV/EvalAI-ngx",
+      "description": "Revamped codebase of EvalAI Frontend",
+      "fork": false,
+      "url": "https://api.github.com/repos/Cloud-CV/EvalAI-ngx",
+      "forks_url": "https://api.github.com/repos/Cloud-CV/EvalAI-ngx/forks",
+      "languages_url": "https://api.github.com/repos/Cloud-CV/EvalAI-ngx/languages",
+      "stargazers_url": "https://api.github.com/repos/Cloud-CV/EvalAI-ngx/stargazers",
+      "created_at": "2018-01-21T17:33:45Z",
+      "updated_at": "2018-06-26T12:46:55Z",
+      "pushed_at": "2018-06-28T13:02:33Z",
+      "homepage": null,
+      "size": 6971,
+      "stargazers_count": 17,
+      "watchers_count": 17,
+      "language": "CSS",
+      "forks_count": 13,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 17,
+      "license": {
+        "key": "bsd-3-clause",
+        "name": "BSD 3-Clause \"New\" or \"Revised\" License",
+        "spdx_id": "BSD-3-Clause",
+        "url": "https://api.github.com/licenses/bsd-3-clause",
+        "node_id": "MDc6TGljZW5zZTU="
+      },
+      "forks": 13,
+      "open_issues": 17,
+      "watchers": 17,
+      "default_branch": "master",
+      "organization": {
+        "login": "Cloud-CV",
+        "id": 20895851,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjIwODk1ODUx",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/20895851?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Cloud-CV",
+        "html_url": "https://github.com/Cloud-CV",
+        "followers_url": "https://api.github.com/users/Cloud-CV/followers",
+        "following_url": "https://api.github.com/users/Cloud-CV/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Cloud-CV/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Cloud-CV/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Cloud-CV/subscriptions",
+        "organizations_url": "https://api.github.com/users/Cloud-CV/orgs",
+        "repos_url": "https://api.github.com/users/Cloud-CV/repos",
+        "events_url": "https://api.github.com/users/Cloud-CV/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Cloud-CV/received_events",
+        "type": "Organization",
+        "site_admin": false
+      },
+      "network_count": 13,
+      "subscribers_count": 15,
+      "contributors": [
+        {
+          "total": 1,
+          "author": "hakabuk"
+        },
+        {
+          "total": 1,
+          "author": "gautamjajoo"
+        },
+        {
+          "total": 1,
+          "author": "xamfy"
+        },
+        {
+          "total": 3,
+          "author": "ParthS007"
+        },
+        {
+          "total": 3,
+          "author": "deshraj"
+        },
+        {
+          "total": 4,
+          "author": "RishabhJain2018"
+        },
+        {
+          "total": 5,
+          "author": "spyshiv"
+        },
+        {
+          "total": 5,
+          "author": "anweshknayak"
+        },
+        {
+          "total": 5,
+          "author": "Arun-Jain"
+        },
+        {
+          "total": 6,
+          "author": "live-wire"
+        },
+        {
+          "total": 8,
+          "author": "aka-jain"
+        }
+      ]
+    },
+    "btholt/pull-requests": {
+      "id": 22265756,
+      "name": "pull-requests",
+      "full_name": "btholt/pull-requests",
+      "owner": "btholt",
+      "private": false,
+      "html_url": "https://github.com/btholt/pull-requests",
+      "description": "A sample repo for the Intro to Web Dev course for Frontend Masters",
+      "fork": false,
+      "url": "https://api.github.com/repos/btholt/pull-requests",
+      "forks_url": "https://api.github.com/repos/btholt/pull-requests/forks",
+      "languages_url": "https://api.github.com/repos/btholt/pull-requests/languages",
+      "stargazers_url": "https://api.github.com/repos/btholt/pull-requests/stargazers",
+      "created_at": "2014-07-25T17:57:01Z",
+      "updated_at": "2018-05-15T15:45:43Z",
+      "pushed_at": "2018-06-21T14:08:12Z",
+      "homepage": "",
+      "size": 117,
+      "stargazers_count": 12,
+      "watchers_count": 12,
+      "language": "JavaScript",
+      "forks_count": 708,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 241,
+      "license": null,
+      "forks": 708,
+      "open_issues": 241,
+      "watchers": 12,
+      "default_branch": "master",
+      "network_count": 708,
+      "subscribers_count": 1,
+      "contributors": [
+        {
+          "total": 1,
+          "author": "megadime"
+        },
+        {
+          "total": 1,
+          "author": "mscatherinelin"
+        },
+        {
+          "total": 1,
+          "author": "ajakaiye33"
+        },
+        {
+          "total": 1,
+          "author": "daileytj"
+        },
+        {
+          "total": 1,
+          "author": "Niall-Roche"
+        },
+        {
+          "total": 1,
+          "author": "TravisAGengler"
+        },
+        {
+          "total": 1,
+          "author": "kevychchi"
+        },
+        {
+          "total": 1,
+          "author": "payzot"
+        },
+        {
+          "total": 1,
+          "author": "brandonchiong"
+        },
+        {
+          "total": 1,
+          "author": "thesourabh"
+        },
+        {
+          "total": 1,
+          "author": "magnificogeo"
+        },
+        {
+          "total": 1,
+          "author": "rikilamadrid"
+        },
+        {
+          "total": 1,
+          "author": "proteknj"
+        },
+        {
+          "total": 1,
+          "author": "PudparK"
+        },
+        {
+          "total": 1,
+          "author": "darioberlancic"
+        },
+        {
+          "total": 1,
+          "author": "samsasa"
+        },
+        {
+          "total": 1,
+          "author": "squiresalmon"
+        },
+        {
+          "total": 1,
+          "author": "Sawyer612"
+        },
+        {
+          "total": 1,
+          "author": "robicide"
+        },
+        {
+          "total": 1,
+          "author": "tesscabrera"
+        },
+        {
+          "total": 1,
+          "author": "tejalshah84"
+        },
+        {
+          "total": 1,
+          "author": "SageGandhi"
+        },
+        {
+          "total": 1,
+          "author": "iadeel"
+        },
+        {
+          "total": 1,
+          "author": "mattparksdev"
+        },
+        {
+          "total": 1,
+          "author": "supercoja"
+        },
+        {
+          "total": 1,
+          "author": "liuxfeng"
+        },
+        {
+          "total": 1,
+          "author": "jitunair18"
+        },
+        {
+          "total": 1,
+          "author": "tdlwebs"
+        },
+        {
+          "total": 1,
+          "author": "bartys"
+        },
+        {
+          "total": 1,
+          "author": "moizsajid"
+        },
+        {
+          "total": 1,
+          "author": "Khabba"
+        },
+        {
+          "total": 1,
+          "author": "tbair82"
+        },
+        {
+          "total": 1,
+          "author": "lcockcroft"
+        },
+        {
+          "total": 1,
+          "author": "ewomack2000"
+        },
+        {
+          "total": 1,
+          "author": "delainelawrence"
+        },
+        {
+          "total": 1,
+          "author": "cwinsor"
+        },
+        {
+          "total": 1,
+          "author": "zephyrous"
+        },
+        {
+          "total": 1,
+          "author": "melford"
+        },
+        {
+          "total": 1,
+          "author": "kunule"
+        },
+        {
+          "total": 1,
+          "author": "Etabat"
+        },
+        {
+          "total": 1,
+          "author": "dwebarts"
+        },
+        {
+          "total": 1,
+          "author": "Raiju30"
+        },
+        {
+          "total": 1,
+          "author": "gaganahluwalia"
+        },
+        {
+          "total": 1,
+          "author": "jzmyslow"
+        },
+        {
+          "total": 1,
+          "author": "vincerandazzo"
+        },
+        {
+          "total": 1,
+          "author": "harmanmd"
+        },
+        {
+          "total": 1,
+          "author": "sarahcodez"
+        },
+        {
+          "total": 1,
+          "author": "lordKnighton"
+        },
+        {
+          "total": 1,
+          "author": "imanolcominges"
+        },
+        {
+          "total": 1,
+          "author": "omidfi"
+        },
+        {
+          "total": 1,
+          "author": "stuartweir"
+        },
+        {
+          "total": 1,
+          "author": "francastillo"
+        },
+        {
+          "total": 1,
+          "author": "GrzegorzSzul"
+        },
+        {
+          "total": 1,
+          "author": "smdasilva5"
+        },
+        {
+          "total": 1,
+          "author": "SgtHero"
+        },
+        {
+          "total": 1,
+          "author": "shana73"
+        },
+        {
+          "total": 1,
+          "author": "ricemann"
+        },
+        {
+          "total": 1,
+          "author": "zhengren88"
+        },
+        {
+          "total": 1,
+          "author": "Painatalman"
+        },
+        {
+          "total": 1,
+          "author": "jim54729"
+        },
+        {
+          "total": 1,
+          "author": "trishnaamin"
+        },
+        {
+          "total": 1,
+          "author": "edgcastillo"
+        },
+        {
+          "total": 1,
+          "author": "mrkd"
+        },
+        {
+          "total": 1,
+          "author": "stobrien"
+        },
+        {
+          "total": 1,
+          "author": "dtn-marknorgren"
+        },
+        {
+          "total": 1,
+          "author": "melcise"
+        },
+        {
+          "total": 1,
+          "author": "ewehner"
+        },
+        {
+          "total": 1,
+          "author": "Aristotel"
+        },
+        {
+          "total": 1,
+          "author": "nuttdguy"
+        },
+        {
+          "total": 1,
+          "author": "serenechen"
+        },
+        {
+          "total": 1,
+          "author": "johnsiwicki"
+        },
+        {
+          "total": 1,
+          "author": "aarondolson"
+        },
+        {
+          "total": 1,
+          "author": "jdgamble"
+        },
+        {
+          "total": 1,
+          "author": "opagani"
+        },
+        {
+          "total": 1,
+          "author": "bloodhawk"
+        },
+        {
+          "total": 1,
+          "author": "btholt"
+        },
+        {
+          "total": 2,
+          "author": "ivan-yosifov"
+        },
+        {
+          "total": 2,
+          "author": "paparoacho"
+        },
+        {
+          "total": 2,
+          "author": "Nox-Ludicro"
+        },
+        {
+          "total": 2,
+          "author": "jcjvm"
+        },
+        {
+          "total": 2,
+          "author": "enz54"
+        },
+        {
+          "total": 2,
+          "author": "CS306AbdelrahmanCheteiwy"
+        },
+        {
+          "total": 2,
+          "author": "wwwd3v"
+        },
+        {
+          "total": 2,
+          "author": "grahamray"
+        },
+        {
+          "total": 2,
+          "author": "spo587"
+        },
+        {
+          "total": 3,
+          "author": "lntongji"
+        },
+        {
+          "total": 3,
+          "author": "nicolas2dh"
+        },
+        {
+          "total": 3,
+          "author": "joshlklai"
+        },
+        {
+          "total": 3,
+          "author": "joet99"
+        },
+        {
+          "total": 3,
+          "author": "lucylamp"
+        },
+        {
+          "total": 4,
+          "author": "pawnien"
+        }
+      ]
+    },
+    "dataquestio/solutions": {
+      "id": 48892529,
+      "name": "solutions",
+      "full_name": "dataquestio/solutions",
+      "owner": "dataquestio",
+      "private": false,
+      "html_url": "https://github.com/dataquestio/solutions",
+      "description": "Solutions for projects.",
+      "fork": false,
+      "url": "https://api.github.com/repos/dataquestio/solutions",
+      "forks_url": "https://api.github.com/repos/dataquestio/solutions/forks",
+      "languages_url": "https://api.github.com/repos/dataquestio/solutions/languages",
+      "stargazers_url": "https://api.github.com/repos/dataquestio/solutions/stargazers",
+      "created_at": "2016-01-01T23:23:58Z",
+      "updated_at": "2018-06-27T15:47:07Z",
+      "pushed_at": "2018-06-19T16:59:21Z",
+      "homepage": null,
+      "size": 3785,
+      "stargazers_count": 232,
+      "watchers_count": 232,
+      "language": "Jupyter Notebook",
+      "forks_count": 300,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 1,
+      "license": null,
+      "forks": 300,
+      "open_issues": 1,
+      "watchers": 232,
+      "default_branch": "master",
+      "organization": {
+        "login": "dataquestio",
+        "id": 11148054,
+        "node_id": "MDEyOk9yZ2FuaXphdGlvbjExMTQ4MDU0",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/11148054?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/dataquestio",
+        "html_url": "https://github.com/dataquestio",
+        "followers_url": "https://api.github.com/users/dataquestio/followers",
+        "following_url": "https://api.github.com/users/dataquestio/following{/other_user}",
+        "gists_url": "https://api.github.com/users/dataquestio/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/dataquestio/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/dataquestio/subscriptions",
+        "organizations_url": "https://api.github.com/users/dataquestio/orgs",
+        "repos_url": "https://api.github.com/users/dataquestio/repos",
+        "events_url": "https://api.github.com/users/dataquestio/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/dataquestio/received_events",
+        "type": "Organization",
+        "site_admin": false
+      },
+      "network_count": 300,
+      "subscribers_count": 56,
+      "contributors": [
+        {
+          "total": 4,
+          "author": "mircealex"
+        },
+        {
+          "total": 4,
+          "author": "spiside"
+        },
+        {
+          "total": 12,
+          "author": "VikParuchuri"
+        },
+        {
+          "total": 13,
+          "author": "jaypeedevlin"
+        },
+        {
+          "total": 15,
+          "author": "srinify"
+        }
+      ]
+    },
+    "hakabuk/gun_analysis": {
+      "id": 80006947,
+      "name": "gun_analysis",
+      "full_name": "hakabuk/gun_analysis",
+      "owner": "hakabuk",
+      "private": false,
+      "html_url": "https://github.com/hakabuk/gun_analysis",
+      "description": "Analyzing Gun Deaths in the US: 2012-2014",
+      "fork": false,
+      "url": "https://api.github.com/repos/hakabuk/gun_analysis",
+      "forks_url": "https://api.github.com/repos/hakabuk/gun_analysis/forks",
+      "languages_url": "https://api.github.com/repos/hakabuk/gun_analysis/languages",
+      "stargazers_url": "https://api.github.com/repos/hakabuk/gun_analysis/stargazers",
+      "created_at": "2017-01-25T11:07:03Z",
+      "updated_at": "2017-01-25T11:19:31Z",
+      "pushed_at": "2017-01-25T11:19:30Z",
+      "homepage": null,
+      "size": 1312,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": "Jupyter Notebook",
+      "forks_count": 0,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 0,
+      "license": null,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master",
+      "network_count": 0,
+      "subscribers_count": 2,
+      "contributors": [
+        {
+          "total": 1,
+          "author": "hakabuk"
+        }
+      ]
+    },
+    "hakabuk/thinkStats2": {
+      "id": 71470912,
+      "name": "thinkStats2",
+      "full_name": "hakabuk/thinkStats2",
+      "owner": "hakabuk",
+      "private": false,
+      "html_url": "https://github.com/hakabuk/thinkStats2",
+      "description": "Summaries & exercises from the book \"Think Stats\" in the form of a Python notebook",
+      "fork": false,
+      "url": "https://api.github.com/repos/hakabuk/thinkStats2",
+      "forks_url": "https://api.github.com/repos/hakabuk/thinkStats2/forks",
+      "languages_url": "https://api.github.com/repos/hakabuk/thinkStats2/languages",
+      "stargazers_url": "https://api.github.com/repos/hakabuk/thinkStats2/stargazers",
+      "created_at": "2016-10-20T14:22:24Z",
+      "updated_at": "2018-06-09T21:07:02Z",
+      "pushed_at": "2016-11-04T18:48:56Z",
+      "homepage": null,
+      "size": 6074,
+      "stargazers_count": 1,
+      "watchers_count": 1,
+      "language": "Jupyter Notebook",
+      "forks_count": 0,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 1,
+      "license": null,
+      "forks": 0,
+      "open_issues": 1,
+      "watchers": 1,
+      "default_branch": "master",
+      "network_count": 0,
+      "subscribers_count": 1,
+      "contributors": [
+        {
+          "total": 4,
+          "author": "hakabuk"
+        }
+      ]
+    },
+    "hakabuk/python-exercises-shecodes": {
+      "id": 65013693,
+      "name": "python-exercises-shecodes",
+      "full_name": "hakabuk/python-exercises-shecodes",
+      "owner": "hakabuk",
+      "private": false,
+      "html_url": "https://github.com/hakabuk/python-exercises-shecodes",
+      "description": null,
+      "fork": false,
+      "url": "https://api.github.com/repos/hakabuk/python-exercises-shecodes",
+      "forks_url": "https://api.github.com/repos/hakabuk/python-exercises-shecodes/forks",
+      "languages_url": "https://api.github.com/repos/hakabuk/python-exercises-shecodes/languages",
+      "stargazers_url": "https://api.github.com/repos/hakabuk/python-exercises-shecodes/stargazers",
+      "created_at": "2016-08-05T11:29:40Z",
+      "updated_at": "2016-08-05T11:34:33Z",
+      "pushed_at": "2016-08-27T13:58:30Z",
+      "homepage": null,
+      "size": 810,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": "Python",
+      "forks_count": 0,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 0,
+      "license": null,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master",
+      "network_count": 0,
+      "subscribers_count": 1,
+      "contributors": [
+        {
+          "total": 9,
+          "author": "hakabuk"
+        }
+      ]
+    },
+    "hakabuk/my-first-blog": {
+      "id": 57589653,
+      "name": "my-first-blog",
+      "full_name": "hakabuk/my-first-blog",
+      "owner": "hakabuk",
+      "private": false,
+      "html_url": "https://github.com/hakabuk/my-first-blog",
+      "description": null,
+      "fork": false,
+      "url": "https://api.github.com/repos/hakabuk/my-first-blog",
+      "forks_url": "https://api.github.com/repos/hakabuk/my-first-blog/forks",
+      "languages_url": "https://api.github.com/repos/hakabuk/my-first-blog/languages",
+      "stargazers_url": "https://api.github.com/repos/hakabuk/my-first-blog/stargazers",
+      "created_at": "2016-05-01T07:51:02Z",
+      "updated_at": "2016-05-01T07:53:15Z",
+      "pushed_at": "2016-05-01T13:34:16Z",
+      "homepage": null,
+      "size": 8,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": "Python",
+      "forks_count": 0,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 0,
+      "license": null,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master",
+      "network_count": 0,
+      "subscribers_count": 1,
+      "contributors": [
+        {
+          "total": 4,
+          "author": "hakabuk"
+        }
+      ]
+    },
+    "hakabuk/speed-counting-game": {
+      "id": 55904266,
+      "name": "speed-counting-game",
+      "full_name": "hakabuk/speed-counting-game",
+      "owner": "hakabuk",
+      "private": false,
+      "html_url": "https://github.com/hakabuk/speed-counting-game",
+      "description": "A game: Click on the numbers in the dynamically loaded table in ascending order",
+      "fork": false,
+      "url": "https://api.github.com/repos/hakabuk/speed-counting-game",
+      "forks_url": "https://api.github.com/repos/hakabuk/speed-counting-game/forks",
+      "languages_url": "https://api.github.com/repos/hakabuk/speed-counting-game/languages",
+      "stargazers_url": "https://api.github.com/repos/hakabuk/speed-counting-game/stargazers",
+      "created_at": "2016-04-10T14:40:23Z",
+      "updated_at": "2016-04-10T14:40:58Z",
+      "pushed_at": "2016-04-10T14:40:57Z",
+      "homepage": null,
+      "size": 35,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": "CSS",
+      "forks_count": 0,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 0,
+      "license": null,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master",
+      "network_count": 0,
+      "subscribers_count": 1,
+      "contributors": [
+        {
+          "total": 4,
+          "author": "hakabuk"
+        }
+      ]
+    },
+    "hakabuk/addition-game": {
+      "id": 54828557,
+      "name": "addition-game",
+      "full_name": "hakabuk/addition-game",
+      "owner": "hakabuk",
+      "private": false,
+      "html_url": "https://github.com/hakabuk/addition-game",
+      "description": "A game: Adding numbers from a dynamically loaded grid in order to reach a random target by a specific number of steps",
+      "fork": false,
+      "url": "https://api.github.com/repos/hakabuk/addition-game",
+      "forks_url": "https://api.github.com/repos/hakabuk/addition-game/forks",
+      "languages_url": "https://api.github.com/repos/hakabuk/addition-game/languages",
+      "stargazers_url": "https://api.github.com/repos/hakabuk/addition-game/stargazers",
+      "created_at": "2016-03-27T12:58:54Z",
+      "updated_at": "2017-07-30T13:18:08Z",
+      "pushed_at": "2016-04-02T18:13:35Z",
+      "homepage": null,
+      "size": 33,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": "CSS",
+      "forks_count": 0,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 0,
+      "license": null,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master",
+      "network_count": 0,
+      "subscribers_count": 1,
+      "contributors": [
+        {
+          "total": 3,
+          "author": "hakabuk"
+        }
+      ]
+    },
+    "hakabuk/responsive-photo-gallery": {
+      "id": 53971349,
+      "name": "responsive-photo-gallery",
+      "full_name": "hakabuk/responsive-photo-gallery",
+      "owner": "hakabuk",
+      "private": false,
+      "html_url": "https://github.com/hakabuk/responsive-photo-gallery",
+      "description": "A responsive gallery for photos sold/ for-sale",
+      "fork": false,
+      "url": "https://api.github.com/repos/hakabuk/responsive-photo-gallery",
+      "forks_url": "https://api.github.com/repos/hakabuk/responsive-photo-gallery/forks",
+      "languages_url": "https://api.github.com/repos/hakabuk/responsive-photo-gallery/languages",
+      "stargazers_url": "https://api.github.com/repos/hakabuk/responsive-photo-gallery/stargazers",
+      "created_at": "2016-03-15T19:09:11Z",
+      "updated_at": "2016-03-15T19:30:16Z",
+      "pushed_at": "2016-03-24T09:58:22Z",
+      "homepage": null,
+      "size": 11743,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": "HTML",
+      "forks_count": 1,
+      "mirror_url": null,
+      "archived": false,
+      "open_issues_count": 0,
+      "license": null,
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "master",
+      "network_count": 1,
+      "subscribers_count": 1,
+      "contributors": [
+        {
+          "total": 2,
+          "author": "hakabuk"
         }
       ]
     }
