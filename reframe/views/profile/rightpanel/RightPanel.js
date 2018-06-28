@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Badge from './Badge';
 import './RightPanel.css';
 import Avatar from '../Avatar';
 
@@ -29,21 +30,22 @@ const RightPanel = props => {
               title="Add an avatar" target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
   };
 
-  const badges = (owner, percentage, numContributors) => {
+  const badges = (owner, percentage, numContributors, popularity, numStars) => {
     const result = [];
     if (props.username == owner || percentage >= 80) {
-      result.push(
-        <span key="percentage" className="badge badge-success contrib-name ml-2 mb-2"
-              title={`${props.username} wrote ${roundHalf(percentage)}% of it`}>owner</span>);
+      result.push(<Badge key="percentage" classes="badge-success contrib-name" text="owner"
+                         tooltip={`${props.username} wrote ${roundHalf(percentage)}% of it`}/>);
     } else if (percentage >= 15) {
-      result.push(
-        <span key="percentage" className="badge badge-danger contrib-name ml-2 mb-2"
-              title={`${props.username} wrote ${roundHalf(percentage)}% of it`}>maintainer</span>);
+      result.push(<Badge key="percentage" classes="badge-danger contrib-name" text="maintainer"
+                         tooltip={`${props.username} wrote ${roundHalf(percentage)}% of it`}/>);
     }
     if (numContributors > 1) {
-      result.push(
-        <span key="collaborative" className="badge badge-secondary contrib-name ml-1 mb-2"
-              title={`${numContributors} people worked on it`}>collaborative</span>);
+      result.push(<Badge key="collaborative" classes="badge-secondary contrib-name" text="collaborative"
+                         tooltip={`${numContributors} people worked on it`}/>);
+    }
+    if (popularity > 2.5) {
+      result.push(<Badge key="popular" classes="badge-secondary contrib-name" text="popular"
+                         tooltip={`★ ${numStars}`}/>);
     }
     return result;
   };
@@ -59,7 +61,8 @@ const RightPanel = props => {
              title={contrib.full_name}>{props.repos[contrib.full_name].name}</a>
         </h4>
         {badges(props.repos[contrib.full_name].owner, contrib.percentage,
-                props.repos[contrib.full_name].contributors.length)}
+                props.repos[contrib.full_name].contributors.length, contrib.popularity,
+                props.repos[contrib.full_name].stargazers_count)}
         <div className="text-gray">{props.repos[contrib.full_name].description}</div>
         <div><small>project popularity (based on stars): {roundHalf(contrib.popularity)} / 5</small></div>
         <div><small>project maturity (based on num of commits): {roundHalf(contrib.maturity)} / 5</small></div>
