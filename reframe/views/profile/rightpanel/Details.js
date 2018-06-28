@@ -24,7 +24,7 @@ class Details extends React.Component {
       <div className="ui accordion mt-1 mb-3">
         <div className="title text-gray p-0">
           <i className="dropdown icon"></i>
-          <small className="ellipsis border border-white rounded" title="Details">&#x26ab;&#x26ab;&#x26ab;</small>
+          <small className="ellipsis border border-white rounded" title="Details"><b>&#183;&#183;&#183;</b></small>
         </div>
         <div className="content p-0 mb-2">
           <div><small>project popularity (based on stars): {roundHalf(this.props.contrib.popularity)} / 5</small></div>
