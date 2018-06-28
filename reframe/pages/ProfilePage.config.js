@@ -8,8 +8,7 @@ const ProfilePage = {
   route: '/:username',
   view: ({route: {args: {username}}}) => (
     <Profile user={db.users[username]} orgs={db.orgs} repos={db.repos} />
-  ),
-  domStatic: true
+  )
 };
 
 export default ProfilePage;

@@ -1,0 +1,23 @@
+.accordion {
+  padding-left: 55px;
+}
+
+.ellipsis {
+  background-color: #eee;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+.active > .ellipsis {
+  visibility: hidden;
+}
+
+.icon {
+  display: none !important;
+}
+
+.active > .icon {
+  display: inline-block !important;
+}
