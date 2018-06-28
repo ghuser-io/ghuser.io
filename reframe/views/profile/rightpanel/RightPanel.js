@@ -19,6 +19,19 @@ const RightPanel = props => {
   contribs.sort(compare);
 
   const roundHalf = num => Math.round(num * 2) / 2;
+  const bigNum = num => {
+    let suffix='';
+    let val = roundHalf(num);
+    if (val >= 1000) {
+      suffix = 'K';
+      val = roundHalf(val / 1000);
+    }
+    if (val >= 10) {
+      val = Math.round(val);
+    }
+    return `${val}${suffix}`;
+  };
+
   const avatar = full_name => {
     if (props.repos[full_name].settings && props.repos[full_name].settings.avatar_url) {
       return <Avatar url={props.repos[full_name].settings.avatar_url} classes="avatar-repo" />;
@@ -45,7 +58,7 @@ const RightPanel = props => {
     }
     if (popularity > 2.5) {
       result.push(<Badge key="popular" classes="badge-secondary contrib-name" text="popular"
-                         tooltip={`★ ${numStars}`}/>);
+                         tooltip={`★ ${bigNum(numStars)}`}/>);
     }
     return result;
   };
