@@ -1,4 +1,5 @@
 import React from 'react';
+import * as moment from 'moment';
 
 import Badge from './Badge';
 import './RightPanel.css';
@@ -23,7 +24,7 @@ const RightPanel = props => {
     let suffix='';
     let val = roundHalf(num);
     if (val >= 1000) {
-      suffix = 'K';
+      suffix = 'k';
       val = roundHalf(val / 1000);
     }
     if (val >= 10) {
@@ -43,7 +44,7 @@ const RightPanel = props => {
               title="Add an avatar" target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
   };
 
-  const badges = (owner, percentage, numContributors, popularity, numStars) => {
+  const badges = (owner, percentage, numContributors, popularity, numStars, activity, pushedAt) => {
     const result = [];
     if (props.username == owner || percentage >= 80) {
       result.push(<Badge key="percentage" classes="badge-success contrib-name" text="owner"
@@ -60,6 +61,10 @@ const RightPanel = props => {
       result.push(<Badge key="popular" classes="badge-secondary contrib-name" text="popular"
                          tooltip={`★ ${bigNum(numStars)}`}/>);
     }
+    if (activity > 2.5) {
+      result.push(<Badge key="active" classes="badge-secondary contrib-name" text="active"
+                         tooltip={`Last pushed ${moment(pushedAt).fromNow()}`}/>);
+    }
     return result;
   };
 
@@ -75,7 +80,8 @@ const RightPanel = props => {
         </h4>
         {badges(props.repos[contrib.full_name].owner, contrib.percentage,
                 props.repos[contrib.full_name].contributors.length, contrib.popularity,
-                props.repos[contrib.full_name].stargazers_count)}
+                props.repos[contrib.full_name].stargazers_count, contrib.activity,
+                props.repos[contrib.full_name].pushed_at)}
         <div className="text-gray">{props.repos[contrib.full_name].description}</div>
         <div><small>project popularity (based on stars): {roundHalf(contrib.popularity)} / 5</small></div>
         <div><small>project maturity (based on num of commits): {roundHalf(contrib.maturity)} / 5</small></div>
