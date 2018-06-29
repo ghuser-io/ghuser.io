@@ -9,9 +9,6 @@ import LeftPanel from './leftpanel/LeftPanel';
 import RightPanel from './rightpanel/RightPanel';
 
 const Profile = props => {
-  if (!props.user) {
-    return <div>404</div>;
-  };
   return (
     <PageContent>
       <NavBar/>

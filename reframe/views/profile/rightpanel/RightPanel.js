@@ -5,6 +5,7 @@ import Badge from './Badge';
 import {roundHalf, RepoDescrAndDetails} from './RepoDescrAndDetails';
 import './RightPanel.css';
 import Avatar from '../Avatar';
+import CreateYourProfile from '../../CreateYourProfile';
 
 const RightPanel = props => {
   const compare = (a, b) => {
@@ -16,9 +17,6 @@ const RightPanel = props => {
     }
     return 0;
   };
-
-  const contribs = Object.values(props.contribs.repos);
-  contribs.sort(compare);
 
   const bigNum = num => {
     let suffix='';
@@ -78,26 +76,34 @@ const RightPanel = props => {
   };
 
   const repos = [];
-  for (const contrib of contribs) {
-    repos.push(
-      <div key={contrib.full_name} className="border-bottom border-gray-light py-4">
-        {avatar(contrib.full_name)}
-        <h4 className="contrib-name">
-          <a href={`https://github.com/${contrib.full_name}`}
-             target="_blank" className="text-bold contrib-name"
-             title={contrib.full_name}>{props.repos[contrib.full_name].name}</a>
-        </h4>
-        {badges(props.repos[contrib.full_name].owner, contrib.percentage,
-                props.repos[contrib.full_name].contributors.length, contrib.popularity,
-                props.repos[contrib.full_name].stargazers_count, contrib.activity,
-                props.repos[contrib.full_name].pushed_at, contrib.maturity,
-                contrib.total_commits_count)}
-        <RepoDescrAndDetails contrib={contrib} descr={props.repos[contrib.full_name].description}
-          strStars={strStars(props.repos[contrib.full_name].stargazers_count)}
-          strLastPushed={strLastPushed(props.repos[contrib.full_name].pushed_at)}
-          strNumCommits={strNumCommits(contrib.total_commits_count)}/>
-      </div>
-    );
+
+  if (props.contribs) {
+    const contribs = Object.values(props.contribs.repos);
+    contribs.sort(compare);
+
+    for (const contrib of contribs) {
+      repos.push(
+        <div key={contrib.full_name} className="border-bottom border-gray-light py-4">
+          {avatar(contrib.full_name)}
+          <h4 className="contrib-name">
+            <a href={`https://github.com/${contrib.full_name}`}
+               target="_blank" className="text-bold contrib-name"
+               title={contrib.full_name}>{props.repos[contrib.full_name].name}</a>
+          </h4>
+          {badges(props.repos[contrib.full_name].owner, contrib.percentage,
+                  props.repos[contrib.full_name].contributors.length, contrib.popularity,
+                  props.repos[contrib.full_name].stargazers_count, contrib.activity,
+                  props.repos[contrib.full_name].pushed_at, contrib.maturity,
+                  contrib.total_commits_count)}
+          <RepoDescrAndDetails contrib={contrib} descr={props.repos[contrib.full_name].description}
+            strStars={strStars(props.repos[contrib.full_name].stargazers_count)}
+            strLastPushed={strLastPushed(props.repos[contrib.full_name].pushed_at)}
+            strNumCommits={strNumCommits(contrib.total_commits_count)}/>
+        </div>
+      );
+    }
+  } else {
+    repos.push(<CreateYourProfile key="createyourprofile" />);
   }
 
   return (

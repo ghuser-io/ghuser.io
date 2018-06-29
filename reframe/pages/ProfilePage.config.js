@@ -7,7 +7,7 @@ import db from '../../db/db.json';
 const ProfilePage = {
   route: '/:username',
   view: ({route: {args: {username}}}) => (
-    <Profile user={db.users[username]} orgs={db.orgs} repos={db.repos} />
+    <Profile user={db.users[username] || {login: username}} orgs={db.orgs} repos={db.repos} />
   )
 };
 
