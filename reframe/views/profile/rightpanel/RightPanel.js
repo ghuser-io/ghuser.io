@@ -107,9 +107,9 @@ const RightPanel = props => {
           <a href="javascript:;" className="UnderlineNav-item selected" aria-selected="true" role="tab">
             Contributions
           </a>
-          <a href="javascript:;" className="UnderlineNav-item " aria-selected="false" role="tab">
-            Earned stars
-          </a>
+          {/*<a href="javascript:;" className="UnderlineNav-item" aria-selected="false" role="tab">
+            Other tab
+          </a>*/}
         </nav>
       </div>
       <div className="contribs">
