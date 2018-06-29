@@ -259,7 +259,7 @@
         }
         score.percentage = 100 * userContribs / totalContribs;
         score.maturity = logarithmicScoreAscending(40, 10000, totalContribs);
-        score.commits_count = totalContribs;
+        score.total_commits_count = totalContribs;
 
         const daysOfInactivity =
                 (now - Date.parse(db.repos[repo].pushed_at)) / (24 * 60 * 60 * 1000);

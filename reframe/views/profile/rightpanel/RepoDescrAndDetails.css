@@ -1,3 +1,9 @@
 .icon {
   vertical-align: middle !important;
 }
+
+.contrib-details {
+  padding-right: 1em;
+  font-size: 90%;
+  color: #586069;
+}

@@ -45,7 +45,7 @@
             "full_name": "AurelienLourot/AurelienLourot.github.io",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 142
+            "total_commits_count": 142
           },
           "AurelienLourot/crouton-articles": {
             "popularity": 1.0414282204429401,
@@ -56,7 +56,7 @@
             "full_name": "AurelienLourot/crouton-articles",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 6
+            "total_commits_count": 6
           },
           "AurelienLourot/crouton-emacs-conf": {
             "popularity": 1.0414282204429401,
@@ -67,7 +67,7 @@
             "full_name": "AurelienLourot/crouton-emacs-conf",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 6
+            "total_commits_count": 6
           },
           "AurelienLourot/fork-me-on-gitlab": {
             "popularity": 1.0414282204429401,
@@ -78,7 +78,7 @@
             "full_name": "AurelienLourot/fork-me-on-gitlab",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 17
+            "total_commits_count": 17
           },
           "AurelienLourot/ghuser.io": {
             "popularity": 1.3222565221025262,
@@ -89,7 +89,7 @@
             "full_name": "AurelienLourot/ghuser.io",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 67
+            "total_commits_count": 67
           },
           "AurelienLourot/github-commit-watcher": {
             "popularity": 2.0828241359374196,
@@ -100,7 +100,7 @@
             "full_name": "AurelienLourot/github-commit-watcher",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 98
+            "total_commits_count": 98
           },
           "AurelienLourot/github-contribs": {
             "popularity": 2.2577174475727126,
@@ -111,7 +111,7 @@
             "full_name": "AurelienLourot/github-contribs",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 48
+            "total_commits_count": 48
           },
           "AurelienLourot/google-input-tools-large-keyboard": {
             "popularity": 0,
@@ -122,7 +122,7 @@
             "full_name": "AurelienLourot/google-input-tools-large-keyboard",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 19
+            "total_commits_count": 19
           },
           "AurelienLourot/iqa-hello-world": {
             "popularity": 0,
@@ -133,7 +133,7 @@
             "full_name": "AurelienLourot/iqa-hello-world",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 2
+            "total_commits_count": 2
           },
           "AurelienLourot/lsankidb": {
             "popularity": 1.7076084983408428,
@@ -144,7 +144,7 @@
             "full_name": "AurelienLourot/lsankidb",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 38
+            "total_commits_count": 38
           },
           "AurelienLourot/my-ansible-setup": {
             "popularity": 0,
@@ -155,7 +155,7 @@
             "full_name": "AurelienLourot/my-ansible-setup",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 220
+            "total_commits_count": 220
           },
           "AurelienLourot/my-emacs-config": {
             "popularity": 0,
@@ -166,7 +166,7 @@
             "full_name": "AurelienLourot/my-emacs-config",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 19
+            "total_commits_count": 19
           },
           "AurelienLourot/mybeir.ut": {
             "popularity": 0,
@@ -177,7 +177,7 @@
             "full_name": "AurelienLourot/mybeir.ut",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 505
+            "total_commits_count": 505
           },
           "AurelienLourot/myberl.in": {
             "popularity": 1.49139952161816,
@@ -188,7 +188,7 @@
             "full_name": "AurelienLourot/myberl.in",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 384
+            "total_commits_count": 384
           },
           "AurelienLourot/reframe-on-up": {
             "popularity": 1.8512968868523627,
@@ -199,7 +199,7 @@
             "full_name": "AurelienLourot/reframe-on-up",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 47
+            "total_commits_count": 47
           },
           "RichardLitt/low-resource-languages": {
             "popularity": 3.217786138241388,
@@ -210,7 +210,7 @@
             "full_name": "RichardLitt/low-resource-languages",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 336
+            "total_commits_count": 336
           },
           "brandon-rhodes/uncommitted": {
             "popularity": 2.5694128929127964,
@@ -221,7 +221,7 @@
             "full_name": "brandon-rhodes/uncommitted",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 73
+            "total_commits_count": 73
           },
           "brillout/timerlog": {
             "popularity": 1.3222565221025262,
@@ -232,7 +232,7 @@
             "full_name": "brillout/timerlog",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 27
+            "total_commits_count": 27
           },
           "dnschneid/crouton": {
             "popularity": 4.821297073958926,
@@ -243,7 +243,7 @@
             "full_name": "dnschneid/crouton",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 1586
+            "total_commits_count": 1586
           },
           "dracula/fb-messenger": {
             "popularity": 0,
@@ -254,7 +254,7 @@
             "full_name": "dracula/fb-messenger",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 16
+            "total_commits_count": 16
           },
           "dracula/gitk": {
             "popularity": 1.7853682828948099,
@@ -265,7 +265,7 @@
             "full_name": "dracula/gitk",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 9
+            "total_commits_count": 9
           },
           "dracula/mutt": {
             "popularity": 1.6128219920330789,
@@ -276,7 +276,7 @@
             "full_name": "dracula/mutt",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 10
+            "total_commits_count": 10
           },
           "dracula/prism": {
             "popularity": 1.0414282204429401,
@@ -287,7 +287,7 @@
             "full_name": "dracula/prism",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 45
+            "total_commits_count": 45
           },
           "dracula/termite": {
             "popularity": 1.49139952161816,
@@ -298,7 +298,7 @@
             "full_name": "dracula/termite",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 2
+            "total_commits_count": 2
           },
           "jfrog/artifactory-user-plugins": {
             "popularity": 3.1646892778340483,
@@ -309,7 +309,7 @@
             "full_name": "jfrog/artifactory-user-plugins",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 808
+            "total_commits_count": 808
           },
           "jfrog/build-info": {
             "popularity": 2.8639564121406873,
@@ -320,7 +320,7 @@
             "full_name": "jfrog/build-info",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 635
+            "total_commits_count": 635
           },
           "jordansissel/xdotool": {
             "popularity": 3.813686777996961,
@@ -331,7 +331,7 @@
             "full_name": "jordansissel/xdotool",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 547
+            "total_commits_count": 547
           },
           "ppartarr/dracula-messenger": {
             "popularity": 0,
@@ -342,7 +342,7 @@
             "full_name": "ppartarr/dracula-messenger",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 14
+            "total_commits_count": 14
           },
           "quizl/backend": {
             "popularity": 1.0414282204429401,
@@ -353,7 +353,7 @@
             "full_name": "quizl/backend",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 10
+            "total_commits_count": 10
           },
           "quizl/quizler": {
             "popularity": 1.3222565221025262,
@@ -364,7 +364,7 @@
             "full_name": "quizl/quizler",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 72
+            "total_commits_count": 72
           },
           "reframejs/reframe": {
             "popularity": 2.9350421947098364,
@@ -375,7 +375,7 @@
             "full_name": "reframejs/reframe",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 1627
+            "total_commits_count": 1627
           },
           "tianshanghong/awesome-anki": {
             "popularity": 2.463931943319936,
@@ -386,7 +386,7 @@
             "full_name": "tianshanghong/awesome-anki",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 22
+            "total_commits_count": 22
           },
           "tt-gf/ant-ivy": {
             "popularity": 0,
@@ -397,7 +397,7 @@
             "full_name": "tt-gf/ant-ivy",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 242
+            "total_commits_count": 242
           },
           "tt-gf/artifactory-client-java-example": {
             "popularity": 0,
@@ -408,7 +408,7 @@
             "full_name": "tt-gf/artifactory-client-java-example",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 4
+            "total_commits_count": 4
           },
           "tt-gf/ivy-dependency-parser": {
             "popularity": 1.49139952161816,
@@ -419,7 +419,7 @@
             "full_name": "tt-gf/ivy-dependency-parser",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 16
+            "total_commits_count": 16
           },
           "tt-gf/quickbuild-plugins": {
             "popularity": 0,
@@ -430,7 +430,7 @@
             "full_name": "tt-gf/quickbuild-plugins",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 8
+            "total_commits_count": 8
           }
         },
         "organizations": [
@@ -492,7 +492,7 @@
             "full_name": "KIWIKIGMBH/frontend-kiwilib",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 24
+            "total_commits_count": 24
           },
           "Thermondo/closeio": {
             "popularity": 1.0414282204429401,
@@ -503,7 +503,7 @@
             "full_name": "Thermondo/closeio",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 166
+            "total_commits_count": 166
           },
           "YuzuJS/setImmediate": {
             "popularity": 4.018365030309009,
@@ -514,7 +514,7 @@
             "full_name": "YuzuJS/setImmediate",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 108
+            "total_commits_count": 108
           },
           "brillout/FasterWeb": {
             "popularity": 1.6128219920330789,
@@ -525,7 +525,7 @@
             "full_name": "brillout/FasterWeb",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 10
+            "total_commits_count": 10
           },
           "brillout/awesome-angular-components": {
             "popularity": 4.35799298152535,
@@ -536,7 +536,7 @@
             "full_name": "brillout/awesome-angular-components",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 162
+            "total_commits_count": 162
           },
           "brillout/awesome-frontend-libraries": {
             "popularity": 2.045361715305606,
@@ -547,7 +547,7 @@
             "full_name": "brillout/awesome-frontend-libraries",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 4
+            "total_commits_count": 4
           },
           "brillout/awesome-react-components": {
             "popularity": 5,
@@ -558,7 +558,7 @@
             "full_name": "brillout/awesome-react-components",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 181
+            "total_commits_count": 181
           },
           "brillout/awesome-redux": {
             "popularity": 3.376798467641986,
@@ -569,7 +569,7 @@
             "full_name": "brillout/awesome-redux",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 28
+            "total_commits_count": 28
           },
           "brillout/awesome-vue-refactor": {
             "popularity": 2.2810722512575277,
@@ -580,7 +580,7 @@
             "full_name": "brillout/awesome-vue-refactor",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 432
+            "total_commits_count": 432
           },
           "brillout/awesome-web-apps": {
             "popularity": 2.5575461822849728,
@@ -591,7 +591,7 @@
             "full_name": "brillout/awesome-web-apps",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 15
+            "total_commits_count": 15
           },
           "brillout/clean-sentence": {
             "popularity": 0,
@@ -602,7 +602,7 @@
             "full_name": "brillout/clean-sentence",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 12
+            "total_commits_count": 12
           },
           "brillout/extendable-error-class": {
             "popularity": 2.045361715305606,
@@ -613,7 +613,7 @@
             "full_name": "brillout/extendable-error-class",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 9
+            "total_commits_count": 9
           },
           "brillout/fetch": {
             "popularity": 0,
@@ -624,7 +624,7 @@
             "full_name": "brillout/fetch",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 3
+            "total_commits_count": 3
           },
           "brillout/find": {
             "popularity": 0,
@@ -635,7 +635,7 @@
             "full_name": "brillout/find",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 10
+            "total_commits_count": 10
           },
           "brillout/forge-sha256": {
             "popularity": 2.149257924096549,
@@ -646,7 +646,7 @@
             "full_name": "brillout/forge-sha256",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 10
+            "total_commits_count": 10
           },
           "brillout/get-parent-dirname": {
             "popularity": 0,
@@ -657,7 +657,7 @@
             "full_name": "brillout/get-parent-dirname",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 2
+            "total_commits_count": 2
           },
           "brillout/gulp-jspm": {
             "popularity": 2.5453460937604104,
@@ -668,7 +668,7 @@
             "full_name": "brillout/gulp-jspm",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 67
+            "total_commits_count": 67
           },
           "brillout/index-html": {
             "popularity": 0,
@@ -679,7 +679,7 @@
             "full_name": "brillout/index-html",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 22
+            "total_commits_count": 22
           },
           "brillout/libraries": {
             "popularity": 1.3222565221025262,
@@ -690,7 +690,7 @@
             "full_name": "brillout/libraries",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 4
+            "total_commits_count": 4
           },
           "brillout/npm-download-count": {
             "popularity": 0,
@@ -701,7 +701,7 @@
             "full_name": "brillout/npm-download-count",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 5
+            "total_commits_count": 5
           },
           "brillout/parse-uri": {
             "popularity": 0,
@@ -712,7 +712,7 @@
             "full_name": "brillout/parse-uri",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 3
+            "total_commits_count": 3
           },
           "brillout/promise-serial": {
             "popularity": 1.7076084983408428,
@@ -723,7 +723,7 @@
             "full_name": "brillout/promise-serial",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 16
+            "total_commits_count": 16
           },
           "brillout/reassert": {
             "popularity": 0,
@@ -734,7 +734,7 @@
             "full_name": "brillout/reassert",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 37
+            "total_commits_count": 37
           },
           "brillout/reprop": {
             "popularity": 1.7853682828948099,
@@ -745,7 +745,7 @@
             "full_name": "brillout/reprop",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 8
+            "total_commits_count": 8
           },
           "brillout/set-text-dimensions": {
             "popularity": 1.0414282204429401,
@@ -756,7 +756,7 @@
             "full_name": "brillout/set-text-dimensions",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 7
+            "total_commits_count": 7
           },
           "brillout/test-javascript-hash-implementations": {
             "popularity": 1.3222565221025262,
@@ -767,7 +767,7 @@
             "full_name": "brillout/test-javascript-hash-implementations",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 20
+            "total_commits_count": 20
           },
           "brillout/timerlog": {
             "popularity": 1.3222565221025262,
@@ -778,7 +778,7 @@
             "full_name": "brillout/timerlog",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 27
+            "total_commits_count": 27
           },
           "brillout/website-dependency-tree": {
             "popularity": 1.0414282204429401,
@@ -789,7 +789,7 @@
             "full_name": "brillout/website-dependency-tree",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 152
+            "total_commits_count": 152
           },
           "devarchy/frontend-catalogs": {
             "popularity": 1.9590800514478444,
@@ -800,7 +800,7 @@
             "full_name": "devarchy/frontend-catalogs",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 10
+            "total_commits_count": 10
           },
           "devarchy/website": {
             "popularity": 2.580963961738607,
@@ -811,7 +811,7 @@
             "full_name": "devarchy/website",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 6
+            "total_commits_count": 6
           },
           "enaqx/awesome-react": {
             "popularity": 5,
@@ -822,7 +822,7 @@
             "full_name": "enaqx/awesome-react",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 717
+            "total_commits_count": 717
           },
           "facebook/create-react-app": {
             "popularity": 5,
@@ -833,7 +833,7 @@
             "full_name": "facebook/create-react-app",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 1120
+            "total_commits_count": 1120
           },
           "facebook/react": {
             "popularity": 5,
@@ -844,7 +844,7 @@
             "full_name": "facebook/react",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 5852
+            "total_commits_count": 5852
           },
           "gdi2290/awesome-angular": {
             "popularity": 4.758655801947781,
@@ -855,7 +855,7 @@
             "full_name": "gdi2290/awesome-angular",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 312
+            "total_commits_count": 312
           },
           "gmarty/grunt-closure-compiler": {
             "popularity": 3.279021184957488,
@@ -866,7 +866,7 @@
             "full_name": "gmarty/grunt-closure-compiler",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 49
+            "total_commits_count": 49
           },
           "jnv/lists": {
             "popularity": 4.703511026163993,
@@ -877,7 +877,7 @@
             "full_name": "jnv/lists",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 652
+            "total_commits_count": 652
           },
           "jspm/jspm-cli": {
             "popularity": 4.564243394600609,
@@ -888,7 +888,7 @@
             "full_name": "jspm/jspm-cli",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 1015
+            "total_commits_count": 1015
           },
           "reframejs/reframe": {
             "popularity": 2.9350421947098364,
@@ -899,7 +899,7 @@
             "full_name": "reframejs/reframe",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 1627
+            "total_commits_count": 1627
           },
           "sindresorhus/awesome": {
             "popularity": 5,
@@ -910,7 +910,7 @@
             "full_name": "sindresorhus/awesome",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 318
+            "total_commits_count": 318
           },
           "systemjs/builder": {
             "popularity": 3.6600503013915446,
@@ -921,7 +921,7 @@
             "full_name": "systemjs/builder",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 1038
+            "total_commits_count": 1038
           },
           "theoldreader/api": {
             "popularity": 3.1495660747060654,
@@ -932,7 +932,7 @@
             "full_name": "theoldreader/api",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 56
+            "total_commits_count": 56
           },
           "vuejs/awesome-vue": {
             "popularity": 5,
@@ -943,7 +943,7 @@
             "full_name": "vuejs/awesome-vue",
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
             "max_total_score": 95,
-            "commits_count": 575
+            "total_commits_count": 575
           }
         },
         "organizations": [
@@ -1005,7 +1005,7 @@
             "popularity": 2.7490018802358214,
             "percentage": 0,
             "maturity": 3.105880505784522,
-            "commits_count": 167,
+            "total_commits_count": 167,
             "activity": 5,
             "total_score": 19.45876665227651,
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
@@ -1016,7 +1016,7 @@
             "popularity": 2.206864721909315,
             "percentage": 2.3255813953488373,
             "maturity": 1.4930421103847036,
-            "commits_count": 43,
+            "total_commits_count": 43,
             "activity": 5,
             "total_score": 15.27387004660947,
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
@@ -1027,7 +1027,7 @@
             "popularity": 2.045361715305606,
             "percentage": 0,
             "maturity": 2.8656513250381606,
-            "commits_count": 113,
+            "total_commits_count": 113,
             "activity": 5,
             "total_score": 16.86738779599314,
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
@@ -1038,7 +1038,7 @@
             "popularity": 3.363839017218971,
             "percentage": 0,
             "maturity": 1.9101999437230757,
-            "commits_count": 48,
+            "total_commits_count": 48,
             "activity": 5,
             "total_score": 18.911916939103065,
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
@@ -1049,7 +1049,7 @@
             "popularity": 0,
             "percentage": 100,
             "maturity": 0,
-            "commits_count": 4,
+            "total_commits_count": 4,
             "activity": 0.8016370183067778,
             "total_score": 0.8016370183067778,
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",
@@ -1060,7 +1060,7 @@
             "popularity": 0,
             "percentage": 0,
             "maturity": 1.0429714431619128,
-            "commits_count": 41,
+            "total_commits_count": 41,
             "activity": 5,
             "total_score": 7.085942886323826,
             "total_score_human_formula": "(3 + percentage * 13) * popularity + 2 * maturity + activity",

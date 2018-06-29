@@ -33,6 +33,10 @@ const RightPanel = props => {
     return `${val}${suffix}`;
   };
 
+  const strStars = numStars => `★ ${bigNum(numStars)}`;
+  const strLastPushed = pushedAt => `last pushed ${moment(pushedAt).fromNow()}`;
+  const strNumCommits = numCommits => `${bigNum(numCommits)} non-merge commits`;
+
   const avatar = full_name => {
     if (props.repos[full_name].settings && props.repos[full_name].settings.avatar_url) {
       return <Avatar url={props.repos[full_name].settings.avatar_url} classes="avatar-repo" />;
@@ -60,15 +64,15 @@ const RightPanel = props => {
     }
     if (popularity > 2.5) {
       result.push(<Badge key="popular" classes="badge-secondary contrib-name" text="popular"
-                         tooltip={`★ ${bigNum(numStars)}`}/>);
+                         tooltip={strStars(numStars)}/>);
     }
     if (activity > 2.5) {
       result.push(<Badge key="active" classes="badge-secondary contrib-name" text="active"
-                         tooltip={`Last pushed ${moment(pushedAt).fromNow()}`}/>);
+                         tooltip={strLastPushed(pushedAt)}/>);
     }
     if (maturity > 2.5) {
       result.push(<Badge key="mature" classes="badge-secondary contrib-name" text="mature"
-                         tooltip={`${bigNum(numCommits)} non-merge commits`}/>);
+                         tooltip={strNumCommits(numCommits)}/>);
     }
     return result;
   };
@@ -86,8 +90,12 @@ const RightPanel = props => {
         {badges(props.repos[contrib.full_name].owner, contrib.percentage,
                 props.repos[contrib.full_name].contributors.length, contrib.popularity,
                 props.repos[contrib.full_name].stargazers_count, contrib.activity,
-                props.repos[contrib.full_name].pushed_at, contrib.maturity, contrib.commits_count)}
-        <RepoDescrAndDetails contrib={contrib} descr={props.repos[contrib.full_name].description} />
+                props.repos[contrib.full_name].pushed_at, contrib.maturity,
+                contrib.total_commits_count)}
+        <RepoDescrAndDetails contrib={contrib} descr={props.repos[contrib.full_name].description}
+          strStars={strStars(props.repos[contrib.full_name].stargazers_count)}
+          strLastPushed={strLastPushed(props.repos[contrib.full_name].pushed_at)}
+          strNumCommits={strNumCommits(contrib.total_commits_count)}/>
       </div>
     );
   }
