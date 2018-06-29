@@ -2,7 +2,7 @@ import React from 'react';
 import * as moment from 'moment';
 
 import Badge from './Badge';
-import {roundHalf, Details} from './Details';
+import {roundHalf, RepoDescrAndDetails} from './RepoDescrAndDetails';
 import './RightPanel.css';
 import Avatar from '../Avatar';
 
@@ -76,7 +76,7 @@ const RightPanel = props => {
   const repos = [];
   for (const contrib of contribs) {
     repos.push(
-      <div key={contrib.full_name} className="border-bottom border-gray-light pt-4">
+      <div key={contrib.full_name} className="border-bottom border-gray-light py-4">
         {avatar(contrib.full_name)}
         <h4 className="contrib-name">
           <a href={`https://github.com/${contrib.full_name}`}
@@ -87,8 +87,7 @@ const RightPanel = props => {
                 props.repos[contrib.full_name].contributors.length, contrib.popularity,
                 props.repos[contrib.full_name].stargazers_count, contrib.activity,
                 props.repos[contrib.full_name].pushed_at, contrib.maturity, contrib.commits_count)}
-        <div className="text-gray">{props.repos[contrib.full_name].description}</div>
-        <Details contrib={contrib}/>
+        <RepoDescrAndDetails contrib={contrib} descr={props.repos[contrib.full_name].description} />
       </div>
     );
   }

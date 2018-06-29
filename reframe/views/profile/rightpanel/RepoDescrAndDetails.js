@@ -2,11 +2,11 @@ import React from 'react';
 
 import '../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
 
-import './Details.css';
+import './RepoDescrAndDetails.css';
 
 const roundHalf = num => Math.round(num * 2) / 2;
 
-class Details extends React.Component {
+class RepoDescrAndDetails extends React.Component {
   componentDidMount() {
     this.setupSemanticUi();
   }
@@ -21,12 +21,12 @@ class Details extends React.Component {
 
   render() {
     return (
-      <div className="ui accordion mt-1 mb-3">
-        <div className="title text-gray p-0">
-          <i className="dropdown icon"></i>
-          <small className="ellipsis border border-white rounded" title="Details"><b>&#183;&#183;&#183;</b></small>
+      <div className="ui accordion">
+        <div className="title p-0">
+          <span className="text-gray">{this.props.descr}</span>
+          <i className="dropdown icon text-gray mx-1"></i>
         </div>
-        <div className="content p-0 mb-2">
+        <div className="content">
           <div><small>project popularity (based on stars): {roundHalf(this.props.contrib.popularity)} / 5</small></div>
           <div><small>project maturity (based on num of commits): {roundHalf(this.props.contrib.maturity)} / 5</small></div>
           <div><small>project activity (based on age of last push): {roundHalf(this.props.contrib.activity)} / 5</small></div>
@@ -40,5 +40,5 @@ class Details extends React.Component {
 
 export {
   roundHalf,
-  Details
+  RepoDescrAndDetails
 };
