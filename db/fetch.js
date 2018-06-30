@@ -149,34 +149,70 @@
     }
 
     async function fetchRepoContributors(repo) {
-      const ghUrl = `https://api.github.com/repos/${repo}/stats/contributors`;
-      const githubSpinner = ora(`Fetching ${ghUrl}...`).start();
+      db.repos[repo].contributors = db.repos[repo].contributors || {};
+      const githubSpinner = ora(`Fetching ${repo}'s contributions...`).start();
 
-      let ghDataJson;
-      for (let i = 3; i >= 0; --i) {
-        const ghData = await fetch(`${ghUrl}${urlSuffix}`);
-        ghDataJson = await ghData.json();
+      // This endpoint only gives us the 100 greatest contributors, so if it looks like there
+      // can be more, we use the next endpoint to get the 500 greatest ones:
+      if (Object.keys(db.repos[repo].contributors).length < 100) {
+        const ghUrl = `https://api.github.com/repos/${repo}/stats/contributors`;
 
-        if (!Object.keys(ghDataJson).length) {
-          // GitHub is still calculating the stats and we need to wait a bit and try again, see
-          // https://developer.github.com/v3/repos/statistics/
+        let ghDataJson;
+        for (let i = 3; i >= 0; --i) {
+          const ghData = await fetch(`${ghUrl}${urlSuffix}`);
+          ghDataJson = await ghData.json();
 
-          if (!i) { // enough retries
-            const error = `Failed to fetch https://api.github.com/repos/${repo}/stats/contributors`;
-            githubSpinner.fail(error);
-            throw error;
+          if (!Object.keys(ghDataJson).length) {
+            // GitHub is still calculating the stats and we need to wait a bit and try again, see
+            // https://developer.github.com/v3/repos/statistics/
+
+            if (!i) { // enough retries
+              const error = `Failed to fetch https://api.github.com/repos/${repo}/stats/contributors`;
+              githubSpinner.fail(error);
+              throw error;
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 3000));
           }
+        }
 
-          await new Promise(resolve => setTimeout(resolve, 3000));
+        for (const contributor of ghDataJson) {
+          db.repos[repo].contributors[contributor.author.login] = contributor.total;
         }
       }
 
-      githubSpinner.succeed(`Fetched ${ghUrl}`);
+      if (Object.keys(db.repos[repo].contributors).length >= 100) {
+        // This endpoint won't accept to return more than 30 items per page, see
+        // https://developer.github.com/v3/#pagination
+        const perPage = 30;
+        for (let page = 1; page <= 17; ++page) {
+          const ghUrl = `https://api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
+          const ghData = await fetch(`${ghUrl}${urlSuffix}`);
+          const ghDataJson = await ghData.json();
+          try {
+            for (const contributor of ghDataJson) {
+              db.repos[repo].contributors[contributor.login] = contributor.contributions;
+            }
+          } catch (e) {
+            githubSpinner.fail(`Failed to fetch ${repo}'s contributions`);
+            console.error(ghDataJson);
+            throw e;
+          }
 
-      db.repos[repo].contributors = db.repos[repo].contributors || {};
-      for (const contributor of ghDataJson) {
-        db.repos[repo].contributors[contributor.author.login] = contributor.total;
+          if (ghDataJson.length < perPage) {
+            break;
+          }
+        }
       }
+
+      if (Object.keys(db.repos[repo].contributors).length >= 500) {
+        // We could use https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
+        // in order to fetch more than 500 contributors.
+        githubSpinner.fail(`Failed to fetch ${repo}'s contributions`);
+        throw 'Not implemented yet';
+      }
+
+      githubSpinner.succeed(`Fetched ${repo}'s contributions`);
 
       writeToDb();
     }
