@@ -91,7 +91,7 @@ const RightPanel = props => {
                title={contrib.full_name}>{props.repos[contrib.full_name].name}</a>
           </h4>
           {badges(props.repos[contrib.full_name].owner, contrib.percentage,
-                  props.repos[contrib.full_name].contributors.length, contrib.popularity,
+                  Object.keys(props.repos[contrib.full_name].contributors).length, contrib.popularity,
                   props.repos[contrib.full_name].stargazers_count, contrib.activity,
                   props.repos[contrib.full_name].pushed_at, contrib.maturity,
                   contrib.total_commits_count)}

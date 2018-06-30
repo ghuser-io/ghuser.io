@@ -173,12 +173,9 @@
 
       githubSpinner.succeed(`Fetched ${ghUrl}`);
 
-      db.repos[repo].contributors = ghDataJson;
-
-      // Keep the DB small:
-      for (const contributor of db.repos[repo].contributors) {
-        delete contributor.weeks;
-        contributor.author = contributor.author.login;
+      db.repos[repo].contributors = db.repos[repo].contributors || {};
+      for (const contributor of ghDataJson) {
+        db.repos[repo].contributors[contributor.author.login] = contributor.total;
       }
 
       writeToDb();
@@ -250,14 +247,11 @@
         score.popularity = logarithmicScoreAscending(1, 10000, db.repos[repo].stargazers_count);
 
         let totalContribs = 0;
-        let userContribs = 0;
-        for (const contributor of db.repos[repo].contributors) {
-          totalContribs += contributor.total;
-          if (contributor.author == user) {
-            userContribs = contributor.total;
-          }
+        for (const contributor in db.repos[repo].contributors) {
+          totalContribs += db.repos[repo].contributors[contributor];
         }
-        score.percentage = 100 * userContribs / totalContribs;
+
+        score.percentage = 100 * db.repos[repo].contributors[user] / totalContribs;
         score.maturity = logarithmicScoreAscending(40, 10000, totalContribs);
         score.total_commits_count = totalContribs;
 
