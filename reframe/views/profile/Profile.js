@@ -13,7 +13,7 @@ const Profile = props => {
     <PageContent>
       <NavBar/>
       <Content>
-        <div className="container container-lg">
+        <div className="container container-lg mt-2">
           <div className="row">
             <LeftPanel user={props.user} orgs={props.orgs} />
             <RightPanel username={props.user.login} contribs={props.user.contribs}
