@@ -6,7 +6,7 @@ import './CreateYourProfile.css';
 const CreateYourProfile = () => (
   <div>
     <BigLogo classes="landing-logo"/>
-    <p class="punchline mb-5"><b>Better GitHub profiles</b></p>
+    <p className="punchline mb-5"><b>Better GitHub profiles</b></p>
     <p>
       Good that you are here :)<br />
       We're building profiles like this one:&nbsp;
