@@ -1,7 +1,5 @@
 import React from 'react';
 
-import db from '../../db/db.json';
-
 import Content from './Content';
 import CreateYourProfile from './CreateYourProfile';
 import NavBar from './NavBar';
