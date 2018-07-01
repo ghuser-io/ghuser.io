@@ -15,9 +15,14 @@
 
   async function fetchUsers() {
     let urlSuffix = '';
+    let urlPrefix = 'https://';
     if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
       console.log('GitHub API key found.');
       urlSuffix = `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`;
+    }
+    if (process.env.GITHUB_USERNAME && process.env.GITHUB_PASSWORD) {
+      console.log('GitHub credentials found.');
+      urlPrefix = `${urlPrefix}${process.env.GITHUB_USERNAME}:${process.env.GITHUB_PASSWORD}@`;
     }
 
     const now = new Date;
@@ -48,9 +53,9 @@
     return;
 
     async function fetchUser(user) {
-      const ghUserUrl = `https://api.github.com/users/${user}`;
+      const ghUserUrl = `api.github.com/users/${user}`;
       const githubSpinner = ora(`Fetching ${ghUserUrl}...`).start();
-      const ghData = await fetch(`${ghUserUrl}${urlSuffix}`);
+      const ghData = await fetch(`${urlPrefix}${ghUserUrl}${urlSuffix}`);
       const ghDataJson = await ghData.json();
       githubSpinner.succeed(`Fetched ${ghUserUrl}`);
 
@@ -59,6 +64,17 @@
         fetched_at: '2000-01-01',
         repos: {}
       };
+
+      // Keep the DB small:
+      for (const field of ["id", "node_id", "gravatar_id", "followers_url", "following_url",
+                           "gists_url", "starred_url", "subscriptions_url", "events_url",
+                           "received_events_url", "site_admin", "hireable", "public_repos",
+                           "public_gists", "followers", "following", "private_gists",
+                           "total_private_repos","owned_private_repos", "disk_usage",
+                           "collaborators", "two_factor_authentication", "plan"]) {
+        delete db.users[user][field];
+      }
+
       writeToDbTemp();
     }
 
@@ -107,14 +123,16 @@
     }
 
     async function fetchRepo(repo) {
-      const ghRepoUrl = `https://api.github.com/repos/${repo}`;
+      const ghRepoUrl = `api.github.com/repos/${repo}`;
       const githubSpinner = ora(`Fetching ${ghRepoUrl}...`).start();
-      const ghData = await fetch(`${ghRepoUrl}${urlSuffix}`);
+      const ghData = await fetch(`${urlPrefix}${ghRepoUrl}${urlSuffix}`);
       const ghDataJson = await ghData.json();
       githubSpinner.succeed(`Fetched ${ghRepoUrl}`);
 
-      // Keep the DB small:
       ghDataJson.owner = ghDataJson.owner.login;
+      db.repos[repo] = {...db.repos[repo], ...ghDataJson};
+
+      // Keep the DB small:
       for (const field of ["node_id", "keys_url", "collaborators_url", "teams_url", "hooks_url",
                            "issue_events_url", "events_url", "assignees_url", "branches_url",
                            "tags_url", "blobs_url", "git_tags_url", "git_refs_url", "trees_url",
@@ -125,11 +143,10 @@
                            "milestones_url", "notifications_url", "labels_url", "releases_url",
                            "deployments_url", "ssh_url", "git_url", "clone_url", "svn_url",
                            "has_issues", "has_projects", "has_downloads", "has_wiki",
-                           "has_pages"]) {
-        delete ghDataJson[field];
+                           "has_pages", "id", "forks_url", "permissions", "allow_squash_merge",
+                           "allow_merge_commit", "allow_rebase_merge"]) {
+        delete db.repos[repo][field];
       }
-
-      db.repos[repo] = {...db.repos[repo], ...ghDataJson};
 
       writeToDbTemp();
     }
@@ -156,11 +173,11 @@
       // This endpoint only gives us the 100 greatest contributors, so if it looks like there
       // can be more, we use the next endpoint to get the 500 greatest ones:
       if (Object.keys(db.repos[repo].contributors).length < 100) {
-        const ghUrl = `https://api.github.com/repos/${repo}/stats/contributors`;
+        const ghUrl = `api.github.com/repos/${repo}/stats/contributors`;
 
         let ghDataJson;
         for (let i = 3; i >= 0; --i) {
-          const ghData = await fetch(`${ghUrl}${urlSuffix}`);
+          const ghData = await fetch(`${urlPrefix}${ghUrl}${urlSuffix}`);
           ghDataJson = await ghData.json();
 
           if (!Object.keys(ghDataJson).length) {
@@ -168,7 +185,7 @@
             // https://developer.github.com/v3/repos/statistics/
 
             if (!i) { // enough retries
-              const error = `Failed to fetch https://api.github.com/repos/${repo}/stats/contributors`;
+              const error = `Failed to fetch ${ghUrl}`;
               githubSpinner.fail(error);
               throw error;
             }
@@ -187,8 +204,8 @@
         // https://developer.github.com/v3/#pagination
         const perPage = 30;
         for (let page = 1; page <= 17; ++page) {
-          const ghUrl = `https://api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
-          const ghData = await fetch(`${ghUrl}${urlSuffix}`);
+          const ghUrl = `api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
+          const ghData = await fetch(`${urlPrefix}${ghUrl}${urlSuffix}`);
           const ghDataJson = await ghData.json();
           try {
             for (const contributor of ghDataJson) {
@@ -247,7 +264,7 @@
             isOrg = true; // it's an org that we know already
           } else {
             // it might be an org that we don't know yet
-            const orgsData = await fetch(`https://api.github.com/orgs/${userOrOrg}${urlSuffix}`);
+            const orgsData = await fetch(`${urlPrefix}api.github.com/orgs/${userOrOrg}${urlSuffix}`);
             const orgsDataJson = await orgsData.json();
             if (orgsDataJson.login) {
               // it's an org that we didn't know yet

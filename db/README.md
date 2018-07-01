@@ -6,6 +6,8 @@ During the prototyping phrase, it's just a JSON file that we update once per day
 $ npm install
 $ export GITHUB_CLIENT_ID=0123456789abcdef0123
 $ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
+$ export GITHUB_USERNAME=AurelienLourot
+$ export GITHUB_PASSWORD=********
 $ ./fetch.js
 ```
 
@@ -34,5 +36,7 @@ and run
 ```bash
 $ export GITHUB_CLIENT_ID=0123456789abcdef0123
 $ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
+$ export GITHUB_USERNAME=AurelienLourot
+$ export GITHUB_PASSWORD=********
 $ ./fetch.js
 ```
