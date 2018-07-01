@@ -316,7 +316,9 @@
     }
 
     function calculateUserContribsScores(userId) {
-      const spinner = ora(`Calculating scores for ${userId}...`).start();
+      const userLogin = db.users[userId].login;
+
+      const spinner = ora(`Calculating scores for ${userLogin}...`).start();
 
       for (const repo in db.users[userId].contribs.repos) {
         const score = db.users[userId].contribs.repos[repo];
@@ -327,8 +329,8 @@
           totalContribs += db.repos[repo].contributors[contributor];
         }
 
-        score.percentage = db.repos[repo].contributors[userId] &&
-                           100 * db.repos[repo].contributors[userId] / totalContribs || 0;
+        score.percentage = db.repos[repo].contributors[userLogin] &&
+                           100 * db.repos[repo].contributors[userLogin] / totalContribs || 0;
         score.maturity = logarithmicScoreAscending(40, 10000, totalContribs);
         score.total_commits_count = totalContribs;
 
@@ -349,7 +351,7 @@
         score.max_total_score = 95;
       }
 
-      spinner.succeed(`Calculated scores for ${userId}`);
+      spinner.succeed(`Calculated scores for ${userLogin}`);
       writeToDbTemp();
 
       function logarithmicScoreAscending(valFor0, valFor5, val) {
