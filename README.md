@@ -35,7 +35,7 @@ We love the default GitHub profiles and we want to enhance them:
 * The GitHub profiles can be tweaked by clicking around. We allow them to be **tweaked
   programmatically**.<sup>[4](#footnote4)</sup>
 * On GitHub only users and organizations have avatars. We bring
-  [**avatars to users**](docs/repo-settings.md).
+  [**avatars to repos**](docs/repo-settings.md).
 
 Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e.g.
 [ghuser.io/AurelienLourot](https://ghuser.io/AurelienLourot).
