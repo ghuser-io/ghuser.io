@@ -1406,6 +1406,12 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 142
+      },
+      "languages": {
+        "HTML": 26426,
+        "CSS": 1635,
+        "Shell": 1596,
+        "JavaScript": 436
       }
     },
     "AurelienLourot/crouton-articles": {
@@ -1447,7 +1453,8 @@
       "contributors": {
         "knickum": 1,
         "AurelienLourot": 5
-      }
+      },
+      "languages": {}
     },
     "AurelienLourot/crouton-emacs-conf": {
       "name": "crouton-emacs-conf",
@@ -1487,6 +1494,9 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 6
+      },
+      "languages": {
+        "Emacs Lisp": 1242
       }
     },
     "AurelienLourot/fork-me-on-gitlab": {
@@ -1527,6 +1537,9 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 17
+      },
+      "languages": {
+        "HTML": 5151
       }
     },
     "AurelienLourot/ghuser.io": {
@@ -1571,6 +1584,12 @@
       "settings": {
         "_comment": "Settings for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md",
         "avatar_url": "https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo_square.png"
+      },
+      "languages": {
+        "JavaScript": 31769,
+        "CSS": 3285,
+        "Shell": 2333,
+        "HTML": 765
       }
     },
     "AurelienLourot/github-commit-watcher": {
@@ -1612,6 +1631,10 @@
       "contributors": {
         "cassiodoroVicinetti": 1,
         "AurelienLourot": 97
+      },
+      "languages": {
+        "Python": 33761,
+        "Shell": 1626
       }
     },
     "AurelienLourot/github-contribs": {
@@ -1652,6 +1675,9 @@
       "subscribers_count": 2,
       "contributors": {
         "AurelienLourot": 48
+      },
+      "languages": {
+        "JavaScript": 9759
       }
     },
     "AurelienLourot/google-input-tools-large-keyboard": {
@@ -1692,6 +1718,11 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 19
+      },
+      "languages": {
+        "JavaScript": 425,
+        "HTML": 404,
+        "CSS": 373
       }
     },
     "AurelienLourot/iqa-hello-world": {
@@ -1732,6 +1763,10 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 2
+      },
+      "languages": {
+        "C++": 705,
+        "Shell": 569
       }
     },
     "AurelienLourot/lsankidb": {
@@ -1772,6 +1807,10 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 38
+      },
+      "languages": {
+        "Python": 9645,
+        "Shell": 124
       }
     },
     "AurelienLourot/my-ansible-setup": {
@@ -1812,6 +1851,13 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 220
+      },
+      "languages": {
+        "Shell": 6705,
+        "Python": 3788,
+        "Lua": 482,
+        "Scheme": 236,
+        "Vim script": 33
       }
     },
     "AurelienLourot/my-emacs-config": {
@@ -1852,6 +1898,10 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 19
+      },
+      "languages": {
+        "Emacs Lisp": 16840,
+        "Shell": 466
       }
     },
     "AurelienLourot/mybeir.ut": {
@@ -1892,6 +1942,12 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 505
+      },
+      "languages": {
+        "HTML": 21979,
+        "JavaScript": 10430,
+        "CSS": 5086,
+        "Shell": 1649
       }
     },
     "AurelienLourot/myberl.in": {
@@ -1932,6 +1988,12 @@
       "subscribers_count": 1,
       "contributors": {
         "AurelienLourot": 384
+      },
+      "languages": {
+        "HTML": 22436,
+        "JavaScript": 10423,
+        "CSS": 5086,
+        "Shell": 1801
       }
     },
     "AurelienLourot/reframe-on-up": {
@@ -1972,6 +2034,11 @@
       "subscribers_count": 2,
       "contributors": {
         "AurelienLourot": 47
+      },
+      "languages": {
+        "JavaScript": 11528,
+        "CSS": 690,
+        "HTML": 460
       }
     },
     "RichardLitt/low-resource-languages": {
@@ -2028,6 +2095,10 @@
         "HughP": 29,
         "cesine": 36,
         "RichardLitt": 249
+      },
+      "languages": {
+        "TeX": 30077,
+        "Shell": 433
       }
     },
     "brandon-rhodes/uncommitted": {
@@ -2075,6 +2146,9 @@
         "fleimgruber": 4,
         "AurelienLourot": 13,
         "brandon-rhodes": 50
+      },
+      "languages": {
+        "Python": 32728
       }
     },
     "brillout/timerlog": {
@@ -2116,6 +2190,9 @@
       "contributors": {
         "AurelienLourot": 1,
         "brillout": 26
+      },
+      "languages": {
+        "JavaScript": 10445
       }
     },
     "dnschneid/crouton": {
@@ -2215,6 +2292,17 @@
         "smibarber": 62,
         "drinkcat": 474,
         "dnschneid": 783
+      },
+      "languages": {
+        "Shell": 391585,
+        "C": 87247,
+        "C++": 48759,
+        "JavaScript": 39012,
+        "HTML": 7685,
+        "Makefile": 3967,
+        "Scheme": 1191,
+        "Python": 584,
+        "sed": 243
       }
     },
     "dracula/fb-messenger": {
@@ -2277,6 +2365,10 @@
         "ktzr": 1,
         "AurelienLourot": 3,
         "ppartarr": 12
+      },
+      "languages": {
+        "CSS": 17865,
+        "JavaScript": 1964
       }
     },
     "dracula/gitk": {
@@ -2338,7 +2430,8 @@
       "contributors": {
         "zenorocha": 1,
         "AurelienLourot": 8
-      }
+      },
+      "languages": {}
     },
     "dracula/mutt": {
       "name": "mutt",
@@ -2400,7 +2493,8 @@
         "AurelienLourot": 1,
         "paultownsend": 2,
         "zenorocha": 7
-      }
+      },
+      "languages": {}
     },
     "dracula/prism": {
       "name": "prism",
@@ -2462,6 +2556,11 @@
         "jonleopard": 3,
         "AurelienLourot": 12,
         "gusbemacbe": 30
+      },
+      "languages": {
+        "JavaScript": 366014,
+        "HTML": 17120,
+        "CSS": 10735
       }
     },
     "dracula/termite": {
@@ -2523,7 +2622,8 @@
       "contributors": {
         "AurelienLourot": 1,
         "gabrielsimoes": 1
-      }
+      },
+      "languages": {}
     },
     "dracula/wordpress": {
       "name": "wordpress",
@@ -2584,6 +2684,10 @@
       "contributors": {
         "AurelienLourot": 1,
         "oguhpereira": 9
+      },
+      "languages": {
+        "CSS": 11523,
+        "PHP": 1541
       }
     },
     "jfrog/artifactory-user-plugins": {
@@ -2688,6 +2792,10 @@
         "jainishshah17": 45,
         "elioengcomp": 120,
         "DarthFennec": 262
+      },
+      "languages": {
+        "Groovy": 1106538,
+        "Java": 28405
       }
     },
     "jfrog/build-info": {
@@ -2774,6 +2882,11 @@
         "liorhson": 78,
         "evgeny-goldin": 87,
         "eyalbe4": 110
+      },
+      "languages": {
+        "Java": 1073412,
+        "Groovy": 49920,
+        "HTML": 1346
       }
     },
     "jordansissel/xdotool": {
@@ -2838,6 +2951,12 @@
         "dkg": 12,
         "KoFish": 18,
         "jordansissel": 477
+      },
+      "languages": {
+        "C": 235317,
+        "Ruby": 43629,
+        "Makefile": 10597,
+        "Shell": 7031
       }
     },
     "ppartarr/dracula-messenger": {
@@ -2880,6 +2999,10 @@
         "AurelienLourot": 1,
         "ktzr": 1,
         "ppartarr": 12
+      },
+      "languages": {
+        "CSS": 17865,
+        "JavaScript": 1969
       }
     },
     "quizl/backend": {
@@ -2940,6 +3063,10 @@
       "subscribers_count": 2,
       "contributors": {
         "AurelienLourot": 10
+      },
+      "languages": {
+        "Python": 1420,
+        "HTML": 841
       }
     },
     "quizl/quizler": {
@@ -3001,6 +3128,10 @@
       "contributors": {
         "AurelienLourot": 16,
         "lancelote": 56
+      },
+      "languages": {
+        "Python": 33105,
+        "Makefile": 1495
       }
     },
     "reframejs/reframe": {
@@ -3063,6 +3194,12 @@
         "AurelienLourot": 11,
         "tdfranklin": 22,
         "brillout": 1768
+      },
+      "languages": {
+        "JavaScript": 272281,
+        "CSS": 948,
+        "HTML": 460,
+        "TypeScript": 330
       }
     },
     "tianshanghong/awesome-anki": {
@@ -3100,7 +3237,8 @@
         "breizoreol": 1,
         "AurelienLourot": 7,
         "tianshanghong": 13
-      }
+      },
+      "languages": {}
     },
     "tt-gf/ant-ivy": {
       "name": "ant-ivy",
@@ -3372,6 +3510,13 @@
         "twogee": 39,
         "jaikiran": 58,
         "nlalevee": 98
+      },
+      "languages": {
+        "Java": 1647640,
+        "HTML": 71858,
+        "XSLT": 28774,
+        "Ruby": 6313,
+        "CSS": 3813
       }
     },
     "tt-gf/artifactory-client-java-example": {
@@ -3432,6 +3577,9 @@
       "subscribers_count": 4,
       "contributors": {
         "AurelienLourot": 4
+      },
+      "languages": {
+        "Java": 1379
       }
     },
     "tt-gf/ivy-dependency-parser": {
@@ -3492,6 +3640,9 @@
       "subscribers_count": 4,
       "contributors": {
         "AurelienLourot": 16
+      },
+      "languages": {
+        "Python": 4422
       }
     },
     "tt-gf/quickbuild-plugins": {
@@ -3553,6 +3704,9 @@
       "contributors": {
         "AurelienLourot": 1,
         "martinm82": 7
+      },
+      "languages": {
+        "Java": 6471
       }
     },
     "JoshSimon/my_homepage": {
@@ -3588,6 +3742,11 @@
       "contributors": {
         "brillout": 1,
         "JoshSimon": 10
+      },
+      "languages": {
+        "JavaScript": 13324,
+        "HTML": 1517,
+        "CSS": 1442
       }
     },
     "KIWIKIGMBH/frontend-kiwilib": {
@@ -3648,6 +3807,9 @@
       "subscribers_count": 5,
       "contributors": {
         "brillout": 24
+      },
+      "languages": {
+        "JavaScript": 49559
       }
     },
     "Thermondo/closeio": {
@@ -3719,6 +3881,10 @@
         "syphar": 36,
         "codingjoe": 37,
         "pyup-bot": 53
+      },
+      "languages": {
+        "Python": 61571,
+        "Makefile": 1270
       }
     },
     "YuzuJS/setImmediate": {
@@ -3788,6 +3954,10 @@
         "donavon": 10,
         "benjamn": 17,
         "domenic": 73
+      },
+      "languages": {
+        "JavaScript": 10906,
+        "HTML": 892
       }
     },
     "brillout-misc/game-of-thrones": {
@@ -3822,6 +3992,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 13
+      },
+      "languages": {
+        "HTML": 2324
       }
     },
     "brillout-test/brillcdn": {
@@ -3856,6 +4029,9 @@
       "subscribers_count": 2,
       "contributors": {
         "brillout": 1
+      },
+      "languages": {
+        "HTML": 183
       }
     },
     "brillout-test/brillout": {
@@ -3890,6 +4066,9 @@
       "subscribers_count": 2,
       "contributors": {
         "brillout": 2
+      },
+      "languages": {
+        "HTML": 3013
       }
     },
     "brillout-test/reframe-test": {
@@ -3924,7 +4103,8 @@
       "subscribers_count": 2,
       "contributors": {
         "brillout": 38
-      }
+      },
+      "languages": {}
     },
     "brillout-test/repage-test": {
       "name": "repage-test",
@@ -3958,7 +4138,8 @@
       "subscribers_count": 2,
       "contributors": {
         "brillout": 8
-      }
+      },
+      "languages": {}
     },
     "brillout-test/reprop-test": {
       "name": "reprop-test",
@@ -3992,7 +4173,8 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 8
-      }
+      },
+      "languages": {}
     },
     "brillout/FasterWeb": {
       "name": "FasterWeb",
@@ -4026,7 +4208,8 @@
       "subscribers_count": 4,
       "contributors": {
         "brillout": 10
-      }
+      },
+      "languages": {}
     },
     "brillout/awesome-angular-components": {
       "name": "awesome-angular-components",
@@ -4077,7 +4260,8 @@
         "Chyngyz": 19,
         "devarchy-bot": 56,
         "brillout": 64
-      }
+      },
+      "languages": {}
     },
     "brillout/awesome-frontend-libraries": {
       "name": "awesome-frontend-libraries",
@@ -4111,7 +4295,8 @@
       "subscribers_count": 2,
       "contributors": {
         "brillout": 4
-      }
+      },
+      "languages": {}
     },
     "brillout/awesome-react-components": {
       "name": "awesome-react-components",
@@ -4157,7 +4342,8 @@
         "joshwcomeau": 1,
         "brillout": 52,
         "devarchy-bot": 124
-      }
+      },
+      "languages": {}
     },
     "brillout/awesome-redux": {
       "name": "awesome-redux",
@@ -4199,7 +4385,8 @@
         "clarus": 1,
         "kenma9123": 1,
         "brillout": 26
-      }
+      },
+      "languages": {}
     },
     "brillout/awesome-vue-refactor": {
       "name": "awesome-vue-refactor",
@@ -4662,7 +4849,8 @@
         "laoshu133": 1,
         "JackPu": 1,
         "ericjjj": 1
-      }
+      },
+      "languages": {}
     },
     "brillout/awesome-web-apps": {
       "name": "awesome-web-apps",
@@ -4703,7 +4891,8 @@
       "contributors": {
         "robbie-cao": 2,
         "brillout": 13
-      }
+      },
+      "languages": {}
     },
     "brillout/brillout.github.io": {
       "name": "brillout.github.io",
@@ -4737,6 +4926,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 1
+      },
+      "languages": {
+        "HTML": 19
       }
     },
     "brillout/check-deps": {
@@ -4777,6 +4969,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 4
+      },
+      "languages": {
+        "JavaScript": 3866
       }
     },
     "brillout/clean-sentence": {
@@ -4817,6 +5012,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 12
+      },
+      "languages": {
+        "JavaScript": 2723
       }
     },
     "brillout/demo-website": {
@@ -4851,6 +5049,11 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 10
+      },
+      "languages": {
+        "JavaScript": 1744513,
+        "CSS": 919,
+        "HTML": 570
       }
     },
     "brillout/extendable-error-class": {
@@ -4893,6 +5096,9 @@
         "joshkel": 1,
         "graingert": 2,
         "brillout": 6
+      },
+      "languages": {
+        "JavaScript": 433
       }
     },
     "brillout/fetch": {
@@ -4927,6 +5133,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 3
+      },
+      "languages": {
+        "JavaScript": 466
       }
     },
     "brillout/find": {
@@ -4961,6 +5170,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 10
+      },
+      "languages": {
+        "JavaScript": 6704
       }
     },
     "brillout/find-package-files": {
@@ -5001,6 +5213,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 2
+      },
+      "languages": {
+        "JavaScript": 2688
       }
     },
     "brillout/forge-sha256": {
@@ -5042,6 +5257,10 @@
       "contributors": {
         "Rosuav": 1,
         "brillout": 9
+      },
+      "languages": {
+        "JavaScript": 52437,
+        "HTML": 620
       }
     },
     "brillout/format-text": {
@@ -5076,6 +5295,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 2
+      },
+      "languages": {
+        "JavaScript": 1687
       }
     },
     "brillout/get-parent-dirname": {
@@ -5110,6 +5332,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 2
+      },
+      "languages": {
+        "JavaScript": 1239
       }
     },
     "brillout/get-user-dir": {
@@ -5144,6 +5369,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 4
+      },
+      "languages": {
+        "JavaScript": 1634
       }
     },
     "brillout/gulp-jspm": {
@@ -5189,6 +5417,10 @@
         "decherneyge": 1,
         "yelvert": 1,
         "brillout": 62
+      },
+      "languages": {
+        "JavaScript": 14353,
+        "HTML": 186
       }
     },
     "brillout/index-html": {
@@ -5229,6 +5461,10 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 22
+      },
+      "languages": {
+        "JavaScript": 8225,
+        "HTML": 94
       }
     },
     "brillout/inspect-browser-cache-duplication": {
@@ -5263,6 +5499,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 3
+      },
+      "languages": {
+        "JavaScript": 2026
       }
     },
     "brillout/jspm-plugin-audio": {
@@ -5303,6 +5542,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 1
+      },
+      "languages": {
+        "JavaScript": 304
       }
     },
     "brillout/libraries": {
@@ -5337,7 +5579,8 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 4
-      }
+      },
+      "languages": {}
     },
     "brillout/markdown-tests": {
       "name": "markdown-tests",
@@ -5371,7 +5614,8 @@
       "subscribers_count": 2,
       "contributors": {
         "brillout": 4
-      }
+      },
+      "languages": {}
     },
     "brillout/mdocs": {
       "name": "mdocs",
@@ -5411,6 +5655,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 24
+      },
+      "languages": {
+        "JavaScript": 14655
       }
     },
     "brillout/mini-assert": {
@@ -5451,6 +5698,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 7
+      },
+      "languages": {
+        "JavaScript": 2167
       }
     },
     "brillout/node-auto-cli": {
@@ -5485,6 +5735,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 5
+      },
+      "languages": {
+        "JavaScript": 7762
       }
     },
     "brillout/node-mini-log": {
@@ -5519,6 +5772,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 4
+      },
+      "languages": {
+        "JavaScript": 1377
       }
     },
     "brillout/npm-download-count": {
@@ -5559,6 +5815,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 5
+      },
+      "languages": {
+        "JavaScript": 3012
       }
     },
     "brillout/parse-uri": {
@@ -5593,6 +5852,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 3
+      },
+      "languages": {
+        "JavaScript": 1196
       }
     },
     "brillout/promise-serial": {
@@ -5634,6 +5896,9 @@
       "contributors": {
         "ibc": 1,
         "brillout": 15
+      },
+      "languages": {
+        "JavaScript": 4987
       }
     },
     "brillout/reassert": {
@@ -5674,6 +5939,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 37
+      },
+      "languages": {
+        "JavaScript": 7480
       }
     },
     "brillout/reframe-github-pages-test": {
@@ -5708,6 +5976,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 19
+      },
+      "languages": {
+        "HTML": 208
       }
     },
     "brillout/relative-to-homedir": {
@@ -5742,6 +6013,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 2
+      },
+      "languages": {
+        "JavaScript": 678
       }
     },
     "brillout/reprop": {
@@ -5776,6 +6050,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 8
+      },
+      "languages": {
+        "JavaScript": 60385
       }
     },
     "brillout/set-text-dimensions": {
@@ -5816,6 +6093,10 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 7
+      },
+      "languages": {
+        "JavaScript": 4891,
+        "HTML": 1204
       }
     },
     "brillout/test-javascript-hash-implementations": {
@@ -5850,6 +6131,11 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 20
+      },
+      "languages": {
+        "JavaScript": 1874591,
+        "HTML": 15702,
+        "Makefile": 166
       }
     },
     "brillout/trace-logs": {
@@ -5884,6 +6170,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 5
+      },
+      "languages": {
+        "JavaScript": 724
       }
     },
     "brillout/untrusted-shared-cache": {
@@ -5918,6 +6207,10 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 7
+      },
+      "languages": {
+        "JavaScript": 6047,
+        "HTML": 693
       }
     },
     "brillout/website-dependency-tree": {
@@ -5952,6 +6245,9 @@
       "subscribers_count": 1,
       "contributors": {
         "brillout": 152
+      },
+      "languages": {
+        "JavaScript": 48090
       }
     },
     "devarchy/frontend-catalogs": {
@@ -6012,7 +6308,8 @@
       "subscribers_count": 2,
       "contributors": {
         "brillout": 10
-      }
+      },
+      "languages": {}
     },
     "devarchy/website": {
       "name": "website",
@@ -6072,6 +6369,12 @@
       "subscribers_count": 5,
       "contributors": {
         "brillout": 6
+      },
+      "languages": {
+        "JavaScript": 1069240,
+        "CSS": 39121,
+        "HTML": 2796,
+        "Shell": 563
       }
     },
     "enaqx/awesome-react": {
@@ -6524,7 +6827,8 @@
         "stackptr": 1,
         "viclm": 1,
         "ICELI": 1
-      }
+      },
+      "languages": {}
     },
     "facebook/create-react-app": {
       "name": "create-react-app",
@@ -7063,6 +7367,13 @@
         "sw-yx": 1,
         "shrynx": 1,
         "carlsagan21": 1
+      },
+      "languages": {
+        "JavaScript": 2999663,
+        "Shell": 34863,
+        "HTML": 3477,
+        "AppleScript": 2214,
+        "CSS": 2174
       }
     },
     "facebook/react": {
@@ -7572,6 +7883,18 @@
         "BDav24": 1,
         "mbeaudru": 1,
         "bjrmatos": 1
+      },
+      "languages": {
+        "JavaScript": 1886437,
+        "C++": 44242,
+        "HTML": 41060,
+        "TypeScript": 19564,
+        "CoffeeScript": 15472,
+        "Shell": 5733,
+        "C": 5219,
+        "CSS": 4644,
+        "Python": 259,
+        "Makefile": 189
       }
     },
     "gHashTag/native-web-starter": {
@@ -7607,6 +7930,10 @@
       "contributors": {
         "brillout": 1,
         "gHashTag": 4
+      },
+      "languages": {
+        "JavaScript": 2919,
+        "HTML": 219
       }
     },
     "gdi2290/awesome-angular": {
@@ -7821,6 +8148,11 @@
         "zebzhao": 1,
         "lizhonghui": 1,
         "WittBulter": 1
+      },
+      "languages": {
+        "HTML": 29393,
+        "CSS": 9133,
+        "Shell": 789
       }
     },
     "gmarty/grunt-closure-compiler": {
@@ -7869,6 +8201,9 @@
         "LeZuse": 3,
         "gjersvik": 3,
         "gmarty": 33
+      },
+      "languages": {
+        "JavaScript": 5943
       }
     },
     "jnv/lists": {
@@ -7989,7 +8324,8 @@
         "koppor": 5,
         "dhamaniasad": 5,
         "jnv": 550
-      }
+      },
+      "languages": {}
     },
     "jspm/jspm-cli": {
       "name": "jspm-cli",
@@ -8108,6 +8444,11 @@
         "jackfranklin": 8,
         "crisptrutski": 56,
         "guybedford": 818
+      },
+      "languages": {
+        "JavaScript": 239643,
+        "HTML": 1434,
+        "Shell": 58
       }
     },
     "sindresorhus/awesome": {
@@ -8464,7 +8805,8 @@
         "tleb": 1,
         "vsemozhetbyt": 1,
         "jagracey": 1
-      }
+      },
+      "languages": {}
     },
     "systemjs/builder": {
       "name": "builder",
@@ -8580,6 +8922,11 @@
         "Munter": 10,
         "crisptrutski": 77,
         "guybedford": 834
+      },
+      "languages": {
+        "JavaScript": 211010,
+        "HTML": 9694,
+        "Shell": 137
       }
     },
     "theoldreader/api": {
@@ -8643,7 +8990,8 @@
         "ianzy": 1,
         "jfiorato": 5,
         "krasnoukhov": 49
-      }
+      },
+      "languages": {}
     },
     "vuejs/awesome-vue": {
       "name": "awesome-vue",
@@ -9164,7 +9512,8 @@
         "Starbix": 1,
         "dmitrykurmanov": 1,
         "rascada": 1
-      }
+      },
+      "languages": {}
     },
     "austintackaberry/ydkjs-exercises": {
       "name": "ydkjs-exercises",
@@ -9219,6 +9568,11 @@
         "kevinYCKim33": 18,
         "nikrb": 29,
         "austintackaberry": 91
+      },
+      "languages": {
+        "JavaScript": 137623,
+        "HTML": 2034,
+        "CSS": 783
       }
     },
     "Cloud-CV/EvalAI-ngx": {
@@ -9289,6 +9643,13 @@
         "Arun-Jain": 5,
         "live-wire": 7,
         "aka-jain": 8
+      },
+      "languages": {
+        "TypeScript": 31339,
+        "CSS": 28626,
+        "HTML": 23841,
+        "Shell": 4509,
+        "JavaScript": 1645
       }
     },
     "btholt/pull-requests": {
@@ -9413,6 +9774,9 @@
         "joet99": 3,
         "lucylamp": 3,
         "pawnien": 4
+      },
+      "languages": {
+        "JavaScript": 6
       }
     },
     "dataquestio/solutions": {
@@ -9471,6 +9835,10 @@
         "VikParuchuri": 12,
         "jaypeedevlin": 13,
         "srinify": 15
+      },
+      "languages": {
+        "Jupyter Notebook": 3788550,
+        "Python": 1988
       }
     },
     "hakabuk/gun_analysis": {
@@ -9505,6 +9873,9 @@
       "subscribers_count": 2,
       "contributors": {
         "hakabuk": 1
+      },
+      "languages": {
+        "Jupyter Notebook": 1978436
       }
     },
     "hakabuk/thinkStats2": {
@@ -9539,6 +9910,10 @@
       "subscribers_count": 1,
       "contributors": {
         "hakabuk": 4
+      },
+      "languages": {
+        "Jupyter Notebook": 1449708,
+        "Python": 100900
       }
     },
     "hakabuk/python-exercises-shecodes": {
@@ -9573,6 +9948,9 @@
       "subscribers_count": 1,
       "contributors": {
         "hakabuk": 9
+      },
+      "languages": {
+        "Python": 22726
       }
     },
     "hakabuk/my-first-blog": {
@@ -9607,6 +9985,11 @@
       "subscribers_count": 1,
       "contributors": {
         "hakabuk": 4
+      },
+      "languages": {
+        "Python": 6506,
+        "HTML": 1626,
+        "CSS": 827
       }
     },
     "hakabuk/speed-counting-game": {
@@ -9641,6 +10024,11 @@
       "subscribers_count": 1,
       "contributors": {
         "hakabuk": 4
+      },
+      "languages": {
+        "CSS": 2343,
+        "JavaScript": 2309,
+        "HTML": 1967
       }
     },
     "hakabuk/addition-game": {
@@ -9675,6 +10063,11 @@
       "subscribers_count": 1,
       "contributors": {
         "hakabuk": 3
+      },
+      "languages": {
+        "CSS": 2375,
+        "JavaScript": 2271,
+        "HTML": 1836
       }
     },
     "hakabuk/responsive-photo-gallery": {
@@ -9709,6 +10102,11 @@
       "subscribers_count": 1,
       "contributors": {
         "hakabuk": 2
+      },
+      "languages": {
+        "HTML": 15908,
+        "CSS": 5202,
+        "JavaScript": 850
       }
     },
     "StillGreen-san/SalienBot": {
@@ -9933,6 +10331,9 @@
         "Scrxtchy": 1,
         "StillGreen-san": 21,
         "mlomb": 30
+      },
+      "languages": {
+        "C#": 25745
       }
     },
     "h5bp/Front-end-Developer-Interview-Questions": {
@@ -10174,7 +10575,8 @@
         "kanet77": 1,
         "CheungJ": 1,
         "Youmoo": 1
-      }
+      },
+      "languages": {}
     }
   }
 }

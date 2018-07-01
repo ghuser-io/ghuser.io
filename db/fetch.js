@@ -35,6 +35,7 @@
 
     for (const repo in db.repos) {
       await fetchRepo(repo);
+      await fetchRepoLanguages(repo);
       await fetchRepoSettings(repo);
       await fetchRepoContributors(repo);
     }
@@ -148,6 +149,17 @@
         delete db.repos[repo][field];
       }
 
+      writeToDbTemp();
+    }
+
+    async function fetchRepoLanguages(repo) {
+      const ghUrl = `api.github.com/repos/${repo}/languages`;
+      const githubSpinner = ora(`Fetching ${ghUrl}...`).start();
+      const ghData = await fetch(`${urlPrefix}${ghUrl}${urlSuffix}`);
+      const ghDataJson = await ghData.json();
+      githubSpinner.succeed(`Fetched ${ghUrl}`);
+
+      db.repos[repo].languages = ghDataJson;
       writeToDbTemp();
     }
 
