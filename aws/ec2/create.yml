@@ -1,0 +1,17 @@
+---
+# This playbook deploys a new EC2 instance
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: Create EC2 instance
+      ec2:
+        key_name: ghuser
+        region: us-east-1
+        vpc_subnet_id: subnet-b68a16c0
+        image: ami-ea86d895 # Ubuntu 16.04 instance-store
+        instance_type: t2.nano
+        wait: true
+        instance_tags:
+          Name: "ghuser"
