@@ -251,7 +251,8 @@
           totalContribs += db.repos[repo].contributors[contributor];
         }
 
-        score.percentage = 100 * db.repos[repo].contributors[user] / totalContribs;
+        score.percentage = db.repos[repo].contributors[user] &&
+                           100 * db.repos[repo].contributors[user] / totalContribs || 0;
         score.maturity = logarithmicScoreAscending(40, 10000, totalContribs);
         score.total_commits_count = totalContribs;
 
