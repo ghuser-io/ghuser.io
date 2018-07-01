@@ -1408,10 +1408,22 @@
         "AurelienLourot": 142
       },
       "languages": {
-        "HTML": 26426,
-        "CSS": 1635,
-        "Shell": 1596,
-        "JavaScript": 436
+        "HTML": {
+          "bytes": 26426,
+          "color": "#e34c26"
+        },
+        "CSS": {
+          "bytes": 1635,
+          "color": "#563d7c"
+        },
+        "Shell": {
+          "bytes": 1596,
+          "color": "#89e051"
+        },
+        "JavaScript": {
+          "bytes": 436,
+          "color": "#f1e05a"
+        }
       }
     },
     "AurelienLourot/crouton-articles": {
@@ -1496,7 +1508,10 @@
         "AurelienLourot": 6
       },
       "languages": {
-        "Emacs Lisp": 1242
+        "Emacs Lisp": {
+          "bytes": 1242,
+          "color": "#c065db"
+        }
       }
     },
     "AurelienLourot/fork-me-on-gitlab": {
@@ -1539,7 +1554,10 @@
         "AurelienLourot": 17
       },
       "languages": {
-        "HTML": 5151
+        "HTML": {
+          "bytes": 5151,
+          "color": "#e34c26"
+        }
       }
     },
     "AurelienLourot/ghuser.io": {
@@ -1586,10 +1604,22 @@
         "avatar_url": "https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo_square.png"
       },
       "languages": {
-        "JavaScript": 31769,
-        "CSS": 3285,
-        "Shell": 2333,
-        "HTML": 765
+        "JavaScript": {
+          "bytes": 32221,
+          "color": "#f1e05a"
+        },
+        "CSS": {
+          "bytes": 3285,
+          "color": "#563d7c"
+        },
+        "Shell": {
+          "bytes": 2333,
+          "color": "#89e051"
+        },
+        "HTML": {
+          "bytes": 765,
+          "color": "#e34c26"
+        }
       }
     },
     "AurelienLourot/github-commit-watcher": {
@@ -1633,8 +1663,14 @@
         "AurelienLourot": 97
       },
       "languages": {
-        "Python": 33761,
-        "Shell": 1626
+        "Python": {
+          "bytes": 33761,
+          "color": "#3572A5"
+        },
+        "Shell": {
+          "bytes": 1626,
+          "color": "#89e051"
+        }
       }
     },
     "AurelienLourot/github-contribs": {
@@ -1677,7 +1713,10 @@
         "AurelienLourot": 48
       },
       "languages": {
-        "JavaScript": 9759
+        "JavaScript": {
+          "bytes": 9759,
+          "color": "#f1e05a"
+        }
       }
     },
     "AurelienLourot/google-input-tools-large-keyboard": {
@@ -1720,9 +1759,18 @@
         "AurelienLourot": 19
       },
       "languages": {
-        "JavaScript": 425,
-        "HTML": 404,
-        "CSS": 373
+        "JavaScript": {
+          "bytes": 425,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 404,
+          "color": "#e34c26"
+        },
+        "CSS": {
+          "bytes": 373,
+          "color": "#563d7c"
+        }
       }
     },
     "AurelienLourot/iqa-hello-world": {
@@ -1765,8 +1813,14 @@
         "AurelienLourot": 2
       },
       "languages": {
-        "C++": 705,
-        "Shell": 569
+        "C++": {
+          "bytes": 705,
+          "color": "#f34b7d"
+        },
+        "Shell": {
+          "bytes": 569,
+          "color": "#89e051"
+        }
       }
     },
     "AurelienLourot/lsankidb": {
@@ -1809,8 +1863,14 @@
         "AurelienLourot": 38
       },
       "languages": {
-        "Python": 9645,
-        "Shell": 124
+        "Python": {
+          "bytes": 9645,
+          "color": "#3572A5"
+        },
+        "Shell": {
+          "bytes": 124,
+          "color": "#89e051"
+        }
       }
     },
     "AurelienLourot/my-ansible-setup": {
@@ -1853,11 +1913,26 @@
         "AurelienLourot": 220
       },
       "languages": {
-        "Shell": 6705,
-        "Python": 3788,
-        "Lua": 482,
-        "Scheme": 236,
-        "Vim script": 33
+        "Shell": {
+          "bytes": 6705,
+          "color": "#89e051"
+        },
+        "Python": {
+          "bytes": 3788,
+          "color": "#3572A5"
+        },
+        "Lua": {
+          "bytes": 482,
+          "color": "#000080"
+        },
+        "Scheme": {
+          "bytes": 236,
+          "color": "#1e4aec"
+        },
+        "Vim script": {
+          "bytes": 33,
+          "color": "#199f4b"
+        }
       }
     },
     "AurelienLourot/my-emacs-config": {
@@ -1900,8 +1975,14 @@
         "AurelienLourot": 19
       },
       "languages": {
-        "Emacs Lisp": 16840,
-        "Shell": 466
+        "Emacs Lisp": {
+          "bytes": 16840,
+          "color": "#c065db"
+        },
+        "Shell": {
+          "bytes": 466,
+          "color": "#89e051"
+        }
       }
     },
     "AurelienLourot/mybeir.ut": {
@@ -1944,10 +2025,22 @@
         "AurelienLourot": 505
       },
       "languages": {
-        "HTML": 21979,
-        "JavaScript": 10430,
-        "CSS": 5086,
-        "Shell": 1649
+        "HTML": {
+          "bytes": 21979,
+          "color": "#e34c26"
+        },
+        "JavaScript": {
+          "bytes": 10430,
+          "color": "#f1e05a"
+        },
+        "CSS": {
+          "bytes": 5086,
+          "color": "#563d7c"
+        },
+        "Shell": {
+          "bytes": 1649,
+          "color": "#89e051"
+        }
       }
     },
     "AurelienLourot/myberl.in": {
@@ -1990,10 +2083,22 @@
         "AurelienLourot": 384
       },
       "languages": {
-        "HTML": 22436,
-        "JavaScript": 10423,
-        "CSS": 5086,
-        "Shell": 1801
+        "HTML": {
+          "bytes": 22436,
+          "color": "#e34c26"
+        },
+        "JavaScript": {
+          "bytes": 10423,
+          "color": "#f1e05a"
+        },
+        "CSS": {
+          "bytes": 5086,
+          "color": "#563d7c"
+        },
+        "Shell": {
+          "bytes": 1801,
+          "color": "#89e051"
+        }
       }
     },
     "AurelienLourot/reframe-on-up": {
@@ -2036,9 +2141,18 @@
         "AurelienLourot": 47
       },
       "languages": {
-        "JavaScript": 11528,
-        "CSS": 690,
-        "HTML": 460
+        "JavaScript": {
+          "bytes": 11528,
+          "color": "#f1e05a"
+        },
+        "CSS": {
+          "bytes": 690,
+          "color": "#563d7c"
+        },
+        "HTML": {
+          "bytes": 460,
+          "color": "#e34c26"
+        }
       }
     },
     "RichardLitt/low-resource-languages": {
@@ -2097,8 +2211,14 @@
         "RichardLitt": 249
       },
       "languages": {
-        "TeX": 30077,
-        "Shell": 433
+        "TeX": {
+          "bytes": 30077,
+          "color": "#3D6117"
+        },
+        "Shell": {
+          "bytes": 433,
+          "color": "#89e051"
+        }
       }
     },
     "brandon-rhodes/uncommitted": {
@@ -2148,7 +2268,10 @@
         "brandon-rhodes": 50
       },
       "languages": {
-        "Python": 32728
+        "Python": {
+          "bytes": 32728,
+          "color": "#3572A5"
+        }
       }
     },
     "brillout/timerlog": {
@@ -2192,7 +2315,10 @@
         "brillout": 26
       },
       "languages": {
-        "JavaScript": 10445
+        "JavaScript": {
+          "bytes": 10445,
+          "color": "#f1e05a"
+        }
       }
     },
     "dnschneid/crouton": {
@@ -2294,15 +2420,42 @@
         "dnschneid": 783
       },
       "languages": {
-        "Shell": 391585,
-        "C": 87247,
-        "C++": 48759,
-        "JavaScript": 39012,
-        "HTML": 7685,
-        "Makefile": 3967,
-        "Scheme": 1191,
-        "Python": 584,
-        "sed": 243
+        "Shell": {
+          "bytes": 391585,
+          "color": "#89e051"
+        },
+        "C": {
+          "bytes": 87247,
+          "color": "#555555"
+        },
+        "C++": {
+          "bytes": 48759,
+          "color": "#f34b7d"
+        },
+        "JavaScript": {
+          "bytes": 39012,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 7685,
+          "color": "#e34c26"
+        },
+        "Makefile": {
+          "bytes": 3967,
+          "color": "#427819"
+        },
+        "Scheme": {
+          "bytes": 1191,
+          "color": "#1e4aec"
+        },
+        "Python": {
+          "bytes": 584,
+          "color": "#3572A5"
+        },
+        "sed": {
+          "bytes": 243,
+          "color": "#64b970"
+        }
       }
     },
     "dracula/fb-messenger": {
@@ -2367,8 +2520,14 @@
         "ppartarr": 12
       },
       "languages": {
-        "CSS": 17865,
-        "JavaScript": 1964
+        "CSS": {
+          "bytes": 17865,
+          "color": "#563d7c"
+        },
+        "JavaScript": {
+          "bytes": 1964,
+          "color": "#f1e05a"
+        }
       }
     },
     "dracula/gitk": {
@@ -2558,9 +2717,18 @@
         "gusbemacbe": 30
       },
       "languages": {
-        "JavaScript": 366014,
-        "HTML": 17120,
-        "CSS": 10735
+        "JavaScript": {
+          "bytes": 366014,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 17120,
+          "color": "#e34c26"
+        },
+        "CSS": {
+          "bytes": 10735,
+          "color": "#563d7c"
+        }
       }
     },
     "dracula/termite": {
@@ -2686,8 +2854,14 @@
         "oguhpereira": 9
       },
       "languages": {
-        "CSS": 11523,
-        "PHP": 1541
+        "CSS": {
+          "bytes": 11523,
+          "color": "#563d7c"
+        },
+        "PHP": {
+          "bytes": 1541,
+          "color": "#4F5D95"
+        }
       }
     },
     "jfrog/artifactory-user-plugins": {
@@ -2794,8 +2968,14 @@
         "DarthFennec": 262
       },
       "languages": {
-        "Groovy": 1106538,
-        "Java": 28405
+        "Groovy": {
+          "bytes": 1106538,
+          "color": "#e69f56"
+        },
+        "Java": {
+          "bytes": 28405,
+          "color": "#b07219"
+        }
       }
     },
     "jfrog/build-info": {
@@ -2884,9 +3064,18 @@
         "eyalbe4": 110
       },
       "languages": {
-        "Java": 1073412,
-        "Groovy": 49920,
-        "HTML": 1346
+        "Java": {
+          "bytes": 1073412,
+          "color": "#b07219"
+        },
+        "Groovy": {
+          "bytes": 49920,
+          "color": "#e69f56"
+        },
+        "HTML": {
+          "bytes": 1346,
+          "color": "#e34c26"
+        }
       }
     },
     "jordansissel/xdotool": {
@@ -2953,10 +3142,22 @@
         "jordansissel": 477
       },
       "languages": {
-        "C": 235317,
-        "Ruby": 43629,
-        "Makefile": 10597,
-        "Shell": 7031
+        "C": {
+          "bytes": 235317,
+          "color": "#555555"
+        },
+        "Ruby": {
+          "bytes": 43629,
+          "color": "#701516"
+        },
+        "Makefile": {
+          "bytes": 10597,
+          "color": "#427819"
+        },
+        "Shell": {
+          "bytes": 7031,
+          "color": "#89e051"
+        }
       }
     },
     "ppartarr/dracula-messenger": {
@@ -3001,8 +3202,14 @@
         "ppartarr": 12
       },
       "languages": {
-        "CSS": 17865,
-        "JavaScript": 1969
+        "CSS": {
+          "bytes": 17865,
+          "color": "#563d7c"
+        },
+        "JavaScript": {
+          "bytes": 1969,
+          "color": "#f1e05a"
+        }
       }
     },
     "quizl/backend": {
@@ -3065,8 +3272,14 @@
         "AurelienLourot": 10
       },
       "languages": {
-        "Python": 1420,
-        "HTML": 841
+        "Python": {
+          "bytes": 1420,
+          "color": "#3572A5"
+        },
+        "HTML": {
+          "bytes": 841,
+          "color": "#e34c26"
+        }
       }
     },
     "quizl/quizler": {
@@ -3130,8 +3343,14 @@
         "lancelote": 56
       },
       "languages": {
-        "Python": 33105,
-        "Makefile": 1495
+        "Python": {
+          "bytes": 33105,
+          "color": "#3572A5"
+        },
+        "Makefile": {
+          "bytes": 1495,
+          "color": "#427819"
+        }
       }
     },
     "reframejs/reframe": {
@@ -3196,10 +3415,22 @@
         "brillout": 1768
       },
       "languages": {
-        "JavaScript": 272281,
-        "CSS": 948,
-        "HTML": 460,
-        "TypeScript": 330
+        "JavaScript": {
+          "bytes": 272281,
+          "color": "#f1e05a"
+        },
+        "CSS": {
+          "bytes": 948,
+          "color": "#563d7c"
+        },
+        "HTML": {
+          "bytes": 460,
+          "color": "#e34c26"
+        },
+        "TypeScript": {
+          "bytes": 330,
+          "color": "#2b7489"
+        }
       }
     },
     "tianshanghong/awesome-anki": {
@@ -3512,11 +3743,26 @@
         "nlalevee": 98
       },
       "languages": {
-        "Java": 1647640,
-        "HTML": 71858,
-        "XSLT": 28774,
-        "Ruby": 6313,
-        "CSS": 3813
+        "Java": {
+          "bytes": 1647640,
+          "color": "#b07219"
+        },
+        "HTML": {
+          "bytes": 71858,
+          "color": "#e34c26"
+        },
+        "XSLT": {
+          "bytes": 28774,
+          "color": "#EB8CEB"
+        },
+        "Ruby": {
+          "bytes": 6313,
+          "color": "#701516"
+        },
+        "CSS": {
+          "bytes": 3813,
+          "color": "#563d7c"
+        }
       }
     },
     "tt-gf/artifactory-client-java-example": {
@@ -3579,7 +3825,10 @@
         "AurelienLourot": 4
       },
       "languages": {
-        "Java": 1379
+        "Java": {
+          "bytes": 1379,
+          "color": "#b07219"
+        }
       }
     },
     "tt-gf/ivy-dependency-parser": {
@@ -3642,7 +3891,10 @@
         "AurelienLourot": 16
       },
       "languages": {
-        "Python": 4422
+        "Python": {
+          "bytes": 4422,
+          "color": "#3572A5"
+        }
       }
     },
     "tt-gf/quickbuild-plugins": {
@@ -3706,7 +3958,10 @@
         "martinm82": 7
       },
       "languages": {
-        "Java": 6471
+        "Java": {
+          "bytes": 6471,
+          "color": "#b07219"
+        }
       }
     },
     "JoshSimon/my_homepage": {
@@ -3744,9 +3999,18 @@
         "JoshSimon": 10
       },
       "languages": {
-        "JavaScript": 13324,
-        "HTML": 1517,
-        "CSS": 1442
+        "JavaScript": {
+          "bytes": 13324,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 1517,
+          "color": "#e34c26"
+        },
+        "CSS": {
+          "bytes": 1442,
+          "color": "#563d7c"
+        }
       }
     },
     "KIWIKIGMBH/frontend-kiwilib": {
@@ -3809,7 +4073,10 @@
         "brillout": 24
       },
       "languages": {
-        "JavaScript": 49559
+        "JavaScript": {
+          "bytes": 49559,
+          "color": "#f1e05a"
+        }
       }
     },
     "Thermondo/closeio": {
@@ -3883,8 +4150,14 @@
         "pyup-bot": 53
       },
       "languages": {
-        "Python": 61571,
-        "Makefile": 1270
+        "Python": {
+          "bytes": 61571,
+          "color": "#3572A5"
+        },
+        "Makefile": {
+          "bytes": 1270,
+          "color": "#427819"
+        }
       }
     },
     "YuzuJS/setImmediate": {
@@ -3956,8 +4229,14 @@
         "domenic": 73
       },
       "languages": {
-        "JavaScript": 10906,
-        "HTML": 892
+        "JavaScript": {
+          "bytes": 10906,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 892,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout-misc/game-of-thrones": {
@@ -3994,7 +4273,10 @@
         "brillout": 13
       },
       "languages": {
-        "HTML": 2324
+        "HTML": {
+          "bytes": 2324,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout-test/brillcdn": {
@@ -4031,7 +4313,10 @@
         "brillout": 1
       },
       "languages": {
-        "HTML": 183
+        "HTML": {
+          "bytes": 183,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout-test/brillout": {
@@ -4068,7 +4353,10 @@
         "brillout": 2
       },
       "languages": {
-        "HTML": 3013
+        "HTML": {
+          "bytes": 3013,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout-test/reframe-test": {
@@ -4928,7 +5216,10 @@
         "brillout": 1
       },
       "languages": {
-        "HTML": 19
+        "HTML": {
+          "bytes": 19,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout/check-deps": {
@@ -4971,7 +5262,10 @@
         "brillout": 4
       },
       "languages": {
-        "JavaScript": 3866
+        "JavaScript": {
+          "bytes": 3866,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/clean-sentence": {
@@ -5014,7 +5308,10 @@
         "brillout": 12
       },
       "languages": {
-        "JavaScript": 2723
+        "JavaScript": {
+          "bytes": 2723,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/demo-website": {
@@ -5051,9 +5348,18 @@
         "brillout": 10
       },
       "languages": {
-        "JavaScript": 1744513,
-        "CSS": 919,
-        "HTML": 570
+        "JavaScript": {
+          "bytes": 1744513,
+          "color": "#f1e05a"
+        },
+        "CSS": {
+          "bytes": 919,
+          "color": "#563d7c"
+        },
+        "HTML": {
+          "bytes": 570,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout/extendable-error-class": {
@@ -5098,7 +5404,10 @@
         "brillout": 6
       },
       "languages": {
-        "JavaScript": 433
+        "JavaScript": {
+          "bytes": 433,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/fetch": {
@@ -5135,7 +5444,10 @@
         "brillout": 3
       },
       "languages": {
-        "JavaScript": 466
+        "JavaScript": {
+          "bytes": 466,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/find": {
@@ -5172,7 +5484,10 @@
         "brillout": 10
       },
       "languages": {
-        "JavaScript": 6704
+        "JavaScript": {
+          "bytes": 6704,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/find-package-files": {
@@ -5215,7 +5530,10 @@
         "brillout": 2
       },
       "languages": {
-        "JavaScript": 2688
+        "JavaScript": {
+          "bytes": 2688,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/forge-sha256": {
@@ -5259,8 +5577,14 @@
         "brillout": 9
       },
       "languages": {
-        "JavaScript": 52437,
-        "HTML": 620
+        "JavaScript": {
+          "bytes": 52437,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 620,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout/format-text": {
@@ -5297,7 +5621,10 @@
         "brillout": 2
       },
       "languages": {
-        "JavaScript": 1687
+        "JavaScript": {
+          "bytes": 1687,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/get-parent-dirname": {
@@ -5334,7 +5661,10 @@
         "brillout": 2
       },
       "languages": {
-        "JavaScript": 1239
+        "JavaScript": {
+          "bytes": 1239,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/get-user-dir": {
@@ -5371,7 +5701,10 @@
         "brillout": 4
       },
       "languages": {
-        "JavaScript": 1634
+        "JavaScript": {
+          "bytes": 1634,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/gulp-jspm": {
@@ -5419,8 +5752,14 @@
         "brillout": 62
       },
       "languages": {
-        "JavaScript": 14353,
-        "HTML": 186
+        "JavaScript": {
+          "bytes": 14353,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 186,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout/index-html": {
@@ -5463,8 +5802,14 @@
         "brillout": 22
       },
       "languages": {
-        "JavaScript": 8225,
-        "HTML": 94
+        "JavaScript": {
+          "bytes": 8225,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 94,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout/inspect-browser-cache-duplication": {
@@ -5501,7 +5846,10 @@
         "brillout": 3
       },
       "languages": {
-        "JavaScript": 2026
+        "JavaScript": {
+          "bytes": 2026,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/jspm-plugin-audio": {
@@ -5544,7 +5892,10 @@
         "brillout": 1
       },
       "languages": {
-        "JavaScript": 304
+        "JavaScript": {
+          "bytes": 304,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/libraries": {
@@ -5657,7 +6008,10 @@
         "brillout": 24
       },
       "languages": {
-        "JavaScript": 14655
+        "JavaScript": {
+          "bytes": 14655,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/mini-assert": {
@@ -5700,7 +6054,10 @@
         "brillout": 7
       },
       "languages": {
-        "JavaScript": 2167
+        "JavaScript": {
+          "bytes": 2167,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/node-auto-cli": {
@@ -5737,7 +6094,10 @@
         "brillout": 5
       },
       "languages": {
-        "JavaScript": 7762
+        "JavaScript": {
+          "bytes": 7762,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/node-mini-log": {
@@ -5774,7 +6134,10 @@
         "brillout": 4
       },
       "languages": {
-        "JavaScript": 1377
+        "JavaScript": {
+          "bytes": 1377,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/npm-download-count": {
@@ -5817,7 +6180,10 @@
         "brillout": 5
       },
       "languages": {
-        "JavaScript": 3012
+        "JavaScript": {
+          "bytes": 3012,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/parse-uri": {
@@ -5854,7 +6220,10 @@
         "brillout": 3
       },
       "languages": {
-        "JavaScript": 1196
+        "JavaScript": {
+          "bytes": 1196,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/promise-serial": {
@@ -5898,7 +6267,10 @@
         "brillout": 15
       },
       "languages": {
-        "JavaScript": 4987
+        "JavaScript": {
+          "bytes": 4987,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/reassert": {
@@ -5941,7 +6313,10 @@
         "brillout": 37
       },
       "languages": {
-        "JavaScript": 7480
+        "JavaScript": {
+          "bytes": 7480,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/reframe-github-pages-test": {
@@ -5978,7 +6353,10 @@
         "brillout": 19
       },
       "languages": {
-        "HTML": 208
+        "HTML": {
+          "bytes": 208,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout/relative-to-homedir": {
@@ -6015,7 +6393,10 @@
         "brillout": 2
       },
       "languages": {
-        "JavaScript": 678
+        "JavaScript": {
+          "bytes": 678,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/reprop": {
@@ -6052,7 +6433,10 @@
         "brillout": 8
       },
       "languages": {
-        "JavaScript": 60385
+        "JavaScript": {
+          "bytes": 60385,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/set-text-dimensions": {
@@ -6095,8 +6479,14 @@
         "brillout": 7
       },
       "languages": {
-        "JavaScript": 4891,
-        "HTML": 1204
+        "JavaScript": {
+          "bytes": 4891,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 1204,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout/test-javascript-hash-implementations": {
@@ -6133,9 +6523,18 @@
         "brillout": 20
       },
       "languages": {
-        "JavaScript": 1874591,
-        "HTML": 15702,
-        "Makefile": 166
+        "JavaScript": {
+          "bytes": 1874591,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 15702,
+          "color": "#e34c26"
+        },
+        "Makefile": {
+          "bytes": 166,
+          "color": "#427819"
+        }
       }
     },
     "brillout/trace-logs": {
@@ -6172,7 +6571,10 @@
         "brillout": 5
       },
       "languages": {
-        "JavaScript": 724
+        "JavaScript": {
+          "bytes": 724,
+          "color": "#f1e05a"
+        }
       }
     },
     "brillout/untrusted-shared-cache": {
@@ -6209,8 +6611,14 @@
         "brillout": 7
       },
       "languages": {
-        "JavaScript": 6047,
-        "HTML": 693
+        "JavaScript": {
+          "bytes": 6047,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 693,
+          "color": "#e34c26"
+        }
       }
     },
     "brillout/website-dependency-tree": {
@@ -6247,7 +6655,10 @@
         "brillout": 152
       },
       "languages": {
-        "JavaScript": 48090
+        "JavaScript": {
+          "bytes": 48090,
+          "color": "#f1e05a"
+        }
       }
     },
     "devarchy/frontend-catalogs": {
@@ -6371,10 +6782,22 @@
         "brillout": 6
       },
       "languages": {
-        "JavaScript": 1069240,
-        "CSS": 39121,
-        "HTML": 2796,
-        "Shell": 563
+        "JavaScript": {
+          "bytes": 1069240,
+          "color": "#f1e05a"
+        },
+        "CSS": {
+          "bytes": 39121,
+          "color": "#563d7c"
+        },
+        "HTML": {
+          "bytes": 2796,
+          "color": "#e34c26"
+        },
+        "Shell": {
+          "bytes": 563,
+          "color": "#89e051"
+        }
       }
     },
     "enaqx/awesome-react": {
@@ -7369,11 +7792,26 @@
         "carlsagan21": 1
       },
       "languages": {
-        "JavaScript": 2999663,
-        "Shell": 34863,
-        "HTML": 3477,
-        "AppleScript": 2214,
-        "CSS": 2174
+        "JavaScript": {
+          "bytes": 2999663,
+          "color": "#f1e05a"
+        },
+        "Shell": {
+          "bytes": 34863,
+          "color": "#89e051"
+        },
+        "HTML": {
+          "bytes": 3477,
+          "color": "#e34c26"
+        },
+        "AppleScript": {
+          "bytes": 2214,
+          "color": "#101F1F"
+        },
+        "CSS": {
+          "bytes": 2174,
+          "color": "#563d7c"
+        }
       }
     },
     "facebook/react": {
@@ -7885,16 +8323,46 @@
         "bjrmatos": 1
       },
       "languages": {
-        "JavaScript": 1886437,
-        "C++": 44242,
-        "HTML": 41060,
-        "TypeScript": 19564,
-        "CoffeeScript": 15472,
-        "Shell": 5733,
-        "C": 5219,
-        "CSS": 4644,
-        "Python": 259,
-        "Makefile": 189
+        "JavaScript": {
+          "bytes": 1886437,
+          "color": "#f1e05a"
+        },
+        "C++": {
+          "bytes": 44242,
+          "color": "#f34b7d"
+        },
+        "HTML": {
+          "bytes": 41060,
+          "color": "#e34c26"
+        },
+        "TypeScript": {
+          "bytes": 19564,
+          "color": "#2b7489"
+        },
+        "CoffeeScript": {
+          "bytes": 15472,
+          "color": "#244776"
+        },
+        "Shell": {
+          "bytes": 5733,
+          "color": "#89e051"
+        },
+        "C": {
+          "bytes": 5219,
+          "color": "#555555"
+        },
+        "CSS": {
+          "bytes": 4644,
+          "color": "#563d7c"
+        },
+        "Python": {
+          "bytes": 259,
+          "color": "#3572A5"
+        },
+        "Makefile": {
+          "bytes": 189,
+          "color": "#427819"
+        }
       }
     },
     "gHashTag/native-web-starter": {
@@ -7932,8 +8400,14 @@
         "gHashTag": 4
       },
       "languages": {
-        "JavaScript": 2919,
-        "HTML": 219
+        "JavaScript": {
+          "bytes": 2919,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 219,
+          "color": "#e34c26"
+        }
       }
     },
     "gdi2290/awesome-angular": {
@@ -8150,9 +8624,18 @@
         "WittBulter": 1
       },
       "languages": {
-        "HTML": 29393,
-        "CSS": 9133,
-        "Shell": 789
+        "HTML": {
+          "bytes": 29393,
+          "color": "#e34c26"
+        },
+        "CSS": {
+          "bytes": 9133,
+          "color": "#563d7c"
+        },
+        "Shell": {
+          "bytes": 789,
+          "color": "#89e051"
+        }
       }
     },
     "gmarty/grunt-closure-compiler": {
@@ -8203,7 +8686,10 @@
         "gmarty": 33
       },
       "languages": {
-        "JavaScript": 5943
+        "JavaScript": {
+          "bytes": 5943,
+          "color": "#f1e05a"
+        }
       }
     },
     "jnv/lists": {
@@ -8446,9 +8932,18 @@
         "guybedford": 818
       },
       "languages": {
-        "JavaScript": 239643,
-        "HTML": 1434,
-        "Shell": 58
+        "JavaScript": {
+          "bytes": 239643,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 1434,
+          "color": "#e34c26"
+        },
+        "Shell": {
+          "bytes": 58,
+          "color": "#89e051"
+        }
       }
     },
     "sindresorhus/awesome": {
@@ -8924,9 +9419,18 @@
         "guybedford": 834
       },
       "languages": {
-        "JavaScript": 211010,
-        "HTML": 9694,
-        "Shell": 137
+        "JavaScript": {
+          "bytes": 211010,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 9694,
+          "color": "#e34c26"
+        },
+        "Shell": {
+          "bytes": 137,
+          "color": "#89e051"
+        }
       }
     },
     "theoldreader/api": {
@@ -9570,9 +10074,18 @@
         "austintackaberry": 91
       },
       "languages": {
-        "JavaScript": 137623,
-        "HTML": 2034,
-        "CSS": 783
+        "JavaScript": {
+          "bytes": 137623,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 2034,
+          "color": "#e34c26"
+        },
+        "CSS": {
+          "bytes": 783,
+          "color": "#563d7c"
+        }
       }
     },
     "Cloud-CV/EvalAI-ngx": {
@@ -9645,11 +10158,26 @@
         "aka-jain": 8
       },
       "languages": {
-        "TypeScript": 31339,
-        "CSS": 28626,
-        "HTML": 23841,
-        "Shell": 4509,
-        "JavaScript": 1645
+        "TypeScript": {
+          "bytes": 31339,
+          "color": "#2b7489"
+        },
+        "CSS": {
+          "bytes": 28626,
+          "color": "#563d7c"
+        },
+        "HTML": {
+          "bytes": 23841,
+          "color": "#e34c26"
+        },
+        "Shell": {
+          "bytes": 4509,
+          "color": "#89e051"
+        },
+        "JavaScript": {
+          "bytes": 1645,
+          "color": "#f1e05a"
+        }
       }
     },
     "btholt/pull-requests": {
@@ -9776,7 +10304,10 @@
         "pawnien": 4
       },
       "languages": {
-        "JavaScript": 6
+        "JavaScript": {
+          "bytes": 6,
+          "color": "#f1e05a"
+        }
       }
     },
     "dataquestio/solutions": {
@@ -9837,8 +10368,14 @@
         "srinify": 15
       },
       "languages": {
-        "Jupyter Notebook": 3788550,
-        "Python": 1988
+        "Jupyter Notebook": {
+          "bytes": 3788550,
+          "color": "#DA5B0B"
+        },
+        "Python": {
+          "bytes": 1988,
+          "color": "#3572A5"
+        }
       }
     },
     "hakabuk/gun_analysis": {
@@ -9875,7 +10412,10 @@
         "hakabuk": 1
       },
       "languages": {
-        "Jupyter Notebook": 1978436
+        "Jupyter Notebook": {
+          "bytes": 1978436,
+          "color": "#DA5B0B"
+        }
       }
     },
     "hakabuk/thinkStats2": {
@@ -9912,8 +10452,14 @@
         "hakabuk": 4
       },
       "languages": {
-        "Jupyter Notebook": 1449708,
-        "Python": 100900
+        "Jupyter Notebook": {
+          "bytes": 1449708,
+          "color": "#DA5B0B"
+        },
+        "Python": {
+          "bytes": 100900,
+          "color": "#3572A5"
+        }
       }
     },
     "hakabuk/python-exercises-shecodes": {
@@ -9950,7 +10496,10 @@
         "hakabuk": 9
       },
       "languages": {
-        "Python": 22726
+        "Python": {
+          "bytes": 22726,
+          "color": "#3572A5"
+        }
       }
     },
     "hakabuk/my-first-blog": {
@@ -9987,9 +10536,18 @@
         "hakabuk": 4
       },
       "languages": {
-        "Python": 6506,
-        "HTML": 1626,
-        "CSS": 827
+        "Python": {
+          "bytes": 6506,
+          "color": "#3572A5"
+        },
+        "HTML": {
+          "bytes": 1626,
+          "color": "#e34c26"
+        },
+        "CSS": {
+          "bytes": 827,
+          "color": "#563d7c"
+        }
       }
     },
     "hakabuk/speed-counting-game": {
@@ -10026,9 +10584,18 @@
         "hakabuk": 4
       },
       "languages": {
-        "CSS": 2343,
-        "JavaScript": 2309,
-        "HTML": 1967
+        "CSS": {
+          "bytes": 2343,
+          "color": "#563d7c"
+        },
+        "JavaScript": {
+          "bytes": 2309,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 1967,
+          "color": "#e34c26"
+        }
       }
     },
     "hakabuk/addition-game": {
@@ -10065,9 +10632,18 @@
         "hakabuk": 3
       },
       "languages": {
-        "CSS": 2375,
-        "JavaScript": 2271,
-        "HTML": 1836
+        "CSS": {
+          "bytes": 2375,
+          "color": "#563d7c"
+        },
+        "JavaScript": {
+          "bytes": 2271,
+          "color": "#f1e05a"
+        },
+        "HTML": {
+          "bytes": 1836,
+          "color": "#e34c26"
+        }
       }
     },
     "hakabuk/responsive-photo-gallery": {
@@ -10104,9 +10680,18 @@
         "hakabuk": 2
       },
       "languages": {
-        "HTML": 15908,
-        "CSS": 5202,
-        "JavaScript": 850
+        "HTML": {
+          "bytes": 15908,
+          "color": "#e34c26"
+        },
+        "CSS": {
+          "bytes": 5202,
+          "color": "#563d7c"
+        },
+        "JavaScript": {
+          "bytes": 850,
+          "color": "#f1e05a"
+        }
       }
     },
     "StillGreen-san/SalienBot": {
@@ -10333,7 +10918,10 @@
         "mlomb": 30
       },
       "languages": {
-        "C#": 25745
+        "C#": {
+          "bytes": 25745,
+          "color": "#178600"
+        }
       }
     },
     "h5bp/Front-end-Developer-Interview-Questions": {

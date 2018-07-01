@@ -5,6 +5,7 @@
 
   const fetch = require('fetch-retry');
   const fs = require('fs');
+  const githubColors = require('github-colors');
   const githubContribs = require('@ghuser/github-contribs');
   const ora = require('ora');
 
@@ -158,6 +159,13 @@
       const ghData = await fetch(`${urlPrefix}${ghUrl}${urlSuffix}`);
       const ghDataJson = await ghData.json();
       githubSpinner.succeed(`Fetched ${ghUrl}`);
+
+      for (let language in ghDataJson) {
+        ghDataJson[language] = {
+          bytes: ghDataJson[language],
+          color: githubColors.get(language, true).color
+        };
+      }
 
       db.repos[repo].languages = ghDataJson;
       writeToDbTemp();
