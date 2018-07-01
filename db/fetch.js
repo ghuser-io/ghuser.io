@@ -12,7 +12,13 @@
   const dbPath = './db.json';
   const db = require(dbPath);
 
+  process.on('unhandledRejection', (e, p) => { // https://stackoverflow.com/a/44752070/1855917
+    console.error(p);
+    throw e;
+  });
+
   await fetchUsers();
+  return;
 
   async function fetchUsers() {
     let urlSuffix = '';
@@ -27,6 +33,7 @@
     }
 
     const now = new Date;
+    let spinner;
 
     for (const userId in db.users) {
       await fetchUser(userId);
@@ -57,10 +64,9 @@
     async function fetchUser(userId) {
       const userLogin = db.users[userId].login;
       const ghUserUrl = `api.github.com/users/${userLogin}`;
-      const githubSpinner = ora(`Fetching ${ghUserUrl}...`).start();
-      const ghData = await fetch(`${urlPrefix}${ghUserUrl}${urlSuffix}`);
-      const ghDataJson = await ghData.json();
-      githubSpinner.succeed(`Fetched ${ghUserUrl}`);
+      spinner = ora(`Fetching ${ghUserUrl}...`).start();
+      const ghDataJson = await fetchJson(`${urlPrefix}${ghUserUrl}${urlSuffix}`);
+      spinner.succeed(`Fetched ${ghUserUrl}`);
 
       db.users[userId] = {...db.users[userId], ...ghDataJson};
       db.users[userId].contribs = db.users[userId].contribs || {
@@ -83,10 +89,9 @@
 
     async function fetchUserOrgs(userId) {
       const orgsUrl = db.users[userId].organizations_url;
-      const orgsSpinner = ora(`Fetching ${orgsUrl}...`).start();
-      const orgsData = await fetch(`${orgsUrl}${urlSuffix}`);
-      const orgsDataJson = await orgsData.json();
-      orgsSpinner.succeed(`Fetched ${orgsUrl}`);
+      spinner = ora(`Fetching ${orgsUrl}...`).start();
+      const orgsDataJson = await fetchJson(`${orgsUrl}${urlSuffix}`);
+      spinner.succeed(`Fetched ${orgsUrl}`);
 
       db.users[userId].organizations = [];
       db.orgs = db.orgs || {};
@@ -128,10 +133,9 @@
 
     async function fetchRepo(repo) {
       const ghRepoUrl = `api.github.com/repos/${repo}`;
-      const githubSpinner = ora(`Fetching ${ghRepoUrl}...`).start();
-      const ghData = await fetch(`${urlPrefix}${ghRepoUrl}${urlSuffix}`);
-      const ghDataJson = await ghData.json();
-      githubSpinner.succeed(`Fetched ${ghRepoUrl}`);
+      spinner = ora(`Fetching ${ghRepoUrl}...`).start();
+      const ghDataJson = await fetchJson(`${urlPrefix}${ghRepoUrl}${urlSuffix}`);
+      spinner.succeed(`Fetched ${ghRepoUrl}`);
 
       ghDataJson.owner = ghDataJson.owner.login;
       db.repos[repo] = {...db.repos[repo], ...ghDataJson};
@@ -157,10 +161,9 @@
 
     async function fetchRepoLanguages(repo) {
       const ghUrl = `api.github.com/repos/${repo}/languages`;
-      const githubSpinner = ora(`Fetching ${ghUrl}...`).start();
-      const ghData = await fetch(`${urlPrefix}${ghUrl}${urlSuffix}`);
-      const ghDataJson = await ghData.json();
-      githubSpinner.succeed(`Fetched ${ghUrl}`);
+      spinner = ora(`Fetching ${ghUrl}...`).start();
+      const ghDataJson = await fetchJson(`${urlPrefix}${ghUrl}${urlSuffix}`);
+      spinner.succeed(`Fetched ${ghUrl}`);
 
       for (let language in ghDataJson) {
         ghDataJson[language] = {
@@ -175,13 +178,12 @@
 
     async function fetchRepoSettings(repo) {
       const url = `https://rawgit.com/${repo}/master/.ghuser.io.json`;
-      const spinner = ora(`Fetching ${repo}'s settings...`).start();
-      const data = await fetch(`${url}`);
-      if (data.status == 404) {
-        spinner.succeed(`No settings found for ${repo}`);
+      spinner = ora(`Fetching ${repo}'s settings...`).start();
+      const dataJson = await fetchJson(url, [404]);
+      if (dataJson == 404) {
+        spinner.succeed(`${repo} has no settings`);
         return;
       }
-      const dataJson = await data.json();
       spinner.succeed(`Fetched ${repo}'s settings`);
 
       db.repos[repo].settings = dataJson;
@@ -190,7 +192,7 @@
 
     async function fetchRepoContributors(repo) {
       db.repos[repo].contributors = db.repos[repo].contributors || {};
-      const githubSpinner = ora(`Fetching ${repo}'s contributions...`).start();
+      spinner = ora(`Fetching ${repo}'s contributions...`).start();
 
       // This endpoint only gives us the 100 greatest contributors, so if it looks like there
       // can be more, we use the next endpoint to get the 500 greatest ones:
@@ -199,17 +201,15 @@
 
         let ghDataJson;
         for (let i = 3; i >= 0; --i) {
-          const ghData = await fetch(`${urlPrefix}${ghUrl}${urlSuffix}`);
-          ghDataJson = await ghData.json();
+          ghDataJson = await fetchJson(`${urlPrefix}${ghUrl}${urlSuffix}`);
 
           if (!Object.keys(ghDataJson).length) {
             // GitHub is still calculating the stats and we need to wait a bit and try again, see
             // https://developer.github.com/v3/repos/statistics/
 
-            if (!i) { // enough retries
-              const error = `Failed to fetch ${ghUrl}`;
-              githubSpinner.fail(error);
-              throw error;
+            if (!i) {
+              spinner.fail();
+              throw 'Too many retries';
             }
 
             await new Promise(resolve => setTimeout(resolve, 3000));
@@ -227,16 +227,9 @@
         const perPage = 30;
         for (let page = 1; page <= 17; ++page) {
           const ghUrl = `api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
-          const ghData = await fetch(`${urlPrefix}${ghUrl}${urlSuffix}`);
-          const ghDataJson = await ghData.json();
-          try {
-            for (const contributor of ghDataJson) {
-              db.repos[repo].contributors[contributor.login] = contributor.contributions;
-            }
-          } catch (e) {
-            githubSpinner.fail(`Failed to fetch ${repo}'s contributions`);
-            console.error(ghDataJson);
-            throw e;
+          const ghDataJson = await fetchJson(`${urlPrefix}${ghUrl}${urlSuffix}`);
+          for (const contributor of ghDataJson) {
+            db.repos[repo].contributors[contributor.login] = contributor.contributions;
           }
 
           if (ghDataJson.length < perPage) {
@@ -248,17 +241,17 @@
       if (Object.keys(db.repos[repo].contributors).length >= 500) {
         // We could use https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
         // in order to fetch more than 500 contributors.
-        githubSpinner.fail(`Failed to fetch ${repo}'s contributions`);
+        spinner.fail();
         throw 'Not implemented yet';
       }
 
-      githubSpinner.succeed(`Fetched ${repo}'s contributions`);
+      spinner.succeed(`Fetched ${repo}'s contributions`);
 
       writeToDbTemp();
     }
 
     async function fetchUserContribsOrgs(userId) {
-      const orgsSpinner = ora(
+      spinner = ora(
         `For each contribution of ${userId}, checking if the repo belongs to an org...`).start();
 
       // Get rid of all contribs to repos without stars:
@@ -286,9 +279,9 @@
             isOrg = true; // it's an org that we know already
           } else {
             // it might be an org that we don't know yet
-            const orgsData = await fetch(`${urlPrefix}api.github.com/orgs/${userOrOrg}${urlSuffix}`);
-            const orgsDataJson = await orgsData.json();
-            if (orgsDataJson.login) {
+            const orgsDataJson =
+                    await fetchJson(`${urlPrefix}api.github.com/orgs/${userOrOrg}${urlSuffix}`, [404]);
+            if (orgsDataJson != 404) {
               // it's an org that we didn't know yet
               isOrg = true;
               db.orgs[orgsDataJson.login] = filterOrgInPlace(orgsDataJson);
@@ -301,7 +294,7 @@
         }
       }
 
-      orgsSpinner.succeed(`Checked all contribution' orgs of ${userId}`);
+      spinner.succeed(`Checked all contribution' orgs of ${userId}`);
 
       writeToDbTemp();
     }
@@ -318,7 +311,7 @@
     function calculateUserContribsScores(userId) {
       const userLogin = db.users[userId].login;
 
-      const spinner = ora(`Calculating scores for ${userLogin}...`).start();
+      spinner = ora(`Calculating scores for ${userLogin}...`).start();
 
       for (const repo in db.users[userId].contribs.repos) {
         const score = db.users[userId].contribs.repos[repo];
@@ -373,6 +366,38 @@
       function logarithmicScoreDescending(valFor0, valFor5, val) {
         return 5 - logarithmicScoreAscending(valFor5, valFor0, val);
       }
+    }
+
+    async function fetchJson(url, acceptedErrorCodes=[]) {
+      // If the HTTP status code is 2xx, returns the object represented by the fetched json.
+      // Else if the HTTP status code is in acceptedErrorCodes, returns it.
+      // Else throws the HTTP status code.
+
+      const data = await fetch(url);
+      if (acceptedErrorCodes.indexOf(data.status) > -1) {
+        return data.status;
+      }
+
+      try {
+        var dataJson = await data.json();
+      } catch (e) {}
+
+      if (Math.floor(data.status / 100) != 2) {
+        spinner.fail();
+        if (dataJson) {
+          console.error(dataJson);
+        }
+        for (const envvar of ['GITHUB_CLIENT_ID', 'GITHUB_CLIENT_SECRET', 'GITHUB_USERNAME',
+                              'GITHUB_PASSWORD']) {
+          if (!process.env[envvar]) {
+            console.log(`Consider setting the environment variable ${envvar}.`);
+            break;
+          }
+        }
+        throw data.status;
+      }
+
+      return dataJson;
     }
   }
 
