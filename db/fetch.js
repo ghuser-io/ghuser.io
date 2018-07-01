@@ -28,10 +28,10 @@
 
     const now = new Date;
 
-    for (const user in db.users) {
-      await fetchUser(user);
-      await fetchUserOrgs(user);
-      await fetchUserContribs(user);
+    for (const userId in db.users) {
+      await fetchUser(userId);
+      await fetchUserOrgs(userId);
+      await fetchUserContribs(userId);
     }
 
     for (const repo in db.repos) {
@@ -41,11 +41,11 @@
       await fetchRepoContributors(repo);
     }
 
-    for (const user in db.users) {
+    for (const userId in db.users) {
       // must be done after fetchRepo() so that we are able to ignore repos without stars:
-      await fetchUserContribsOrgs(user);
+      await fetchUserContribsOrgs(userId);
 
-      calculateUserContribsScores(user);
+      calculateUserContribsScores(userId);
     }
 
     writeToDb();
@@ -54,15 +54,16 @@
 
     return;
 
-    async function fetchUser(user) {
-      const ghUserUrl = `api.github.com/users/${user}`;
+    async function fetchUser(userId) {
+      const userLogin = db.users[userId].login;
+      const ghUserUrl = `api.github.com/users/${userLogin}`;
       const githubSpinner = ora(`Fetching ${ghUserUrl}...`).start();
       const ghData = await fetch(`${urlPrefix}${ghUserUrl}${urlSuffix}`);
       const ghDataJson = await ghData.json();
       githubSpinner.succeed(`Fetched ${ghUserUrl}`);
 
-      db.users[user] = {...db.users[user], ...ghDataJson};
-      db.users[user].contribs = db.users[user].contribs || {
+      db.users[userId] = {...db.users[userId], ...ghDataJson};
+      db.users[userId].contribs = db.users[userId].contribs || {
         fetched_at: '2000-01-01',
         repos: {}
       };
@@ -74,50 +75,51 @@
                            "public_gists", "followers", "following", "private_gists",
                            "total_private_repos","owned_private_repos", "disk_usage",
                            "collaborators", "two_factor_authentication", "plan"]) {
-        delete db.users[user][field];
+        delete db.users[userId][field];
       }
 
       writeToDbTemp();
     }
 
-    async function fetchUserOrgs(user) {
-      const orgsUrl = db.users[user].organizations_url;
+    async function fetchUserOrgs(userId) {
+      const orgsUrl = db.users[userId].organizations_url;
       const orgsSpinner = ora(`Fetching ${orgsUrl}...`).start();
       const orgsData = await fetch(`${orgsUrl}${urlSuffix}`);
       const orgsDataJson = await orgsData.json();
       orgsSpinner.succeed(`Fetched ${orgsUrl}`);
 
-      db.users[user].organizations = [];
+      db.users[userId].organizations = [];
       db.orgs = db.orgs || {};
       for (const org of orgsDataJson) {
-        db.users[user].organizations.push(org.login);
+        db.users[userId].organizations.push(org.login);
         db.orgs[org.login] = {...db.orgs[org.login], ...filterOrgInPlace(org)};
       }
       writeToDbTemp();
     }
 
-    async function fetchUserContribs(user) {
+    async function fetchUserContribs(userId) {
       // GitHub users might push today a commit authored for example yesterday, so to be on the safe
       // side we always re-fetch at least the contributions of the last few days before the last
       // time we fetched:
-      let since = db.users[user].contribs.fetched_at;
+      let since = db.users[userId].contribs.fetched_at;
       for (let i = 0; i < 7; ++i) {
         since = githubContribs.dateToString(
           githubContribs.prevDay(githubContribs.stringToDate(since))
         );
       }
 
-      const repos = await githubContribs.fetch(user, since, null, ora);
+      const userLogin = db.users[userId].login;
+      const repos = await githubContribs.fetch(userLogin, since, null, ora);
       for (const repo of repos) {
-        db.users[user].contribs.repos[repo] = db.users[user].contribs.repos[repo] || {
+        db.users[userId].contribs.repos[repo] = db.users[userId].contribs.repos[repo] || {
           full_name: repo
         };
       }
       const today = githubContribs.dateToString(now);
-      db.users[user].contribs.fetched_at = today;
+      db.users[userId].contribs.fetched_at = today;
 
       db.repos = db.repos || {};
-      for (const repo in db.users[user].contribs.repos) {
+      for (const repo in db.users[userId].contribs.repos) {
         db.repos[repo] = db.repos[repo] || {};
       }
 
@@ -255,28 +257,28 @@
       writeToDbTemp();
     }
 
-    async function fetchUserContribsOrgs(user) {
+    async function fetchUserContribsOrgs(userId) {
       const orgsSpinner = ora(
-        `For each contribution of ${user}, checking if the repo belongs to an org...`).start();
+        `For each contribution of ${userId}, checking if the repo belongs to an org...`).start();
 
       // Get rid of all contribs to repos without stars:
       const contribsToRemove = [];
-      for (const repo in db.users[user].contribs.repos) {
+      for (const repo in db.users[userId].contribs.repos) {
         if (!db.repos[repo].stargazers_count) {
           contribsToRemove.push(repo);
         }
       }
       for (const repo of contribsToRemove) {
-        delete db.users[user].contribs.repos[repo];
+        delete db.users[userId].contribs.repos[repo];
       }
 
       const usersAndOrgs = new Set([]);
-      for (const repo in db.users[user].contribs.repos) {
+      for (const repo in db.users[userId].contribs.repos) {
         const userOrOrg = repo.split('/')[0];
         usersAndOrgs.add(userOrOrg);
       }
 
-      db.users[user].contribs.organizations = [];
+      db.users[userId].contribs.organizations = [];
       for (const userOrOrg of usersAndOrgs) {
         let isOrg = false;
         if (!(userOrOrg in db.users)) { // otherwise it's a user that we know already
@@ -295,11 +297,11 @@
         }
 
         if (isOrg) {
-          db.users[user].contribs.organizations.push(userOrOrg);
+          db.users[userId].contribs.organizations.push(userOrOrg);
         }
       }
 
-      orgsSpinner.succeed(`Checked all contribution' orgs of ${user}`);
+      orgsSpinner.succeed(`Checked all contribution' orgs of ${userId}`);
 
       writeToDbTemp();
     }
@@ -313,11 +315,11 @@
       return org;
     }
 
-    function calculateUserContribsScores(user) {
-      const spinner = ora(`Calculating scores for ${user}...`).start();
+    function calculateUserContribsScores(userId) {
+      const spinner = ora(`Calculating scores for ${userId}...`).start();
 
-      for (const repo in db.users[user].contribs.repos) {
-        const score = db.users[user].contribs.repos[repo];
+      for (const repo in db.users[userId].contribs.repos) {
+        const score = db.users[userId].contribs.repos[repo];
         score.popularity = logarithmicScoreAscending(1, 10000, db.repos[repo].stargazers_count);
 
         let totalContribs = 0;
@@ -325,8 +327,8 @@
           totalContribs += db.repos[repo].contributors[contributor];
         }
 
-        score.percentage = db.repos[repo].contributors[user] &&
-                           100 * db.repos[repo].contributors[user] / totalContribs || 0;
+        score.percentage = db.repos[repo].contributors[userId] &&
+                           100 * db.repos[repo].contributors[userId] / totalContribs || 0;
         score.maturity = logarithmicScoreAscending(40, 10000, totalContribs);
         score.total_commits_count = totalContribs;
 
@@ -347,7 +349,7 @@
         score.max_total_score = 95;
       }
 
-      spinner.succeed(`Calculated scores for ${user}`);
+      spinner.succeed(`Calculated scores for ${userId}`);
       writeToDbTemp();
 
       function logarithmicScoreAscending(valFor0, valFor5, val) {
