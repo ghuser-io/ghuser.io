@@ -1,5 +1,3 @@
-> Work in progress
-
 <p align="center">
   <a href="https://ghuser.io">
     <img src="https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo.png"
@@ -28,12 +26,12 @@ We love the default GitHub profiles and we want to enhance them:
   total.<sup>[2](#footnote2)</sup>
 * The GitHub profiles don't clearly show how big your contribution to a repo was, when you don't own
   it. Maybe you wrote 5%. Maybe 90%. We **make it clear**.
-* GitHub detects programming languages. We want to also know about **technologies/frameworks**, e.g.
-  "react", "docker", etc.<sup>[3](#footnote3)</sup>
+* GitHub detects programming languages. We want to also know about
+  [**technologies/frameworks**](docs/repo-settings.md), e.g. "react", "docker", etc.
 * The GitHub profiles allow filtering your repos by programming language. We will allow **filtering
   by technologies/frameworks** as well.
 * The GitHub profiles can be tweaked by clicking around. We allow them to be **tweaked
-  programmatically**.<sup>[4](#footnote4)</sup>
+  programmatically**.<sup>[3](#footnote3)</sup>
 * On GitHub only users and organizations have avatars. We bring
   [**avatars to repos**](docs/repo-settings.md).
 
@@ -42,8 +40,7 @@ Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e
 
 <a name="footnote1"><sup>1</sup></a> We achieve this by using [github-contribs](https://github.com/AurelienLourot/github-contribs).<br/>
 <a name="footnote2"><sup>2</sup></a> This will be implemented by [#4](https://github.com/AurelienLourot/ghuser.io/issues/4).<br/>
-<a name="footnote3"><sup>3</sup></a> This will be implemented by [#9](https://github.com/AurelienLourot/ghuser.io/issues/9).<br/>
-<a name="footnote4"><sup>4</sup></a> This will be implemented by [#12](https://github.com/AurelienLourot/ghuser.io/issues/12).
+<a name="footnote3"><sup>3</sup></a> This will be implemented by [#12](https://github.com/AurelienLourot/ghuser.io/issues/12).
 
 # Get your profile!
 
