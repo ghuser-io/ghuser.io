@@ -21,16 +21,20 @@
   return;
 
   async function fetchUsers() {
-    let urlSuffix = '';
-    let urlPrefix = 'https://';
-    if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
-      console.log('GitHub API key found.');
-      urlSuffix = `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`;
-    }
-    if (process.env.GITHUB_USERNAME && process.env.GITHUB_PASSWORD) {
-      console.log('GitHub credentials found.');
-      urlPrefix = `${urlPrefix}${process.env.GITHUB_USERNAME}:${process.env.GITHUB_PASSWORD}@`;
-    }
+    const authify = (() => {
+      let suffix = '';
+      let prefix = 'https://';
+      if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
+        console.log('GitHub API key found.');
+        suffix = `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`;
+      }
+      if (process.env.GITHUB_USERNAME && process.env.GITHUB_PASSWORD) {
+        console.log('GitHub credentials found.');
+        prefix = `https://${process.env.GITHUB_USERNAME}:${process.env.GITHUB_PASSWORD}@`;
+      }
+
+      return url => `${url.replace('https://', prefix)}${suffix}`;
+    })();
 
     const now = new Date;
     let spinner;
@@ -63,9 +67,9 @@
 
     async function fetchUser(userId) {
       const userLogin = db.users[userId].login;
-      const ghUserUrl = `api.github.com/users/${userLogin}`;
+      const ghUserUrl = `https://api.github.com/users/${userLogin}`;
       spinner = ora(`Fetching ${ghUserUrl}...`).start();
-      const ghDataJson = await fetchJson(`${urlPrefix}${ghUserUrl}${urlSuffix}`);
+      const ghDataJson = await fetchJson(authify(ghUserUrl));
       spinner.succeed(`Fetched ${ghUserUrl}`);
 
       db.users[userId] = {...db.users[userId], ...ghDataJson};
@@ -90,7 +94,7 @@
     async function fetchUserOrgs(userId) {
       const orgsUrl = db.users[userId].organizations_url;
       spinner = ora(`Fetching ${orgsUrl}...`).start();
-      const orgsDataJson = await fetchJson(`${orgsUrl}${urlSuffix}`);
+      const orgsDataJson = await fetchJson(authify(orgsUrl));
       spinner.succeed(`Fetched ${orgsUrl}`);
 
       db.users[userId].organizations = [];
@@ -132,9 +136,9 @@
     }
 
     async function fetchRepo(repo) {
-      const ghRepoUrl = `api.github.com/repos/${repo}`;
+      const ghRepoUrl = `https://api.github.com/repos/${repo}`;
       spinner = ora(`Fetching ${ghRepoUrl}...`).start();
-      const ghDataJson = await fetchJson(`${urlPrefix}${ghRepoUrl}${urlSuffix}`);
+      const ghDataJson = await fetchJson(authify(ghRepoUrl));
       spinner.succeed(`Fetched ${ghRepoUrl}`);
 
       ghDataJson.owner = ghDataJson.owner.login;
@@ -160,9 +164,9 @@
     }
 
     async function fetchRepoLanguages(repo) {
-      const ghUrl = `api.github.com/repos/${repo}/languages`;
+      const ghUrl = `https://api.github.com/repos/${repo}/languages`;
       spinner = ora(`Fetching ${ghUrl}...`).start();
-      const ghDataJson = await fetchJson(`${urlPrefix}${ghUrl}${urlSuffix}`);
+      const ghDataJson = await fetchJson(authify(ghUrl));
       spinner.succeed(`Fetched ${ghUrl}`);
 
       for (let language in ghDataJson) {
@@ -197,11 +201,11 @@
       // This endpoint only gives us the 100 greatest contributors, so if it looks like there
       // can be more, we use the next endpoint to get the 500 greatest ones:
       if (Object.keys(db.repos[repo].contributors).length < 100) {
-        const ghUrl = `api.github.com/repos/${repo}/stats/contributors`;
+        const ghUrl = `https://api.github.com/repos/${repo}/stats/contributors`;
 
         let ghDataJson;
         for (let i = 3; i >= 0; --i) {
-          ghDataJson = await fetchJson(`${urlPrefix}${ghUrl}${urlSuffix}`);
+          ghDataJson = await fetchJson(authify(ghUrl));
 
           if (!Object.keys(ghDataJson).length) {
             // GitHub is still calculating the stats and we need to wait a bit and try again, see
@@ -226,8 +230,8 @@
         // https://developer.github.com/v3/#pagination
         const perPage = 30;
         for (let page = 1; page <= 17; ++page) {
-          const ghUrl = `api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
-          const ghDataJson = await fetchJson(`${urlPrefix}${ghUrl}${urlSuffix}`);
+          const ghUrl = `https://api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
+          const ghDataJson = await fetchJson(authify(ghUrl));
           for (const contributor of ghDataJson) {
             db.repos[repo].contributors[contributor.login] = contributor.contributions;
           }
@@ -280,7 +284,7 @@
           } else {
             // it might be an org that we don't know yet
             const orgsDataJson =
-                    await fetchJson(`${urlPrefix}api.github.com/orgs/${userOrOrg}${urlSuffix}`, [404]);
+                    await fetchJson(authify(`https://api.github.com/orgs/${userOrOrg}`), [404]);
             if (orgsDataJson != 404) {
               // it's an org that we didn't know yet
               isOrg = true;
