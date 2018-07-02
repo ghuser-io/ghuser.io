@@ -35,6 +35,10 @@ class RepoDescrAndDetails extends React.Component {
       languages.push(<Language key={language} name={language}
                                color={this.props.languages[language].color} />);
     }
+    for (const tech of this.props.techs) {
+      languages.push(<Language key={tech} name={tech}
+                               color="#ccc" />);
+    }
 
     return (
       <div className="ui accordion">
@@ -43,7 +47,15 @@ class RepoDescrAndDetails extends React.Component {
           <i className="dropdown icon text-gray mx-1"></i>
         </div>
         <div className="content">
-          { Object.keys(languages).length > 0 && <div>{languages}</div> || '' }
+          {
+            Object.keys(languages).length > 0 &&
+            <div>
+              {languages}
+              <a href="https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md"
+                 title="Add a tech" className="add-a-tech text-gray" target="_blank"><span className="add-a-tech-plus">+</span></a>
+            </div> ||
+            ''
+          }
           <table>
             <tbody>
               <tr>

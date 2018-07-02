@@ -1,7 +1,9 @@
 # Per-repo settings
 
-You can define an avatar for any `owner/repo` by committing a `.ghuser.io.json` file in
-`https://github.com/owner/repo`:
+You can set properties on any `owner/repo` by committing a `.ghuser.io.json` file in
+`https://github.com/owner/repo`.
+
+## Avatar
 
 ```json
 {
@@ -11,5 +13,21 @@ You can define an avatar for any `owner/repo` by committing a `.ghuser.io.json` 
 ```
 
 This avatar will be used on any ghuser-profile mentioning this repo.
+
+See [this example](../.ghuser.io.json).
+
+## Techs/Frameworks
+
+```json
+{
+  "_comment": "Settings for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md",
+  "techs": ["React", "Node.js", "Reframe", "Bootstrap", "Semantic UI", "AWS"]
+}
+```
+
+These techs will be shown on any ghuser-profile mentioning this repo.
+
+> **WARNING**: Do not use this property for declaring programming languages. These are already
+> automatically detected.
 
 See [this example](../.ghuser.io.json).

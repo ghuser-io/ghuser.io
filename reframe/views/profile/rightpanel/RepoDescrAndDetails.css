@@ -2,6 +2,23 @@
   vertical-align: middle !important;
 }
 
+.add-a-tech,
+.add-a-tech:hover {
+  background-color: #eee;
+  text-decoration: none;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  position: relative;
+  top: 3px;
+}
+
+.add-a-tech-plus {
+  position: relative;
+  top: -3px;
+}
+
 .contrib-details {
   padding-right: 1em;
   font-size: 90%;
