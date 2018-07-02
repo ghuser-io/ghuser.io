@@ -8,6 +8,7 @@
   const githubColors = require('github-colors');
   const githubContribs = require('@ghuser/github-contribs');
   const ora = require('ora');
+  const assert = require('assert');
 
   const dbPath = './db.json';
   const db = require(dbPath);
@@ -40,6 +41,7 @@
     let spinner;
 
     for (const userId in db.users) {
+      assert(userId.toLowerCase()===userId);
       await fetchUser(userId);
       await fetchUserOrgs(userId);
       await fetchUserContribs(userId);
