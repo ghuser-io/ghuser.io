@@ -16,8 +16,8 @@
 We love the default GitHub profiles and we want to enhance them:
 
 * The GitHub profiles aren't clearly showing all repos you have contributed to since you joined
-  GitHub. We are showing them **all**, even those you don't own and aren't affiliated to in any
-  way.<sup>[1](#footnote1)</sup>
+  GitHub. We are showing them **all**, even those you don't own and those owned by organizations
+  you're not in.<sup>[1](#footnote1)</sup>
 * The GitHub profiles are listing all the repos you own but they sort them only by age of the
   latest commit. We prefer to **sort repos** by a combination of how active they are, how much you
   have contributed to them, how popular they are, etc. For each user we want to see first the latest
