@@ -96,6 +96,7 @@ const RightPanel = props => {
                   props.repos[contrib.full_name].pushed_at, contrib.maturity,
                   contrib.total_commits_count)}
           <RepoDescrAndDetails contrib={contrib} descr={props.repos[contrib.full_name].description}
+            languages={props.repos[contrib.full_name].languages}
             strStars={strStars(props.repos[contrib.full_name].stargazers_count)}
             strLastPushed={strLastPushed(props.repos[contrib.full_name].pushed_at)}
             strNumCommits={strNumCommits(contrib.total_commits_count)}/>

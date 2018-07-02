@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
 
+import Language from './Language';
 import ProgressBar from './ProgressBar';
 import './RepoDescrAndDetails.css';
 
@@ -29,6 +30,12 @@ class RepoDescrAndDetails extends React.Component {
       return `${result}`;
     };
 
+    const languages = [];
+    for (const language of Object.keys(this.props.languages)) {
+      languages.push(<Language key={language} name={language}
+                               color={this.props.languages[language].color} />);
+    }
+
     return (
       <div className="ui accordion">
         <div className="title p-0">
@@ -36,6 +43,7 @@ class RepoDescrAndDetails extends React.Component {
           <i className="dropdown icon text-gray mx-1"></i>
         </div>
         <div className="content">
+          { Object.keys(languages).length > 0 && <div>{languages}</div> || '' }
           <table>
             <tbody>
               <tr>
