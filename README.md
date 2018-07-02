@@ -33,7 +33,7 @@ Better profile pages for **all** GitHub users:
   https://github.com/user/ghuser.io.settings/ghuser.io.json
 * Repos can have a logo.
 
-## Contributing
+# Contributing
 
 [ghuser.io](https://ghuser.io) is a [Reframe](https://github.com/reframejs/reframe) web app. To run
 your local changes:
@@ -49,7 +49,7 @@ $ npm run local
      http://localhost:3000/logo -> LogoPage
 ```
 
-## Team
+# Team
 
 This project is maintained by the following person(s) and a bunch of
 [awesome contributors](https://github.com/AurelienLourot/ghuser.io/graphs/contributors).
