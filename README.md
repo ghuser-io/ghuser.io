@@ -33,9 +33,10 @@ Better profile pages for **all** GitHub users:
   https://github.com/user/ghuser.io.settings/ghuser.io.json
 * Repos can have a logo.
 
-# Build and run locally
+## Contributing
 
-[ghuser.io](https://ghuser.io) is a [Reframe](https://github.com/reframejs/reframe) web app:
+[ghuser.io](https://ghuser.io) is a [Reframe](https://github.com/reframejs/reframe) web app. To run
+your local changes:
 
 ```bash
 $ cd reframe/
@@ -47,3 +48,12 @@ $ npm run local
      http://localhost:3000/:username -> ProfilePage
      http://localhost:3000/logo -> LogoPage
 ```
+
+## Team
+
+This project is maintained by the following person(s) and a bunch of
+[awesome contributors](https://github.com/AurelienLourot/ghuser.io/graphs/contributors).
+
+[![AurelienLourot](https://avatars0.githubusercontent.com/u/11795312?v=4&s=70)](https://github.com/AurelienLourot) | [![brillout](https://avatars0.githubusercontent.com/u/1005638?v=4&s=70)](https://github.com/brillout) |
+--- | --- |
+[Aurelien Lourot](https://github.com/AurelienLourot) | [Romuald Brillout](https://github.com/brillout) |
