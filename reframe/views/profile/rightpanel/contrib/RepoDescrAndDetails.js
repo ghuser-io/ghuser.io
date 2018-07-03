@@ -1,4 +1,5 @@
 import React from 'react';
+import * as emoji from 'node-emoji';
 
 import '../../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
 
@@ -42,7 +43,7 @@ class RepoDescrAndDetails extends React.Component {
     return (
       <div className="ui accordion">
         <div className="title p-0">
-          <span className="text-gray">{this.props.descr}</span>
+          <span className="text-gray">{emoji.emojify(this.props.descr)}</span>
           <i className="dropdown icon text-gray mx-1"></i>
         </div>
         <div className="content">
