@@ -2,24 +2,12 @@ import React from 'react';
 import * as moment from 'moment';
 
 import Badge from './Badge';
-import {roundHalf, RepoDescrAndDetails} from './RepoDescrAndDetails';
+import RepoDescrAndDetails from './RepoDescrAndDetails';
 import './Contrib.css';
 import Avatar from '../../Avatar';
+import {bigNum, roundHalf} from '../../numbers';
 
 const Contrib = props => {
-  const bigNum = num => {
-    let suffix='';
-    let val = roundHalf(num);
-    if (val >= 1000) {
-      suffix = 'k';
-      val = roundHalf(val / 1000);
-    }
-    if (val >= 10) {
-      val = Math.round(val);
-    }
-    return `${val}${suffix}`;
-  };
-
   const strStars = numStars => `★ ${bigNum(numStars)}`;
   const strLastPushed = pushedAt => `last pushed ${moment(pushedAt).fromNow()}`;
   const strNumCommits = numCommits => `${bigNum(numCommits)} non-merge commits`;

@@ -5,8 +5,7 @@ import '../../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
 import Language from './Language';
 import ProgressBar from './ProgressBar';
 import './RepoDescrAndDetails.css';
-
-const roundHalf = num => Math.round(num * 2) / 2;
+import {_, roundHalf} from '../../numbers';
 
 class RepoDescrAndDetails extends React.Component {
   componentDidMount() {
@@ -116,7 +115,4 @@ class RepoDescrAndDetails extends React.Component {
   }
 }
 
-export {
-  roundHalf,
-  RepoDescrAndDetails
-};
+export default RepoDescrAndDetails;

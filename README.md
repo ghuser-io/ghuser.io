@@ -22,8 +22,7 @@ We love the default GitHub profiles and we want to enhance them:
   greatest repos they have most contributed to.
 * On GitHub only repos earn stars. We push it one step further by tranfering these **stars to
   users**. If you have built 23% of a 145 stars repo, you deserve 33 stars for that contribution. We
-  add all these stars and clearly show how many of them you earned in
-  total.<sup>[2](#footnote2)</sup>
+  add all these stars and clearly show how many of them you earned in total.
 * The GitHub profiles don't clearly show how big your contribution to a repo was, when you don't own
   it. Maybe you wrote 5%. Maybe 90%. We **make it clear**.
 * GitHub detects programming languages. We want to also know about
@@ -31,7 +30,7 @@ We love the default GitHub profiles and we want to enhance them:
 * The GitHub profiles allow filtering your repos by programming language. We will allow **filtering
   by technologies/frameworks** as well.
 * The GitHub profiles can be tweaked by clicking around. We allow them to be **tweaked
-  programmatically**.<sup>[3](#footnote3)</sup>
+  programmatically**.<sup>[2](#footnote2)</sup>
 * On GitHub only users and organizations have avatars. We bring
   [**avatars to repos**](docs/repo-settings.md).
 
@@ -39,8 +38,7 @@ Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e
 [ghuser.io/AurelienLourot](https://ghuser.io/AurelienLourot).
 
 <a name="footnote1"><sup>1</sup></a> We achieve this by using [github-contribs](https://github.com/AurelienLourot/github-contribs).<br/>
-<a name="footnote2"><sup>2</sup></a> This will be implemented by [#4](https://github.com/AurelienLourot/ghuser.io/issues/4).<br/>
-<a name="footnote3"><sup>3</sup></a> This will be implemented by [#12](https://github.com/AurelienLourot/ghuser.io/issues/12).
+<a name="footnote2"><sup>2</sup></a> This will be implemented by [#12](https://github.com/AurelienLourot/ghuser.io/issues/12).
 
 # Get your profile!
 

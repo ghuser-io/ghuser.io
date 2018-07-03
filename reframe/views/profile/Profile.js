@@ -15,7 +15,7 @@ const Profile = props => {
       <Content>
         <div className="container container-lg mt-2">
           <div className="row">
-            <LeftPanel user={props.user} orgs={props.orgs} />
+            <LeftPanel user={props.user} orgs={props.orgs} repos={props.repos} />
             <RightPanel username={props.user.login} contribs={props.user.contribs}
                         repos={props.repos} />
           </div>
