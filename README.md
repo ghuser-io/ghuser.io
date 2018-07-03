@@ -67,6 +67,6 @@ $ npm run local
 This project is maintained by the following person(s) and a bunch of
 [awesome contributors](https://github.com/AurelienLourot/ghuser.io/graphs/contributors).
 
-[![AurelienLourot](https://avatars0.githubusercontent.com/u/11795312?v=4&s=70)](https://github.com/AurelienLourot) | [![brillout](https://avatars0.githubusercontent.com/u/1005638?v=4&s=70)](https://github.com/brillout) |
+[![AurelienLourot](https://avatars0.githubusercontent.com/u/11795312?v=4&s=70)](https://ghuser.io/AurelienLourot) | [![brillout](https://avatars0.githubusercontent.com/u/1005638?v=4&s=70)](https://ghuser.io/brillout) |
 --- | --- |
-[Aurelien Lourot](https://github.com/AurelienLourot) | [Romuald Brillout](https://github.com/brillout) |
+[Aurelien Lourot](https://ghuser.io/AurelienLourot) | [Romuald Brillout](https://ghuser.io/brillout) |
