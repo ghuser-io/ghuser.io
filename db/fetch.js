@@ -75,7 +75,7 @@
 
       db.users[userId] = {...db.users[userId], ...ghDataJson};
       db.users[userId].contribs = db.users[userId].contribs || {
-        fetched_at: '2000-01-01',
+        fetched_at: '2000-01-01T00:00:00.000Z',
         repos: {}
       };
 
@@ -111,12 +111,11 @@
       // GitHub users might push today a commit authored for example yesterday, so to be on the safe
       // side we always re-fetch at least the contributions of the last few days before the last
       // time we fetched:
-      let since = db.users[userId].contribs.fetched_at;
+      let since = githubContribs.stringToDate(db.users[userId].contribs.fetched_at);
       for (let i = 0; i < 7; ++i) {
-        since = githubContribs.dateToString(
-          githubContribs.prevDay(githubContribs.stringToDate(since))
-        );
+        since = githubContribs.prevDay(since);
       }
+      since = githubContribs.dateToString(since);
 
       const userLogin = db.users[userId].login;
       const repos = await githubContribs.fetch(userLogin, since, null, ora);
@@ -125,8 +124,7 @@
           full_name: repo
         };
       }
-      const today = githubContribs.dateToString(now);
-      db.users[userId].contribs.fetched_at = today;
+      db.users[userId].contribs.fetched_at = now.toISOString();
 
       db.repos = db.repos || {};
       for (const repo in db.users[userId].contribs.repos) {
