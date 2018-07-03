@@ -7,7 +7,7 @@ You can set properties on any `owner/repo` by committing a `.ghuser.io.json` fil
 
 ```json
 {
-  "_comment": "Settings for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md",
+  "_comment": "Repo metadata for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md",
   "avatar_url": "https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo_square.png"
 }
 ```
@@ -20,7 +20,7 @@ See [this example](../.ghuser.io.json).
 
 ```json
 {
-  "_comment": "Settings for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md",
+  "_comment": "Repo metadata for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md",
   "techs": ["React", "Node.js", "Reframe", "Bootstrap", "Semantic UI", "AWS"]
 }
 ```
