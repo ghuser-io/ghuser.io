@@ -1,4 +1,5 @@
 import React from 'react';
+import * as moment from 'moment';
 
 import Contrib from './contrib/Contrib';
 import './RightPanel.css';
@@ -45,6 +46,12 @@ const RightPanel = props => {
       <div className="contribs">
         {repos}
       </div>
+      {
+        props.contribs &&
+        <div className="updated-hint text-gray">
+          <small><i>Updated {moment(props.contribs.fetched_at).fromNow()}.</i></small>
+        </div>
+      }
     </div>
   );
 };
