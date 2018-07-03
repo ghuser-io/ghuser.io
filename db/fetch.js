@@ -61,7 +61,6 @@
       calculateUserContribsScores(userId);
     }
 
-    writeToDb();
     console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
     console.log(`DB size: ${dbSizeKB()} KB`);
 
@@ -90,7 +89,7 @@
         delete db.users[userId][field];
       }
 
-      writeToDbTemp();
+      writeToDb();
     }
 
     async function fetchUserOrgs(userId) {
@@ -105,7 +104,7 @@
         db.users[userId].organizations.push(org.login);
         db.orgs[org.login] = {...db.orgs[org.login], ...filterOrgInPlace(org)};
       }
-      writeToDbTemp();
+      writeToDb();
     }
 
     async function fetchUserContribs(userId) {
@@ -134,7 +133,7 @@
         db.repos[repo] = db.repos[repo] || {};
       }
 
-      writeToDbTemp();
+      writeToDb();
     }
 
     async function fetchRepo(repo) {
@@ -162,7 +161,7 @@
         delete db.repos[repo][field];
       }
 
-      writeToDbTemp();
+      writeToDb();
     }
 
     async function fetchRepoLanguages(repo) {
@@ -179,7 +178,7 @@
       }
 
       db.repos[repo].languages = ghDataJson;
-      writeToDbTemp();
+      writeToDb();
     }
 
     async function fetchRepoSettings(repo) {
@@ -193,7 +192,7 @@
       spinner.succeed(`Fetched ${repo}'s settings`);
 
       db.repos[repo].settings = dataJson;
-      writeToDbTemp();
+      writeToDb();
     }
 
     async function fetchRepoContributors(repo) {
@@ -253,7 +252,7 @@
 
       spinner.succeed(`Fetched ${repo}'s contributions`);
 
-      writeToDbTemp();
+      writeToDb();
     }
 
     async function fetchUserContribsOrgs(userId) {
@@ -302,7 +301,7 @@
 
       spinner.succeed(`Checked all contribution' orgs of ${userId}`);
 
-      writeToDbTemp();
+      writeToDb();
     }
 
     function filterOrgInPlace(org) { // to keep the DB small
@@ -351,7 +350,7 @@
       }
 
       spinner.succeed(`Calculated scores for ${userLogin}`);
-      writeToDbTemp();
+      writeToDb();
 
       function logarithmicScoreAscending(valFor0, valFor5, val) {
         // For example with valFor0=1, valFor5=100000, val being the number of stars on a
@@ -407,12 +406,8 @@
     }
   }
 
-  function writeToDbTemp() {
-    fs.writeFileSync(`${dbPath}.temp`, JSON.stringify(db, null, 2) + '\n', 'utf-8');
-  };
-
   function writeToDb() {
-    fs.renameSync(`${dbPath}.temp`, dbPath);
+    fs.writeFileSync(dbPath, JSON.stringify(db, null, 2) + '\n', 'utf-8');
   };
 
   function dbSizeKB() {
