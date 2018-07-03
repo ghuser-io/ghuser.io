@@ -2,6 +2,11 @@
   vertical-align: middle !important;
 }
 
+.emoji {
+  height: 1.3em;
+  width: auto;
+}
+
 .add-a-tech,
 .add-a-tech:hover {
   background-color: #eee;
