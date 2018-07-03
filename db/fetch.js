@@ -201,6 +201,7 @@
 
       // This endpoint only gives us the 100 greatest contributors, so if it looks like there
       // can be more, we use the next endpoint to get the 500 greatest ones:
+      let firstMethodFailed = false;
       if (Object.keys(db.repos[repo].contributors).length < 100) {
         const ghUrl = `https://api.github.com/repos/${repo}/stats/contributors`;
 
@@ -213,20 +214,23 @@
             // https://developer.github.com/v3/repos/statistics/
 
             if (!i) {
-              spinner.fail();
-              throw 'Too many retries';
+              // Too many retries. This happens on brand new repos.
+              firstMethodFailed = true;
+              break;
             }
 
             await new Promise(resolve => setTimeout(resolve, 3000));
           }
         }
 
-        for (const contributor of ghDataJson) {
-          db.repos[repo].contributors[contributor.author.login] = contributor.total;
+        if (!firstMethodFailed) {
+          for (const contributor of ghDataJson) {
+            db.repos[repo].contributors[contributor.author.login] = contributor.total;
+          }
         }
       }
 
-      if (Object.keys(db.repos[repo].contributors).length >= 100) {
+      if (firstMethodFailed || Object.keys(db.repos[repo].contributors).length >= 100) {
         // This endpoint won't accept to return more than 30 items per page, see
         // https://developer.github.com/v3/#pagination
         const perPage = 30;
@@ -379,7 +383,8 @@
       // Else throws the HTTP status code.
 
       const data = await fetch(url);
-      if (acceptedErrorCodes.indexOf(data.status) > -1) {
+      const statusIsOk = Math.floor(data.status / 100) === 2;
+      if (!statusIsOk && acceptedErrorCodes.indexOf(data.status) > -1) {
         return data.status;
       }
 
@@ -387,7 +392,7 @@
         var dataJson = await data.json();
       } catch (e) {}
 
-      if (Math.floor(data.status / 100) != 2) {
+      if (!statusIsOk) {
         spinner.fail();
         if (dataJson) {
           console.error(dataJson);
