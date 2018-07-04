@@ -21,8 +21,9 @@ const LeftPanel = props => {
       <Avatar url={props.user.avatar_url || AvatarUnknown} classes="avatar-user" />
       <VCard login={props.user.login} name={props.user.name || 'Your name here'}
              url={props.user.html_url} stars={stars} />
-      <Bio text={props.user.bio || "I love coding and I'm about to create my profile on ghuser.io :)"} />
-      <VCardDetails location={props.user.location} blog={props.user.blog || 'https://ghuser.io'} />
+      <Bio text={!props.user.name && "I love coding and I'm about to create my profile on ghuser.io :)" || props.user.bio} />
+      <VCardDetails location={props.user.location}
+                    blog={!props.user.name && 'https://ghuser.io' || props.user.blog} />
       <Orgs userOrgs={props.user.organizations || []}
             contribOrgs={props.user.contribs && props.user.contribs.organizations || []}
             allOrgs={props.orgs}/>
