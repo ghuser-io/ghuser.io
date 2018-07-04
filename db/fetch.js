@@ -10,8 +10,7 @@
   const ora = require('ora');
   const assert = require('assert');
 
-  const dbPath = './db.json';
-  const db = require(dbPath);
+  const db = require('./impl/db');
 
   process.on('unhandledRejection', (e, p) => { // https://stackoverflow.com/a/44752070/1855917
     console.error(p);
@@ -62,7 +61,7 @@
     }
 
     console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
-    console.log(`DB size: ${dbSizeKB()} KB`);
+    console.log(`DB size: ${db.sizeKB()} KB`);
 
     return;
 
@@ -89,7 +88,7 @@
         delete db.users[userId][field];
       }
 
-      writeToDb();
+      db.write();
     }
 
     async function fetchUserOrgs(userId) {
@@ -104,7 +103,7 @@
         db.users[userId].organizations.push(org.login);
         db.orgs[org.login] = {...db.orgs[org.login], ...filterOrgInPlace(org)};
       }
-      writeToDb();
+      db.write();
     }
 
     async function fetchUserContribs(userId) {
@@ -131,7 +130,7 @@
         db.repos[repo] = db.repos[repo] || {};
       }
 
-      writeToDb();
+      db.write();
     }
 
     async function fetchRepo(repo) {
@@ -159,7 +158,7 @@
         delete db.repos[repo][field];
       }
 
-      writeToDb();
+      db.write();
     }
 
     async function fetchRepoLanguages(repo) {
@@ -176,7 +175,7 @@
       }
 
       db.repos[repo].languages = ghDataJson;
-      writeToDb();
+      db.write();
     }
 
     async function fetchRepoSettings(repo) {
@@ -190,7 +189,7 @@
       spinner.succeed(`Fetched ${repo}'s settings`);
 
       db.repos[repo].settings = dataJson;
-      writeToDb();
+      db.write();
     }
 
     async function fetchRepoContributors(repo) {
@@ -254,7 +253,7 @@
 
       spinner.succeed(`Fetched ${repo}'s contributions`);
 
-      writeToDb();
+      db.write();
     }
 
     async function fetchUserContribsOrgs(userId) {
@@ -303,7 +302,7 @@
 
       spinner.succeed(`Checked all contribution' orgs of ${userId}`);
 
-      writeToDb();
+      db.write();
     }
 
     function filterOrgInPlace(org) { // to keep the DB small
@@ -352,7 +351,7 @@
       }
 
       spinner.succeed(`Calculated scores for ${userLogin}`);
-      writeToDb();
+      db.write();
 
       function logarithmicScoreAscending(valFor0, valFor5, val) {
         // For example with valFor0=1, valFor5=100000, val being the number of stars on a
@@ -408,13 +407,5 @@
       return dataJson;
     }
   }
-
-  function writeToDb() {
-    fs.writeFileSync(dbPath, JSON.stringify(db, null, 2) + '\n', 'utf-8');
-  };
-
-  function dbSizeKB() {
-    return Math.round(fs.statSync(dbPath).size / 1024);
-  };
 
 })();
