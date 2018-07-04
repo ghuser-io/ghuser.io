@@ -42,9 +42,15 @@ Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e
 
 # Get your profile!
 
-We are still building the [first prototype](https://github.com/AurelienLourot/ghuser.io/milestone/1)
-but you can already be an early user and get your profile by
-[creating an issue](https://github.com/AurelienLourot/ghuser.io/issues) :)
+[ghuser.io](https://ghuser.io) is still a baby but you can already be an early user and get your
+profile by [creating an issue](https://github.com/AurelienLourot/ghuser.io/issues) :)
+
+# Roadmap
+
+* [x] `19 Jun 2018` start coding
+* [x] `04 Jul 2018` [first prototype](https://github.com/AurelienLourot/ghuser.io/milestone/1)
+* [ ] `30 Sep 2018` display more data on each profile to really make it a modern
+      [programmer resume](https://github.com/AurelienLourot/ghuser.io/milestone/2)
 
 # Contributing
 
