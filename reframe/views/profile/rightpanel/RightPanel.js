@@ -28,7 +28,8 @@ const RightPanel = props => {
       }
 
       repos.push(
-        <Contrib key={contrib.full_name} contrib={contrib} repo={props.repos[contrib.full_name]} />
+        <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
+                 repo={props.repos[contrib.full_name]} />
       );
     }
   } else {
