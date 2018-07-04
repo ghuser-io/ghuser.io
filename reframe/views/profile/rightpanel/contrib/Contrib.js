@@ -23,10 +23,10 @@ const Contrib = props => {
               title="Add an avatar" target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
   };
 
-  const badges = (owner, percentage, numContributors, popularity, numStars, activity, pushedAt,
-                  maturity, numCommits) => {
+  const badges = (owner, isFork, percentage, numContributors, popularity, numStars, activity,
+                  pushedAt, maturity, numCommits) => {
     const result = [];
-    if (props.username == owner || percentage >= 80) {
+    if (!isFork && props.username === owner || percentage >= 80) {
       result.push(<Badge key="percentage" classes="badge-success contrib-name" text="owner"
                          tooltip={`${props.username} wrote ${roundHalf(percentage)}% of it`}/>);
     } else if (percentage >= 15) {
@@ -77,8 +77,9 @@ const Contrib = props => {
         <a href={`https://github.com/${props.contrib.full_name}`}
            target="_blank" className="text-bold contrib-name"
            title={props.contrib.full_name}>{props.repo.name}</a>
+        {props.repo.fork && <i className="fas fa-code-branch contrib-name ml-2 text-gray" title="fork"></i>}
       </h4>
-      {badges(props.repo.owner, props.contrib.percentage,
+      {badges(props.repo.owner, props.repo.fork, props.contrib.percentage,
               Object.keys(props.repo.contributors).length, props.contrib.popularity,
               props.repo.stargazers_count, props.contrib.activity,
               props.repo.pushed_at, props.contrib.maturity,

@@ -52,6 +52,7 @@
       await fetchUser(userId);
       await fetchUserOrgs(userId);
       await fetchUserContribs(userId);
+      await fetchUserRepos(userId);
       await fetchUserContribsOrgs(userId);
     }
 
@@ -67,7 +68,7 @@
     }
 
     console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
-    console.log(`${Object.keys(db.users).length} user(s)`);
+    console.log(`${Object.keys(db.users).length} users`);
     console.log(`DB size: ${db.sizeKB()} KB`);
 
     return;
@@ -137,6 +138,33 @@
         db.repos[repo] = db.repos[repo] || {};
       }
 
+      db.write();
+    }
+
+    async function fetchUserRepos(userId) {
+      // fetchUserContribs() won't find forks as they are not considered to be contributions. But
+      // the user might well have popular forks.
+
+      spinner = ora(`Fetching ${userId}'s repos...`).start();
+
+      const perPage = 100;
+      for (let page = 1; page <= 5; ++page) {
+        const ghUrl = `${db.users[userId].repos_url}?page=${page}&per_page=${perPage}`;
+        const ghDataJson = await fetchJson(authify(ghUrl));
+
+        for (const repo of ghDataJson) {
+          db.users[userId].contribs.repos[repo.full_name] = db.users[userId].contribs.repos[repo.full_name] || {
+            full_name: repo.full_name
+          };
+          db.repos[repo.full_name] = db.repos[repo.full_name] || {};
+        }
+
+        if (ghDataJson.length < perPage) {
+          break;
+        }
+      }
+
+      spinner.succeed(`Fetched ${userId}'s repos`);
       db.write();
     }
 
