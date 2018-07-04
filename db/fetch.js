@@ -44,6 +44,7 @@
       await fetchUser(userId);
       await fetchUserOrgs(userId);
       await fetchUserContribs(userId);
+      await fetchUserContribsOrgs(userId);
     }
 
     for (const repo in db.repos) {
@@ -54,13 +55,11 @@
     }
 
     for (const userId in db.users) {
-      // must be done after fetchRepo() so that we are able to ignore repos without stars:
-      await fetchUserContribsOrgs(userId);
-
       calculateUserContribsScores(userId);
     }
 
     console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
+    console.log(`${Object.keys(db.users).length} user(s)`);
     console.log(`DB size: ${db.sizeKB()} KB`);
 
     return;
@@ -259,17 +258,6 @@
     async function fetchUserContribsOrgs(userId) {
       spinner = ora(
         `For each contribution of ${userId}, checking if the repo belongs to an org...`).start();
-
-      // Get rid of all contribs to repos without stars:
-      const contribsToRemove = [];
-      for (const repo in db.users[userId].contribs.repos) {
-        if (!db.repos[repo].stargazers_count) {
-          contribsToRemove.push(repo);
-        }
-      }
-      for (const repo of contribsToRemove) {
-        delete db.users[userId].contribs.repos[repo];
-      }
 
       const usersAndOrgs = new Set([]);
       for (const repo in db.users[userId].contribs.repos) {

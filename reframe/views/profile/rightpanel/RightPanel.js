@@ -23,6 +23,10 @@ const RightPanel = props => {
     contribs.sort(compare);
 
     for (const contrib of contribs) {
+      if (props.repos[contrib.full_name].stargazers_count < 1) {
+        continue; // hide repos with no stars
+      }
+
       repos.push(
         <Contrib key={contrib.full_name} contrib={contrib} repo={props.repos[contrib.full_name]} />
       );

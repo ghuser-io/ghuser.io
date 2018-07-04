@@ -1,7 +1,9 @@
-The database is here to cache GitHub's data.
+# Database
 
-During the prototyping phrase, it's just a [JSON file](db.json) that we update once per day by
-running
+It is here to cache GitHub's data. During the prototyping phrase, it's just a [JSON file](db.json)
+that we update once per day.
+
+## Updating the database
 
 ```bash
 $ npm install
@@ -14,9 +16,17 @@ $ ./fetch.js
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
 
-To serve one more user, run:
+## Serving one more user
 
 ```bash
 $ ./addUser.js newGreatUser
 $ ./fetch.js
 ```
+
+## Garbage collection
+
+Sometimes repos get deleted or moved and users leave organizations. Then we end up with objects in
+the database that don't contribute to any profile anymore. Run the garbage collector from time to
+time:
+
+> Not implemented yet
