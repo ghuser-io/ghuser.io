@@ -36,7 +36,7 @@ const RightPanel = props => {
   }
 
   return (
-    <div className="col-9 pl-2">
+    <div className="col-9 pl-2 pr-0">
       <div className="user-profile-nav">
         <nav className="UnderlineNav-body">
           <a href="javascript:;" className="UnderlineNav-item selected" aria-selected="true" role="tab">

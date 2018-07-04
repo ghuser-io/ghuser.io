@@ -1,3 +1,8 @@
 .navbar-brand {
   padding-top: 0px;
 }
+
+.ghuser-on-github {
+  float: right;
+  line-height: 1.9em;
+}
