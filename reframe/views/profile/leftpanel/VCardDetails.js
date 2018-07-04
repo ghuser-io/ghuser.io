@@ -30,7 +30,7 @@ const VCardDetails = props => {
   };
 
   return (
-    <div className="border-top border-gray-light py-3">{details}</div>
+    <div className={details.length > 0 && 'border-top border-gray-light py-3' || ''}>{details}</div>
   );
 };
 
