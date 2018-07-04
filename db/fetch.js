@@ -9,6 +9,7 @@
   const githubContribs = require('@ghuser/github-contribs');
   const ora = require('ora');
   const assert = require('assert');
+  const url = require('url');
 
   const db = require('./impl/db');
 
@@ -22,18 +23,25 @@
 
   async function fetchUsers() {
     const authify = (() => {
-      let suffix = '';
-      let prefix = 'https://';
+      let query = '';
+      let auth = '';
       if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
         console.log('GitHub API key found.');
-        suffix = `?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`;
+        query = `client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`;
       }
       if (process.env.GITHUB_USERNAME && process.env.GITHUB_PASSWORD) {
         console.log('GitHub credentials found.');
-        prefix = `https://${process.env.GITHUB_USERNAME}:${process.env.GITHUB_PASSWORD}@`;
+        auth = `${process.env.GITHUB_USERNAME}:${process.env.GITHUB_PASSWORD}`;
       }
 
-      return url => `${url.replace('https://', prefix)}${suffix}`;
+      return addr => {
+        const result = url.parse(addr);
+        result.auth = auth;
+        if (query) {
+          result.search = result.search && `${result.search}&${query}` || `?${query}`;
+        }
+        return url.format(result);
+      };
     })();
 
     const now = new Date;
@@ -227,10 +235,8 @@
       }
 
       if (firstMethodFailed || Object.keys(db.repos[repo].contributors).length >= 100) {
-        // This endpoint won't accept to return more than 30 items per page, see
-        // https://developer.github.com/v3/#pagination
-        const perPage = 30;
-        for (let page = 1; page <= 17; ++page) {
+        const perPage = 100;
+        for (let page = 1; page <= 5; ++page) {
           const ghUrl = `https://api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
           const ghDataJson = await fetchJson(authify(ghUrl));
           for (const contributor of ghDataJson) {
