@@ -29,8 +29,15 @@ positional arguments:
 
   const user = cli.input[0];
   const userId = user.toLowerCase();
-  db.users[userId] = db.users[userId] || {};
-  db.users[userId].ghuser_created_at = (new Date).toISOString();
+  if (db.users[userId]) {
+    console.log(`${user} already exists.`);
+    return;
+  }
+
+  db.users[userId] = {
+    login: user,
+    ghuser_created_at: (new Date).toISOString()
+  };
   db.write();
   console.log(`${user} added. You should now run ./fetch.js`);
 
