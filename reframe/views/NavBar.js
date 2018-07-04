@@ -9,7 +9,7 @@ class NavBar extends React.Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-lg">
           <a className="navbar-brand" href="/"><Logo/></a>
-          <a role="button" class="btn btn-dark btn-sm ghuser-on-github" target="_blank"
+          <a role="button" className="btn btn-dark btn-sm ghuser-on-github" target="_blank"
              href="https://github.com/AurelienLourot/ghuser.io">
             <i className="fab fa-github"></i> ghuser on GitHub
           </a>
