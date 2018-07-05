@@ -49,7 +49,15 @@ const RightPanel = props => {
       );
     }
   } else {
-    repos.push(<CreateYourProfile key="createyourprofile" />);
+    repos.push(
+      <div class="alert alert-warning my-3" role="alert">
+        This profile doesn't exist yet.&nbsp;
+        <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">
+          Create an issue.
+        </a>
+      </div>,
+      <CreateYourProfile key="createyourprofile" />
+    );
   }
 
   return (
