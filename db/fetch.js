@@ -231,6 +231,11 @@
       db.repos[repo].contributors = db.repos[repo].contributors || {};
       spinner = ora(`Fetching ${repo}'s contributions...`).start();
 
+      if (db.repos[repo].size === 0) {
+        spinner.succeed(`${repo} is empty`);
+        return;
+      }
+
       // This endpoint only gives us the 100 greatest contributors, so if it looks like there
       // can be more, we use the next endpoint to get the 500 greatest ones:
       let firstMethodFailed = false;
@@ -241,18 +246,20 @@
         for (let i = 3; i >= 0; --i) {
           ghDataJson = await fetchJson(authify(ghUrl));
 
-          if (!Object.keys(ghDataJson).length) {
-            // GitHub is still calculating the stats and we need to wait a bit and try again, see
-            // https://developer.github.com/v3/repos/statistics/
-
-            if (!i) {
-              // Too many retries. This happens on brand new repos.
-              firstMethodFailed = true;
-              break;
-            }
-
-            await new Promise(resolve => setTimeout(resolve, 3000));
+          if (ghDataJson && Object.keys(ghDataJson).length > 0) {
+            break; // worked
           }
+
+          // GitHub is still calculating the stats and we need to wait a bit and try again, see
+          // https://developer.github.com/v3/repos/statistics/
+
+          if (!i) {
+            // Too many retries. This happens on brand new repos.
+            firstMethodFailed = true;
+            break;
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 3000));
         }
 
         if (!firstMethodFailed) {
