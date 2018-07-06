@@ -12,6 +12,9 @@ $ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
 $ export GITHUB_USERNAME=AurelienLourot
 $ export GITHUB_PASSWORD=********
 $ ./fetch.js
+...
+9 users
+DB size: 4536 KB
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
