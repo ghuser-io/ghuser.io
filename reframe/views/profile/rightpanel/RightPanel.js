@@ -24,33 +24,23 @@ const RightPanel = props => {
 
     const uniqueNames = [];
     for (const contrib of contribs) {
-      // We show only:
-      // * forks with 2+ stars
-      // * forks with 1+ stars if the user's contribution > 0
-      // * original repos with 1+ stars
-      if (props.repos[contrib.full_name].stargazers_count < 1) {
-        continue;
-      }
-      if (props.repos[contrib.full_name].stargazers_count === 1 &&
-          props.repos[contrib.full_name].fork && contrib.percentage === 0) {
-        continue;
-      }
+      if (props.repos[contrib.full_name]) {
+        // We don't want to have two repos with the same name. This happens when a user is
+        // contributing to a project and has a fork with the same name:
+        if (uniqueNames.indexOf(props.repos[contrib.full_name].name) > -1) {
+          continue;
+        }
+        uniqueNames.push(props.repos[contrib.full_name].name);
 
-      // We don't want to have two repos with the same name. This happens when a user is
-      // contributing to a project and has a fork with the same name:
-      if (uniqueNames.indexOf(props.repos[contrib.full_name].name) > -1) {
-        continue;
+        repos.push(
+            <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
+                     repo={props.repos[contrib.full_name]} />
+        );
       }
-      uniqueNames.push(props.repos[contrib.full_name].name);
-
-      repos.push(
-        <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
-                 repo={props.repos[contrib.full_name]} />
-      );
     }
   } else {
     repos.push(
-      <div class="alert alert-warning my-3" role="alert">
+      <div key="alert" className="alert alert-warning my-3" role="alert">
         This profile doesn't exist yet.&nbsp;
         <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">
           Create an issue.

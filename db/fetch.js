@@ -52,19 +52,27 @@
       await fetchUser(userId);
       await fetchUserOrgs(userId);
       await fetchUserContribs(userId);
-      await fetchUserRepos(userId);
-      await fetchUserContribsOrgs(userId);
+      await fetchUserPopularForks(userId);
     }
 
     for (const repo in db.repos) {
       await fetchRepo(repo);
-      await fetchRepoLanguages(repo);
-      await fetchRepoSettings(repo);
+    }
+    stripUnsuccessfulOrEmptyRepos();
+
+    for (const repo in db.repos) {
       await fetchRepoContributors(repo);
     }
 
     for (const userId in db.users) {
       calculateUserContribsScores(userId);
+      stripInsignificantUserContribs(userId);
+      await fetchUserContribsOrgs(userId);
+    }
+
+    for (const repo in db.repos) {
+      await fetchRepoLanguages(repo);
+      await fetchRepoSettings(repo);
     }
 
     console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
@@ -141,11 +149,11 @@
       db.write();
     }
 
-    async function fetchUserRepos(userId) {
+    async function fetchUserPopularForks(userId) {
       // fetchUserContribs() won't find forks as they are not considered to be contributions. But
       // the user might well have popular forks.
 
-      spinner = ora(`Fetching ${userId}'s repos...`).start();
+      spinner = ora(`Fetching ${userId}'s popular forks...`).start();
 
       const perPage = 100;
       for (let page = 1; page <= 5; ++page) {
@@ -153,10 +161,12 @@
         const ghDataJson = await fetchJson(authify(ghUrl));
 
         for (const repo of ghDataJson) {
-          db.users[userId].contribs.repos[repo.full_name] = db.users[userId].contribs.repos[repo.full_name] || {
-            full_name: repo.full_name
-          };
-          db.repos[repo.full_name] = db.repos[repo.full_name] || {};
+          if (repo.fork && repo.stargazers_count >= 1) {
+            db.users[userId].contribs.repos[repo.full_name] = db.users[userId].contribs.repos[repo.full_name] || {
+              full_name: repo.full_name
+            };
+            db.repos[repo.full_name] = db.repos[repo.full_name] || {};
+          }
         }
 
         if (ghDataJson.length < perPage) {
@@ -164,7 +174,7 @@
         }
       }
 
-      spinner.succeed(`Fetched ${userId}'s repos`);
+      spinner.succeed(`Fetched ${userId}'s popular forks`);
       db.write();
     }
 
@@ -193,6 +203,21 @@
         delete db.repos[repo][field];
       }
 
+      db.write();
+    }
+
+    function stripUnsuccessfulOrEmptyRepos() {
+      // Deletes repos with no stars or no commits.
+
+      const toBeDeleted = [];
+      for (const repo in db.repos) {
+        if (db.repos[repo].stargazers_count < 1 || db.repos[repo].size === 0) {
+          toBeDeleted.push(repo);
+        }
+      }
+      for (const repo of toBeDeleted) {
+        delete db.repos[repo];
+      }
       db.write();
     }
 
@@ -300,12 +325,7 @@
       spinner = ora(
         `For each contribution of ${userId}, checking if the repo belongs to an org...`).start();
 
-      const usersAndOrgs = new Set([]);
-      for (const repo in db.users[userId].contribs.repos) {
-        const userOrOrg = repo.split('/')[0];
-        usersAndOrgs.add(userOrOrg);
-      }
-
+      const usersAndOrgs = getUserContribsOwners(userId);
       db.users[userId].contribs.organizations = [];
       for (const userOrOrg of usersAndOrgs) {
         let isOrg = false;
@@ -332,6 +352,16 @@
       spinner.succeed(`Checked all contribution' orgs of ${userId}`);
 
       db.write();
+      return;
+
+      function getUserContribsOwners(userId) {
+        const usersAndOrgs = new Set([]);
+        for (const repo in db.users[userId].contribs.repos) {
+          const userOrOrg = repo.split('/')[0];
+          usersAndOrgs.add(userOrOrg);
+        }
+        return usersAndOrgs;
+      }
     }
 
     function filterOrgInPlace(org) { // to keep the DB small
@@ -349,6 +379,10 @@
       spinner = ora(`Calculating scores for ${userLogin}...`).start();
 
       for (const repo in db.users[userId].contribs.repos) {
+        if (!db.repos[repo]) {
+          continue; // repo has been stripped
+        }
+
         const score = db.users[userId].contribs.repos[repo];
         score.popularity = logarithmicScoreAscending(1, 10000, db.repos[repo].stargazers_count);
 
@@ -401,6 +435,22 @@
       function logarithmicScoreDescending(valFor0, valFor5, val) {
         return 5 - logarithmicScoreAscending(valFor5, valFor0, val);
       }
+    }
+
+    function stripInsignificantUserContribs(userId) {
+      // Deletes contributions to forks if the user has done 0%.
+
+      const toBeDeleted = [];
+      for (const repo in db.users[userId].contribs.repos) {
+        const score = db.users[userId].contribs.repos[repo];
+        if (db.repos[repo] && db.repos[repo].fork && score.percentage === 0) {
+          toBeDeleted.push(repo);
+        }
+      }
+      for (const repo of toBeDeleted) {
+        delete db.users[userId].contribs.repos[repo];
+      }
+      db.write();
     }
 
     async function fetchJson(url, acceptedErrorCodes=[]) {
