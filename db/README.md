@@ -13,6 +13,7 @@ $ export GITHUB_USERNAME=AurelienLourot
 $ export GITHUB_PASSWORD=********
 $ ./fetch.js
 ...
+Ran in 145 minutes.
 9 users
 DB size: 4536 KB
 ```
