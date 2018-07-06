@@ -254,7 +254,7 @@
 
     async function fetchRepoContributors(repo) {
       db.repos[repo].contributors = db.repos[repo].contributors || {};
-      spinner = ora(`Fetching ${repo}'s contributions...`).start();
+      spinner = ora(`Fetching ${repo}'s contributors...`).start();
 
       if (db.repos[repo].size === 0) {
         spinner.succeed(`${repo} is empty`);
@@ -316,7 +316,7 @@
         throw 'Not implemented yet';
       }
 
-      spinner.succeed(`Fetched ${repo}'s contributions`);
+      spinner.succeed(`Fetched ${repo}'s contributors`);
 
       db.write();
     }
