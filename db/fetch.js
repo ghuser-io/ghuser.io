@@ -55,6 +55,7 @@
       await fetchUserPopularForks(userId);
     }
 
+    stripUnreferencedRepos();
     for (const repo in db.repos) {
       await fetchRepo(repo);
     }
@@ -171,6 +172,27 @@
       }
 
       spinner.succeed(`Fetched ${userId}'s popular forks`);
+    }
+
+    function stripUnreferencedRepos() {
+      // Deletes repos that are not referenced by any user's contribution.
+
+      const referencedRepos = new Set([]);
+      for (const userId in db.users) {
+        for (const repo in db.users[userId].contribs.repos) {
+          referencedRepos.add(repo);
+        }
+      }
+
+      const toBeDeleted = [];
+      for (const repo in db.repos) {
+        if (!referencedRepos.has(repo)) {
+          toBeDeleted.push(repo);
+        }
+      }
+      for (const repo of toBeDeleted) {
+        delete db.repos[repo];
+      }
     }
 
     async function fetchRepo(repo) {

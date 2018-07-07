@@ -15,7 +15,7 @@ $ ./fetch.js
 ...
 Ran in 26 minutes.
 9 users
-DB size: 3537 KB
+DB size: 3533 KB
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
@@ -26,11 +26,3 @@ DB size: 3537 KB
 $ ./addUser.js newGreatUser
 $ ./fetch.js
 ```
-
-## Garbage collection
-
-Sometimes repos get deleted or moved and users leave organizations. Then we end up with objects in
-the database that don't contribute to any profile anymore. Run the garbage collector from time to
-time:
-
-> Not implemented yet
