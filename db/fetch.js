@@ -54,6 +54,7 @@
       await fetchUserContribs(userId);
       await fetchUserPopularForks(userId);
     }
+    stripUnreferencedOrgs();
 
     stripUnreferencedRepos();
     for (const repo in db.repos) {
@@ -172,6 +173,30 @@
       }
 
       spinner.succeed(`Fetched ${userId}'s popular forks`);
+    }
+
+    function stripUnreferencedOrgs() {
+      // Deletes orgs that are not referenced by any user.
+
+      const referencedOrgs = new Set([]);
+      for (const userId in db.users) {
+        for (const org of db.users[userId].organizations) {
+          referencedOrgs.add(org);
+        }
+        for (const org of db.users[userId].contribs.organizations) {
+          referencedOrgs.add(org);
+        }
+      }
+
+      const toBeDeleted = [];
+      for (const org in db.orgs) {
+        if (!referencedOrgs.has(org)) {
+          toBeDeleted.push(org);
+        }
+      }
+      for (const org of toBeDeleted) {
+        delete db.orgs[org];
+      }
     }
 
     function stripUnreferencedRepos() {
