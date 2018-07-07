@@ -47,12 +47,16 @@
     const now = new Date;
     let spinner;
 
+    let numUsers = 0;
     for (const userId in db.users) {
       assert(userId.toLowerCase()===userId);
-      await fetchUser(userId);
-      await fetchUserOrgs(userId);
-      await fetchUserContribs(userId);
-      await fetchUserPopularForks(userId);
+      if (!db.users[userId].ghuser_deleted_because) {
+        ++numUsers;
+        await fetchUser(userId);
+        await fetchUserOrgs(userId);
+        await fetchUserContribs(userId);
+        await fetchUserPopularForks(userId);
+      }
     }
     stripUnreferencedOrgs();
 
@@ -67,9 +71,11 @@
     }
 
     for (const userId in db.users) {
-      calculateUserContribsScores(userId);
-      stripInsignificantUserContribs(userId);
-      await fetchUserContribsOrgs(userId);
+      if (!db.users[userId].ghuser_deleted_because) {
+        calculateUserContribsScores(userId);
+        stripInsignificantUserContribs(userId);
+        await fetchUserContribsOrgs(userId);
+      }
     }
 
     for (const repo in db.repos) {
@@ -79,7 +85,7 @@
 
     db.write();
     console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
-    console.log(`${Object.keys(db.users).length} users`);
+    console.log(`${numUsers} users`);
     console.log(`DB size: ${db.sizeKB()} KB`);
 
     return;
@@ -180,11 +186,13 @@
 
       const referencedOrgs = new Set([]);
       for (const userId in db.users) {
-        for (const org of db.users[userId].organizations) {
-          referencedOrgs.add(org);
-        }
-        for (const org of db.users[userId].contribs.organizations) {
-          referencedOrgs.add(org);
+        if (!db.users[userId].ghuser_deleted_because) {
+          for (const org of db.users[userId].organizations) {
+            referencedOrgs.add(org);
+          }
+          for (const org of db.users[userId].contribs.organizations) {
+            referencedOrgs.add(org);
+          }
         }
       }
 
@@ -204,8 +212,10 @@
 
       const referencedRepos = new Set([]);
       for (const userId in db.users) {
-        for (const repo in db.users[userId].contribs.repos) {
-          referencedRepos.add(repo);
+        if (!db.users[userId].ghuser_deleted_because) {
+          for (const repo in db.users[userId].contribs.repos) {
+            referencedRepos.add(repo);
+          }
         }
       }
 

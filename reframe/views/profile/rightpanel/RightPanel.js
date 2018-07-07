@@ -39,13 +39,27 @@ const RightPanel = props => {
       }
     }
   } else {
+    if (props.deleted_because) {
+      repos.push(
+        <div key="alert" className="alert alert-warning my-3" role="alert">
+          This profile was deleted because {props.deleted_because}<br /><br />
+          If you want to have it again, no problem, just&nbsp;
+          <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">
+            create an issue
+          </a> :)
+        </div>
+      );
+    } else {
+      repos.push(
+        <div key="alert" className="alert alert-warning my-3" role="alert">
+          This profile doesn't exist yet.&nbsp;
+          <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">
+            Create an issue.
+          </a>
+        </div>
+      );
+    }
     repos.push(
-      <div key="alert" className="alert alert-warning my-3" role="alert">
-        This profile doesn't exist yet.&nbsp;
-        <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">
-          Create an issue.
-        </a>
-      </div>,
       <CreateYourProfile key="createyourprofile" />
     );
   }

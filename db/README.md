@@ -13,9 +13,9 @@ $ export GITHUB_USERNAME=AurelienLourot
 $ export GITHUB_PASSWORD=********
 $ ./fetch.js
 ...
-Ran in 26 minutes.
-9 users
-DB size: 3533 KB
+Ran in 27 minutes.
+8 users
+DB size: 3487 KB
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
@@ -25,4 +25,11 @@ DB size: 3533 KB
 ```bash
 $ ./addUser.js newGreatUser
 $ ./fetch.js
+```
+
+## Deleting a profile
+
+```bash
+$ ./rmUser.js formerUser "you asked us to remove your profile in https://github.com/AurelienLourot/ghuser.io/issues/666"
+$ ./fetch.js # will also perform some garbage collection
 ```
