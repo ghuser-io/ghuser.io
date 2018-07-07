@@ -84,9 +84,13 @@
     }
 
     db.write();
-    console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
+
+    const elapsedMs = new Date - now;
+    console.log(`Ran in ${Math.round(elapsedMs / (60 * 1000))} minutes.`);
     console.log(`${numUsers} users`);
     console.log(`DB size: ${db.sizeKB()} KB`);
+    console.log(`=> ${Math.round(elapsedMs / (60 * 1000) / numUsers)} minutes/user`);
+    console.log(`=> ${Math.round(db.sizeKB() / numUsers)} KB/user`);
 
     return;
 
