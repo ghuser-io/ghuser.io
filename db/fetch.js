@@ -75,6 +75,7 @@
       await fetchRepoSettings(repo);
     }
 
+    db.write();
     console.log(`Ran in ${Math.round((new Date - now) / (60 * 1000))} minutes.`);
     console.log(`${Object.keys(db.users).length} users`);
     console.log(`DB size: ${db.sizeKB()} KB`);
@@ -103,8 +104,6 @@
                            "collaborators", "two_factor_authentication", "plan"]) {
         delete db.users[userId][field];
       }
-
-      db.write();
     }
 
     async function fetchUserOrgs(userId) {
@@ -119,7 +118,6 @@
         db.users[userId].organizations.push(org.login);
         db.orgs[org.login] = {...db.orgs[org.login], ...filterOrgInPlace(org)};
       }
-      db.write();
     }
 
     async function fetchUserContribs(userId) {
@@ -145,8 +143,6 @@
       for (const repo in db.users[userId].contribs.repos) {
         db.repos[repo] = db.repos[repo] || {};
       }
-
-      db.write();
     }
 
     async function fetchUserPopularForks(userId) {
@@ -175,7 +171,6 @@
       }
 
       spinner.succeed(`Fetched ${userId}'s popular forks`);
-      db.write();
     }
 
     async function fetchRepo(repo) {
@@ -203,7 +198,8 @@
         delete db.repos[repo][field];
       }
 
-      db.write();
+      db.repos[repo].prev_fetched_at = db.repos[repo].fetched_at;
+      db.repos[repo].fetched_at = now.toISOString();
     }
 
     function stripUnsuccessfulOrEmptyRepos() {
@@ -218,12 +214,18 @@
       for (const repo of toBeDeleted) {
         delete db.repos[repo];
       }
-      db.write();
     }
 
     async function fetchRepoLanguages(repo) {
       const ghUrl = `https://api.github.com/repos/${repo}/languages`;
       spinner = ora(`Fetching ${ghUrl}...`).start();
+
+      if (db.repos[repo].prev_fetched_at &&
+          new Date(db.repos[repo].prev_fetched_at) > new Date(db.repos[repo].pushed_at)) {
+        spinner.succeed(`${repo} hasn't changed`);
+        return;
+      }
+
       const ghDataJson = await fetchJson(authify(ghUrl));
       spinner.succeed(`Fetched ${ghUrl}`);
 
@@ -235,12 +237,18 @@
       }
 
       db.repos[repo].languages = ghDataJson;
-      db.write();
     }
 
     async function fetchRepoSettings(repo) {
       const url = `https://rawgit.com/${repo}/master/.ghuser.io.json`;
       spinner = ora(`Fetching ${repo}'s settings...`).start();
+
+      if (db.repos[repo].prev_fetched_at &&
+          new Date(db.repos[repo].prev_fetched_at) > new Date(db.repos[repo].pushed_at)) {
+        spinner.succeed(`${repo} hasn't changed`);
+        return;
+      }
+
       const dataJson = await fetchJson(url, [404]);
       if (dataJson == 404) {
         spinner.succeed(`${repo} has no settings`);
@@ -249,15 +257,15 @@
       spinner.succeed(`Fetched ${repo}'s settings`);
 
       db.repos[repo].settings = dataJson;
-      db.write();
     }
 
     async function fetchRepoContributors(repo) {
       db.repos[repo].contributors = db.repos[repo].contributors || {};
       spinner = ora(`Fetching ${repo}'s contributors...`).start();
 
-      if (db.repos[repo].size === 0) {
-        spinner.succeed(`${repo} is empty`);
+      if (db.repos[repo].prev_fetched_at &&
+          new Date(db.repos[repo].prev_fetched_at) > new Date(db.repos[repo].pushed_at)) {
+        spinner.succeed(`${repo} hasn't changed`);
         return;
       }
 
@@ -317,8 +325,6 @@
       }
 
       spinner.succeed(`Fetched ${repo}'s contributors`);
-
-      db.write();
     }
 
     async function fetchUserContribsOrgs(userId) {
@@ -351,7 +357,6 @@
 
       spinner.succeed(`Checked all contribution' orgs of ${userId}`);
 
-      db.write();
       return;
 
       function getUserContribsOwners(userId) {
@@ -414,7 +419,6 @@
       }
 
       spinner.succeed(`Calculated scores for ${userLogin}`);
-      db.write();
 
       function logarithmicScoreAscending(valFor0, valFor5, val) {
         // For example with valFor0=1, valFor5=100000, val being the number of stars on a
@@ -450,7 +454,6 @@
       for (const repo of toBeDeleted) {
         delete db.users[userId].contribs.repos[repo];
       }
-      db.write();
     }
 
     async function fetchJson(url, acceptedErrorCodes=[]) {
