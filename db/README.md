@@ -15,7 +15,7 @@ $ ./fetch.js
 ...
 Ran in 26 minutes.
 9 users
-DB size: 4556 KB
+DB size: 3537 KB
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).

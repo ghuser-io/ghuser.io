@@ -183,18 +183,18 @@
       db.repos[repo] = {...db.repos[repo], ...ghDataJson};
 
       // Keep the DB small:
-      for (const field of ["node_id", "keys_url", "collaborators_url", "teams_url", "hooks_url",
-                           "issue_events_url", "events_url", "assignees_url", "branches_url",
-                           "tags_url", "blobs_url", "git_tags_url", "git_refs_url", "trees_url",
-                           "statuses_url", "contributors_url", "subscribers_url",
-                           "subscription_url", "commits_url", "git_commits_url", "comments_url",
-                           "issue_comment_url", "contents_url", "compare_url", "merges_url",
-                           "archive_url", "downloads_url", "issues_url", "pulls_url",
-                           "milestones_url", "notifications_url", "labels_url", "releases_url",
-                           "deployments_url", "ssh_url", "git_url", "clone_url", "svn_url",
-                           "has_issues", "has_projects", "has_downloads", "has_wiki",
-                           "has_pages", "id", "forks_url", "permissions", "allow_squash_merge",
-                           "allow_merge_commit", "allow_rebase_merge"]) {
+      for (const field of [
+        "node_id", "keys_url", "collaborators_url", "teams_url", "hooks_url", "issue_events_url",
+        "events_url", "assignees_url", "branches_url", "tags_url", "blobs_url", "git_tags_url",
+        "git_refs_url", "trees_url", "statuses_url", "contributors_url", "subscribers_url",
+        "subscription_url", "commits_url", "git_commits_url", "comments_url", "issue_comment_url",
+        "contents_url", "compare_url", "merges_url", "archive_url", "downloads_url", "issues_url",
+        "pulls_url", "milestones_url", "notifications_url", "labels_url", "releases_url",
+        "deployments_url", "ssh_url", "git_url", "clone_url", "svn_url", "has_issues",
+        "has_projects", "has_downloads", "has_wiki", "has_pages", "id", "forks_url", "permissions",
+        "allow_squash_merge", "allow_merge_commit", "allow_rebase_merge", "stargazers_url",
+        "watchers_count", "forks_count", "open_issues_count", "forks", "open_issues", "watchers",
+        "parent", "source", "network_count", "subscribers_count"]) {
         delete db.repos[repo][field];
       }
 
