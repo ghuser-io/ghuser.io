@@ -101,7 +101,7 @@
                            "received_events_url", "site_admin", "hireable", "public_repos",
                            "public_gists", "followers", "following", "private_gists",
                            "total_private_repos","owned_private_repos", "disk_usage",
-                           "collaborators", "two_factor_authentication", "plan"]) {
+                           "collaborators", "two_factor_authentication", "plan", "url"]) {
         delete db.users[userId][field];
       }
     }
@@ -375,6 +375,20 @@
       delete org.events_url;
       delete org.hooks_url;
       delete org.issues_url;
+      delete org.repos_url;
+      delete org.members_url;
+      delete org.public_members_url;
+      delete org.description;
+      delete org.company;
+      delete org.blog;
+      delete org.location;
+      delete org.email;
+      delete org.has_organization_projects;
+      delete org.has_repository_projects;
+      delete org.public_repos;
+      delete org.public_gists;
+      delete org.followers;
+      delete org.following;
       return org;
     }
 
