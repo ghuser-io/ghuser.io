@@ -237,7 +237,13 @@
     async function fetchRepo(repo) {
       const ghRepoUrl = `https://api.github.com/repos/${repo}`;
       spinner = ora(`Fetching ${ghRepoUrl}...`).start();
-      const ghDataJson = await fetchJson(authify(ghRepoUrl));
+      const ghDataJson = await fetchJson(authify(ghRepoUrl), [404]);
+      if (ghDataJson == 404) {
+        db.repos[repo].removed_from_github = true;
+        spinner.succeed(`${repo} was removed from GitHub`);
+        return;
+      }
+
       spinner.succeed(`Fetched ${ghRepoUrl}`);
 
       ghDataJson.owner = ghDataJson.owner.login;
@@ -268,7 +274,8 @@
 
       const toBeDeleted = [];
       for (const repo in db.repos) {
-        if (db.repos[repo].stargazers_count < 1 || db.repos[repo].size === 0) {
+        if (db.repos[repo].removed_from_github || db.repos[repo].stargazers_count < 1 ||
+            db.repos[repo].size === 0) {
           toBeDeleted.push(repo);
         }
       }
