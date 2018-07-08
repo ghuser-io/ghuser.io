@@ -1,5 +1,6 @@
 import React from 'react';
-import * as url from 'url';
+import * as Autolinker from 'autolinker';
+import * as Parser from 'html-react-parser';
 
 import './VCardDetails.css';
 
@@ -15,16 +16,9 @@ const VCardDetails = props => {
   };
 
   if (props.blog) {
-    let blogUrl = url.parse(props.blog);
-    if (!blogUrl.protocol) {
-      blogUrl = url.parse(`http://${props.blog}`);
-    }
-    const urlWithoutProtol = `${blogUrl.host}${blogUrl.path}`.replace(/\/$/, '');
-
     details.push(
       <div className="vcard-detail pt-1" key="blog">
-        <i className="fas fa-link"></i>&nbsp;
-        <a href={blogUrl.href} target="_blank">{urlWithoutProtol}</a>
+        <i className="fas fa-link"></i> {Parser(Autolinker.link(props.blog))}
       </div>
     );
   };

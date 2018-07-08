@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Autolinker from 'autolinker';
 import * as emoji from 'node-emoji';
 import * as Parser from 'html-react-parser';
 
@@ -44,10 +45,14 @@ class RepoDescrAndDetails extends React.Component {
     return (
       <div className="ui accordion">
         <div className="title p-0">
-          <span className="text-gray">{Parser(emoji.emojify(this.props.descr, name => (
-            // See https://developer.github.com/v3/emojis/ :
-            `<img className="emoji" src="https://github.global.ssl.fastly.net/images/icons/emoji/${name}.png?v5" />`
-          )))}</span>
+          <span className="text-gray">
+            {
+              Parser(emoji.emojify(Autolinker.link(this.props.descr), name => (
+                // See https://developer.github.com/v3/emojis/ :
+                `<img className="emoji" src="https://github.global.ssl.fastly.net/images/icons/emoji/${name}.png?v5" />`
+              )))
+            }
+          </span>
           <i className="dropdown icon text-gray mx-1"></i>
         </div>
         <div className="content">

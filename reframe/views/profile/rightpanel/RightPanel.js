@@ -1,5 +1,7 @@
 import React from 'react';
+import * as Autolinker from 'autolinker';
 import * as moment from 'moment';
+import * as Parser from 'html-react-parser';
 
 import Contrib from './contrib/Contrib';
 import './RightPanel.css';
@@ -42,7 +44,7 @@ const RightPanel = props => {
     if (props.deleted_because) {
       repos.push(
         <div key="alert" className="alert alert-warning my-3" role="alert">
-          This profile was deleted because {props.deleted_because}<br /><br />
+          This profile was deleted because {Parser(Autolinker.link(props.deleted_because))}<br /><br />
           If you want to have it again, no problem, just&nbsp;
           <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">
             create an issue
