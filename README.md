@@ -11,6 +11,10 @@
 
 # What we are building
 
+> *Example: https://ghuser.io/AurelienLourot*
+>
+> ![screenshot](docs/screenshot.png)
+
 We love the default GitHub profiles and we want to enhance them:
 
 * The GitHub profiles aren't clearly showing all repos you have contributed to since you joined
