@@ -10,8 +10,17 @@
         key_name: ghuser
         region: us-east-1
         vpc_subnet_id: subnet-b68a16c0
-        image: ami-ea86d895 # Ubuntu 16.04 instance-store
+        image: ami-759bc50a # Ubuntu 16.04 hvm:ebs-ssd
         instance_type: t2.nano
         wait: true
         instance_tags:
           Name: "ghuser"
+
+# TODO:
+# SG SSH inbound from anywhere
+# ssh -i secret.pem ubuntu@<ip>
+# curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+# sudo apt-get install -y nodejs
+# git clone https://AurelienLourot@github.com/AurelienLourot/ghuser.io.git
+# terminate instance
+# delete volumes?
