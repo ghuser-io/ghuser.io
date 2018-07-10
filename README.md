@@ -53,6 +53,8 @@ profile by [creating an issue](https://github.com/AurelienLourot/ghuser.io/issue
 
 * [x] `19 Jun 2018` start coding
 * [x] `04 Jul 2018` [first prototype](https://github.com/AurelienLourot/ghuser.io/milestone/1)
+* [ ] `15 Aug 2018` address
+      [first user feedback](https://github.com/AurelienLourot/ghuser.io/milestone/3)
 * [ ] `30 Sep 2018` display more data on each profile to really make it a modern
       [programmer resume](https://github.com/AurelienLourot/ghuser.io/milestone/2)
 
