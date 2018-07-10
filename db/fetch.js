@@ -200,8 +200,10 @@
           for (const org of db.users[userId].organizations) {
             referencedOrgs.add(org);
           }
-          for (const org of db.users[userId].contribs.organizations) {
-            referencedOrgs.add(org);
+          if (db.users[userId].contribs.organizations) {
+            for (const org of db.users[userId].contribs.organizations) {
+              referencedOrgs.add(org);
+            }
           }
         }
       }
