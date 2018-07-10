@@ -82,3 +82,15 @@ This project is maintained by the following person(s) and a bunch of
 [![AurelienLourot](https://avatars0.githubusercontent.com/u/11795312?v=4&s=70)](https://ghuser.io/AurelienLourot) | [![brillout](https://avatars0.githubusercontent.com/u/1005638?v=4&s=70)](https://ghuser.io/brillout) |
 --- | --- |
 [Aurelien Lourot](https://ghuser.io/AurelienLourot) | [Romuald Brillout](https://ghuser.io/brillout) |
+
+# FAQ
+
+## Why do I need to open an issue in order to get a profile?
+
+The first crawling for discovering everything you did on GitHub
+[takes hours](https://github.com/AurelienLourot/github-contribs#why-is-it-so-slow) and would need
+several machines in order to be parallelized. Also [ghuser.io](https://ghuser.io) is still a baby
+and this process is only semi-automated.
+
+This is annoying for new users and
+[we're working on it](https://github.com/AurelienLourot/ghuser.io/issues/49).
