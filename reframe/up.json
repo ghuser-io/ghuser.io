@@ -6,7 +6,7 @@
     "us-east-1"
   ],
   "lambda": {
-    "memory": 128
+    "memory": 256
   },
   "stages": {
     "staging": {
