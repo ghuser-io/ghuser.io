@@ -22,5 +22,4 @@
 # curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 # sudo apt-get install -y nodejs
 # git clone https://AurelienLourot@github.com/AurelienLourot/ghuser.io.git
-# terminate instance
-# delete volumes?
+# terminate instance (volume gets removed automatically)
