@@ -13,11 +13,11 @@ $ export GITHUB_USERNAME=AurelienLourot
 $ export GITHUB_PASSWORD=********
 $ ./fetch.js
 ...
-Ran in 5 minutes.
-14 users
-DB size: 4138 KB
-=> 0 minutes/user
-=> 296 KB/user
+Ran in 26 minutes.
+15 users
+DB size: 4929 KB
+=> 2 minutes/user
+=> 329 KB/user
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
