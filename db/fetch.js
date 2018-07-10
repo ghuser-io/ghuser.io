@@ -81,9 +81,8 @@
     for (const repo in db.repos) {
       await fetchRepoLanguages(repo);
       await fetchRepoSettings(repo);
+      markRepoAsFullyFetched(repo);
     }
-
-    db.write();
 
     const elapsedMs = new Date - now;
     console.log(`Ran in ${Math.round(elapsedMs / (60 * 1000))} minutes.`);
@@ -116,6 +115,8 @@
                            "collaborators", "two_factor_authentication", "plan", "url"]) {
         delete db.users[userId][field];
       }
+
+      db.write();
     }
 
     async function fetchUserOrgs(userId) {
@@ -130,6 +131,8 @@
         db.users[userId].organizations.push(org.login);
         db.orgs[org.login] = {...db.orgs[org.login], ...filterOrgInPlace(org)};
       }
+
+      db.write();
     }
 
     async function fetchUserContribs(userId) {
@@ -155,6 +158,8 @@
       for (const repo in db.users[userId].contribs.repos) {
         db.repos[repo] = db.repos[repo] || {};
       }
+
+      db.write();
     }
 
     async function fetchUserPopularForks(userId) {
@@ -183,6 +188,7 @@
       }
 
       spinner.succeed(`Fetched ${userId}'s popular forks`);
+      db.write();
     }
 
     function stripUnreferencedOrgs() {
@@ -209,6 +215,8 @@
       for (const org of toBeDeleted) {
         delete db.orgs[org];
       }
+
+      db.write();
     }
 
     function stripUnreferencedRepos() {
@@ -232,17 +240,29 @@
       for (const repo of toBeDeleted) {
         delete db.repos[repo];
       }
+
+      db.write();
     }
 
     async function fetchRepo(repo) {
       const ghRepoUrl = `https://api.github.com/repos/${repo}`;
       spinner = ora(`Fetching ${ghRepoUrl}...`).start();
+
+      const maxAgeHours = 6;
+      if (db.repos[repo].fetching ||
+          now - Date.parse(db.repos[repo].fetched_at) < maxAgeHours * 60 * 60 * 1000) {
+        spinner.succeed(`${repo} is still fresh`);
+        return;
+      }
+
       const ghDataJson = await fetchJson(authify(ghRepoUrl), [404]);
       if (ghDataJson == 404) {
         db.repos[repo].removed_from_github = true;
         spinner.succeed(`${repo} was removed from GitHub`);
+        db.write();
         return;
       }
+      db.repos[repo].fetching = true;
 
       spinner.succeed(`Fetched ${ghRepoUrl}`);
 
@@ -265,8 +285,15 @@
         delete db.repos[repo][field];
       }
 
-      db.repos[repo].prev_fetched_at = db.repos[repo].fetched_at;
-      db.repos[repo].fetched_at = now.toISOString();
+      db.write();
+    }
+
+    function markRepoAsFullyFetched(repo) {
+      if (db.repos[repo].fetching) {
+        db.repos[repo].fetched_at = now.toISOString();
+        delete db.repos[repo].fetching;
+        db.write();
+      }
     }
 
     function stripUnsuccessfulOrEmptyRepos() {
@@ -282,14 +309,17 @@
       for (const repo of toBeDeleted) {
         delete db.repos[repo];
       }
+
+      db.write();
     }
 
     async function fetchRepoLanguages(repo) {
       const ghUrl = `https://api.github.com/repos/${repo}/languages`;
       spinner = ora(`Fetching ${ghUrl}...`).start();
 
-      if (db.repos[repo].prev_fetched_at &&
-          new Date(db.repos[repo].prev_fetched_at) > new Date(db.repos[repo].pushed_at)) {
+      if (!db.repos[repo].fetching ||
+          db.repos[repo].fetched_at &&
+          new Date(db.repos[repo].fetched_at) > new Date(db.repos[repo].pushed_at)) {
         spinner.succeed(`${repo} hasn't changed`);
         return;
       }
@@ -305,14 +335,16 @@
       }
 
       db.repos[repo].languages = ghDataJson;
+      db.write();
     }
 
     async function fetchRepoSettings(repo) {
       const url = `https://rawgit.com/${repo}/master/.ghuser.io.json`;
       spinner = ora(`Fetching ${repo}'s settings...`).start();
 
-      if (db.repos[repo].prev_fetched_at &&
-          new Date(db.repos[repo].prev_fetched_at) > new Date(db.repos[repo].pushed_at)) {
+      if (!db.repos[repo].fetching ||
+          db.repos[repo].fetched_at &&
+          new Date(db.repos[repo].fetched_at) > new Date(db.repos[repo].pushed_at)) {
         spinner.succeed(`${repo} hasn't changed`);
         return;
       }
@@ -325,14 +357,16 @@
       spinner.succeed(`Fetched ${repo}'s settings`);
 
       db.repos[repo].settings = dataJson;
+      db.write();
     }
 
     async function fetchRepoContributors(repo) {
       db.repos[repo].contributors = db.repos[repo].contributors || {};
       spinner = ora(`Fetching ${repo}'s contributors...`).start();
 
-      if (db.repos[repo].prev_fetched_at &&
-          new Date(db.repos[repo].prev_fetched_at) > new Date(db.repos[repo].pushed_at)) {
+      if (!db.repos[repo].fetching ||
+          db.repos[repo].fetched_at &&
+          new Date(db.repos[repo].fetched_at) > new Date(db.repos[repo].pushed_at)) {
         spinner.succeed(`${repo} hasn't changed`);
         return;
       }
@@ -393,6 +427,7 @@
       }
 
       spinner.succeed(`Fetched ${repo}'s contributors`);
+      db.write();
     }
 
     async function fetchUserContribsOrgs(userId) {
@@ -424,6 +459,7 @@
       }
 
       spinner.succeed(`Checked all contribution' orgs of ${userId}`);
+      db.write();
 
       return;
 
@@ -501,6 +537,8 @@
       }
 
       spinner.succeed(`Calculated scores for ${userLogin}`);
+      db.write();
+      return;
 
       function logarithmicScoreAscending(valFor0, valFor5, val) {
         // For example with valFor0=1, valFor5=100000, val being the number of stars on a
@@ -536,6 +574,8 @@
       for (const repo of toBeDeleted) {
         delete db.users[userId].contribs.repos[repo];
       }
+
+      db.write();
     }
 
     async function fetchJson(url, acceptedErrorCodes=[]) {
