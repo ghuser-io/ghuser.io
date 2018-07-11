@@ -251,7 +251,7 @@
       spinner = ora(`Fetching ${ghRepoUrl}...`).start();
 
       const maxAgeHours = 6;
-      if (db.repos[repo].fetching || !db.repos[repo].fetched_at ||
+      if (db.repos[repo].fetching || db.repos[repo].fetched_at &&
           now - Date.parse(db.repos[repo].fetched_at) < maxAgeHours * 60 * 60 * 1000) {
         spinner.succeed(`${repo} is still fresh`);
         return;
