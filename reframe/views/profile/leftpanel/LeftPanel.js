@@ -13,7 +13,7 @@ const LeftPanel = props => {
   let stars = 0;
   for (const repo in props.user.contribs && props.user.contribs.repos) {
     const contrib = props.user.contribs.repos[repo];
-    if (props.repos[contrib.full_name]) {
+    if (props.repos[contrib.full_name] && props.repos[contrib.full_name].stargazers_count) {
       stars += contrib.percentage * props.repos[contrib.full_name].stargazers_count / 100;
     }
   }

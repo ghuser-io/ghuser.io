@@ -38,9 +38,11 @@ class RepoDescrAndDetails extends React.Component {
     };
 
     const languages = [];
-    for (const language of Object.keys(this.props.languages)) {
-      languages.push(<Language key={language} name={language}
-                               color={this.props.languages[language].color} />);
+    if (this.props.languages) {
+      for (const language of Object.keys(this.props.languages)) {
+        languages.push(<Language key={language} name={language}
+                       color={this.props.languages[language].color} />);
+      }
     }
     for (const tech of this.props.techs) {
       languages.push(<Language key={tech} name={tech}
