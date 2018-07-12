@@ -4,12 +4,33 @@
 - hosts: localhost
   connection: local
   gather_facts: False
+  vars_prompt:
+    - name: vpc_id
+      prompt: "VPC id"
+      private: no
+      default: vpc-d8c0f4bc
+    - name: subnet_id
+      prompt: "Subnet id"
+      private: no
+      default: subnet-b68a16c0
   tasks:
+    - name: Create EC2 Security Group
+      ec2_group:
+        name: ghuser-sg
+        description: ghuser
+        region: us-east-1
+        vpc_id: "{{ vpc_id }}"
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
     - name: Create EC2 instance
       ec2:
         key_name: ghuser
         region: us-east-1
-        vpc_subnet_id: subnet-b68a16c0
+        vpc_subnet_id: "{{ subnet_id }}"
+        group: "default,ghuser-sg"
         image: ami-759bc50a # Ubuntu 16.04 hvm:ebs-ssd
         instance_type: t2.nano
         wait: true
@@ -17,7 +38,6 @@
           Name: "ghuser"
 
 # TODO:
-# SG SSH inbound from anywhere
 # ssh -i secret.pem ubuntu@<ip>
 # curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 # sudo apt-get install -y nodejs
