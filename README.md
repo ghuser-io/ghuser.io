@@ -47,7 +47,9 @@ Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e
 # Get your profile!
 
 [ghuser.io](https://ghuser.io) is still a baby but you can already be an early user and get your
-profile by [creating an issue](https://github.com/AurelienLourot/ghuser.io/issues) :)
+profile by
+[creating a request](https://github.com/AurelienLourot/ghuser.io/issues/new?template=profile-request.md)
+:)
 
 # Roadmap
 

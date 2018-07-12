@@ -17,8 +17,8 @@ const CreateYourProfile = () => (
       </a>
     </p>
     <p>
-      <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">Create an issue</a>
-      &nbsp;and we'll set up your profile right away!
+      <a href="https://github.com/AurelienLourot/ghuser.io/issues/new?template=profile-request.md"
+         target="_blank">Create a profile request</a> and we'll set up your profile right away!
     </p>
     <p>
       This is a <a href="https://github.com/reframejs/reframe" target="_blank">Reframe</a> web app.

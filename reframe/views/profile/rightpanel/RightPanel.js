@@ -55,8 +55,9 @@ const RightPanel = props => {
       repos.push(
         <div key="alert" className="alert alert-warning my-3" role="alert">
           This profile doesn't exist yet.&nbsp;
-          <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">
-            Create an issue.
+          <a href="https://github.com/AurelienLourot/ghuser.io/issues/new?template=profile-request.md"
+             target="_blank">
+            Create a profile request.
           </a>
         </div>
       );
