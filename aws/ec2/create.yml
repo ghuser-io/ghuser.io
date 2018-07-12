@@ -36,9 +36,34 @@
         wait: true
         instance_tags:
           Name: "ghuser"
+      register: created_instance
+    - add_host:
+        hostname: "{{ created_instance.instances[0].public_ip }}"
+        groupname: created_instance
+
+# FIXME: doesn't work, immediately fails with
+# TASK [Wait for SSH to come up] *******************************************************************
+# fatal: [54.205.1.207]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host
+# via ssh: ssh: connect to host 54.205.1.207 port 22: Connection refused\r\n", "unreachable": true}
+- hosts: created_instance
+  gather_facts: False
+  user: ubuntu
+  tasks:
+    - name: Wait for SSH to come up
+      wait_for:
+        port: 22
+
+- hosts: created_instance
+  gather_facts: True
+  user: ubuntu
+  tasks:
+    - debug:
+        msg: |
+          EC2 instance ready, do:
+          ssh -i secret.pem ubuntu@{{ ec2_ip_address }}
+          tmux new-session -s 0
 
 # TODO:
-# ssh -i secret.pem ubuntu@<ip>
 # curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 # sudo apt-get install -y nodejs
 # git clone https://AurelienLourot@github.com/AurelienLourot/ghuser.io.git

@@ -13,13 +13,9 @@ $ chmod 600 secret.pem
 # Install ansible
 
 ```bash
-$ sudo apt-get update
-$ sudo apt-get install software-properties-common python-software-properties python-support \
-  python-jinja2 python-yaml python-paramiko python-httplib2 sshpass python-boto
+$ sudo -H pip3.5 install ansible boto boto3
 ...
-Setting up python-boto (2.20.1-2ubuntu2) ...
-$ dpkg -i thirdparty/ansible_1.9.4-1ppa~precise_all.deb
-$ apt-mark hold ansible
+Successfully installed ansible-2.6.1 boto-2.49.0 boto3-1.7.56 botocore-1.10.56 [...]
 ```
 
 # Set up [boto](http://boto.cloudhackers.com/en/latest/getting_started.html)
@@ -33,5 +29,5 @@ $ sed s/default/Credentials/g ~/.aws/credentials > ~/.boto
 > **WARNING**: [work in progress](create.yml)
 
 ```bash
-$ ansible-playbook --private-key secret.pem -i thirdparty/ansible-ec2/ec2.py create.yml
+$ ./create.sh
 ```
