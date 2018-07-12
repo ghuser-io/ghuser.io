@@ -97,3 +97,10 @@ and this process is only semi-automated.
 
 This is annoying for new users and
 [we're working on it](https://github.com/AurelienLourot/ghuser.io/issues/49).
+
+## Is my profile static or dynamic?
+
+For now it's static and the data is refreshed at least [once per day](db/README.md). If you scroll
+down to the bottom of your profile you can see how old the data is:
+
+> ![screenshot](docs/screenshot-data-age.png)
