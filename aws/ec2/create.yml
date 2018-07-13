@@ -40,17 +40,9 @@
     - add_host:
         hostname: "{{ created_instance.instances[0].public_ip }}"
         groupname: created_instance
-
-# FIXME: doesn't work, immediately fails with
-# TASK [Wait for SSH to come up] *******************************************************************
-# fatal: [54.205.1.207]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host
-# via ssh: ssh: connect to host 54.205.1.207 port 22: Connection refused\r\n", "unreachable": true}
-- hosts: created_instance
-  gather_facts: False
-  user: ubuntu
-  tasks:
     - name: Wait for SSH to come up
       wait_for:
+        host: "{{ created_instance.instances[0].public_ip }}"
         port: 22
 
 - hosts: created_instance
@@ -60,7 +52,7 @@
     - debug:
         msg: |
           EC2 instance ready. You can e.g. do:
-          $ ssh -i secret.pem ubuntu@{{ ec2_ip_address }}
+          $ ssh -i secret.pem ubuntu@{{ inventory_hostname }}
           $ tmux new-session -s 0
           [C-b d]
           $ tmux attach -t 0

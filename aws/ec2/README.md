@@ -24,10 +24,10 @@ Successfully installed ansible-2.6.1 boto-2.49.0 boto3-1.7.56 botocore-1.10.56 [
 $ sed s/default/Credentials/g ~/.aws/credentials > ~/.boto
 ```
 
-# Create the EC2 instance
+# Create an EC2 instance
 
 > **WARNING**: [work in progress](create.yml)
 
 ```bash
-$ ./create.sh
+$ ./ansible-playbook.sh create.yml
 ```
