@@ -18,7 +18,7 @@
       ec2_group:
         name: ghuser-sg
         description: ghuser
-        region: us-east-1
+        region: "{{ aws_region }}"
         vpc_id: "{{ vpc_id }}"
         rules:
           - proto: tcp
@@ -27,15 +27,15 @@
             cidr_ip: 0.0.0.0/0
     - name: Create EC2 instance
       ec2:
-        key_name: ghuser
-        region: us-east-1
+        key_name: "{{ instance_name }}"
+        region: "{{ aws_region }}"
         vpc_subnet_id: "{{ subnet_id }}"
         group: "default,ghuser-sg"
         image: ami-759bc50a # Ubuntu 16.04 hvm:ebs-ssd
         instance_type: t2.nano
         wait: true
         instance_tags:
-          Name: "ghuser"
+          Name: "{{ instance_name }}"
       register: created_instance
     - add_host:
         hostname: "{{ created_instance.instances[0].public_ip }}"
@@ -71,4 +71,3 @@
 # curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 # sudo apt-get install -y nodejs
 # git clone https://AurelienLourot@github.com/AurelienLourot/ghuser.io.git
-# terminate instance (volume gets removed automatically)

@@ -1,2 +1,4 @@
 ---
 ansible_python_interpreter: /usr/bin/python3.5
+aws_region: us-east-1
+instance_name: ghuser

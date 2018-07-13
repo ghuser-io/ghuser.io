@@ -31,3 +31,9 @@ $ sed s/default/Credentials/g ~/.aws/credentials > ~/.boto
 ```bash
 $ ./ansible-playbook.sh create.yml
 ```
+
+# Terminate all EC2 instances
+
+```bash
+$ ./ansible-playbook.sh terminate.yml
+```

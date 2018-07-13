@@ -1,0 +1,22 @@
+---
+# This playbook terminates all EC2 instances
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: "All {{ instance_name }} instances will be terminated"
+      pause: prompt="Press 'ENTER' to continue. Press 'Ctrl+C' and then 'a' to abort"
+    - name: Gather facts about running EC2 instances
+      ec2_remote_facts:
+        region: "{{ aws_region }}"
+        filters:
+          "tag:Name": "{{ instance_name }}*"
+          instance-state-name: running
+      register: ec2_facts
+    - name: Terminate EC2 instances
+      ec2:
+        state: absent
+        region: "{{ aws_region }}"
+        instance_ids: "{{ item.id }}"
+      with_items: "{{ ec2_facts.instances }}"
