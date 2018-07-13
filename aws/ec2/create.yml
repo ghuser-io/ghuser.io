@@ -59,9 +59,18 @@
   tasks:
     - debug:
         msg: |
-          EC2 instance ready, do:
-          ssh -i secret.pem ubuntu@{{ ec2_ip_address }}
-          tmux new-session -s 0
+          EC2 instance ready. You can e.g. do:
+          $ ssh -i secret.pem ubuntu@{{ ec2_ip_address }}
+          $ tmux new-session -s 0
+          [C-b d]
+          $ tmux attach -t 0
+          $ cd ghuser.io/db/
+          $ npm install
+          $ export GITHUB_CLIENT_ID=0123456789abcdef0123
+          $ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
+          $ export GITHUB_USERNAME=AurelienLourot
+          $ export GITHUB_PASSWORD=********
+          $ ./fetch.js
 
 # TODO:
 # curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
