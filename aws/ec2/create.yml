@@ -6,11 +6,11 @@
   gather_facts: False
   vars_prompt:
     - name: vpc_id
-      prompt: "VPC id"
+      prompt: VPC id
       private: no
       default: vpc-d8c0f4bc
     - name: subnet_id
-      prompt: "Subnet id"
+      prompt: Subnet id
       private: no
       default: subnet-b68a16c0
   tasks:
@@ -48,7 +48,46 @@
 - hosts: created_instance
   gather_facts: True
   user: ubuntu
+  vars_prompt:
+    - name: git_name
+      prompt: Git name
+      private: no
+      default: Aurelien Lourot
+    - name: git_email
+      prompt: Git email
+      private: no
+      default: aurelien.lourot@gmail.com
   tasks:
+    - name: Download Node.js setup script
+      get_url:
+        url: https://deb.nodesource.com/setup_10.x
+        dest: /tmp/
+        mode: 0755
+    - name: Run Node.js setup script
+      command: /tmp/setup_10.x
+      become: True
+    - name: Install Node.js
+      apt:
+        name: nodejs
+      become: True
+    - name: Setup Git user name
+      git_config:
+        name: user.name
+        scope: global
+        value: "{{ git_name }}"
+    - name: Setup Git user e-mail address
+      git_config:
+        name: user.email
+        scope: global
+        value: "{{ git_email }}"
+    - name: git clone ghuser.io
+      git:
+        repo: https://github.com/AurelienLourot/ghuser.io.git
+        dest: /home/ubuntu/ghuser.io/
+    - name: npm install ghuser.io's DB
+      command: npm install
+      args:
+        chdir: /home/ubuntu/ghuser.io/db/
     - name: Hint
       vars:
         msg: |
@@ -58,7 +97,6 @@
           [C-b d]
           $ tmux attach -t 0
           $ cd ghuser.io/db/
-          $ npm install
           $ export GITHUB_CLIENT_ID=0123456789abcdef0123
           $ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
           $ export GITHUB_USERNAME=AurelienLourot
@@ -66,8 +104,3 @@
           $ ./fetch.js
       debug:
         msg: "{{ msg.split('\n') }}"
-
-# TODO:
-# curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-# sudo apt-get install -y nodejs
-# git clone https://AurelienLourot@github.com/AurelienLourot/ghuser.io.git

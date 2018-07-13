@@ -26,8 +26,6 @@ $ sed s/default/Credentials/g ~/.aws/credentials > ~/.boto
 
 # Create an EC2 instance
 
-> **WARNING**: [work in progress](create.yml)
-
 ```bash
 $ ./ansible-playbook.sh create.yml
 ```
@@ -37,3 +35,18 @@ $ ./ansible-playbook.sh create.yml
 ```bash
 $ ./ansible-playbook.sh terminate.yml
 ```
+
+# FAQ
+
+## Sometimes the playbook ends with `Exception ignored`
+
+e.g.
+
+```
+Exception ignored in: <function WeakValueDictionary.__init__.<locals>.remove at 0x788849d5eae8>
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/weakref.py", line 117, in remove
+TypeError: 'NoneType' object is not callable
+```
+
+This is a Python bug, see [ansible#21982](https://github.com/ansible/ansible/issues/21982).
