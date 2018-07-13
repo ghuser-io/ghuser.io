@@ -14,7 +14,9 @@
     "start": "reframe server",
     "local": "reframe start",
     "warmup": "curl -s --output /dev/null https://ghuser.io && curl -s --output /dev/null https://www.ghuser.io",
-    "deploy": "reframe build && rm -rf dist/previous/ && ./up && ./up production && ./up stack status && npm run warmup"
+    "deploy": "reframe build && rm -rf dist/previous/ && ./up && ./up production && ./up stack status && npm run warmup",
+    "_comment": "staging and production logs:",
+    "logs": "./up logs --since=20m"
   },
   "dependencies": {
     "@brillout/fetch": "^0.1.0",
