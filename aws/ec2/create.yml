@@ -49,7 +49,8 @@
   gather_facts: True
   user: ubuntu
   tasks:
-    - debug:
+    - name: Hint
+      vars:
         msg: |
           EC2 instance ready. You can e.g. do:
           $ ssh -i secret.pem ubuntu@{{ inventory_hostname }}
@@ -63,6 +64,8 @@
           $ export GITHUB_USERNAME=AurelienLourot
           $ export GITHUB_PASSWORD=********
           $ ./fetch.js
+      debug:
+        msg: "{{ msg.split('\n') }}"
 
 # TODO:
 # curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
