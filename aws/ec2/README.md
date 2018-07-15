@@ -30,6 +30,17 @@ $ sed s/default/Credentials/g ~/.aws/credentials > ~/.boto
 $ ./ansible-playbook.sh create.yml
 ```
 
+# List all EC2 instances
+
+```bash
+$ ./ansible-inventory.sh --list | jq -r '.ec2'
+{
+  "hosts": [
+    "18.207.151.144"
+  ]
+}
+```
+
 # Terminate all EC2 instances
 
 ```bash
