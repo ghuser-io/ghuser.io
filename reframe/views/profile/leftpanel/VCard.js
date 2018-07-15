@@ -11,8 +11,8 @@ const VCard = props => {
       <h1>
         <div className="vcard-fullname">{props.name}</div>
         <div className="vcard-username">
-          <a className="vcard-username" href={props.url} target="_blank"><i className="fab fa-github"></i> {props.login}</a>
-          {stars >= 1 && <span className="ml-3">★{bigNum(stars)}</span>}
+          <a className="vcard-github-login" href={props.url} target="_blank"><i className="fab fa-github"></i> {props.login}</a>
+          {stars >= 1 && <span className="vcard-stars ml-3">★{bigNum(stars)}</span>}
         </div>
       </h1>
     </div>

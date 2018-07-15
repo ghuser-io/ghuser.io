@@ -3,11 +3,18 @@
   font-weight: 600;
 }
 
-.vcard-username,
-.vcard-username:hover {
+.vcard-username {
   font-size: 20px;
   font-weight: 300;
   color: #666;
+}
+
+.vcard-github-login,
+.vcard-github-login:hover {
   text-decoration: none;
-  white-space: nowrap;
+  color: #666;
+}
+
+.vcard-stars {
+  float: right;
 }
