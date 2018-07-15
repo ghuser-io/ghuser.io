@@ -13,6 +13,7 @@
   "scripts": {
     "start": "reframe server",
     "local": "reframe start",
+    "cleanmod": "rm -rf node_modules/ && npm install",
     "warmup": "curl -s --output /dev/null https://ghuser.io && curl -s --output /dev/null https://www.ghuser.io",
     "deploy": "reframe build && rm -rf dist/previous/ && ./up && ./up production && ./up stack status && npm run warmup",
     "_comment": "staging and production logs:",
