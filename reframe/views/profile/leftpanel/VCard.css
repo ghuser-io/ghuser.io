@@ -7,7 +7,7 @@
   font-size: 20px;
   font-weight: 300;
   color: #666;
-  height: 1.2em;
+  min-height: 1.2em;
 }
 
 .vcard-username-login,
