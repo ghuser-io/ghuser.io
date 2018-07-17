@@ -11,8 +11,8 @@ import Avatar from '../Avatar';
 
 const LeftPanel = props => {
   let stars = 0;
-  for (const repo in props.user.contribs && props.user.contribs.repos) {
-    const contrib = props.user.contribs.repos[repo];
+  for (const repo in props.contribs && props.contribs.repos) {
+    const contrib = props.contribs.repos[repo];
     if (props.repos[contrib.full_name] && props.repos[contrib.full_name].stargazers_count) {
       stars += contrib.percentage * props.repos[contrib.full_name].stargazers_count / 100;
     }
@@ -28,7 +28,7 @@ const LeftPanel = props => {
       <VCardDetails location={props.user.location}
                     blog={!props.user.ghuser_created_at && 'https://ghuser.io' || props.user.blog} />
       <Orgs userOrgs={props.user.organizations || []}
-            contribOrgs={props.user.contribs && props.user.contribs.organizations || []}
+            contribOrgs={props.contribs && props.contribs.organizations || []}
             allOrgs={props.orgs}/>
     </div>
   );

@@ -12,11 +12,15 @@ const Orgs = props => {
 
   const memberOf = [];
   for (const org of props.userOrgs) {
-    memberOf.push(orgAvatar(org));
+    if (props.allOrgs[org]) {
+      memberOf.push(orgAvatar(org));
+    }
   }
   const contributedTo = [];
   for (const org of props.contribOrgs) {
-    contributedTo.push(orgAvatar(org));
+    if (props.allOrgs[org]) {
+      contributedTo.push(orgAvatar(org));
+    }
   }
 
   if (!memberOf.length && !contributedTo.length) {

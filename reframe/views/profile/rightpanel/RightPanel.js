@@ -85,7 +85,7 @@ const RightPanel = props => {
       {
         props.contribs &&
         <div className="updated-hint text-gray">
-          <small><i>Updated {moment(props.contribs.fetched_at).fromNow()}.</i></small>
+          <small><i>Updated {moment(props.fetchedat).fromNow()}.</i></small>
         </div>
       }
     </div>
