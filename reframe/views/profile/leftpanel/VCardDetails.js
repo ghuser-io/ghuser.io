@@ -9,7 +9,7 @@ const VCardDetails = props => {
   if (props.location) {
     details.push(
       <div className="vcard-detail pt-1" key="location">
-        <i className="fas fa-map-marker-alt"></i>&nbsp;
+        <i className="vcard-icon fas fa-map-marker-alt"></i>&nbsp;
         {props.location}
       </div>
     );
@@ -18,7 +18,7 @@ const VCardDetails = props => {
   if (props.blog) {
     details.push(
       <div className="vcard-detail pt-1" key="blog">
-        <i className="fas fa-link"></i> {Parser(Autolinker.link(props.blog))}
+        <i className="vcard-icon fas fa-link"></i> {Parser(Autolinker.link(props.blog))}
       </div>
     );
   };

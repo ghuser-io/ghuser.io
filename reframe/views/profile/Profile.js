@@ -7,6 +7,7 @@ import '../All.css';
 
 import LeftPanel from './leftpanel/LeftPanel';
 import RightPanel from './rightpanel/RightPanel';
+import * as db from './db';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -22,13 +23,12 @@ class Profile extends React.Component {
 
   async componentDidMount() {
     try {
-      const githubRef = 'master';
       const userId = this.props.username.toLowerCase();
-      const userData = await fetch(`https://rawgit.com/AurelienLourot/ghuser.io/${githubRef}/db/data/users/${userId}.json`);
+      const userData = await fetch(`${db.url}/users/${userId}.json`);
       const user = await userData.json();
       this.setState({ user });
 
-      const contribsData = await fetch(`https://rawgit.com/AurelienLourot/ghuser.io/${githubRef}/db/data/contribs/${userId}.json`);
+      const contribsData = await fetch(`${db.url}/contribs/${userId}.json`);
       const contribs = await contribsData.json();
       this.setState({ contribs });
     } catch (_) {}
@@ -40,10 +40,10 @@ class Profile extends React.Component {
       <div><i className="fas fa-spinner fa-pulse"></i> {this.state.user.login}'s profile</div> ||
       <div className="row">
         <LeftPanel user={this.state.user} contribs={this.state.contribs}
-                   orgs={this.props.orgs} repos={this.props.repos} />
+                   orgs={this.props.orgs} />
         <RightPanel username={this.state.user.login}
                     fetchedat={this.state.user.contribs && this.state.user.contribs.fetched_at}
-                    contribs={this.state.contribs} repos={this.props.repos}
+                    contribs={this.state.contribs}
                     deleted_because={this.state.user.ghuser_deleted_because} />
       </div>;
 

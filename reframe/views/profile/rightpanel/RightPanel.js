@@ -8,6 +8,17 @@ import './RightPanel.css';
 import CreateYourProfile from '../../CreateYourProfile';
 
 const RightPanel = props => {
+  // Use these queues to avoid filling up the event loop:
+  let functionQueues = [Promise.resolve(), Promise.resolve(), Promise.resolve()];
+  const pushToFunctionQueue = (index, func) => {
+    functionQueues[index] = functionQueues[index].then(
+      () => new Promise(resolve => setTimeout(() => {
+        func();
+        resolve();
+      }, 0))
+    );
+  };
+
   const compare = (a, b) => {
     if (a.total_score < b.total_score) {
       return 1;
@@ -26,19 +37,17 @@ const RightPanel = props => {
 
     const uniqueNames = [];
     for (const contrib of contribs) {
-      if (props.repos[contrib.full_name]) {
-        // We don't want to have two repos with the same name. This happens when a user is
-        // contributing to a project and has a fork with the same name:
-        if (uniqueNames.indexOf(props.repos[contrib.full_name].name) > -1) {
-          continue;
-        }
-        uniqueNames.push(props.repos[contrib.full_name].name);
-
-        repos.push(
-            <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
-                     repo={props.repos[contrib.full_name]} />
-        );
+      // We don't want to have two repos with the same name. This happens when a user is
+      // contributing to a project and has a fork with the same name:
+      if (uniqueNames.indexOf(contrib.name) > -1) {
+        continue;
       }
+      uniqueNames.push(contrib.name);
+
+      repos.push(
+          <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
+                   pushToFunctionQueue={pushToFunctionQueue} />
+      );
     }
   } else {
     if (props.deleted_because) {

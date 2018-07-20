@@ -25,7 +25,7 @@ class RepoDescrAndDetails extends React.Component {
   }
 
   setupSemanticUi() {
-    setTimeout(() => $(this.semanticAccordion.current).accordion(), 0);
+    this.props.pushToFunctionQueue(1, () => $(this.semanticAccordion.current).accordion());
   }
 
   render() {
@@ -77,7 +77,8 @@ class RepoDescrAndDetails extends React.Component {
               <tr>
                 <td className="contrib-details">user's contribution:</td>
                 <td className="contrib-details">
-                  <ProgressBar color="green" percentage={this.props.contrib.percentage} />
+                  <ProgressBar color="green" percentage={this.props.contrib.percentage}
+                               pushToFunctionQueue={this.props.pushToFunctionQueue} />
                 </td>
                 <td className="contrib-details">
                   // {humanReadablePercentage(this.props.contrib.percentage)} % of the project
@@ -86,7 +87,8 @@ class RepoDescrAndDetails extends React.Component {
               <tr>
                 <td className="contrib-details">project popularity:</td>
                 <td className="contrib-details">
-                  <ProgressBar color="green" percentage={this.props.contrib.popularity * 20} />
+                  <ProgressBar color="green" percentage={this.props.contrib.popularity * 20}
+                               pushToFunctionQueue={this.props.pushToFunctionQueue} />
                 </td>
                 <td className="contrib-details">
                   // {roundHalf(this.props.contrib.popularity)} / 5
@@ -96,7 +98,8 @@ class RepoDescrAndDetails extends React.Component {
               <tr>
                 <td className="contrib-details">project activity:</td>
                 <td className="contrib-details">
-                  <ProgressBar color="green" percentage={this.props.contrib.activity * 20} />
+                  <ProgressBar color="green" percentage={this.props.contrib.activity * 20}
+                               pushToFunctionQueue={this.props.pushToFunctionQueue} />
                 </td>
                 <td className="contrib-details">
                   // {roundHalf(this.props.contrib.activity)} / 5
@@ -106,7 +109,8 @@ class RepoDescrAndDetails extends React.Component {
               <tr>
                 <td className="contrib-details">project maturity:</td>
                 <td className="contrib-details">
-                  <ProgressBar color="green" percentage={this.props.contrib.maturity * 20} />
+                  <ProgressBar color="green" percentage={this.props.contrib.maturity * 20}
+                               pushToFunctionQueue={this.props.pushToFunctionQueue} />
                 </td>
                 <td className="contrib-details">
                   // {roundHalf(this.props.contrib.maturity)} / 5
@@ -116,7 +120,8 @@ class RepoDescrAndDetails extends React.Component {
               <tr>
                 <td className="contrib-details">contribution score:*</td>
                 <td className="contrib-details">
-                  <ProgressBar color="grey" percentage={this.props.contrib.total_score * 100 / this.props.contrib.max_total_score} />
+                  <ProgressBar color="grey" percentage={this.props.contrib.total_score * 100 / this.props.contrib.max_total_score}
+                               pushToFunctionQueue={this.props.pushToFunctionQueue} />
                 </td>
                 <td className="contrib-details">
                   // {roundHalf(this.props.contrib.total_score)} / {this.props.contrib.max_total_score}

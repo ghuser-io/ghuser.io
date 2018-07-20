@@ -19,11 +19,11 @@ class ProgressBar extends React.Component {
   }
 
   setupSemanticUi() {
-    setTimeout(() => {
+    this.props.pushToFunctionQueue(2, () => {
       $(this.semanticBar.current).progress({
         showActivity: false
       });
-    }, 0);
+    });
   }
 
   render() {
