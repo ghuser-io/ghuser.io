@@ -64,10 +64,14 @@ data/
     largest: richardlitt.json (268 KB)
     total: 715 KB
   orgs.json: 107 KB
-  repos.json: 4324 KB
-  total: 5270 KB
+  repos.json: 4326 KB
+  total: 5271 KB
 
 => 203 KB/user
+
+real    10m35.411s
+user    2m34.128s
+sys     0m18.912s
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
