@@ -4,8 +4,7 @@
 (() => {
 
   const meow = require('meow');
-
-  const db = require('./impl/db');
+  const DbFile = require('./impl/dbFile');
 
   const cli = meow(`
 usage:
@@ -29,16 +28,18 @@ positional arguments:
 
   const user = cli.input[0];
   const userId = user.toLowerCase();
-  if (db.users[userId]) {
+  const userFile = new DbFile(`data/users/${userId}.json`);
+  if (userFile.login) {
     console.log(`${user} already exists.`);
     return;
   }
 
-  db.users[userId] = {
+  Object.assign(userFile, {
+    _comment: 'DO NOT EDIT MANUALLY - See ../../README.md',
     login: user,
     ghuser_created_at: (new Date).toISOString()
-  };
-  db.write();
-  console.log(`${user} added. You should now run ./fetch.js`);
+  });
+  userFile.write();
+  console.log(`${user} added. You should now run ./fetchAndCalculateAll.sh`);
 
 })();

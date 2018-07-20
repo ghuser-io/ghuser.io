@@ -4,8 +4,7 @@
 (() => {
 
   const meow = require('meow');
-
-  const db = require('./impl/db');
+  const DbFile = require('./impl/dbFile');
 
   const cli = meow(`
 usage:
@@ -33,11 +32,11 @@ positional arguments:
   const reason = cli.input[1];
 
   const userId = user.toLowerCase();
-  db.users[userId] = {
-    login: user,
-    ghuser_deleted_because: reason
-  };
-  db.write();
-  console.log(`${user} marked as deleted. You should now run ./fetch.js`);
+  const userFile = new DbFile(`data/users/${userId}.json`);
+  userFile.deleteAllPropsBut(['login']);
+  userFile.login = userFile.login || user;
+  userFile.ghuser_deleted_because = reason;
+  userFile.write();
+  console.log(`${user} marked as deleted. You should now run ./fetchAndCalculateAll.sh`);
 
 })();

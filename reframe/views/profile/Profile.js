@@ -24,11 +24,11 @@ class Profile extends React.Component {
     try {
       const githubRef = 'master';
       const userId = this.props.username.toLowerCase();
-      const userData = await fetch(`https://rawgit.com/AurelienLourot/ghuser.io/${githubRef}/db/v2/data/users/${userId}.json`);
+      const userData = await fetch(`https://rawgit.com/AurelienLourot/ghuser.io/${githubRef}/db/data/users/${userId}.json`);
       const user = await userData.json();
       this.setState({ user });
 
-      const contribsData = await fetch(`https://rawgit.com/AurelienLourot/ghuser.io/${githubRef}/db/v2/data/contribs/${userId}.json`);
+      const contribsData = await fetch(`https://rawgit.com/AurelienLourot/ghuser.io/${githubRef}/db/data/contribs/${userId}.json`);
       const contribs = await contribsData.json();
       this.setState({ contribs });
     } catch (_) {}

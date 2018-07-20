@@ -1,7 +1,7 @@
 {
-  "name": "@ghuser/db-fetch",
+  "name": "@ghuser/db-scripts",
   "version": "0.0.1",
-  "description": "Edit db.json",
+  "description": "Edit data/**/*.json",
   "dependencies": {
     "@ghuser/github-contribs": "^2.1.0",
     "fetch-retry": "^1.2.1",
