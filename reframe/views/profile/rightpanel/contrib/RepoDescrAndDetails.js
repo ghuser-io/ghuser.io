@@ -25,7 +25,7 @@ class RepoDescrAndDetails extends React.Component {
   }
 
   setupSemanticUi() {
-    $(this.semanticAccordion.current).accordion();
+    setTimeout(() => $(this.semanticAccordion.current).accordion(), 0);
   }
 
   render() {
