@@ -54,6 +54,20 @@ $ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
 $ export GITHUB_USERNAME=AurelienLourot
 $ export GITHUB_PASSWORD=********
 $ ./fetchAndCalculateAll.sh
+...
+data/
+  users/
+    26 users
+    largest: richardlitt.json (39 KB)
+    total: 123 KB
+  contribs/
+    largest: richardlitt.json (268 KB)
+    total: 715 KB
+  orgs.json: 107 KB
+  repos.json: 4324 KB
+  total: 5270 KB
+
+=> 203 KB/user
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).

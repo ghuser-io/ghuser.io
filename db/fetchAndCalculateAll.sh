@@ -22,6 +22,7 @@ function run {
   ./fetchOrgs.js
   ./fetchRepos.js
   ./calculateContribs.js
+  ./printDataStats.js
 }
 
 time run
