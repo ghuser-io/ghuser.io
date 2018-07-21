@@ -26,6 +26,9 @@
         const user = new DbFile(`data/users/${file}`);
         if (!user.ghuser_deleted_because) {
           users[file] = user;
+
+          // Make sure the corresponding contrib file exists (not the case if it's a new user:
+          (new DbFile(`data/contribs/${file}`)).write();
         }
       }
     }
