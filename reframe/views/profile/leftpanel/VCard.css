@@ -17,3 +17,7 @@
   white-space: nowrap;
   float: left;
 }
+
+.vcard-stars {
+  white-space: nowrap;
+}
