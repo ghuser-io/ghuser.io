@@ -63,19 +63,10 @@ profile by
 
 # Contributing
 
-[ghuser.io](https://ghuser.io) is a [Reframe](https://github.com/reframejs/reframe) web app. To run
-your local changes:
-
-```bash
-$ cd reframe/
-$ npm install
-$ npm run local
-...
- ✔ Server running (for development)
-     http://localhost:3000/ -> LandingPage
-     http://localhost:3000/:username -> ProfilePage
-     http://localhost:3000/logo -> LogoPage
-```
+* Fork this project.
+* Make some changes to the [web app](reframe/).
+* Validate your changes by [running the app locally](reframe/README.md#run-locally).
+* Create a [pull request](https://github.com/AurelienLourot/ghuser.io/compare) :)
 
 # Team
 
