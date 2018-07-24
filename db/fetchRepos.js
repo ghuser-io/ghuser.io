@@ -203,7 +203,8 @@
         }
       }
 
-      if (Object.keys(repos.repos[repo].contributors).length >= 500) {
+      if (false && //FIXME see #74
+          Object.keys(repos.repos[repo].contributors).length >= 500) {
         // We could use https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
         // in order to fetch more than 500 contributors.
         spinner.fail();
