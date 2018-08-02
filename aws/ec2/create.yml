@@ -57,6 +57,19 @@
       prompt: Git email
       private: no
       default: aurelien.lourot@gmail.com
+    - name: github_client_id
+      prompt: GitHub client id (e.g. 0123456789abcdef0123)
+      private: no
+    - name: github_client_secret
+      prompt: GitHub client secret (e.g. 0123456789abcdef0123456789abcdef01234567)
+      private: yes
+    - name: github_username
+      prompt: GitHub username
+      private: no
+      default: AurelienLourot
+    - name: github_password
+      prompt: GitHub password
+      private: yes
   tasks:
     - name: Download Node.js setup script
       get_url:
@@ -80,6 +93,20 @@
         name: user.email
         scope: global
         value: "{{ git_email }}"
+    - name: Setup .bashrc
+      lineinfile:
+        path: /home/ubuntu/.bashrc
+        regexp: "export\\s{{ item.key }}="
+        line: "export {{ item.key }}=\"{{ item.val }}\""
+      with_items:
+        - key: GITHUB_CLIENT_ID
+          val: "{{ github_client_id }}"
+        - key: GITHUB_CLIENT_SECRET
+          val: "{{ github_client_secret }}"
+        - key: GITHUB_USERNAME
+          val: "{{ github_username }}"
+        - key: GITHUB_PASSWORD
+          val: "{{ github_password }}"
     - name: git clone ghuser.io
       git:
         repo: https://github.com/AurelienLourot/ghuser.io.git
@@ -88,6 +115,10 @@
       command: npm install
       args:
         chdir: /home/ubuntu/ghuser.io/db/
+    - name: npm install reframe
+      command: npm install
+      args:
+        chdir: /home/ubuntu/ghuser.io/reframe/
     - name: Hint
       vars:
         msg: |
@@ -97,10 +128,6 @@
           [C-b d]
           $ tmux attach -t 0
           $ cd ghuser.io/db/
-          $ export GITHUB_CLIENT_ID=0123456789abcdef0123
-          $ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
-          $ export GITHUB_USERNAME=AurelienLourot
-          $ export GITHUB_PASSWORD=********
           $ ./fetchAndCalculateAll.sh
       debug:
         msg: "{{ msg.split('\n') }}"
