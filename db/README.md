@@ -57,21 +57,21 @@ $ ./fetchAndCalculateAll.sh
 ...
 data/
   users/
-    26 users
+    42 users
     largest: richardlitt.json (39 KB)
-    total: 123 KB
+    total: 158 KB
   contribs/
     largest: richardlitt.json (268 KB)
-    total: 715 KB
-  orgs.json: 107 KB
-  repos.json: 4326 KB
-  total: 5271 KB
+    total: 861 KB
+  orgs.json: 123 KB
+  repos.json: 5216 KB
+  total: 6358 KB
 
-=> 203 KB/user
+=> 151 KB/user
 
-real    10m35.411s
-user    2m34.128s
-sys     0m18.912s
+real    16m37.964s
+user    3m41.584s
+sys     0m27.292s
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).

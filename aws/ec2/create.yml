@@ -32,7 +32,7 @@
         vpc_subnet_id: "{{ subnet_id }}"
         group: "default,ghuser-sg"
         image: ami-759bc50a # Ubuntu 16.04 hvm:ebs-ssd
-        instance_type: t2.nano
+        instance_type: t2.small
         wait: true
         instance_tags:
           Name: "{{ instance_name }}"
@@ -101,6 +101,6 @@
           $ export GITHUB_CLIENT_SECRET=0123456789abcdef0123456789abcdef01234567
           $ export GITHUB_USERNAME=AurelienLourot
           $ export GITHUB_PASSWORD=********
-          $ ./fetch.js
+          $ ./fetchAndCalculateAll.sh
       debug:
         msg: "{{ msg.split('\n') }}"
