@@ -109,7 +109,7 @@
           val: "{{ github_password }}"
     - name: git clone ghuser.io
       git:
-        repo: https://github.com/AurelienLourot/ghuser.io.git
+        repo: "https://{{ github_username }}:{{ github_password }}@github.com/AurelienLourot/ghuser.io.git"
         dest: /home/ubuntu/ghuser.io/
     - name: npm install ghuser.io's DB
       command: npm install
@@ -119,6 +119,20 @@
       command: npm install
       args:
         chdir: /home/ubuntu/ghuser.io/reframe/
+    - name: Reset package-lock.json
+      command: git reset --hard HEAD
+      args:
+        chdir: /home/ubuntu/ghuser.io/
+    - name: Create ~/.aws/
+      file:
+        path: /home/ubuntu/.aws
+        state: directory
+        mode: 0700
+    - name: Create ~/.aws/credentials
+      copy:
+        src: "{{ lookup('env','HOME') }}/.aws/credentials"
+        dest: /home/ubuntu/.aws/credentials
+        mode: 0400
     - name: Hint
       vars:
         msg: |
