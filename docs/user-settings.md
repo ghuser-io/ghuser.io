@@ -23,4 +23,4 @@ Your profile will then link to:
 
 ![screenshot](user-settings.png)
 
-See [this example](https://github.com/AurelienLourot/ghuser.io.settings/ghuser.io.json).
+See [this example](https://github.com/AurelienLourot/ghuser.io.settings/blob/master/ghuser.io.json).
