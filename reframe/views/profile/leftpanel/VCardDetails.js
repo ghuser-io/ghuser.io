@@ -15,6 +15,14 @@ const VCardDetails = props => {
     );
   };
 
+  if (props.email) {
+    details.push(
+      <div className="vcard-detail pt-1" key="email">
+        <i className="vcard-icon far fa-envelope"></i> {Parser(Autolinker.link(props.email))}
+      </div>
+    );
+  };
+
   if (props.blog) {
     details.push(
       <div className="vcard-detail pt-1" key="blog">

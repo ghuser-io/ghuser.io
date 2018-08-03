@@ -23,7 +23,7 @@ const LeftPanel = props => {
              name={!props.user.ghuser_created_at && 'Your name here' || props.user.name}
              url={props.user.html_url} stars={stars} />
       <Bio text={!props.user.ghuser_created_at && "I love coding and I'm about to create my profile on ghuser.io :)" || props.user.bio} />
-      <VCardDetails location={props.user.location}
+      <VCardDetails location={props.user.location} email={props.user.email}
                     blog={!props.user.ghuser_created_at && 'https://ghuser.io' || props.user.blog} />
       <Orgs userOrgs={props.user.organizations || []}
             contribOrgs={props.contribs && props.contribs.organizations || []}
