@@ -57,13 +57,33 @@
     console.log(`    largest: ${largestContribFileName} (${toKB(largestContribFileSize)})`);
     console.log(`    total: ${toKB(totalContribSize)}`);
 
+    let numRepos = 0;
+    let largestRepoFileName;
+    let largestRepoFileSize = 0;
+    let totalRepoSize = 0;
+    for (const ownerDir of fs.readdirSync('data/repos/')) {
+      for (const file of fs.readdirSync(`data/repos/${ownerDir}/`)) {
+        if (file.endsWith('.json')) {
+          const repo = new DbFile(`data/repos/${ownerDir}/${file}`);
+          ++numRepos;
+          const repoFileSize = fs.statSync(`data/repos/${ownerDir}/${file}`).size;
+          if (repoFileSize > largestRepoFileSize) {
+            largestRepoFileSize = repoFileSize;
+            largestRepoFileName = `${ownerDir}/${file}`;
+          }
+          totalRepoSize += repoFileSize;
+        }
+      }
+    }
+    console.log('  repos/');
+    console.log(`    ${numRepos} repos`);
+    console.log(`    largest: ${largestRepoFileName} (${toKB(largestRepoFileSize)})`);
+    console.log(`    total: ${toKB(totalRepoSize)}`);
+
     const orgsSize = fs.statSync(`data/orgs.json`).size;
     console.log(`  orgs.json: ${toKB(orgsSize)}`);
 
-    const reposSize = fs.statSync(`data/repos.json`).size;
-    console.log(`  repos.json: ${toKB(reposSize)}`);
-
-    const totalSize = totalUserSize + totalContribSize + orgsSize + reposSize;
+    const totalSize = totalUserSize + totalContribSize + totalRepoSize + orgsSize;
     console.log(`  total: ${toKB(totalSize)}`);
 
     console.log(`\n=> ${toKB(totalSize / numUsers)}/user`);

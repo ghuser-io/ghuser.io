@@ -20,21 +20,25 @@ Several scripts form a pipeline for updating the database. Here is the data flow
                        │       v               │                         │
                        │   [ ./fetchUserDetailsAndContribs.js myUser ]<──┤
                        │                                                 │
-                       ├──────────────────>[ ./fetchOrgs.js ]<───────────┤
-                       │                            │                    │
-                       │                            v                    │
-                       │                      ┌───────────┐              │
-                       │                      │ orgs.json │              │
-                       │                      └─────┬─────┘              │
-                       │                            │                    │
+                       ├──────────────────────────>[ ./fetchOrgs.js ]<───┤
+                       │                                    │            │
+                       │                                    v            │
+                       │                                ┌───────────┐    │
+                       │                                │ orgs.json │    │
+                       │                                └─────┬─────┘    │
+                       │                                      │          │
                        ├──>[ ./fetchRepos.js ]<──────────────────────────┘
-                       │         │                  │
-                       │         v        ┌─────────┘
-                       │  ┌────────────┐  │
-                       │  │ repos.json │  │
-                       │  └──────┬─────┘  │
-                       │         │        │
-                       v         v        v
+                       │             │                        │
+                       │             v                        │
+                       │  ┌───────────────────────────┐       │
+                       │  │ repos/myOwner/myRepo.json │─┐     │
+                       │  └───────────────────────────┘ │─┐   │
+                       │    └───────────────────────────┘ │   │
+                       │      └────┬──────────────────────┘   │
+                       │           │                          │
+                       │           │      ┌───────────────────┘
+                       │           │      │
+                       v           v      v
                    [ ./calculateContribs.js ]
                                  │
                                  v
@@ -59,15 +63,18 @@ data/
   users/
     42 users
     largest: richardlitt.json (39 KB)
-    total: 158 KB
+    total: 123 KB
   contribs/
-    largest: richardlitt.json (268 KB)
-    total: 861 KB
+    largest: richardlitt.json (307 KB)
+    total: 989 KB
+  repos/
+    2077 repos
+    largest: AliceWonderland/hacktoberfest.json (14 KB)
+    total: 4632 KB
   orgs.json: 123 KB
-  repos.json: 5216 KB
-  total: 6358 KB
+  total: 4828 KB
 
-=> 151 KB/user
+=> 141 KB/user
 
 real    16m37.964s
 user    3m41.584s

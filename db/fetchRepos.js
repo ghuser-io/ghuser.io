@@ -20,10 +20,6 @@
   async function fetchRepos() {
     let spinner;
 
-    const repos = new DbFile('data/repos.json');
-    repos._comment = 'DO NOT EDIT MANUALLY - See ../README.md';
-    repos.repos = repos.repos || {};
-
     const users = [];
     for (const file of fs.readdirSync('data/users/')) {
       if (file.endsWith('.json')) {
@@ -34,14 +30,33 @@
       }
     }
 
-    let referencedRepos = new Set([]);
+    const referencedRepos = new Set([]);
     for (const user of users) {
-      referencedRepos = new Set([...referencedRepos, ...user.contribs.repos]);
+      for (const repo in user.contribs.repos) {
+        const full_name = user.contribs.repos[repo];
+        referencedRepos.add(full_name);
+
+        // Make sure the corresponding repo file exists:
+        (new DbFile(`data/repos/${full_name}.json`)).write();
+      }
+    }
+
+    const repos = {};
+    for (const ownerDir of fs.readdirSync('data/repos/')) {
+      for (const file of fs.readdirSync(`data/repos/${ownerDir}/`)) {
+        const ext = '.json';
+        if (file.endsWith(ext)) {
+          const repo = new DbFile(`data/repos/${ownerDir}/${file}`);
+          repo._comment = 'DO NOT EDIT MANUALLY - See ../../../README.md';
+          const full_name = `${ownerDir}/${file}`.slice(0, -ext.length);
+          repos[full_name] = repo;
+        }
+      }
     }
 
     const now = new Date;
     for (const repo of referencedRepos) {
-      if (!repos.repos[repo] || !repos.repos[repo].removed_from_github) {
+      if (!repos[repo] || !repos[repo].removed_from_github) {
         await fetchRepo(repo);
       }
     }
@@ -49,8 +64,8 @@
     stripUnreferencedRepos();
     stripUnsuccessfulOrEmptyRepos();
 
-    for (const repo in repos.repos) {
-      if (!repos.repos[repo].removed_from_github) {
+    for (const repo in repos) {
+      if (!repos[repo].removed_from_github) {
         await fetchRepoContributors(repo);
         await fetchRepoLanguages(repo);
         await fetchRepoSettings(repo);
@@ -63,36 +78,34 @@
     return;
 
     async function fetchRepo(repo) {
-      repos.repos[repo] = repos.repos[repo] || {};
-
       const ghRepoUrl = `https://api.github.com/repos/${repo}`;
       spinner = ora(`Fetching ${ghRepoUrl}...`).start();
 
       const maxAgeHours = 6;
-      if (repos.repos[repo].fetching_since || repos.repos[repo].fetched_at &&
-          now - Date.parse(repos.repos[repo].fetched_at) < maxAgeHours * 60 * 60 * 1000) {
+      if (repos[repo].fetching_since || repos[repo].fetched_at &&
+          now - Date.parse(repos[repo].fetched_at) < maxAgeHours * 60 * 60 * 1000) {
         spinner.succeed(`${repo} is still fresh`);
         return;
       }
 
       const ghDataJson = await fetchJson(github.authify(ghRepoUrl), spinner, [304, 404],
-                                         new Date(repos.repos[repo].fetched_at));
+                                         new Date(repos[repo].fetched_at));
       switch (ghDataJson) {
       case 304:
         spinner.succeed(`${repo} didn't change`);
         return;
       case 404:
-        repos.repos[repo].removed_from_github = true;
+        repos[repo].removed_from_github = true;
         spinner.succeed(`${repo} was removed from GitHub`);
-        repos.write();
+        repos[repo].write();
         return;
       }
-      repos.repos[repo].fetching_since = now.toISOString();;
+      repos[repo].fetching_since = now.toISOString();;
 
       spinner.succeed(`Fetched ${ghRepoUrl}`);
 
       ghDataJson.owner = ghDataJson.owner.login;
-      repos.repos[repo] = {...repos.repos[repo], ...ghDataJson};
+      Object.assign(repos[repo], ghDataJson);
 
       // Keep the DB small:
       for (const field of [
@@ -107,52 +120,49 @@
         "allow_squash_merge", "allow_merge_commit", "allow_rebase_merge", "stargazers_url",
         "watchers_count", "forks_count", "open_issues_count", "forks", "open_issues", "watchers",
         "parent", "source", "network_count", "subscribers_count"]) {
-        delete repos.repos[repo][field];
+        delete repos[repo][field];
       }
 
-      repos.write();
+      repos[repo].write();
     }
 
     function stripUnreferencedRepos() {
       // Deletes repos that are not referenced by any user's contribution.
 
       const toBeDeleted = [];
-      for (const repo in repos.repos) {
+      for (const repo in repos) {
         if (!referencedRepos.has(repo)) {
           toBeDeleted.push(repo);
         }
       }
       for (const repo of toBeDeleted) {
-        delete repos.repos[repo];
+        delete repos[repo];
+        fs.unlinkSync(`data/repos/${repo}.json`);
       }
-
-      repos.write();
     }
 
     function stripUnsuccessfulOrEmptyRepos() {
       // Deletes repos with no stars or no commits.
 
       const toBeDeleted = [];
-      for (const repo in repos.repos) {
-        if (repos.repos[repo].removed_from_github || repos.repos[repo].stargazers_count < 1 ||
-            repos.repos[repo].size === 0) {
+      for (const repo in repos) {
+        if (repos[repo].removed_from_github || repos[repo].stargazers_count < 1 ||
+            repos[repo].size === 0) {
           toBeDeleted.push(repo);
         }
       }
       for (const repo of toBeDeleted) {
-        delete repos.repos[repo];
+        delete repos[repo];
+        fs.unlinkSync(`data/repos/${repo}.json`);
       }
-
-      repos.write();
     }
 
     async function fetchRepoContributors(repo) {
-      repos.repos[repo].contributors = repos.repos[repo].contributors || {};
+      repos[repo].contributors = repos[repo].contributors || {};
       spinner = ora(`Fetching ${repo}'s contributors...`).start();
 
-      if (!repos.repos[repo].fetching_since ||
-          repos.repos[repo].fetched_at &&
-          new Date(repos.repos[repo].fetched_at) > new Date(repos.repos[repo].pushed_at)) {
+      if (!repos[repo].fetching_since || repos[repo].fetched_at &&
+          new Date(repos[repo].fetched_at) > new Date(repos[repo].pushed_at)) {
         spinner.succeed(`${repo} hasn't changed`);
         return;
       }
@@ -160,7 +170,7 @@
       // This endpoint only gives us the 100 greatest contributors, so if it looks like there
       // can be more, we use the next endpoint to get the 500 greatest ones:
       let firstMethodFailed = false;
-      if (Object.keys(repos.repos[repo].contributors).length < 100) {
+      if (Object.keys(repos[repo].contributors).length < 100) {
         const ghUrl = `https://api.github.com/repos/${repo}/stats/contributors`;
 
         let ghDataJson;
@@ -185,18 +195,18 @@
 
         if (!firstMethodFailed) {
           for (const contributor of ghDataJson) {
-            repos.repos[repo].contributors[contributor.author.login] = contributor.total;
+            repos[repo].contributors[contributor.author.login] = contributor.total;
           }
         }
       }
 
-      if (firstMethodFailed || Object.keys(repos.repos[repo].contributors).length >= 100) {
+      if (firstMethodFailed || Object.keys(repos[repo].contributors).length >= 100) {
         const perPage = 100;
         for (let page = 1; page <= 5; ++page) {
           const ghUrl = `https://api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
           const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
           for (const contributor of ghDataJson) {
-            repos.repos[repo].contributors[contributor.login] = contributor.contributions;
+            repos[repo].contributors[contributor.login] = contributor.contributions;
           }
 
           if (ghDataJson.length < perPage) {
@@ -206,7 +216,7 @@
       }
 
       if (false && //FIXME see #74
-          Object.keys(repos.repos[repo].contributors).length >= 500) {
+          Object.keys(repos[repo].contributors).length >= 500) {
         // We could use https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
         // in order to fetch more than 500 contributors.
         spinner.fail();
@@ -214,16 +224,15 @@
       }
 
       spinner.succeed(`Fetched ${repo}'s contributors`);
-      repos.write();
+      repos[repo].write();
     }
 
     async function fetchRepoLanguages(repo) {
       const ghUrl = `https://api.github.com/repos/${repo}/languages`;
       spinner = ora(`Fetching ${ghUrl}...`).start();
 
-      if (!repos.repos[repo].fetching_since ||
-          repos.repos[repo].fetched_at &&
-          new Date(repos.repos[repo].fetched_at) > new Date(repos.repos[repo].pushed_at)) {
+      if (!repos[repo].fetching_since || repos[repo].fetched_at &&
+          new Date(repos[repo].fetched_at) > new Date(repos[repo].pushed_at)) {
         spinner.succeed(`${repo} hasn't changed`);
         return;
       }
@@ -238,17 +247,16 @@
         };
       }
 
-      repos.repos[repo].languages = ghDataJson;
-      repos.write();
+      repos[repo].languages = ghDataJson;
+      repos[repo].write();
     }
 
     async function fetchRepoSettings(repo) {
       const url = `https://rawgit.com/${repo}/master/.ghuser.io.json`;
       spinner = ora(`Fetching ${repo}'s settings...`).start();
 
-      if (!repos.repos[repo].fetching_since ||
-          repos.repos[repo].fetched_at &&
-          new Date(repos.repos[repo].fetched_at) > new Date(repos.repos[repo].pushed_at)) {
+      if (!repos[repo].fetching_since || repos[repo].fetched_at &&
+          new Date(repos[repo].fetched_at) > new Date(repos[repo].pushed_at)) {
         spinner.succeed(`${repo} hasn't changed`);
         return;
       }
@@ -260,15 +268,15 @@
       }
       spinner.succeed(`Fetched ${repo}'s settings`);
 
-      repos.repos[repo].settings = dataJson;
-      repos.write();
+      repos[repo].settings = dataJson;
+      repos[repo].write();
     }
 
     function markRepoAsFullyFetched(repo) {
-      if (repos.repos[repo].fetching_since) {
-        repos.repos[repo].fetched_at = repos.repos[repo].fetching_since;
-        delete repos.repos[repo].fetching_since;
-        repos.write();
+      if (repos[repo].fetching_since) {
+        repos[repo].fetched_at = repos[repo].fetching_since;
+        delete repos[repo].fetching_since;
+        repos[repo].write();
       }
     }
 
@@ -276,14 +284,13 @@
       // Some repos got renamed/moved after the latest contributions and need to be created as well
       // with their new name, so they can be found by the frontend.
 
-      for (const repo in repos.repos) {
-        const latest_name = repos.repos[repo].full_name;
-        if (repo !== latest_name && !repos.repos[latest_name]) {
-          repos.repos[latest_name] = repos.repos[repo];
+      for (const repo in repos) {
+        const latest_name = repos[repo].full_name;
+        if (repo !== latest_name && !repos[latest_name]) {
+          fs.copyFileSync(`data/repos/${repo}.json`, `data/repos/${latest_name}.json`);
+          repos[latest_name] = new DbFile(`data/repos/${latest_name}.json`);
         }
       }
-
-      repos.write();
     }
   }
 

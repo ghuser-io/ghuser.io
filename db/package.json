@@ -1,6 +1,6 @@
 {
   "name": "@ghuser/db-scripts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Edit data/**/*.json",
   "dependencies": {
     "@ghuser/github-contribs": "^2.1.0",

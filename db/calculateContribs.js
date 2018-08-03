@@ -17,7 +17,6 @@
   function calculateContribs() {
     let spinner;
 
-    const repos = new DbFile('data/repos.json');
     const orgs = new DbFile('data/orgs.json');
 
     const users = {};
@@ -27,7 +26,7 @@
         if (!user.ghuser_deleted_because) {
           users[file] = user;
 
-          // Make sure the corresponding contrib file exists (not the case if it's a new user:
+          // Make sure the corresponding contrib file exists (not the case if it's a new user):
           (new DbFile(`data/contribs/${file}`)).write();
         }
       }
@@ -40,6 +39,18 @@
         contribList._comment = 'DO NOT EDIT MANUALLY - See ../../README.md';
         contribList.repos = {};
         contribs[file] = contribList;
+      }
+    }
+
+    const repos = {};
+    for (const ownerDir of fs.readdirSync('data/repos/')) {
+      for (const file of fs.readdirSync(`data/repos/${ownerDir}/`)) {
+        const ext = '.json';
+        if (file.endsWith(ext)) {
+          const repo = new DbFile(`data/repos/${ownerDir}/${file}`);
+          const full_name = `${ownerDir}/${file}`.slice(0, -ext.length);
+          repos[full_name] = repo;
+        }
       }
     }
 
@@ -66,8 +77,6 @@
         delete contribs[contribList];
         fs.unlinkSync(`data/contribs/${contribList}`);
       }
-
-      repos.write();
     }
 
     function calculateScores(filename) {
@@ -76,28 +85,30 @@
       spinner = ora(`Calculating scores for ${userLogin}...`).start();
 
       for (const repo of users[filename].contribs.repos) {
-        if (!repos.repos[repo]) {
+        if (!repos[repo]) {
           continue; // repo has been stripped
         }
 
-        const full_name = repos.repos[repo].full_name;
+        const full_name = repos[repo].full_name;
         const score = contribs[filename].repos[full_name] = {
           full_name,
-          popularity: logarithmicScoreAscending(1, 10000, repos.repos[repo].stargazers_count)
+          name: repos[repo].name,
+          stargazers_count: repos[repo].stargazers_count,
+          popularity: logarithmicScoreAscending(1, 10000, repos[repo].stargazers_count)
         };
 
         let totalContribs = 0;
-        for (const contributor in repos.repos[repo].contributors) {
-          totalContribs += repos.repos[repo].contributors[contributor];
+        for (const contributor in repos[repo].contributors) {
+          totalContribs += repos[repo].contributors[contributor];
         }
 
-        score.percentage = repos.repos[repo].contributors[userLogin] &&
-                           100 * repos.repos[repo].contributors[userLogin] / totalContribs || 0;
+        score.percentage = repos[repo].contributors[userLogin] &&
+                           100 * repos[repo].contributors[userLogin] / totalContribs || 0;
         score.maturity = logarithmicScoreAscending(40, 10000, totalContribs);
         score.total_commits_count = totalContribs;
 
         const daysOfInactivity =
-                (Date.parse(repos.repos[repo].fetched_at) - Date.parse(repos.repos[repo].pushed_at))
+                (Date.parse(repos[repo].fetched_at) - Date.parse(repos[repo].pushed_at))
                 / (24 * 60 * 60 * 1000);
         score.activity = logarithmicScoreDescending(3650, 30, daysOfInactivity);
 
@@ -145,7 +156,7 @@
       const toBeDeleted = [];
       for (const repo in contribs[filename].repos) {
         const score = contribs[filename].repos[repo];
-        if (repos.repos[repo] && repos.repos[repo].fork && score.percentage === 0) {
+        if (repos[repo] && repos[repo].fork && score.percentage === 0) {
           toBeDeleted.push(repo);
         }
       }
