@@ -58,6 +58,8 @@
       }
     }
 
+    createRenamedRepos();
+
     return;
 
     async function fetchRepo(repo) {
@@ -268,6 +270,20 @@
         delete repos.repos[repo].fetching_since;
         repos.write();
       }
+    }
+
+    function createRenamedRepos() {
+      // Some repos got renamed/moved after the latest contributions and need to be created as well
+      // with their new name, so they can be found by the frontend.
+
+      for (const repo in repos.repos) {
+        const latest_name = repos.repos[repo].full_name;
+        if (repo !== latest_name && !repos.repos[latest_name]) {
+          repos.repos[latest_name] = repos.repos[repo];
+        }
+      }
+
+      repos.write();
     }
   }
 
