@@ -131,6 +131,7 @@ class Contrib extends React.Component {
               strStars={strStars(this.state.repo.stargazers_count)}
               strLastPushed={strLastPushed(this.state.repo.pushed_at)}
               strNumCommits={strNumCommits(this.props.contrib.total_commits_count)}
+              username={this.props.username}
               pushToFunctionQueue={this.props.pushToFunctionQueue}/>
         }
       </div>

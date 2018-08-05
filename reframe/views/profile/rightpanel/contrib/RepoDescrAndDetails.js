@@ -83,6 +83,9 @@ class RepoDescrAndDetails extends React.Component {
                 </td>
                 <td className="contrib-details">
                   // {humanReadablePercentage(this.props.contrib.percentage)} % of the project
+                  {this.props.contrib.percentage &&
+                   <span> (&rArr; <a href={`https://github.com/${this.props.contrib.full_name}/commits?author=${this.props.username}`}
+                                     target="_blank"><i className="fas fa-code"></i> commits</a>)</span> || ''}
                 </td>
               </tr>
               <tr>
