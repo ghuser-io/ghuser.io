@@ -48,6 +48,14 @@ const VCardDetails = props => {
         </div>
       );
     }
+    if (props.settings.stackoverflow_id) {
+      details.push(
+        <div className="vcard-detail pt-1" key="stackoverflow">
+          <i className="vcard-icon fab fa-stack-overflow"></i>
+          <a href={`https://stackoverflow.com/users/${props.settings.stackoverflow_id}`} target="_blank">StackOverflow</a>
+        </div>
+      );
+    }
   };
 
   return (
