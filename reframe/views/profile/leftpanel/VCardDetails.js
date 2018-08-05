@@ -31,6 +31,17 @@ const VCardDetails = props => {
     );
   };
 
+  if (props.settings) {
+    if (props.settings.twitter_username) {
+      details.push(
+        <div className="vcard-detail pt-1" key="twitter">
+          <i className="vcard-icon fab fa-twitter"></i>
+          <a href={`https://twitter.com/${props.settings.twitter_username}`} target="_blank">@{props.settings.twitter_username}</a>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className={details.length > 0 && 'border-top border-gray-light py-3' || ''}>{details}</div>
   );
