@@ -63,7 +63,7 @@ data/
   users/
     42 users
     largest: richardlitt.json (39 KB)
-    total: 123 KB
+    total: 158 KB
   contribs/
     largest: richardlitt.json (307 KB)
     total: 989 KB
@@ -72,13 +72,13 @@ data/
     largest: AliceWonderland/hacktoberfest.json (14 KB)
     total: 4632 KB
   orgs.json: 123 KB
-  total: 4828 KB
+  total: 5903 KB
 
 => 141 KB/user
 
-real    16m37.964s
-user    3m41.584s
-sys     0m27.292s
+real    10m12.757s
+user    0m27.372s
+sys     0m4.196s
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
