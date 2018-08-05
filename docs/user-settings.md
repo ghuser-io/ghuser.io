@@ -21,6 +21,6 @@ Your profile will then link to:
 * `https://linkedin.com/in/<linkedin_id>`
 * `https://stackoverflow.com/users/<stackoverflow_id>`
 
-![screenshot](user-settings.png)
+> ![screenshot](user-settings.png)
 
 See [this example](https://github.com/AurelienLourot/ghuser.io.settings/blob/master/ghuser.io.json).

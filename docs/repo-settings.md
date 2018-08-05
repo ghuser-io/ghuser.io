@@ -14,7 +14,7 @@ You can set properties on any `owner/repo` by committing a `.ghuser.io.json` fil
 
 This avatar will be used on any ghuser-profile mentioning this repo:
 
-![screenshot](repo-settings.png)
+> ![screenshot](repo-settings.png)
 
 See [this example](../.ghuser.io.json).
 
@@ -29,7 +29,7 @@ See [this example](../.ghuser.io.json).
 
 These techs will be shown on any ghuser-profile mentioning this repo:
 
-![screenshot](repo-settings.png)
+> ![screenshot](repo-settings.png)
 
 > **WARNING**: Do not use this property for declaring programming languages. These are already
 > automatically detected.
