@@ -40,6 +40,14 @@ const VCardDetails = props => {
         </div>
       );
     }
+    if (props.settings.linkedin_id) {
+      details.push(
+        <div className="vcard-detail pt-1" key="linkedin">
+          <i className="vcard-icon fab fa-linkedin"></i>
+          <a href={`https://linkedin.com/in/${props.settings.linkedin_id}`} target="_blank">LinkedIn</a>
+        </div>
+      );
+    }
   };
 
   return (
