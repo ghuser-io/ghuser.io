@@ -1,0 +1,16 @@
+.add-settings,
+.add-settings:hover {
+  background-color: #eee;
+  text-decoration: none;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  position: relative;
+  top: 3px;
+}
+
+.add-settings-plus {
+  position: relative;
+  top: -3px;
+}

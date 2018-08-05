@@ -7,6 +7,7 @@ import '../../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
 
 import Language from './Language';
 import ProgressBar from './ProgressBar';
+import AddSettings from '../../AddSettings';
 import './RepoDescrAndDetails.css';
 import {_, roundHalf} from '../../numbers';
 
@@ -67,8 +68,8 @@ class RepoDescrAndDetails extends React.Component {
             Object.keys(languages).length > 0 &&
             <div>
               {languages}
-              <a href="https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md"
-                 title="Add a tech" className="add-a-tech text-gray" target="_blank"><span className="add-a-tech-plus">+</span></a>
+              <AddSettings href="https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md"
+                           title="Add a tech" />
             </div> ||
             ''
           }

@@ -7,6 +7,7 @@ import '../All.css';
 
 import LeftPanel from './leftpanel/LeftPanel';
 import RightPanel from './rightpanel/RightPanel';
+import './Profile.css';
 import * as db from './db';
 
 class Profile extends React.Component {

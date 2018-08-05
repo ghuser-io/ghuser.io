@@ -33,8 +33,8 @@ We love the default GitHub profiles and we want to enhance them:
   [**technologies/frameworks**](docs/repo-settings.md), e.g. "react", "docker", etc.
 * The GitHub profiles allow filtering your repos by programming language. We will allow **filtering
   by technologies/frameworks** as well.
-* The GitHub profiles can be tweaked by clicking around. We allow them to be **tweaked
-  programmatically**.<sup>[2](#footnote2)</sup>
+* The GitHub profiles can be tweaked by clicking around. We allow them to be
+  [**tweaked programmatically**](docs/user-settings.md).
 * On GitHub only users and organizations have avatars. We bring
   [**avatars to repos**](docs/repo-settings.md).
 
@@ -42,7 +42,6 @@ Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e
 [ghuser.io/AurelienLourot](https://ghuser.io/AurelienLourot).
 
 <a name="footnote1"><sup>1</sup></a> We achieve this by using [github-contribs](https://github.com/AurelienLourot/github-contribs).<br/>
-<a name="footnote2"><sup>2</sup></a> This will be implemented by [#12](https://github.com/AurelienLourot/ghuser.io/issues/12).
 
 # Get your profile!
 

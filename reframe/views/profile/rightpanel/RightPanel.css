@@ -37,11 +37,6 @@
   font-size: 14px;
 }
 
-.text-gray,
-.text-gray:hover {
-  color: #586069;
-}
-
 .updated-hint {
   text-align: right;
 }

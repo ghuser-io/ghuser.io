@@ -2,15 +2,21 @@ import React from 'react';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
 
+import AddSettings from '../AddSettings';
 import './VCardDetails.css';
 
 const VCardDetails = props => {
+  const addSettings = !props.settings &&
+          <AddSettings href="https://github.com/AurelienLourot/ghuser.io/blob/master/docs/user-settings.md"
+                       title="Add a link" classes="ml-2" />;
+
   const details = [];
   if (props.location) {
     details.push(
       <div className="vcard-detail pt-1" key="location">
         <i className="vcard-icon fas fa-map-marker-alt"></i>&nbsp;
         {props.location}
+        {!props.email && !props.blog && addSettings}
       </div>
     );
   };
@@ -19,6 +25,7 @@ const VCardDetails = props => {
     details.push(
       <div className="vcard-detail pt-1" key="email">
         <i className="vcard-icon far fa-envelope"></i> {Parser(Autolinker.link(props.email))}
+        {!props.blog && addSettings}
       </div>
     );
   };
@@ -27,6 +34,7 @@ const VCardDetails = props => {
     details.push(
       <div className="vcard-detail pt-1" key="blog">
         <i className="vcard-icon fas fa-link"></i> {Parser(Autolinker.link(props.blog))}
+        {addSettings}
       </div>
     );
   };
