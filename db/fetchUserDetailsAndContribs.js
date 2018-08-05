@@ -57,6 +57,7 @@ positional arguments:
     await fetchOrgs();
     await fetchContribs();
     await fetchPopularForks();
+    await fetchSettings();
     return;
 
     async function fetchDetails() {
@@ -153,6 +154,21 @@ positional arguments:
       }
 
       spinner.succeed(`Fetched ${user}'s popular forks`);
+      userFile.write();
+    }
+
+    async function fetchSettings() {
+      const url = `https://rawgit.com/${user}/ghuser.io.settings/master/ghuser.io.json`;
+      spinner = ora(`Fetching ${user}'s settings...`).start();
+
+      const dataJson = await fetchJson(url, spinner, [404]);
+      if (dataJson == 404) {
+        spinner.succeed(`${user} has no settings`);
+        return;
+      }
+      spinner.succeed(`Fetched ${user}'s settings`);
+
+      userFile.settings = dataJson;
       userFile.write();
     }
   }
