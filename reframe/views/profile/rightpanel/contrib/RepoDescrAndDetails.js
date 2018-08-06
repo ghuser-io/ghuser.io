@@ -55,7 +55,9 @@ class RepoDescrAndDetails extends React.Component {
         <div className="title p-0">
           <span className="text-gray">
             {
-              Parser(emoji.emojify(Autolinker.link(this.props.descr), name => (
+              Parser(emoji.emojify(Autolinker.link(this.props.descr, {
+                className: 'external'
+              }), name => (
                 // See https://developer.github.com/v3/emojis/ :
                 `<img className="emoji" src="https://github.global.ssl.fastly.net/images/icons/emoji/${name}.png?v5" />`
               )))
@@ -84,8 +86,10 @@ class RepoDescrAndDetails extends React.Component {
                 <td className="contrib-details">
                   // {humanReadablePercentage(this.props.contrib.percentage)} % of the project
                   {this.props.contrib.percentage &&
-                   <span> (&rArr; <a href={`https://github.com/${this.props.contrib.full_name}/commits?author=${this.props.username}`}
-                                     target="_blank"><i className="fas fa-code"></i> commits</a>)</span> || ''}
+                   <span> ( <i className="fas fa-code"></i>&nbsp;
+                     <a href={`https://github.com/${this.props.contrib.full_name}/commits?author=${this.props.username}`}
+                        target="_blank" className="external">user's commits</a> )
+                   </span> || ''}
                 </td>
               </tr>
               <tr>

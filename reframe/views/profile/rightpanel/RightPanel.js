@@ -53,11 +53,12 @@ const RightPanel = props => {
     if (props.deleted_because) {
       repos.push(
         <div key="alert" className="alert alert-warning my-3" role="alert">
-          This profile was deleted because {Parser(Autolinker.link(props.deleted_because))}<br /><br />
+          This profile was deleted because {Parser(Autolinker.link(props.deleted_because, {
+            className: 'external'
+          }))}<br /><br />
           If you want to have it again, no problem, just&nbsp;
-          <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank">
-            create an issue
-          </a> :)
+          <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank"
+             className="external">create an issue</a> :)
         </div>
       );
     } else {
@@ -65,8 +66,8 @@ const RightPanel = props => {
         <div key="alert" className="alert alert-warning my-3" role="alert">
           This profile doesn't exist yet.&nbsp;
           <a href="https://github.com/AurelienLourot/ghuser.io/issues/new?template=profile-request.md"
-             target="_blank">
-            Create a profile request.
+             target="_blank" className="external">
+            Create a profile request
           </a>
         </div>
       );

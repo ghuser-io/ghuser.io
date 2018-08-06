@@ -33,7 +33,9 @@ const VCardDetails = props => {
   if (props.blog) {
     details.push(
       <div className="vcard-detail pt-1" key="blog">
-        <i className="vcard-icon fas fa-link"></i> {Parser(Autolinker.link(props.blog))}
+        <i className="vcard-icon fas fa-link"></i> {Parser(Autolinker.link(props.blog, {
+          className: 'external'
+        }))}
         {addSettings}
       </div>
     );
@@ -44,7 +46,8 @@ const VCardDetails = props => {
       details.push(
         <div className="vcard-detail pt-1" key="twitter">
           <i className="vcard-icon fab fa-twitter"></i>
-          <a href={`https://twitter.com/${props.settings.twitter_username}`} target="_blank">@{props.settings.twitter_username}</a>
+          <a href={`https://twitter.com/${props.settings.twitter_username}`} target="_blank"
+             className="external">@{props.settings.twitter_username}</a>
         </div>
       );
     }
@@ -52,7 +55,8 @@ const VCardDetails = props => {
       details.push(
         <div className="vcard-detail pt-1" key="linkedin">
           <i className="vcard-icon fab fa-linkedin"></i>
-          <a href={`https://linkedin.com/in/${props.settings.linkedin_id}`} target="_blank">LinkedIn</a>
+          <a href={`https://linkedin.com/in/${props.settings.linkedin_id}`} target="_blank"
+             className="external">LinkedIn</a>
         </div>
       );
     }
@@ -60,7 +64,8 @@ const VCardDetails = props => {
       details.push(
         <div className="vcard-detail pt-1" key="stackoverflow">
           <i className="vcard-icon fab fa-stack-overflow"></i>
-          <a href={`https://stackoverflow.com/users/${props.settings.stackoverflow_id}`} target="_blank">StackOverflow</a>
+          <a href={`https://stackoverflow.com/users/${props.settings.stackoverflow_id}`}
+             target="_blank" className="external">StackOverflow</a>
         </div>
       );
     }

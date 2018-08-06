@@ -9,7 +9,7 @@ const Bio = props => (
   <div className="bio">
     {
       //FIXME this duplicates RepoDescrAndDetails.js
-      Parser(emoji.emojify(Autolinker.link(props.text), name => (
+      Parser(emoji.emojify(Autolinker.link(props.text, {className: 'external'}), name => (
         // See https://developer.github.com/v3/emojis/ :
         `<img className="emoji" src="https://github.global.ssl.fastly.net/images/icons/emoji/${name}.png?v5" />`
       )))

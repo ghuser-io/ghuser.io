@@ -12,16 +12,19 @@ const CreateYourProfile = () => (
       We're building profiles like this one:&nbsp;
       <a href="/AurelienLourot">https://ghuser.io/AurelienLourot</a><br />
       More details on&nbsp;
-      <a href="https://github.com/AurelienLourot/ghuser.io" target="_blank">
+      <a href="https://github.com/AurelienLourot/ghuser.io" target="_blank" className="external">
         https://github.com/AurelienLourot/ghuser.io
       </a>
     </p>
     <p>
       <a href="https://github.com/AurelienLourot/ghuser.io/issues/new?template=profile-request.md"
-         target="_blank">Create a profile request</a> and we'll set up your profile right away!
+         target="_blank" className="external">Create a profile request</a> and we'll set up your
+         profile right away!
     </p>
     <p>
-      This is a <a href="https://github.com/reframejs/reframe" target="_blank">Reframe</a> web app.
+      This is
+      a <a href="https://github.com/reframejs/reframe" target="_blank" className="external">Reframe</a> web
+      app.
     </p>
   </div>
 );

@@ -14,6 +14,20 @@ a:hover
   color: #0366d6;
 }
 
+.external::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f35d"; /* https://fontawesome.com/icons/external-link-alt */
+
+  font-size: .7em;
+  position: relative;
+  top: -.15em;
+  margin-left: .5em;
+
+  display: inline-block;
+  color: #bcc0c4;
+}
+
 .container-lg {
   max-width: 1012px;
   width: 1012px;

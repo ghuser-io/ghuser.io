@@ -103,9 +103,9 @@ class Contrib extends React.Component {
     return (
       <div className="border-bottom border-gray-light py-4">
         {avatar()}
-        <h4 className="contrib-name">
+        <h4 className="contrib-name mr-1">
           <a href={`https://github.com/${this.props.contrib.full_name}`}
-             target="_blank" className="text-bold contrib-name"
+             target="_blank" className="text-bold contrib-name external"
              title={this.props.contrib.full_name}>{this.props.contrib.name}</a>
           {
             this.state.repo && this.state.repo.fork &&
