@@ -85,11 +85,6 @@ class RepoDescrAndDetails extends React.Component {
                 </td>
                 <td className="contrib-details">
                   // {humanReadablePercentage(this.props.contrib.percentage)} % of the project
-                  {this.props.contrib.percentage &&
-                   <span> ( <i className="fas fa-code"></i>&nbsp;
-                     <a href={`https://github.com/${this.props.contrib.full_name}/commits?author=${this.props.username}`}
-                        target="_blank" className="external">user's commits</a> )
-                   </span> || ''}
                 </td>
               </tr>
               <tr>
@@ -139,6 +134,22 @@ class RepoDescrAndDetails extends React.Component {
             </tbody>
           </table>
           <div className="contrib-details">(* all contributions on this page are sorted according to this score)</div>
+          {
+            !this.props.userIsMaintainer && this.props.contrib.percentage &&
+            <div className="text-gray mt-2">
+              <i className="fas fa-code icon contrib-code-icon"></i>&nbsp;
+              <a href={`https://github.com/${this.props.contrib.full_name}/commits?author=${this.props.username}`}
+                 target="_blank" className="external">user's commits</a>
+            </div> || ''
+          }
+          {
+            !this.props.userIsMaintainer && this.props.pulls_authors.indexOf(this.props.username) !== -1 &&
+            <div className="text-gray mt-2">
+              <i className="fas fa-code-branch icon contrib-code-icon"></i>&nbsp;
+              <a href={`https://github.com/${this.props.contrib.full_name}/pulls?q=is%3Apr+author%3A${this.props.username}`}
+                 target="_blank" className="external">user's pull requests</a>
+            </div> || ''
+          }
         </div>
       </div>
     );

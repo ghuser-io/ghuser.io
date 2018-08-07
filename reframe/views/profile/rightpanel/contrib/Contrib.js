@@ -49,14 +49,14 @@ class Contrib extends React.Component {
     };
 
     const badges = (owner, isFork, percentage, numContributors, popularity, numStars, activity,
-                    pushedAt, maturity, numCommits) => {
+                    pushedAt, maturity, numCommits, isMaintainer) => {
       const result = [];
       if (!isFork && this.props.username === owner || percentage >= 80) {
         result.push(
             <Badge key="percentage" classes="badge-success contrib-name" text="owner"
                    tooltip={`${this.props.username} wrote ${roundHalf(percentage)}% of it`}/>
         );
-      } else if (percentage >= 15) {
+      } else if (isMaintainer) {
         result.push(
             <Badge key="percentage" classes="badge-danger contrib-name" text="maintainer"
                    tooltip={`${this.props.username} wrote ${roundHalf(percentage)}% of it`}/>
@@ -100,6 +100,8 @@ class Contrib extends React.Component {
       );
     };
 
+    const userIsMaintainer = this.props.contrib.percentage >= 15;
+
     return (
       <div className="border-bottom border-gray-light py-4">
         {avatar()}
@@ -118,7 +120,7 @@ class Contrib extends React.Component {
                    Object.keys(this.state.repo.contributors).length, this.props.contrib.popularity,
                    this.state.repo.stargazers_count, this.props.contrib.activity,
                    this.state.repo.pushed_at, this.props.contrib.maturity,
-                   this.props.contrib.total_commits_count)
+                   this.props.contrib.total_commits_count, userIsMaintainer)
         }
         {
           this.state.repo &&
@@ -128,10 +130,11 @@ class Contrib extends React.Component {
             <RepoDescrAndDetails contrib={this.props.contrib} descr={this.state.repo.description}
               languages={this.state.repo.languages}
               techs={this.state.repo.settings && this.state.repo.settings.techs || []}
+              pulls_authors={this.state.repo.pulls_authors}
               strStars={strStars(this.state.repo.stargazers_count)}
               strLastPushed={strLastPushed(this.state.repo.pushed_at)}
               strNumCommits={strNumCommits(this.props.contrib.total_commits_count)}
-              username={this.props.username}
+              username={this.props.username} userIsMaintainer={userIsMaintainer}
               pushToFunctionQueue={this.props.pushToFunctionQueue}/>
         }
       </div>
