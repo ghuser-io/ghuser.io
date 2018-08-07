@@ -3,6 +3,7 @@
 
 (async () => {
 
+  const assert = require('assert');
   const fs = require('fs');
   const ora = require('ora');
 
@@ -67,6 +68,7 @@
     for (const repo in repos) {
       if (!repos[repo].removed_from_github) {
         await fetchRepoContributors(repo);
+        await fetchRepoPullRequests(repo);
         await fetchRepoLanguages(repo);
         await fetchRepoSettings(repo);
         markRepoAsFullyFetched(repo);
@@ -114,12 +116,12 @@
         "git_refs_url", "trees_url", "statuses_url", "contributors_url", "subscribers_url",
         "subscription_url", "commits_url", "git_commits_url", "comments_url", "issue_comment_url",
         "contents_url", "compare_url", "merges_url", "archive_url", "downloads_url", "issues_url",
-        "pulls_url", "milestones_url", "notifications_url", "labels_url", "releases_url",
-        "deployments_url", "ssh_url", "git_url", "clone_url", "svn_url", "has_issues",
-        "has_projects", "has_downloads", "has_wiki", "has_pages", "id", "forks_url", "permissions",
-        "allow_squash_merge", "allow_merge_commit", "allow_rebase_merge", "stargazers_url",
-        "watchers_count", "forks_count", "open_issues_count", "forks", "open_issues", "watchers",
-        "parent", "source", "network_count", "subscribers_count"]) {
+        "milestones_url", "notifications_url", "labels_url", "releases_url", "deployments_url",
+        "ssh_url", "git_url", "clone_url", "svn_url", "has_issues", "has_projects", "has_downloads",
+        "has_wiki", "has_pages", "id", "forks_url", "permissions", "allow_squash_merge",
+        "allow_merge_commit", "allow_rebase_merge", "stargazers_url", "watchers_count",
+        "forks_count", "open_issues_count", "forks", "open_issues", "watchers", "parent", "source",
+        "network_count", "subscribers_count"]) {
         delete repos[repo][field];
       }
 
@@ -224,6 +226,45 @@
       }
 
       spinner.succeed(`Fetched ${repo}'s contributors`);
+      repos[repo].write();
+    }
+
+    async function fetchRepoPullRequests(repo) {
+      spinner = ora(`Fetching ${repo}'s pull requests...`).start();
+
+      if (!repos[repo].fetching_since || repos[repo].fetched_at &&
+          new Date(repos[repo].fetched_at) > new Date(repos[repo].pushed_at)) {
+        spinner.succeed(`${repo} hasn't changed`);
+        return;
+      }
+
+      const authors = new Set([]);
+
+      const pullsUrlSuffix = '{/number}';
+      assert(repos[repo].pulls_url.endsWith(pullsUrlSuffix));
+      const pullsUrl = repos[repo].pulls_url.slice(0, -pullsUrlSuffix.length);
+
+      const perPage = 100;
+      for (let page = 1;; ++page) {
+        const ghUrl = `${pullsUrl}?page=${page}&per_page=${perPage}`;
+        const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+        for (const pr of ghDataJson) {
+          authors.add(pr.user.login);
+        }
+
+        if (ghDataJson.length < perPage) {
+          break;
+        }
+
+        if (page >= 1000) {
+          spinner.fail();
+          throw 'Infinite loop?';
+        }
+      }
+
+      spinner.succeed(`Fetched ${repo}'s pull requests`);
+
+      repos[repo].pulls_authors = [...authors];
       repos[repo].write();
     }
 

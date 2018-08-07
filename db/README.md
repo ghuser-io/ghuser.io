@@ -61,20 +61,20 @@ $ ./fetchAndCalculateAll.sh
 ...
 data/
   users/
-    42 users
+    43 users
     largest: richardlitt.json (39 KB)
-    total: 158 KB
+    total: 160 KB
   contribs/
     largest: richardlitt.json (307 KB)
-    total: 989 KB
+    total: 995 KB
   repos/
-    2077 repos
-    largest: AliceWonderland/hacktoberfest.json (14 KB)
-    total: 4632 KB
-  orgs.json: 123 KB
-  total: 5903 KB
+    2087 repos
+    largest: deadlyvipers/dojo_rules.json (139 KB)
+    total: 5261 KB
+  orgs.json: 124 KB
+  total: 6540 KB
 
-=> 141 KB/user
+=> 152 KB/user
 
 real    10m12.757s
 user    0m27.372s
