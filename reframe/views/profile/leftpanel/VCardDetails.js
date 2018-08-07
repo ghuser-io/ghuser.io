@@ -51,6 +51,15 @@ const VCardDetails = props => {
         </div>
       );
     }
+    if (props.settings.reddit_username) {
+      details.push(
+        <div className="vcard-detail pt-1" key="reddit">
+          <i className="vcard-icon fab fa-reddit"></i>&nbsp;
+          <a href={`https://reddit.com/user/${props.settings.reddit_username}`} target="_blank"
+             className="external">u/{props.settings.reddit_username}</a>
+        </div>
+      );
+    }
     if (props.settings.linkedin_id) {
       details.push(
         <div className="vcard-detail pt-1" key="linkedin">
