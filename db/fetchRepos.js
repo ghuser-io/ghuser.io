@@ -246,7 +246,7 @@
 
       const perPage = 100;
       for (let page = 1;; ++page) {
-        const ghUrl = `${pullsUrl}?page=${page}&per_page=${perPage}`;
+        const ghUrl = `${pullsUrl}?state=all&page=${page}&per_page=${perPage}`;
         const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
         for (const pr of ghDataJson) {
           authors.add(pr.user.login);

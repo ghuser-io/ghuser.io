@@ -69,12 +69,12 @@ data/
     total: 995 KB
   repos/
     2087 repos
-    largest: deadlyvipers/dojo_rules.json (139 KB)
-    total: 5261 KB
+    largest: deadlyvipers/dojo_rules.json (164 KB)
+    total: 7076 KB
   orgs.json: 124 KB
-  total: 6540 KB
+  total: 8355 KB
 
-=> 152 KB/user
+=> 194 KB/user
 
 real    10m12.757s
 user    0m27.372s
