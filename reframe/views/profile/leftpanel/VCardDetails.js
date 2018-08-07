@@ -45,7 +45,7 @@ const VCardDetails = props => {
     if (props.settings.twitter_username) {
       details.push(
         <div className="vcard-detail pt-1" key="twitter">
-          <i className="vcard-icon fab fa-twitter"></i>
+          <i className="vcard-icon fab fa-twitter"></i>&nbsp;
           <a href={`https://twitter.com/${props.settings.twitter_username}`} target="_blank"
              className="external">@{props.settings.twitter_username}</a>
         </div>
@@ -54,7 +54,7 @@ const VCardDetails = props => {
     if (props.settings.linkedin_id) {
       details.push(
         <div className="vcard-detail pt-1" key="linkedin">
-          <i className="vcard-icon fab fa-linkedin"></i>
+          <i className="vcard-icon fab fa-linkedin"></i>&nbsp;
           <a href={`https://linkedin.com/in/${props.settings.linkedin_id}`} target="_blank"
              className="external">LinkedIn</a>
         </div>
@@ -63,7 +63,7 @@ const VCardDetails = props => {
     if (props.settings.stackoverflow_id) {
       details.push(
         <div className="vcard-detail pt-1" key="stackoverflow">
-          <i className="vcard-icon fab fa-stack-overflow"></i>
+          <i className="vcard-icon fab fa-stack-overflow"></i>&nbsp;
           <a href={`https://stackoverflow.com/users/${props.settings.stackoverflow_id}`}
              target="_blank" className="external">StackOverflow</a>
         </div>
