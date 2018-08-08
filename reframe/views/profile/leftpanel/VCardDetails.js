@@ -16,7 +16,7 @@ const VCardDetails = props => {
       <div className="vcard-detail pt-1" key="location">
         <i className="vcard-icon fas fa-map-marker-alt"></i>&nbsp;
         {props.location}
-        {!props.email && !props.blog && addSettings}
+        {!props.email && !props.blog && !props.gist_username && addSettings}
       </div>
     );
   };
@@ -25,7 +25,7 @@ const VCardDetails = props => {
     details.push(
       <div className="vcard-detail pt-1" key="email">
         <i className="vcard-icon far fa-envelope"></i> {Parser(Autolinker.link(props.email))}
-        {!props.blog && addSettings}
+        {!props.blog && !props.gist_username && addSettings}
       </div>
     );
   };
@@ -36,7 +36,7 @@ const VCardDetails = props => {
         <i className="vcard-icon fas fa-link"></i> {Parser(Autolinker.link(props.blog, {
           className: 'external'
         }))}
-        {addSettings}
+        {!props.gist_username && addSettings}
       </div>
     );
   };
@@ -79,6 +79,17 @@ const VCardDetails = props => {
       );
     }
   };
+
+  if (props.gist_username) {
+    details.push(
+      <div className="vcard-detail pt-1" key="gist">
+        <i className="vcard-icon fab fa-github"></i>&nbsp;
+        <a href={`https://gist.github.com/${props.gist_username}`} target="_blank"
+           className="external">GitHubGist</a>
+        {addSettings}
+      </div>
+    );
+  }
 
   return (
     <div className={details.length > 0 && 'border-top border-gray-light py-3' || ''}>{details}</div>
