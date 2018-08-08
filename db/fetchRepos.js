@@ -238,7 +238,7 @@
         return;
       }
 
-      const authors = new Set([]);
+      const authors = new Set(repos[repo].pulls_authors || []);
 
       const pullsUrlSuffix = '{/number}';
       assert(repos[repo].pulls_url.endsWith(pullsUrlSuffix));
@@ -253,6 +253,13 @@
         }
 
         if (ghDataJson.length < perPage) {
+          break;
+        }
+
+        // They are sorted from newest to oldest in ghDataJson by default:
+        if (ghDataJson.length > 0 &&
+              new Date(repos[repo].fetched_at) >
+              new Date(ghDataJson[ghDataJson.length - 1].created_at)) {
           break;
         }
 
