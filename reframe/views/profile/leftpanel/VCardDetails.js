@@ -54,7 +54,7 @@ const VCardDetails = props => {
     if (props.settings.reddit_username) {
       details.push(
         <div className="vcard-detail pt-1" key="reddit">
-          <i className="vcard-icon fab fa-reddit"></i>&nbsp;
+          <i className="vcard-icon fab fa-reddit-alien"></i>&nbsp;
           <a href={`https://reddit.com/user/${props.settings.reddit_username}`} target="_blank"
              className="external">u/{props.settings.reddit_username}</a>
         </div>
