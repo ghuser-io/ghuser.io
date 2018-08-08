@@ -63,22 +63,22 @@ data/
   users/
     43 users
     largest: richardlitt.json (39 KB)
-    total: 161 KB
+    total: 162 KB
   contribs/
     largest: richardlitt.json (307 KB)
     total: 995 KB
   repos/
     2088 repos
     largest: deadlyvipers/dojo_rules.json (164 KB)
-    total: 7080 KB
+    total: 7082 KB
   orgs.json: 124 KB
-  total: 8361 KB
+  total: 8363 KB
 
 => 194 KB/user
 
-real    13m57.464s
-user    0m35.976s
-sys     0m4.432s
+real    21m35.152s
+user    0m40.236s
+sys     0m5.004s
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).

@@ -335,6 +335,9 @@
       for (const repo in repos) {
         const latest_name = repos[repo].full_name;
         if (repo !== latest_name && !repos[latest_name]) {
+          // Will create the folder if needed:
+          (new DbFile(`data/repos/${latest_name}.json`)).write();
+
           fs.copyFileSync(`data/repos/${repo}.json`, `data/repos/${latest_name}.json`);
           repos[latest_name] = new DbFile(`data/repos/${latest_name}.json`);
         }
