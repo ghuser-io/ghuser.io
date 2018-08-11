@@ -61,20 +61,20 @@ $ ./fetchAndCalculateAll.sh
 ...
 data/
   users/
-    43 users
+    44 users
     largest: richardlitt.json (39 KB)
-    total: 162 KB
+    total: 163 KB
   contribs/
-    largest: richardlitt.json (307 KB)
-    total: 995 KB
+    largest: richardlitt.json (306 KB)
+    total: 1005 KB
   repos/
-    2088 repos
+    2109 repos
     largest: deadlyvipers/dojo_rules.json (164 KB)
-    total: 7082 KB
-  orgs.json: 124 KB
-  total: 8363 KB
+    total: 7125 KB
+  orgs.json: 126 KB
+  total: 8419 KB
 
-=> 194 KB/user
+=> 191 KB/user
 
 real    21m35.152s
 user    0m40.236s

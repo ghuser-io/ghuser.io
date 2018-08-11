@@ -90,7 +90,7 @@
         return;
       }
 
-      const ghDataJson = await fetchJson(github.authify(ghRepoUrl), spinner, [304, 404],
+      const ghDataJson = await fetchJson(github.authify(ghRepoUrl), spinner, [304, 404, 451],
                                          new Date(repos[repo].fetched_at));
       switch (ghDataJson) {
       case 304:
@@ -99,6 +99,12 @@
       case 404:
         repos[repo].removed_from_github = true;
         spinner.succeed(`${repo} was removed from GitHub`);
+        repos[repo].write();
+        return;
+      case 451: // Unavailable for legal reasons
+        // Probably a DCMA takedown, like https://github.com/worktips/worktips
+        repos[repo].removed_from_github = true;
+        spinner.succeed(`${repo} is blocked for legal reasons`);
         repos[repo].write();
         return;
       }
