@@ -105,7 +105,7 @@ down to the bottom of your profile you can see how old the data is:
 
 > ![screenshot](docs/screenshot-data-age.png)
 
-## Some of my repos are not showing up on my profiles, why?
+## Some of my repos are not showing up on my profile, why?
 
-Did you give them a star? We think that you don't want to show repos with no stars at all, because
-if you haven't given them a star, then you probably aren't proud of them (yet).
+Did you give them a star? We don't display repos with no stars at all. We think that if even you
+haven't given them a star, then you probably aren't proud of them (yet).
