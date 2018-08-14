@@ -1,0 +1,19 @@
+{
+  "name": "@ghuser/ghuser.io",
+  "version": "0.0.1",
+  "description": "Better GitHub profiles.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AurelienLourot/ghuser.io.git"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "start": "reframe server"
+  },
+  "devDependencies": {
+    "all-contributors-cli": "^5.4.0"
+  }
+}

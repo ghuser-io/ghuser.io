@@ -1,0 +1,150 @@
+{
+  "projectName": "ghuser.io",
+  "projectOwner": "AurelienLourot",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "AurelienLourot",
+      "name": "Aurelien Lourot",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11795312?v=4",
+      "profile": "https://ghuser.io/AurelienLourot",
+      "contributions": [
+        "question",
+        "bug",
+        "code",
+        "doc",
+        "ideas",
+        "review"
+      ]
+    },
+    {
+      "login": "brillout",
+      "name": "Romuald Brillout",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1005638?v=4",
+      "profile": "https://twitter.com/brillout",
+      "contributions": [
+        "bug",
+        "code",
+        "ideas",
+        "infra",
+        "review"
+      ]
+    },
+    {
+      "login": "jayvdb",
+      "name": "John Vandenberg",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15092?v=4",
+      "profile": "https://jayvdb.github.io/",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
+    },
+    {
+      "login": "Naveenaidu",
+      "name": "Naveen Naidu",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/30195193?v=4",
+      "profile": "https://github.com/Naveenaidu",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "sr6033",
+      "name": "Shubham Rath",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/15799589?v=4",
+      "profile": "https://sr6033.github.io/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "jamesgeorge007",
+      "name": "James George",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/25279263?v=4",
+      "profile": "https://ghuser.io/jamesgeorge007",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "itaditya",
+      "name": "Aditya Agarwal",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/15871340?v=4",
+      "profile": "http://adi.surge.sh",
+      "contributions": [
+        "blog"
+      ]
+    },
+    {
+      "login": "Rupeshiya",
+      "name": "Rupesh Krishna Jha",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/31209617?v=4",
+      "profile": "https://www.linkedin.com/in/rupesh-jha-7aab6b155/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "crazy-max",
+      "name": "CrazyMax",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1951866?v=4",
+      "profile": "https://github.com/crazy-max",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "zurda",
+      "name": "Michal Weizman",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/16784959?v=4",
+      "profile": "http://hakabuk.com",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
+    },
+    {
+      "login": "tianshanghong",
+      "name": "Wei WANG",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/12212282?v=4",
+      "profile": "https://www.marsrainbow.cn",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "brandon-rhodes",
+      "name": "Brandon Rhodes",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/166162?v=4",
+      "profile": "http://rhodesmill.org/brandon",
+      "contributions": [
+        "infra"
+      ]
+    },
+    {
+      "login": "RichardLitt",
+      "name": "Richard Littauer",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/910753?v=4",
+      "profile": "https://burntfen.com",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "jordansissel",
+      "name": "Jordan Sissel",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/131818?v=4",
+      "profile": "http://www.semicomplete.com/",
+      "contributions": [
+        "infra"
+      ]
+    }
+  ]
+}
