@@ -1,7 +1,8 @@
 # Per-repo settings/metadata
 
-You can set properties on any `owner/repo` by committing a `.ghuser.io.json` file in
-`https://github.com/owner/repo`.
+You can set properties on any `owner/repo` by committing a file at either:
+* `https://github.com/owner/repo/.ghuser.io.json`, or
+* `https://github.com/owner/repo/.github/ghuser.io.json`.
 
 ## Avatar
 

@@ -323,7 +323,6 @@
     }
 
     async function fetchRepoSettings(repo) {
-      const url = `https://rawgit.com/${repo}/master/.ghuser.io.json`;
       spinner = ora(`Fetching ${repo}'s settings...`).start();
 
       if (!repos[repo].fetching_since || repos[repo].fetched_at &&
@@ -332,15 +331,20 @@
         return;
       }
 
-      const dataJson = await fetchJson(url, spinner, [404]);
-      if (dataJson == 404) {
-        spinner.succeed(`${repo} has no settings`);
+      for (const fileName of ['.ghuser.io.json', '.github/ghuser.io.json']) {
+        const url = `https://rawgit.com/${repo}/master/${fileName}`;
+        const dataJson = await fetchJson(url, spinner, [404]);
+        if (dataJson == 404) {
+          continue;
+        }
+
+        spinner.succeed(`Fetched ${repo}'s settings`);
+        repos[repo].settings = dataJson;
+        repos[repo].write();
         return;
       }
-      spinner.succeed(`Fetched ${repo}'s settings`);
 
-      repos[repo].settings = dataJson;
-      repos[repo].write();
+      spinner.succeed(`${repo} has no settings`);
     }
 
     function markRepoAsFullyFetched(repo) {
