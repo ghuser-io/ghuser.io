@@ -5,6 +5,7 @@
 
   const assert = require('assert');
   const fs = require('fs');
+  const Mode = require('stat-mode');
   const ora = require('ora');
 
   const DbFile = require('./impl/dbFile');
@@ -31,39 +32,52 @@
       }
     }
 
-    const referencedRepos = new Set([]);
-    for (const user of users) {
-      for (const repo in user.contribs.repos) {
-        const full_name = user.contribs.repos[repo];
-        referencedRepos.add(full_name);
+    const fastResumeTempFile = 'data/repos/passed_strip_phase.temp';
+    const fastResumeTempFileExists = fs.existsSync(fastResumeTempFile);
 
-        // Make sure the corresponding repo file exists:
-        (new DbFile(`data/repos/${full_name}.json`)).write();
+    let referencedRepos = new Set([]);
+    if (!fastResumeTempFileExists) {
+      for (const user of users) {
+        for (const repo in user.contribs.repos) {
+          const full_name = user.contribs.repos[repo];
+          referencedRepos.add(full_name);
+
+          // Make sure the corresponding repo file exists:
+          (new DbFile(`data/repos/${full_name}.json`)).write();
+        }
       }
     }
 
     const repos = {};
     for (const ownerDir of fs.readdirSync('data/repos/')) {
-      for (const file of fs.readdirSync(`data/repos/${ownerDir}/`)) {
-        const ext = '.json';
-        if (file.endsWith(ext)) {
-          const repo = new DbFile(`data/repos/${ownerDir}/${file}`);
-          repo._comment = 'DO NOT EDIT MANUALLY - See ../../../README.md';
-          const full_name = `${ownerDir}/${file}`.slice(0, -ext.length);
-          repos[full_name] = repo;
+      if ((new Mode(fs.statSync(`data/repos/${ownerDir}`))).isDirectory()) {
+        for (const file of fs.readdirSync(`data/repos/${ownerDir}/`)) {
+          const ext = '.json';
+          if (file.endsWith(ext)) {
+            const repo = new DbFile(`data/repos/${ownerDir}/${file}`);
+            repo._comment = 'DO NOT EDIT MANUALLY - See ../../../README.md';
+            const full_name = `${ownerDir}/${file}`.slice(0, -ext.length);
+            repos[full_name] = repo;
+          }
         }
       }
     }
 
-    const now = new Date;
-    for (const repo of referencedRepos) {
-      if (!repos[repo] || !repos[repo].removed_from_github) {
-        await fetchRepo(repo);
+    if (!fastResumeTempFileExists) {
+      for (const repo of referencedRepos) {
+        if (!repos[repo] || !repos[repo].removed_from_github) {
+          await fetchRepo(repo);
+        }
       }
+      stripUnreferencedRepos();
+      stripUnsuccessfulOrEmptyRepos();
     }
 
-    stripUnreferencedRepos();
-    stripUnsuccessfulOrEmptyRepos();
+    fs.writeFileSync(
+      fastResumeTempFile,
+      "I'm a temporary file. I exist to make fetchRepos.js faster to resume if it was aborted.\n",
+      'utf-8'
+    );
 
     for (const repo in repos) {
       if (!repos[repo].removed_from_github) {
@@ -77,12 +91,15 @@
 
     createRenamedRepos();
 
+    fs.unlinkSync(fastResumeTempFile);
+
     return;
 
     async function fetchRepo(repo) {
       const ghRepoUrl = `https://api.github.com/repos/${repo}`;
       spinner = ora(`Fetching ${ghRepoUrl}...`).start();
 
+      const now = new Date;
       const maxAgeHours = 6;
       if (repos[repo].fetching_since || repos[repo].fetched_at &&
           now - Date.parse(repos[repo].fetched_at) < maxAgeHours * 60 * 60 * 1000) {

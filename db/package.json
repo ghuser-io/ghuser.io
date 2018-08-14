@@ -7,6 +7,7 @@
     "fetch-retry": "^1.2.1",
     "github-colors": "^2.2.17",
     "meow": "^5.0.0",
-    "ora": "^2.0.0"
+    "ora": "^2.0.0",
+    "stat-mode": "^0.2.2"
   }
 }
