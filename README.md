@@ -56,7 +56,7 @@ profile by
 
 * [x] `19 Jun 2018` start coding
 * [x] `04 Jul 2018` [first prototype](https://github.com/AurelienLourot/ghuser.io/milestone/1)
-* [ ] `15 Aug 2018` fix
+* [x] `14 Aug 2018` fix
       [first scaling issues](https://github.com/AurelienLourot/ghuser.io/milestone/4)
 * [ ] `15 Sep 2018` address
       [first user feedback](https://github.com/AurelienLourot/ghuser.io/milestone/3)

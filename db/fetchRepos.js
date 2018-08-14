@@ -225,7 +225,11 @@
         }
       }
 
-      if (firstMethodFailed || Object.keys(repos[repo].contributors).length >= 100) {
+      // This endpoint only gives us the 500 greatest contributors, so if it looks like there
+      // can be more, we use the next endpoint to get all commits:
+      if (firstMethodFailed ||
+            Object.keys(repos[repo].contributors).length >= 100 &&
+            Object.keys(repos[repo].contributors).length < 500) {
         const perPage = 100;
         for (let page = 1; page <= 5; ++page) {
           const ghUrl = `https://api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
@@ -240,12 +244,40 @@
         }
       }
 
-      if (false && //FIXME see #74
-          Object.keys(repos[repo].contributors).length >= 500) {
-        // We could use https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
-        // in order to fetch more than 500 contributors.
-        spinner.fail();
-        throw 'Not implemented yet';
+      if (Object.keys(repos[repo].contributors).length >= 500) {
+        const contributors = {};
+        const perPage = 100;
+        for (let page = 1;; ++page) {
+          const ghUrl = `https://api.github.com/repos/${repo}/commits?page=${page}&per_page=${perPage}`;
+          const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+          for (const commit of ghDataJson) {
+            const author_login = commit.author && commit.author.login;
+            const committer_login = commit.committer && commit.committer.login;
+            if (author_login) {
+              if (!(author_login in contributors)) {
+                contributors[author_login] = 0;
+              }
+              ++contributors[author_login];
+            }
+            if (committer_login && committer_login !== author_login) {
+              if (!(committer_login in contributors)) {
+                contributors[committer_login] = 0;
+              }
+              ++contributors[committer_login];
+            }
+          }
+
+          if (ghDataJson.length < perPage) {
+            break;
+          }
+
+          if (page >= 1000) {
+            spinner.fail();
+            throw 'fetchRepoContributors(): Infinite loop?';
+          }
+        }
+
+        Object.assign(repos[repo].contributors, contributors);
       }
 
       spinner.succeed(`Fetched ${repo}'s contributors`);
@@ -288,7 +320,7 @@
 
         if (page >= 1000) {
           spinner.fail();
-          throw 'Infinite loop?';
+          throw 'fetchRepoPullRequests(): Infinite loop?';
         }
       }
 
