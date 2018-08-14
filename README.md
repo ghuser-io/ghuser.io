@@ -1,9 +1,9 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors)
+
+<p align="center">
   <a href="https://ghuser.io">
     <img src="https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo.png"
          width="400" height="108" />
-
-<p align="center">
   </a>
 </p>
 <p align="center">
