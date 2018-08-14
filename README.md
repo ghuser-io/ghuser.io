@@ -56,8 +56,9 @@ profile by
 * [x] `04 Jul 2018` [first prototype](https://github.com/AurelienLourot/ghuser.io/milestone/1)
 * [ ] `15 Aug 2018` fix
       [first scaling issues](https://github.com/AurelienLourot/ghuser.io/milestone/4)
-      and address [first user feedback](https://github.com/AurelienLourot/ghuser.io/milestone/3)
-* [ ] `30 Sep 2018` display more data on each profile to really make it a modern
+* [ ] `15 Sep 2018` address
+      [first user feedback](https://github.com/AurelienLourot/ghuser.io/milestone/3)
+* [ ] `30 Nov 2018` display more data on each profile to really make it a modern
       [programmer resume](https://github.com/AurelienLourot/ghuser.io/milestone/2)
 
 # Contributing
@@ -94,3 +95,8 @@ For now it's static and the data is refreshed at least [once per day](db/README.
 down to the bottom of your profile you can see how old the data is:
 
 > ![screenshot](docs/screenshot-data-age.png)
+
+## Some of my repos are not showing up on my profiles, why?
+
+Did you give them a star? We think that you don't want to show repos with no stars at all, because
+if you haven't given them a star, then you probably aren't proud of them (yet).
