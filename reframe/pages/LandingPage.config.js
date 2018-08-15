@@ -4,7 +4,7 @@ const LandingPage = {
   route: '/',
   view: Landing,
   htmlStatic: true,
-  domStatic: true
+  domStatic: false
 };
 
 export default LandingPage;

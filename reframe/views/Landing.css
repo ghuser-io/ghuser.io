@@ -1,0 +1,66 @@
+.jumbotron {
+  background-color: #444;
+  color: white;
+  border-radius: 0;
+}
+
+.landing-logo {
+  display: inline-block;
+  color: #ddd;
+}
+
+.landing-logo b {
+  color: #eee;
+}
+
+.landing-to-github,
+.landing-to-github:hover {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.landing-to-reframe,
+.landing-to-reframe:hover {
+  color: #555;
+  text-decoration: none;
+}
+
+.typing,
+.typing:hover {
+  display: inline-block;
+  font-family: ApexSans;
+
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a.typing {
+  position: relative;
+  top: .1em;
+}
+
+.made-with-reframe {
+  text-align: center;
+  font-size: .9em;
+}
+
+.made-with-reframe img {
+  height: 1.2em;
+  margin-right: .5em;
+}
+
+.made-with-reframe .fa-heart {
+  font-size: .9em;
+}
+
+.card {
+  width: 18rem;
+  margin-right: 1.25rem;
+  display: inline-block;
+}
+
+.crop-img {
+  height: 10rem;
+  overflow: hidden;
+}
