@@ -55,12 +55,23 @@ a.typing {
 }
 
 .card {
-  width: 18rem;
+  width: 302px;
   margin-right: 1.25rem;
   display: inline-block;
+  vertical-align: top;
 }
 
 .crop-img {
-  height: 10rem;
+  height: 168px;
   overflow: hidden;
+}
+
+.crop-img::after {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 100%);
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 12px;
+  top: -144px;
+  content: '';
 }
