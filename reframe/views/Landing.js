@@ -1,5 +1,6 @@
 import React from 'react';
 import Typing from 'react-typing-animation';
+import {XmlEntities} from 'html-entities';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
 
@@ -29,9 +30,11 @@ class Landing extends React.Component {
         </div>
         <div className="card-body">
           <h5 className="card-title">{user.name}</h5>
-          <p className="card-text">{Parser(Autolinker.link(user.bio, {
-            className: 'external'
-          }))}</p>
+          <p className="card-text">{
+            Parser(Autolinker.link((new XmlEntities).encode(user.bio), {
+              className: 'external'
+            }))
+          }</p>
           <a href={user.login} className="btn btn-primary">See this example</a>
         </div>
       </div>

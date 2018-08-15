@@ -24,6 +24,7 @@
     "@reframe/cli": "^0.1.13",
     "@reframe/react-kit": "0.1.13",
     "autolinker": "^1.6.2",
+    "html-entities": "^1.2.1",
     "html-react-parser": "^0.4.6",
     "moment": "^2.22.2",
     "node-emoji": "^1.8.1",
