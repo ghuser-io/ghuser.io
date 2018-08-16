@@ -33,6 +33,11 @@ positional arguments:
 
   const userId = user.toLowerCase();
   const userFile = new DbFile(`data/users/${userId}.json`);
+
+  if (userFile.ghuser_keep_because) {
+    throw `${user} is marked as not to be deleted: ${userFile.ghuser_keep_because}`;
+  }
+
   userFile.deleteAllPropsBut(['login']);
   userFile.login = userFile.login || user;
   userFile.ghuser_deleted_because = reason;
