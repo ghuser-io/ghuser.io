@@ -62,23 +62,23 @@ $ ./fetchAndCalculateAll.sh
 data/
   users/
     47 users
-    largest: richardlitt.json (39 KB)
-    total: 179 KB
+    largest: jordansissel.json (11 KB)
+    total: 143 KB
   contribs/
-    largest: richardlitt.json (307 KB)
-    total: 1181 KB
+    largest: calinou.json (109 KB)
+    total: 888 KB
   repos/
-    2461 repos
+    1825 repos
     largest: deadlyvipers/dojo_rules.json (164 KB)
-    total: 8292 KB
-  orgs.json: 165 KB
-  total: 9816 KB
+    total: 6305 KB
+  orgs.json: 132 KB
+  total: 7468 KB
 
-=> 209 KB/user
+=> 159 KB/user
 
-real    21m35.152s
-user    0m40.236s
-sys     0m5.004s
+real    18m26.658s
+user    0m41.492s
+sys     0m4.604s
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
