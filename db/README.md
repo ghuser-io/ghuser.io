@@ -3,6 +3,16 @@
 It is here to cache GitHub's data. During the prototyping phrase, it's just a set of
 [JSON files](data/) that we update once per day.
 
+## Table of Contents
+
+<!-- toc -->
+
+- [Updating the database](#updating-the-database)
+- [Serving one more user](#serving-one-more-user)
+- [Deleting a profile](#deleting-a-profile)
+
+<!-- tocstop -->
+
 ## Updating the database
 
 Several scripts form a pipeline for updating the database. Here is the data flow:

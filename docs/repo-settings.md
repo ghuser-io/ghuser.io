@@ -4,6 +4,15 @@ You can set properties on any `owner/repo` by committing a file at either:
 * `https://github.com/owner/repo/.ghuser.io.json`, or
 * `https://github.com/owner/repo/.github/ghuser.io.json`.
 
+## Table of Contents
+
+<!-- toc -->
+
+- [Avatar](#avatar)
+- [Techs/Frameworks](#techsframeworks)
+
+<!-- tocstop -->
+
 ## Avatar
 
 ```json

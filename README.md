@@ -11,6 +11,23 @@
 </p>
 <br />
 
+# Table of Contents
+
+<!-- toc -->
+
+- [What we are building](#what-we-are-building)
+- [Get your profile!](#get-your-profile)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+  * [To the web app's implementation](#to-the-web-apps-implementation)
+  * [Contributors](#contributors)
+- [FAQ](#faq)
+  * [Why do I need to open an issue in order to get a profile?](#why-do-i-need-to-open-an-issue-in-order-to-get-a-profile)
+  * [Is my profile static or dynamic?](#is-my-profile-static-or-dynamic)
+  * [Some of my repos are not showing up on my profile, why?](#some-of-my-repos-are-not-showing-up-on-my-profile-why)
+
+<!-- tocstop -->
+
 # What we are building
 
 > *Example: https://ghuser.io/AurelienLourot*

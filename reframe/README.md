@@ -2,6 +2,18 @@
 
 [ghuser.io](https://ghuser.io) is a [Reframe](https://github.com/reframejs/reframe) web app.
 
+## Table of Contents
+
+<!-- toc -->
+
+- [Run locally](#run-locally)
+- [How is the code organized](#how-is-the-code-organized)
+  * [Pages](#pages)
+  * [React components](#react-components)
+- [Deploy the app online](#deploy-the-app-online)
+
+<!-- tocstop -->
+
 ## Run locally
 
 ```bash

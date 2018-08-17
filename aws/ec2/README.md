@@ -1,6 +1,21 @@
 For testing purposes, this will create the cheapest possible EC2 instance with the app and the
 necessary dev tools.
 
+# Table of Contents
+
+<!-- toc -->
+
+- [Create an EC2 key pair](#create-an-ec2-key-pair)
+- [Install ansible](#install-ansible)
+- [Set up [boto](http://boto.cloudhackers.com/en/latest/getting_started.html)](#set-up-botohttpbotocloudhackerscomenlatestgetting_startedhtml)
+- [Create an EC2 instance](#create-an-ec2-instance)
+- [List all EC2 instances](#list-all-ec2-instances)
+- [Terminate all EC2 instances](#terminate-all-ec2-instances)
+- [FAQ](#faq)
+  * [Sometimes the playbook ends with `Exception ignored`](#sometimes-the-playbook-ends-with-exception-ignored)
+
+<!-- tocstop -->
+
 # Create an EC2 key pair
 
 ```bash

@@ -11,9 +11,10 @@
     "node": ">=8"
   },
   "scripts": {
-    "start": "reframe server"
+    "gentoc": "for md in $(git grep -l \"<\\!-- toc -->\"); do npx markdown-toc -i $md; done"
   },
   "devDependencies": {
-    "all-contributors-cli": "^5.4.0"
+    "all-contributors-cli": "^5.4.0",
+    "markdown-toc": "^1.2.0"
   }
 }

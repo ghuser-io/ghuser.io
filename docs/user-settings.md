@@ -4,6 +4,14 @@ You can tweak your profile by creating a `<your-username>/ghuser.io.settings` re
 `ghuser.io.json` file, or by forking
 [AurelienLourot/ghuser.io.settings](https://github.com/AurelienLourot/ghuser.io.settings).
 
+## Table of Contents
+
+<!-- toc -->
+
+- [Links to Twitter/Reddit/LinkedIn/StackOverflow](#links-to-twitterredditlinkedinstackoverflow)
+
+<!-- tocstop -->
+
 ## Links to Twitter/Reddit/LinkedIn/StackOverflow
 
 ```json
