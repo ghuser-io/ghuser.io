@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 8
+branches:
+  only:
+    - master
+before_script: cd reframe/
+script: npm run deploy
