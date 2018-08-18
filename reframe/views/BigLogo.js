@@ -3,6 +3,7 @@ import React from 'react';
 import Logo from './Logo';
 
 import './BigLogo.css';
+import './All.css';
 
 const BigLogo = props => {
   return (
