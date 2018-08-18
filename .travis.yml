@@ -5,4 +5,4 @@ branches:
   only:
     - master
 before_script: cd reframe/
-script: npm run deploy
+script: npm install && npm run deploy
