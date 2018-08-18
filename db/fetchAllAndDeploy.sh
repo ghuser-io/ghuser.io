@@ -6,5 +6,3 @@ set -e
 git add -A
 git commit -m "[bot] Updated DB."
 git push
-cd ../reframe/
-npm run deploy
