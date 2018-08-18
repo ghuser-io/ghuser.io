@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/AurelienLourot/ghuser.io.svg?branch=master)](https://travis-ci.org/AurelienLourot/ghuser.io)
 [![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors)
 
 <p align="center">
