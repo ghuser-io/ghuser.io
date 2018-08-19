@@ -71,20 +71,20 @@ $ ./fetchAndCalculateAll.sh
 ...
 data/
   users/
-    47 users
+    62 users
     largest: jordansissel.json (11 KB)
-    total: 143 KB
+    total: 183 KB
   contribs/
-    largest: calinou.json (109 KB)
-    total: 888 KB
+    largest: calinou.json (110 KB)
+    total: 1105 KB
   repos/
-    1825 repos
+    2284 repos
     largest: deadlyvipers/dojo_rules.json (164 KB)
-    total: 6305 KB
-  orgs.json: 132 KB
-  total: 7468 KB
+    total: 7545 KB
+  orgs.json: 174 KB
+  total: 9007 KB
 
-=> 159 KB/user
+=> 145 KB/user
 
 real    18m26.658s
 user    0m41.492s
