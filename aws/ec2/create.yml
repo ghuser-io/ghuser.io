@@ -32,7 +32,10 @@
         vpc_subnet_id: "{{ subnet_id }}"
         group: "default,ghuser-sg"
         image: ami-759bc50a # Ubuntu 16.04 hvm:ebs-ssd
+
+        # Note: if you want to build the Reframe web app, you'll need at least 2GB RAM (t2.small)
         instance_type: t2.nano
+
         wait: true
         instance_tags:
           Name: "{{ instance_name }}"
@@ -69,6 +72,9 @@
       default: AurelienLourot
     - name: github_password
       prompt: GitHub password
+      private: yes
+    - name: sentry_dns
+      prompt: Sentry DNS (e.g. https://0123456789abcdef0123456789abcdef:0123456789abcdef0123456789abcdef@sentry.io/1234567)
       private: yes
   tasks:
     - name: Download Node.js setup script
@@ -119,15 +125,27 @@
       command: git reset --hard HEAD
       args:
         chdir: /home/ubuntu/ghuser.io/
+    - name: Install pip
+      apt:
+        name: python3-pip
+      become: True
+    - name: Install fetchBot's dependencies
+      pip:
+        name: raven-bash
+        version: 1.0
+      become: True
+    - name: Configure raven-bash
+      template:
+        src: raven-bash.conf.j2
+        dest: /etc/raven-bash.conf
+      become: True
     - name: Hint
       vars:
         msg: |
           EC2 instance ready. You can e.g. do:
           $ ssh -i secret.pem ubuntu@{{ inventory_hostname }}
           $ tmux new-session -s 0
-          [C-b d]
-          $ tmux attach -t 0
-          $ cd ghuser.io/db/
-          $ ./fetchAndCalculateAll.sh
+          $ cd ghuser.io/db/fetchBot/
+          $ ./bot.sh
       debug:
         msg: "{{ msg.split('\n') }}"

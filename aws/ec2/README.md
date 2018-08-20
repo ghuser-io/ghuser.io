@@ -1,5 +1,7 @@
-For testing purposes, this will create the cheapest possible EC2 instance with the app and the
-necessary dev tools.
+This will create the cheapest possible EC2 instance for
+
+* running the [fetchBot](../../db/fetchBot/), or
+* just playing around.
 
 # Table of Contents
 
@@ -7,7 +9,7 @@ necessary dev tools.
 
 - [Create an EC2 key pair](#create-an-ec2-key-pair)
 - [Install ansible](#install-ansible)
-- [Set up [boto](http://boto.cloudhackers.com/en/latest/getting_started.html)](#set-up-botohttpbotocloudhackerscomenlatestgetting_startedhtml)
+- [Set up boto](#set-up-boto)
 - [Create an EC2 instance](#create-an-ec2-instance)
 - [List all EC2 instances](#list-all-ec2-instances)
 - [Terminate all EC2 instances](#terminate-all-ec2-instances)
@@ -33,7 +35,7 @@ $ sudo -H pip3.5 install ansible boto boto3
 Successfully installed ansible-2.6.1 boto-2.49.0 boto3-1.7.56 botocore-1.10.56 [...]
 ```
 
-# Set up [boto](http://boto.cloudhackers.com/en/latest/getting_started.html)
+# Set up boto
 
 ```
 $ sed s/default/Credentials/g ~/.aws/credentials > ~/.boto
