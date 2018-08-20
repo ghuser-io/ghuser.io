@@ -21,6 +21,7 @@
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
   * [To the web app's implementation](#to-the-web-apps-implementation)
+  * [To the documentation](#to-the-documentation)
   * [Contributors](#contributors)
 - [FAQ](#faq)
   * [Why do I need to open an issue in order to get a profile?](#why-do-i-need-to-open-an-issue-in-order-to-get-a-profile)
@@ -44,7 +45,7 @@ We love the default GitHub profiles and we want to enhance them:
   latest commit. We prefer to **sort repos** by a combination of how active they are, how much you
   have contributed to them, how popular they are, etc. For each user we want to see first the latest
   greatest repos they have most contributed to.
-* On GitHub only repos earn stars. We push it one step further by tranfering these **stars to
+* On GitHub only repos earn stars. We push it one step further by transferring these **stars to
   users**. If you have built 23% of a 145 stars repo, you deserve 33 stars for that contribution. We
   add all these stars and clearly show how many of them you earned in total.
 * The GitHub profiles don't clearly show how big your contribution to a repo was, when you don't own
@@ -88,6 +89,13 @@ profile by
 * Fork this project.
 * Make some changes to the [web app](reframe/).
 * Validate your changes by [running the app locally](reframe/README.md#run-locally).
+* Create a [pull request](https://github.com/AurelienLourot/ghuser.io/compare) :)
+
+## To the documentation
+
+* Fork this project.
+* Make some changes to the markdown files.
+* Validate your changes by running `./build.sh`.
 * Create a [pull request](https://github.com/AurelienLourot/ghuser.io/compare) :)
 
 ## Contributors

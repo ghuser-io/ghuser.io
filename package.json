@@ -11,10 +11,12 @@
     "node": ">=8"
   },
   "scripts": {
-    "gentoc": "for md in $(git grep -l \"<\\!-- toc -->\"); do npx markdown-toc -i $md; done"
+    "gentoc": "for md in $(git grep -l \"<\\!-- toc -->\"); do npx markdown-toc -i $md; done",
+    "test": "mdspell '**/*.md' '!**/node_modules/**/*.md' --ignore-acronyms --no-suggestions --en-us"
   },
   "devDependencies": {
     "all-contributors-cli": "^5.4.0",
+    "markdown-spellcheck": "^1.3.1",
     "markdown-toc": "^1.2.0"
   }
 }

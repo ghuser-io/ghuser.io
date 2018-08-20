@@ -1,0 +1,52 @@
+# markdown-spellcheck spelling configuration file
+# Format - lines beginning # are comments
+# global dictionary is at the start, file overrides afterwards
+# one word per line, to define a file override use ' - filename'
+# where filename is relative to this configuration file
+Reframe
+fetchBot
+ansible
+boto
+e.g.
+ansible#21982
+logo.png
+per-repo
+metadata
+ghuser-profile
+repo
+aurelienlourot
+ghuser.io.settings
+reddit
+linkedin
+stackoverflow
+roadmap
+repos
+programmatically
+ghuser.io
+github-contribs
+Aurelien
+Lourot
+Romuald
+Brillout
+Vandenberg
+Naveen
+Naidu
+Shubham
+Aditya
+Agarwal
+Rupesh
+Jha
+crazymax
+Michal
+Weizman
+Littauer
+Sissel
+jpbotelho
+Xie
+config.js
+ProfilePage
+js
+stylesheet
+LeftPanel
+RightPanel
+ghuser's
