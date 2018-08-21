@@ -101,6 +101,16 @@ const VCardDetails = props => {
     );
   };
 
+  if (props.company) {
+    details.unshift(
+      <div className="vcard-detail pt-1" key="company">
+        <i className="vcard-icon fas fa-suitcase"></i>&nbsp;
+        {props.company}
+        {insertSettingsButtonOnce()}
+      </div>
+    );
+  };
+
   return (
     <div className={details.length > 0 && 'border-top border-gray-light py-3' || ''}>{details}</div>
   );
