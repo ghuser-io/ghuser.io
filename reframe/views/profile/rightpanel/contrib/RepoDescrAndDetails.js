@@ -54,7 +54,7 @@ class RepoDescrAndDetails extends React.Component {
     return (
       <div className="ui accordion" ref={this.semanticAccordion}>
         <div className="title p-0">
-          <span className="text-gray">
+          <span className="repo-descr text-gray">
             {
               Parser(emoji.emojify(
                 Autolinker.link((new XmlEntities).encode(this.props.descr), {
@@ -66,7 +66,7 @@ class RepoDescrAndDetails extends React.Component {
               ))
             }
           </span>
-          <i className="dropdown icon text-gray mx-1"></i>
+          <span><i className="dropdown icon text-gray mx-1"></i></span>
         </div>
         <div className="content">
           {

@@ -2,6 +2,20 @@
   vertical-align: middle !important;
 }
 
+.title > span {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.repo-descr {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100%
+                  - 50px - .5em /*avatar-repo*/
+                  - 2em);       /*dropdown icon*/
+}
+
 .emoji {
   height: 1.3em;
   width: auto;
