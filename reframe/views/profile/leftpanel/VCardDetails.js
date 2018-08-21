@@ -104,8 +104,10 @@ const VCardDetails = props => {
   if (props.company) {
     details.unshift(
       <div className="vcard-detail pt-1" key="company">
-        <i className="vcard-icon fas fa-suitcase"></i>&nbsp;
-        {props.company}
+        <i className="vcard-icon fas fa-suitcase"></i> {Parser(Autolinker.link(props.company, {
+          mention: 'twitter', // Autolinker doesn't support mentions to GitHub orgs, thus this workaround
+          className: 'external'
+        }).replace(/https:\/\/twitter\.com\//g, 'https://github.com/'))}
         {insertSettingsButtonOnce()}
       </div>
     );
