@@ -11,6 +11,8 @@ if [ "$actual_major_bash_version" -lt "$expected_major_bash_version" ]; then
 fi
 
 function run {
+  ./measureApiRate.js start
+
   pushd data/users/
   userFiles=$(ls *.json)
   popd
@@ -23,6 +25,8 @@ function run {
   ./fetchRepos.js
   ./calculateContribs.js
   ./printDataStats.js
+
+  ./measureApiRate.js stop
 }
 
 time run
