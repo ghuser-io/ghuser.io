@@ -6,3 +6,4 @@
 * https://www.reddit.com/r/reactjs/comments/92di4e/have_a_glimpse_at_your_github_contributions_with/e35nzxe/
 * https://twitter.com/hsianghui/status/1016998046171721730
 * https://twitter.com/dev__adi/status/1018393164485414912
+* https://twitter.com/palash2504/status/1021753545329131520
