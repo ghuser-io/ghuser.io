@@ -12,6 +12,7 @@
   const github = require('./impl/github');
   const scriptUtils = require('./impl/scriptUtils');
 
+  const rateLimitFilePath = 'data/rate_limit.json';
   const cli = meow(`
 usage:
   $ ./measureApiRate.js CMD
@@ -22,8 +23,8 @@ positional arguments:
   CMD        Either 'start' or 'stop'
 
 available commands:
-  start      Fetch /rate_limit from GitHub and dump it to data/rate_limit.json
-  stop       Fetch /rate_limit from GitHub, compare it to data/rate_limit.json and delete this file
+  start      Fetch /rate_limit from GitHub and dump it to ${rateLimitFilePath}
+  stop       Fetch /rate_limit from GitHub, compare it to ${rateLimitFilePath} and delete this file
 `);
 
   if (cli.input.length < 1) {
@@ -40,7 +41,6 @@ available commands:
 
   scriptUtils.printUnhandledRejections();
 
-  const rateLimitFilePath = 'data/rate_limit.json';
   const rateLimitFile = new DbFile(rateLimitFilePath);
 
   switch (cmd) {
