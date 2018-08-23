@@ -3,9 +3,9 @@ import * as Autolinker from 'autolinker';
 import * as moment from 'moment';
 import * as Parser from 'html-react-parser';
 
+import CreateYourProfile from './CreateYourProfile';
 import Contrib from './contrib/Contrib';
 import './RightPanel.css';
-import CreateYourProfile from '../../CreateYourProfile';
 
 const RightPanel = props => {
   // Use these queues to avoid filling up the event loop:
@@ -73,7 +73,8 @@ const RightPanel = props => {
       );
     }
     repos.push(
-      <CreateYourProfile key="createyourprofile" />
+      // 'issue49' is a hidden work in progress, see #49:
+      <CreateYourProfile key="createyourprofile" issue49={props.username == 'issue49'} />
     );
   }
 
