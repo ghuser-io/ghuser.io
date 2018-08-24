@@ -14,19 +14,27 @@ async function start() {
   // Run `$ reframe eject hapi` to eject the integration plugin.
   await server.register(config.hapiIntegrationPlugin);
 
-  const githubClientId = process.env.GITHUB_CLIENT_ID || 'GITHUB_CLIENT_ID';
-  /*TODO server.auth.strategy('twitter', 'bell', { // See https://github.com/hapijs/bell
-    provider: 'twitter',
-    password: 'cookie_encryption_password_secure',
-    clientId: 'my_twitter_client_id',
-    clientSecret: 'my_twitter_client_secret',
-    isSecure: true
-  });*/
+  await server.register(Bell); // see https://github.com/hapijs/bell
+  const password = process.env.COOKIE_ENCRYPTION_PASSWORD || 'COOKIE_ENCRYPTION_PASSWORD_MIN_32_CHARS';
+  const clientId = process.env.GITHUB_CLIENT_ID || 'GITHUB_CLIENT_ID';
+  const clientSecret = process.env.GITHUB_CLIENT_SECRET || 'GITHUB_CLIENT_SECRET';
+  server.auth.strategy('github', 'bell', {
+    provider: 'github',
+    password,
+    clientId,
+    clientSecret
+  });
   server.route({
-    method: 'GET',
+    method: ['GET', 'POST'],
     path: '/login',
-    handler() {
-      return githubClientId; //TEMP for test passing env vars from Up
+    options: {
+      auth: 'github',
+      handler: function (request, h) {
+        if (!request.auth.isAuthenticated) {
+          return `Authentication failed due to: ${request.auth.error.message}`;
+        }
+        return h.redirect('/AurelienLourot');
+      }
     }
   });
 

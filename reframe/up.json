@@ -17,6 +17,9 @@
     }
   },
   "environment": {
-    "GITHUB_CLIENT_ID": "$GITHUB_CLIENT_ID"
+    "_comment": "for OAuth:",
+    "COOKIE_ENCRYPTION_PASSWORD": "$COOKIE_ENCRYPTION_PASSWORD",
+    "GITHUB_CLIENT_ID": "$GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET": "$GITHUB_CLIENT_SECRET"
   }
 }

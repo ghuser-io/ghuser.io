@@ -18,9 +18,7 @@ const CreateYourProfile = props => (
       // issue49 is a hidden work in progress, see #49:
       props.issue49 &&
       <p>
-        <a className="btn btn-primary"
-           href="https://github.com/login/oauth/authorize?client_id=client_id&redirect_uri=https://ghuser.io/create_profile&allow_signup=false"
-           role="button">Get your profile</a>
+        <a className="btn btn-primary" href="/login" role="button">Get your profile</a>
       </p>
       ||
       <p>
