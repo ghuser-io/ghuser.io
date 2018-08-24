@@ -16,4 +16,7 @@
       "domain": "ghuser.io"
     }
   }
+  "environment": {
+    "GITHUB_CLIENT_ID": "$GITHUB_CLIENT_ID"
+  }
 }
