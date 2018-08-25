@@ -23,7 +23,6 @@ async function start() {
     password,
     clientId,
     clientSecret,
-    location: 'https://ghuser.io/brillout',
     scope: []
   });
   server.route({
