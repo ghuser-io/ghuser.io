@@ -22,7 +22,8 @@ async function start() {
     provider: 'github',
     password,
     clientId,
-    clientSecret
+    clientSecret,
+    location: 'https://ghuser.io/brillout'
   });
   server.route({
     method: ['GET', 'POST'],
