@@ -18,4 +18,8 @@
   .logo-with-punchline{
     font-size: 6em;
   }
+
+  .punchline{
+    margin-top: -1em;
+  }
 }
