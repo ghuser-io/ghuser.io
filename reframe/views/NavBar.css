@@ -3,19 +3,73 @@
 }
 
 .ghuser-on-github {
-  position: fixed;
+  position: relative;
   line-height: 1.9em;
-  right: 10vw;
+  left: 58vw;
 }
 
 @media screen and (max-width: 1200px){
   .ghuser-on-github{
-    right: 6vw;
+    left: 68vw;
   }
 }
 
 @media screen and (max-width: 800px){
   .ghuser-on-github{
-    right: 4vw;
+    left: 60vw;
+  }
+}
+
+@media screen and (max-width: 715px){
+  .ghuser-on-github{
+    left: 56vw;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .ghuser-on-github{
+    left: 52vw;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .ghuser-on-github{
+    left: 46vw;
+  }
+}
+
+@media screen and (max-width: 510px){
+  .ghuser-on-github{
+    left: 40vw;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .ghuser-on-github{
+    left: 36vw;
+  }
+}
+
+@media screen and (max-width: 440px){
+  .ghuser-on-github{
+    left: 32vw;
+  }
+}
+
+@media screen and (max-width: 410px){
+  .ghuser-on-github{
+    left: 30vw;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .ghuser-on-github{
+    left: 28vw;
+  }
+}
+
+@media screen and (max-width: 380px){
+  .ghuser-on-github{
+    left: 24vw;
   }
 }
