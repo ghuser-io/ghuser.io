@@ -3,6 +3,19 @@
 }
 
 .ghuser-on-github {
-  float: right;
+  position: fixed;
   line-height: 1.9em;
+  right: 10vw;
+}
+
+@media screen and (max-width: 1200px){
+  .ghuser-on-github{
+    right: 6vw;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .ghuser-on-github{
+    right: 4vw;
+  }
 }
