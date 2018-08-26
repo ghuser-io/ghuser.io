@@ -220,7 +220,13 @@
 
         if (!firstMethodFailed) {
           for (const contributor of ghDataJson) {
-            repos[repo].contributors[contributor.author.login] = contributor.total;
+            try {
+              repos[repo].contributors[contributor.author.login] = contributor.total;
+            } catch (e) {
+              // Debugging info for understanding #124 :
+              console.error(contributor);
+              throw e;
+            }
           }
         }
       }
