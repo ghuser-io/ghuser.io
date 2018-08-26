@@ -8,67 +8,67 @@
   left: 58vw;
 }
 
-@media screen and (max-width: 1200px){
+@media only screen and (max-width: 1200px){
   .ghuser-on-github{
     left: 68vw;
   }
 }
 
-@media screen and (max-width: 800px){
+@media only screen and (max-width: 800px){
   .ghuser-on-github{
     left: 60vw;
   }
 }
 
-@media screen and (max-width: 715px){
+@media only screen and (max-width: 715px){
   .ghuser-on-github{
     left: 56vw;
   }
 }
 
-@media screen and (max-width: 640px){
+@media only screen and (max-width: 640px){
   .ghuser-on-github{
     left: 52vw;
   }
 }
 
-@media screen and (max-width: 600px){
+@media only screen and (max-width: 600px){
   .ghuser-on-github{
     left: 46vw;
   }
 }
 
-@media screen and (max-width: 510px){
+@media only screen and (max-width: 510px){
   .ghuser-on-github{
     left: 40vw;
   }
 }
 
-@media screen and (max-width: 480px){
+@media only screen and (max-width: 480px){
   .ghuser-on-github{
     left: 36vw;
   }
 }
 
-@media screen and (max-width: 440px){
+@media only screen and (max-width: 440px){
   .ghuser-on-github{
     left: 32vw;
   }
 }
 
-@media screen and (max-width: 410px){
+@media only screen and (max-width: 410px){
   .ghuser-on-github{
     left: 30vw;
   }
 }
 
-@media screen and (max-width: 400px){
+@media only screen and (max-width: 400px){
   .ghuser-on-github{
     left: 28vw;
   }
 }
 
-@media screen and (max-width: 380px){
+@media only screen and (max-width: 380px){
   .ghuser-on-github{
     left: 24vw;
   }

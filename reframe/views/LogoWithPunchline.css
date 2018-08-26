@@ -7,3 +7,15 @@
   text-align: center;
   margin-top: -2em;
 }
+
+@media only screen and (max-width: 1200px){
+  .logo-with-punchline{
+    font-size: 7em;
+  }
+}
+
+@media only screen and (max-width: 992px){
+  .logo-with-punchline{
+    font-size: 6em;
+  }
+}
