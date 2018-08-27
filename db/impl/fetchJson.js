@@ -11,10 +11,11 @@
     // Else if the HTTP status code is in acceptedErrorCodes, returns it.
     // Else throws the HTTP status code.
 
-    const data = await fetch(url, ifModifiedSince && {
-      headers: {
+    const data = await fetch(url, {
+      retryOn: [522],
+      headers: ifModifiedSince && {
         'If-Modified-Since': ifModifiedSince.toUTCString()
-      }
+      } || null
     });
     const statusIsOk = Math.floor(data.status / 100) === 2;
     if (!statusIsOk && acceptedErrorCodes.indexOf(data.status) > -1) {
