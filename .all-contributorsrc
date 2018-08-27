@@ -37,6 +37,16 @@
       ]
     },
     {
+      "login": "jamesgeorge007",
+      "name": "James George",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/25279263?v=4",
+      "profile": "https://ghuser.io/jamesgeorge007",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
       "login": "jayvdb",
       "name": "John Vandenberg",
       "avatar_url": "https://avatars1.githubusercontent.com/u/15092?v=4",
@@ -60,15 +70,6 @@
       "name": "Shubham Rath",
       "avatar_url": "https://avatars3.githubusercontent.com/u/15799589?v=4",
       "profile": "https://sr6033.github.io/",
-      "contributions": [
-        "bug"
-      ]
-    },
-    {
-      "login": "jamesgeorge007",
-      "name": "James George",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/25279263?v=4",
-      "profile": "https://ghuser.io/jamesgeorge007",
       "contributions": [
         "bug"
       ]
