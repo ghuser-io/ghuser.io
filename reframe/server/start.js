@@ -37,7 +37,8 @@ async function start() {
         if (!request.auth.isAuthenticated) {
           return `Authentication failed due to: ${request.auth.error.message}`;
         }
-        return h.redirect('/AurelienLourot');
+        return '<pre>' + JSON.stringify(request.auth.credentials, null, 4) + '</pre>';
+        //TODO return h.redirect('/AurelienLourot');
       }
     }
   });
