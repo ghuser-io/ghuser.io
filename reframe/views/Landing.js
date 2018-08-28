@@ -4,6 +4,7 @@ import {XmlEntities} from 'html-entities';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
 
+import {urls} from './ghuser';
 import Content from './Content';
 import LogoWithPunchline from './LogoWithPunchline';
 import NavBar from './NavBar';
@@ -50,16 +51,14 @@ class Landing extends React.Component {
               <div className="ml-3">
                 <p>
                   We love the default GitHub profiles and we want to enhance them.
-                  <a href="https://github.com/AurelienLourot/ghuser.io" target="_blank"
-                     className="landing-to-github external ml-3">
+                  <a href={urls.repo} target="_blank" className="landing-to-github external ml-3">
                     More on GitHub
                   </a>
                 </p>
-                <a className="btn btn-primary ml-2 mr-4"
-                   href="https://github.com/AurelienLourot/ghuser.io/issues/new?template=profile-request.md"
+                <a className="btn btn-primary ml-2 mr-4" href={urls.profileRequest}
                    role="button">Get your profile</a>
                 <a className="typing" href="AurelienLourot">
-                  https://ghuser.io/<Typing className="typing" speed={10} loop={true}>{typingText}</Typing>
+                  {urls.landing}/<Typing className="typing" speed={10} loop={true}>{typingText}</Typing>
                 </a>
               </div>
             </div>

@@ -11,6 +11,7 @@ import ProgressBar from './ProgressBar';
 import AddSettings from '../../AddSettings';
 import './RepoDescrAndDetails.css';
 import {_, roundHalf} from '../../numbers';
+import {urls} from '../../../ghuser';
 
 class RepoDescrAndDetails extends React.Component {
   constructor(props) {
@@ -73,8 +74,7 @@ class RepoDescrAndDetails extends React.Component {
             Object.keys(languages).length > 0 &&
             <div>
               {languages}
-              <AddSettings href="https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md"
-                           title="Add a tech" />
+              <AddSettings href={`${urls.docs}/repo-settings.md`} title="Add a tech" />
             </div> ||
             ''
           }

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Logo from './Logo';
 import './NavBar.css';
+import {urls} from './ghuser';
 
 class NavBar extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class NavBar extends React.Component {
         <div className="container-lg">
           <a className="navbar-brand" href="/"><Logo/></a>
           <a role="button" className="btn btn-dark btn-sm ghuser-on-github" target="_blank"
-             href="https://github.com/AurelienLourot/ghuser.io">
+             href={urls.repo}>
             <i className="fab fa-github"></i> ghuser on GitHub
           </a>
         </div>

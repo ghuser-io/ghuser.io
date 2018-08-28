@@ -3,6 +3,7 @@ import * as Autolinker from 'autolinker';
 import * as moment from 'moment';
 import * as Parser from 'html-react-parser';
 
+import {urls} from '../../ghuser';
 import CreateYourProfile from './CreateYourProfile';
 import Contrib from './contrib/Contrib';
 import './RightPanel.css';
@@ -57,16 +58,14 @@ const RightPanel = props => {
             className: 'external'
           }))}<br /><br />
           If you want to have it again, no problem, just&nbsp;
-          <a href="https://github.com/AurelienLourot/ghuser.io/issues" target="_blank"
-             className="external">create an issue</a> :)
+          <a href={urls.issues} target="_blank" className="external">create an issue</a> :)
         </div>
       );
     } else {
       repos.push(
         <div key="alert" className="alert alert-warning my-3" role="alert">
           This profile doesn't exist yet.&nbsp;
-          <a href="https://github.com/AurelienLourot/ghuser.io/issues/new?template=profile-request.md"
-             target="_blank" className="external">
+          <a href={urls.profileRequest} target="_blank" className="external">
             Create a profile request
           </a>
         </div>

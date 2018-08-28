@@ -2,15 +2,15 @@ import React from 'react';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
 
+import {urls} from '../../ghuser';
 import AddSettings from '../AddSettings';
 import './VCardDetails.css';
 
 const VCardDetails = props => {
   const insertSettingsButtonOnce = (function () {
     let button = !props.settings &&
-            <AddSettings
-              href="https://github.com/AurelienLourot/ghuser.io/blob/master/docs/user-settings.md"
-              title="Add a link" classes="ml-2" />;
+            <AddSettings href={`${urls.docs}/user-settings.md`} title="Add a link"
+                         classes="ml-2" />;
 
     return function () {
       const result = button && React.cloneElement(button) || '';

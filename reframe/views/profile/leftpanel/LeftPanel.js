@@ -6,8 +6,8 @@ import Orgs from './Orgs';
 import VCard from './VCard';
 import VCardDetails from './VCardDetails';
 import './LeftPanel.css';
-
 import Avatar from '../Avatar';
+import {urls} from '../../ghuser';
 
 const LeftPanel = props => {
   let stars = 0;
@@ -25,7 +25,7 @@ const LeftPanel = props => {
       <Bio text={!props.user.ghuser_created_at && "I love coding and I'm about to create my profile on ghuser.io :)" || props.user.bio} />
       <VCardDetails location={props.user.location} email={props.user.email}
                     company={props.user.company} settings={props.user.settings}
-                    blog={!props.user.ghuser_created_at && 'https://ghuser.io' || props.user.blog}
+                    blog={!props.user.ghuser_created_at && urls.landing || props.user.blog}
                     gist_username={props.user.public_gists && props.user.login || null}/>
       <Orgs userOrgs={props.user.organizations || []}
             contribOrgs={props.contribs && props.contribs.organizations || []}

@@ -7,6 +7,7 @@ import './Contrib.css';
 import Avatar from '../../Avatar';
 import * as db from '../../db';
 import {bigNum, roundHalf} from '../../numbers';
+import {urls} from '../../../ghuser';
 
 class Contrib extends React.Component {
   constructor(props) {
@@ -44,8 +45,8 @@ class Contrib extends React.Component {
           this.state.repo.organization.avatar_url) {
         return <Avatar url={this.state.repo.organization.avatar_url} classes="avatar-repo" />;
       }
-      return <a href="https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md"
-                title="Add an avatar" target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
+      return <a href={`${urls.docs}/repo-settings.md`} title="Add an avatar"
+                target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
     };
 
     const badges = (owner, isFork, percentage, numContributors, popularity, numStars, activity,
