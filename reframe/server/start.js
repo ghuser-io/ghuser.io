@@ -25,7 +25,7 @@ async function start() {
     password,
     clientId,
     clientSecret,
-    location: urls.oauth,
+    location: urls.landing,
     scope: []
   });
   server.route({
