@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {urls} from '../../ghuser';
+import {urls} from '../../../ghuser';
 import LogoWithPunchline from '../../LogoWithPunchline';
 
 const CreateYourProfile = props => (
@@ -19,7 +19,7 @@ const CreateYourProfile = props => (
       // issue49 is a hidden work in progress, see #49:
       props.issue49 &&
       <p>
-        <a className="btn btn-primary" href="/login" role="button">Get your profile</a>
+        <a className="btn btn-primary" href={urls.oauthEndpoint} role="button">Get your profile</a>
       </p>
       ||
       <p>

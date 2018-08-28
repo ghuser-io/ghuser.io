@@ -7,7 +7,7 @@ import VCard from './VCard';
 import VCardDetails from './VCardDetails';
 import './LeftPanel.css';
 import Avatar from '../Avatar';
-import {urls} from '../../ghuser';
+import {urls} from '../../../ghuser';
 
 const LeftPanel = props => {
   let stars = 0;

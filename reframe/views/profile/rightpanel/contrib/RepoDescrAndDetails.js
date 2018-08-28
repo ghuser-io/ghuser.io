@@ -11,7 +11,7 @@ import ProgressBar from './ProgressBar';
 import AddSettings from '../../AddSettings';
 import './RepoDescrAndDetails.css';
 import {_, roundHalf} from '../../numbers';
-import {urls} from '../../../ghuser';
+import {urls} from '../../../../ghuser';
 
 class RepoDescrAndDetails extends React.Component {
   constructor(props) {

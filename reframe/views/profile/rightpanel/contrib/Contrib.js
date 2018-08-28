@@ -7,7 +7,7 @@ import './Contrib.css';
 import Avatar from '../../Avatar';
 import * as db from '../../db';
 import {bigNum, roundHalf} from '../../numbers';
-import {urls} from '../../../ghuser';
+import {urls} from '../../../../ghuser';
 
 class Contrib extends React.Component {
   constructor(props) {

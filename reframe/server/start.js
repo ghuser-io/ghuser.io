@@ -3,6 +3,8 @@ const Hapi = require('hapi');
 const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
 const {symbolSuccess, colorEmphasis} = require('@brillout/cli-theme');
 
+const urls = require('../ghuser').urls;
+
 module.exports = start();
 
 async function start() {
@@ -23,11 +25,12 @@ async function start() {
     password,
     clientId,
     clientSecret,
+    location: urls.oauth,
     scope: []
   });
   server.route({
     method: ['GET', 'POST'],
-    path: '/login',
+    path: urls.oauthEndpoint,
     options: {
       auth: 'github',
       handler: function (request, h) {

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Logo from './Logo';
 import './NavBar.css';
-import {urls} from './ghuser';
+import {urls} from '../ghuser';
 
 class NavBar extends React.Component {
   render() {

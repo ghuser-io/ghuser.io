@@ -4,7 +4,7 @@ import {XmlEntities} from 'html-entities';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
 
-import {urls} from './ghuser';
+import {urls} from '../ghuser';
 import Content from './Content';
 import LogoWithPunchline from './LogoWithPunchline';
 import NavBar from './NavBar';

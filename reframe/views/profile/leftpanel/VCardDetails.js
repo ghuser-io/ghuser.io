@@ -2,7 +2,7 @@ import React from 'react';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
 
-import {urls} from '../../ghuser';
+import {urls} from '../../../ghuser';
 import AddSettings from '../AddSettings';
 import './VCardDetails.css';
 
