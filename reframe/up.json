@@ -17,9 +17,11 @@
     }
   },
   "environment": {
-    "comment_": "for OAuth:",
+    "comment_": "for OAuth and profile request creation:",
+    "AWS_SQS_QUEUE_URL": "$AWS_SQS_QUEUE_URL",
     "COOKIE_ENCRYPTION_PASSWORD": "$COOKIE_ENCRYPTION_PASSWORD",
     "GITHUB_CLIENT_ID": "$GITHUB_CLIENT_ID",
-    "GITHUB_CLIENT_SECRET": "$GITHUB_CLIENT_SECRET"
+    "GITHUB_CLIENT_SECRET": "$GITHUB_CLIENT_SECRET",
+    "SENTRY_DNS": "$SENTRY_DNS"
   }
 }

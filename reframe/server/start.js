@@ -1,5 +1,7 @@
+const AWS = require('aws-sdk');
 const Bell = require('bell');
 const Hapi = require('hapi');
+const Raven = require('raven');
 const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
 const {symbolSuccess, colorEmphasis} = require('@brillout/cli-theme');
 
@@ -28,17 +30,61 @@ async function start() {
     location: urls.landing,
     scope: []
   });
+
+  const sendSqsMsg = (() => {
+    const awsSqsQueueUrl = process.env.AWS_SQS_QUEUE_URL || 'AWS_SQS_QUEUE_URL';
+    AWS.config.update({region: 'us-east-1'});
+    const sqs = new AWS.SQS;
+
+    return async body => {
+      return new Promise((resolve, reject) => {
+        sqs.sendMessage({
+          QueueUrl: awsSqsQueueUrl,
+          MessageGroupId: '0',
+          MessageBody: body
+        }, (err, _) => {
+          if (err) {
+            reject(err);
+          }
+          resolve();
+        });
+      });
+    };
+  })();
+
+  let raven;
+  if (process.env.SENTRY_DNS) {
+    raven = Raven;
+    raven.config(process.env.SENTRY_DNS).install();
+  } else {
+    raven = {
+      captureException() {},
+      captureMessage() {}
+    };
+  }
+
   server.route({
     method: ['GET', 'POST'],
     path: urls.oauthEndpoint,
     options: {
       auth: 'github',
-      handler: function (request, h) {
+      handler: async function (request, h) {
         if (!request.auth.isAuthenticated) {
+          raven.captureException(new Error(request.auth.error.message));
           return `Authentication failed due to: ${request.auth.error.message}`;
         }
-        return '<pre>' + JSON.stringify(request.auth.credentials, null, 4) + '</pre>';
-        //TODO return h.redirect('/AurelienLourot');
+
+        let login;
+        try {
+          login = request.auth.credentials.profile.raw.login;
+          raven.captureMessage(`Profile request: ${login}`);
+          const avatar_url = request.auth.credentials.profile.raw.avatar_url;
+          await sendSqsMsg(`${login},${avatar_url}`);
+        } catch (e) {
+          console.error(e);
+          raven.captureException(new Error(e));
+        }
+        return h.redirect(`/${login}/creating`);
       }
     }
   });

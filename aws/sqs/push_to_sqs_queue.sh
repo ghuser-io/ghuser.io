@@ -15,7 +15,4 @@ EOF
   exit 1
 fi
 
-now=$(date +%s%N)
-msgId="$(echo -n $msg$now | md5sum | awk '{print $1}')"
-aws sqs send-message --queue-url "$(queueUrl)" --message-group-id 0 \
-    --message-deduplication-id "$msgId" --message-body "$msg"
+aws sqs send-message --queue-url "$(queueUrl)" --message-group-id 0 --message-body "$msg"
