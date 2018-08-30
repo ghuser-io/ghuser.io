@@ -9,6 +9,7 @@ Profile requests will be added to this queue and processed by the [fetchBot](../
 - [Create the queue](#create-the-queue)
 - [Push a message to the queue](#push-a-message-to-the-queue)
 - [Print the queue's content](#print-the-queues-content)
+- [Delete the queue](#delete-the-queue)
 
 <!-- tocstop -->
 
@@ -33,11 +34,18 @@ $ ./push_to_sqs_queue.sh myMessage
 
 ## Print the queue's content
 
-> **WARNING**: don't use in production as this makes the queue content
-> [invisible for 30 seconds](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html).
-
 ```bash
 $ sudo apt-get update
 $ sudo apt-get install jq
 $ ./print_sqs_queue.sh
+```
+
+## Delete the queue
+
+> **WARNING**: don't use in production.
+
+```bash
+$ sudo apt-get update
+$ sudo apt-get install jq
+$ ./delete_sqs_queue.sh
 ```
