@@ -52,16 +52,29 @@ async function start() {
     };
   })();
 
-  let raven;
   if (process.env.SENTRY_DNS) {
-    raven = Raven;
-    raven.config(process.env.SENTRY_DNS).install();
-  } else {
-    raven = {
-      captureException() {},
-      captureMessage() {}
-    };
+    Raven.config(process.env.SENTRY_DNS).install();
   }
+  const raven = {
+    async captureException(e) {
+      return new Promise((resolve, _) => {
+        if (process.env.SENTRY_DNS) {
+          Raven.captureException(e, resolve);
+        } else {
+          resolve();
+        }
+      });
+    },
+    async captureMessage(msg) {
+      return new Promise((resolve, _) => {
+        if (process.env.SENTRY_DNS) {
+          Raven.captureMessage(msg, resolve);
+        } else {
+          resolve();
+        }
+      });
+    }
+  };
 
   server.route({
     method: ['GET', 'POST'],
@@ -70,19 +83,20 @@ async function start() {
       auth: 'github',
       handler: async function (request, h) {
         if (!request.auth.isAuthenticated) {
-          raven.captureException(new Error(request.auth.error.message));
+          await raven.captureException(new Error(request.auth.error.message));
           return `Authentication failed due to: ${request.auth.error.message}`;
         }
 
         let login;
         try {
           login = request.auth.credentials.profile.raw.login;
-          raven.captureMessage(`Profile request: ${login}`);
+          await raven.captureMessage(`Profile request: ${login}`);
           const avatar_url = request.auth.credentials.profile.raw.avatar_url;
           await sendSqsMsg(`${login},${avatar_url}`);
         } catch (e) {
           console.error(e);
-          raven.captureException(new Error(e));
+          await raven.captureException(new Error(e));
+          return `Something went wrong: ${e}`;
         }
         return h.redirect(`/${login}/creating`);
       }
