@@ -18,6 +18,8 @@
   },
   "environment": {
     "comment_": "for OAuth and profile request creation:",
+    "AWS_ACCESS_KEY_ID": "$AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY": "$AWS_SECRET_ACCESS_KEY",
     "AWS_SQS_QUEUE_URL": "$AWS_SQS_QUEUE_URL",
     "COOKIE_ENCRYPTION_PASSWORD": "$COOKIE_ENCRYPTION_PASSWORD",
     "GITHUB_CLIENT_ID": "$GITHUB_CLIENT_ID",
