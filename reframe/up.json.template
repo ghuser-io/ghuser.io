@@ -6,6 +6,7 @@
     "us-east-1"
   ],
   "lambda": {
+    "role": "arn:aws:iam::$AWS_ACCOUNT_ID:role/apex-up-lambda",
     "memory": 256
   },
   "stages": {
@@ -22,10 +23,6 @@
     "COOKIE_ENCRYPTION_PASSWORD": "$COOKIE_ENCRYPTION_PASSWORD",
     "GITHUB_CLIENT_ID": "$GITHUB_CLIENT_ID",
     "GITHUB_CLIENT_SECRET": "$GITHUB_CLIENT_SECRET",
-    "SENTRY_DNS": "$SENTRY_DNS",
-
-    "comment__": "Underscore at the end is a temporary fix for the build. Without it Up fails with https://github.com/apex/apex/issues/829",
-    "AWS_ACCESS_KEY_ID_": "$AWS_ACCESS_KEY_ID",
-    "AWS_SECRET_ACCESS_KEY_": "$AWS_SECRET_ACCESS_KEY"
+    "SENTRY_DNS": "$SENTRY_DNS"
   }
 }

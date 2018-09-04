@@ -15,7 +15,7 @@
     "local": "reframe start",
     "cleanmod": "rm -rf node_modules/ && npm install",
     "warmup": "curl -s --output /dev/null https://ghuser.io && curl -s --output /dev/null https://www.ghuser.io",
-    "deploy": "reframe build && rm -rf dist/previous/ && ./populateUpJson.sh && ./up && ./up production && ./up stack status && npm run warmup",
+    "deploy": "reframe build && rm -rf dist/previous/ && ./genUpJson.sh && ./up && ./up production && ./up stack status && npm run warmup",
     "_comment": "staging and production logs:",
     "logs": "./up logs --since=20m"
   },
