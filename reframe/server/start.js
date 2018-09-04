@@ -96,7 +96,6 @@ async function start() {
         } catch (e) {
           console.error(e);
           await raven.captureException(new Error(e));
-          return `Something went wrong: ${e}`;
         }
         return h.redirect(`/${login}/creating`);
       }
