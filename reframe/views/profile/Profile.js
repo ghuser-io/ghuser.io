@@ -18,7 +18,8 @@ class Profile extends React.Component {
       user: {
         login: props.username
       },
-      contribs: null
+      contribs: null,
+      profilesBeingCreated: []
     };
   }
 
@@ -32,7 +33,10 @@ class Profile extends React.Component {
       const contribsData = await fetch(`${db.url}/contribs/${userId}.json`);
       const contribs = await contribsData.json();
       this.setState({ contribs });
-    } catch (_) {}
+    } catch (_) {
+      // This profile doesn't exist yet, let's see if it's being created:
+      
+    }
     this.setState({ loading: false });
   }
 

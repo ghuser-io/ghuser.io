@@ -1,7 +1,8 @@
 const urls = {
   landing: 'https://ghuser.io',
   repo: 'https://github.com/AurelienLourot/ghuser.io',
-  oauthEndpoint: '/login'
+  oauthEndpoint: '/login',
+  profileQueueEndpoint: '/queue'
 };
 urls.docs = `${urls.repo}/blob/master/docs`;
 urls.issues = `${urls.repo}/issues`;

@@ -31,26 +31,38 @@ async function start() {
     scope: []
   });
 
-  const sendSqsMsg = (() => {
-    const awsSqsQueueUrl = process.env.AWS_SQS_QUEUE_URL || 'AWS_SQS_QUEUE_URL';
-    AWS.config.update({region: 'us-east-1'});
-    const sqs = new AWS.SQS;
-
-    return async body => {
-      return new Promise((resolve, reject) => {
-        sqs.sendMessage({
-          QueueUrl: awsSqsQueueUrl,
-          MessageGroupId: '0',
-          MessageBody: body
-        }, (err, _) => {
-          if (err) {
-            reject(err);
-          }
-          resolve();
-        });
+  const awsSqsQueueUrl = process.env.AWS_SQS_QUEUE_URL || 'AWS_SQS_QUEUE_URL';
+  AWS.config.update({region: 'us-east-1'});
+  const sqs = new AWS.SQS;
+  const sendSqsMsg = async body => {
+    return new Promise((resolve, reject) => {
+      sqs.sendMessage({
+        QueueUrl: awsSqsQueueUrl,
+        MessageGroupId: '0',
+        MessageBody: body
+      }, (err, _) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve();
       });
-    };
-  })();
+    });
+  };
+  const getAllSqsMsgs = async () => {
+    return new Promise((resolve, reject) => {
+      sqs.receiveMessage({
+        QueueUrl: awsSqsQueueUrl,
+        MaxNumberOfMessages: 10
+      }, (err, data) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(data.Messages);
+      });
+    });
+  };
 
   if (process.env.SENTRY_DNS) {
     Raven.config(process.env.SENTRY_DNS).install();
@@ -99,6 +111,21 @@ async function start() {
         }
         return h.redirect(`/${login}/creating`);
       }
+    }
+  });
+
+  server.route({
+    method: ['GET'],
+    path: urls.profileQueueEndpoint,
+    handler: async function (request, h) {
+      let profileQueue = [];
+      try {
+        profileQueue = await getAllSqsMsgs();
+      } catch (e) {
+        console.error(e);
+        await raven.captureException(new Error(e));
+      }
+      return profileQueue;
     }
   });
 
