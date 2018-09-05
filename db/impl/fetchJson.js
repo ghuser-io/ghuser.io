@@ -12,7 +12,7 @@
     // Else throws the HTTP status code.
 
     const data = await fetch(url, {
-      retryOn: [522],
+      retryOn: [502, 504, 522, 525],
       headers: ifModifiedSince && {
         'If-Modified-Since': ifModifiedSince.toUTCString()
       } || null
