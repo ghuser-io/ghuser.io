@@ -38,7 +38,6 @@ class Profile extends React.Component {
       // This profile doesn't exist yet, let's see if it's being created:
       const profilesBeingCreatedData = await fetch(urls.profileQueueEndpoint);
       const profilesBeingCreated = await profilesBeingCreatedData.json();
-      console.log(profilesBeingCreated);
       this.setState({ profilesBeingCreated });
       for (const profile of profilesBeingCreated) {
         if (profile.login.toLowerCase() === userId) { // profile is being created
