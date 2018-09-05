@@ -59,7 +59,13 @@ async function start() {
           reject(err);
           return;
         }
-        resolve(data.Messages);
+        resolve(data.Messages.map(msg => {
+          const fields = msg.Body.split(',');
+          return {
+            login: fields[0],
+            avatar_url: fields[1]
+          };
+        }));
       });
     });
   };
