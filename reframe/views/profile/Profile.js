@@ -44,7 +44,7 @@ class Profile extends React.Component {
         if (profile.login.toLowerCase() === userId) { // profile is being created
           this.setState({
             user: {
-              ...this.status.user,
+              ...this.state.user,
               avatar_url: profile.avatar_url
             }
           });
