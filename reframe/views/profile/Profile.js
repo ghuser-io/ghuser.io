@@ -9,6 +9,7 @@ import LeftPanel from './leftpanel/LeftPanel';
 import RightPanel from './rightpanel/RightPanel';
 import './Profile.css';
 import * as db from './db';
+import {urls} from '../../ghuser';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -24,8 +25,8 @@ class Profile extends React.Component {
   }
 
   async componentDidMount() {
+    const userId = this.props.username.toLowerCase();
     try {
-      const userId = this.props.username.toLowerCase();
       const userData = await fetch(`${db.url}/users/${userId}.json`);
       const user = await userData.json();
       this.setState({ user });
@@ -35,7 +36,21 @@ class Profile extends React.Component {
       this.setState({ contribs });
     } catch (_) {
       // This profile doesn't exist yet, let's see if it's being created:
-      
+      const profilesBeingCreatedData = await fetch(urls.profileQueueEndpoint);
+      const profilesBeingCreated = await profilesBeingCreatedData.json();
+      console.log(profilesBeingCreated);
+      this.setState({ profilesBeingCreated });
+      for (const profile of profilesBeingCreated) {
+        if (profile.login.toLowerCase() === userId) { // profile is being created
+          this.setState({
+            user: {
+              ...this.status.user,
+              avatar_url: profile.avatar_url
+            }
+          });
+          break;
+        }
+      }
     }
     this.setState({ loading: false });
   }

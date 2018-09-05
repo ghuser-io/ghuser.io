@@ -65,9 +65,13 @@ const RightPanel = props => {
       repos.push(
         <div key="alert" className="alert alert-warning my-3" role="alert">
           This profile doesn't exist yet.&nbsp;
-          <a href={urls.profileRequest} target="_blank" className="external">
-            Create a profile request
-          </a>
+          {
+            // 'issue49' is a hidden work in progress, see #49:
+            props.username !== 'issue49' &&
+            <a href={urls.profileRequest} target="_blank" className="external">
+              Create a profile request
+            </a> || ''
+          }
         </div>
       );
     }
