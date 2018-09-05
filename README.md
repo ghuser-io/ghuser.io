@@ -62,7 +62,7 @@ We love the default GitHub profiles and we want to enhance them:
 Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e.g.
 [ghuser.io/AurelienLourot](https://ghuser.io/AurelienLourot).
 
-<a name="footnote1"><sup>1</sup></a> We achieve this by using [github-contribs](https://github.com/AurelienLourot/github-contribs).<br/>
+<a name="footnote1"><sup>1</sup></a> We achieve this by using [github-contribs](https://github.com/AurelienLourot/github-contribs).
 
 # Get your profile!
 
@@ -130,10 +130,13 @@ This is annoying for new users and
 
 ## Is my profile static or dynamic?
 
-For now it's static and the data is refreshed at least [once per day](db/README.md). If you scroll
-down to the bottom of your profile you can see how old the data is:
+For now it's static and the data<sup>[2](#footnote2)</sup> is refreshed at least
+[once per day](db/README.md). If you scroll down to the bottom of your profile you can see how old
+the data is:
 
 > ![screenshot](docs/screenshot-data-age.png)
+
+<a name="footnote2"><sup>2</sup></a> All the data about you and your contributions.
 
 ## Some of my repos are not showing up on my profile, why?
 
