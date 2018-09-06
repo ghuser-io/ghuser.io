@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
-source impl/utils.sh
+source utils.sh
 
 aws sqs delete-queue --queue-url "$(queueUrl)"

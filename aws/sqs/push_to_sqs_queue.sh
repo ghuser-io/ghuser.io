@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-source impl/utils.sh
+source utils.sh
 
 msg="$1"
 if [[ -z "$msg" ]] || [[ ! -z "$2" ]]; then
