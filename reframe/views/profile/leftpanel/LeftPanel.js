@@ -22,7 +22,11 @@ const LeftPanel = props => {
       <VCard login={props.user.login}
              name={!props.user.ghuser_created_at && 'Your name here' || props.user.name}
              url={props.user.html_url} stars={stars} />
-      <Bio text={!props.user.ghuser_created_at && "I love coding and I'm about to create my profile on ghuser.io :)" || props.user.bio} />
+      <Bio text={
+        props.user.ghuser_being_created && "This profile is being created..." ||
+        !props.user.ghuser_created_at && "I love coding and I'm about to create my profile on ghuser.io :)" ||
+        props.user.bio
+      } />
       <VCardDetails location={props.user.location} email={props.user.email}
                     company={props.user.company} settings={props.user.settings}
                     blog={!props.user.ghuser_created_at && urls.landing || props.user.blog}

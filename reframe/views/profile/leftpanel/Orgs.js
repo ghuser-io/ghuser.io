@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './Orgs.css';
+import {withSeparator} from '../css';
 import Avatar from '../Avatar';
 
 const Orgs = props => {
@@ -42,7 +43,7 @@ const Orgs = props => {
   }
 
   return (
-    <div className="border-top border-gray-light py-3">{sections}</div>
+    <div className={withSeparator('top', 3)}>{sections}</div>
   );
 };
 

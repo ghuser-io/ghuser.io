@@ -12,7 +12,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: calc(100%
-                  - 50px - .5em /*avatar-repo*/
+                  - 50px - .5em /*avatar-small*/
                   - 2em);       /*dropdown icon*/
 }
 

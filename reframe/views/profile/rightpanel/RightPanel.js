@@ -5,6 +5,7 @@ import * as Parser from 'html-react-parser';
 
 import {urls} from '../../../ghuser';
 import CreateYourProfile from './CreateYourProfile';
+import ProfileBeingCreated from './ProfileBeingCreated';
 import Contrib from './contrib/Contrib';
 import './RightPanel.css';
 
@@ -51,34 +52,45 @@ const RightPanel = props => {
       );
     }
   } else {
-    if (props.deleted_because) {
+    const alertCssClasses = 'alert alert-warning my-3';
+    if (props.being_created) {
       repos.push(
-        <div key="alert" className="alert alert-warning my-3" role="alert">
-          This profile was deleted because {Parser(Autolinker.link(props.deleted_because, {
-            className: 'external'
-          }))}<br /><br />
-          If you want to have it again, no problem, just&nbsp;
-          <a href={urls.issues} target="_blank" className="external">create an issue</a> :)
-        </div>
+        <div key="alert" className={alertCssClasses} role="alert">
+          This profile is being created...
+        </div>,
+        <ProfileBeingCreated key="profilecreation"
+                             profilesBeingCreated={props.profilesBeingCreated} />
       );
     } else {
+      if (props.deleted_because) {
+        repos.push(
+          <div key="alert" className={alertCssClasses} role="alert">
+            This profile was deleted because {Parser(Autolinker.link(props.deleted_because, {
+              className: 'external'
+            }))}<br /><br />
+            If you want to have it again, no problem, just&nbsp;
+            <a href={urls.issues} target="_blank" className="external">create an issue</a> :)
+          </div>
+        );
+      } else {
+        repos.push(
+          <div key="alert" className={alertCssClasses} role="alert">
+            This profile doesn't exist yet.&nbsp;
+            {
+              // 'issue49' is a hidden work in progress, see #49:
+              props.username !== 'issue49' &&
+              <a href={urls.profileRequest} target="_blank" className="external">
+                Create a profile request
+              </a> || ''
+            }
+          </div>
+        );
+      }
       repos.push(
-        <div key="alert" className="alert alert-warning my-3" role="alert">
-          This profile doesn't exist yet.&nbsp;
-          {
-            // 'issue49' is a hidden work in progress, see #49:
-            props.username !== 'issue49' &&
-            <a href={urls.profileRequest} target="_blank" className="external">
-              Create a profile request
-            </a> || ''
-          }
-        </div>
+        // 'issue49' is a hidden work in progress, see #49:
+        <CreateYourProfile key="profilecreation" issue49={props.username == 'issue49'} />
       );
     }
-    repos.push(
-      // 'issue49' is a hidden work in progress, see #49:
-      <CreateYourProfile key="createyourprofile" issue49={props.username == 'issue49'} />
-    );
   }
 
   return (

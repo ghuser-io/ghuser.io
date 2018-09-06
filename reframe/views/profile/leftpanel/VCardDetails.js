@@ -2,6 +2,7 @@ import React from 'react';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
 
+import {withSeparator} from '../css';
 import {urls} from '../../../ghuser';
 import AddSettings from '../AddSettings';
 import './VCardDetails.css';
@@ -114,7 +115,7 @@ const VCardDetails = props => {
   };
 
   return (
-    <div className={details.length > 0 && 'border-top border-gray-light py-3' || ''}>{details}</div>
+    <div className={details.length > 0 && withSeparator('top', 3) || ''}>{details}</div>
   );
 };
 

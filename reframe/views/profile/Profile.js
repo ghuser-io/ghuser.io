@@ -38,13 +38,26 @@ class Profile extends React.Component {
       // This profile doesn't exist yet, let's see if it's being created:
       const profilesBeingCreatedData = await fetch(urls.profileQueueEndpoint);
       const profilesBeingCreated = await profilesBeingCreatedData.json();
+
+      // 'issue49' is a hidden work in progress, see #49:
+      if (userId === 'issue49') {
+        profilesBeingCreated.push({
+          login: 'AurelienLourot',
+          avatar_url: 'https://avatars1.githubusercontent.com/u/11795312?v=4'
+        }, {
+          login: userId,
+          avatar_url: 'https://avatars1.githubusercontent.com/u/11795312?v=4'
+        });
+      }
+
       this.setState({ profilesBeingCreated });
       for (const profile of profilesBeingCreated) {
         if (profile.login.toLowerCase() === userId) { // profile is being created
           this.setState({
             user: {
               ...this.state.user,
-              avatar_url: profile.avatar_url
+              avatar_url: profile.avatar_url,
+              ghuser_being_created: true
             }
           });
           break;
@@ -63,7 +76,9 @@ class Profile extends React.Component {
         <RightPanel username={this.state.user.login}
                     fetchedat={this.state.user.contribs && this.state.user.contribs.fetched_at}
                     contribs={this.state.contribs}
-                    deleted_because={this.state.user.ghuser_deleted_because} />
+                    being_created={this.state.user.ghuser_being_created}
+                    deleted_because={this.state.user.ghuser_deleted_because}
+                    profilesBeingCreated={this.state.profilesBeingCreated} />
       </div>;
 
     return (

@@ -6,6 +6,7 @@ import RepoDescrAndDetails from './RepoDescrAndDetails';
 import './Contrib.css';
 import Avatar from '../../Avatar';
 import * as db from '../../db';
+import {withSeparator} from '../../css';
 import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
 
@@ -39,14 +40,14 @@ class Contrib extends React.Component {
         return <span className="contrib-name mb-2 mr-2"><i className="fas fa-spinner fa-pulse"></i></span>;
       }
       if (this.state.repo && this.state.repo.settings && this.state.repo.settings.avatar_url) {
-        return <Avatar url={this.state.repo.settings.avatar_url} classes="avatar-repo" />;
+        return <Avatar url={this.state.repo.settings.avatar_url} classes="avatar-small" />;
       }
       if (this.state.repo && this.state.repo.organization &&
           this.state.repo.organization.avatar_url) {
-        return <Avatar url={this.state.repo.organization.avatar_url} classes="avatar-repo" />;
+        return <Avatar url={this.state.repo.organization.avatar_url} classes="avatar-small" />;
       }
       return <a href={`${urls.docs}/repo-settings.md`} title="Add an avatar"
-                target="_blank"><Avatar type="add" classes="avatar-repo avatar-add text-gray" /></a>;
+                target="_blank"><Avatar type="add" classes="avatar-small avatar-add text-gray" /></a>;
     };
 
     const badges = (owner, isFork, percentage, numContributors, popularity, numStars, activity,
@@ -104,7 +105,7 @@ class Contrib extends React.Component {
     const userIsMaintainer = this.props.contrib.percentage >= 15;
 
     return (
-      <div className="border-bottom border-gray-light py-4">
+      <div className={withSeparator('bottom', 4)}>
         {avatar()}
         <h4 className="contrib-name mr-1">
           <a href={`https://github.com/${this.props.contrib.full_name}`}

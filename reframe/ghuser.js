@@ -4,7 +4,8 @@ const urls = {
   oauthEndpoint: '/login',
   profileQueueEndpoint: '/queue'
 };
-urls.docs = `${urls.repo}/blob/master/docs`;
+urls.masterBranch = `${urls.repo}/blob/master`;
+urls.docs = `${urls.masterBranch}/docs`;
 urls.issues = `${urls.repo}/issues`;
 urls.profileRequest = `${urls.issues}/new?template=profile-request.md`;
 
