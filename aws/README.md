@@ -26,7 +26,7 @@ using [Apex/Up](https://up.docs.apex.sh/). This setup is best described by
 [How to deploy a Reframe web app on Up](https://github.com/AurelienLourot/reframe-on-up).
 
 A few AWS IAM adjustments are necessary:
-* [set up AWS CLI](#settings-up-aws-cli), and
+* [set up AWS CLI](#setting-up-aws-cli), and
 * go to the [`apex-up/`](apex-up/) subfolder.
 
 ### AWS EC2
