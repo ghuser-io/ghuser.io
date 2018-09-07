@@ -35,7 +35,7 @@ The [data](../db) of all profiles needs to be refreshed every day. For this we r
 [a bot](../db/fetchBot) on an EC2 instance.
 
 To create this EC2 instance:
-* [set up AWS CLI](#settings-up-aws-cli), and
+* [set up AWS CLI](#setting-up-aws-cli), and
 * go to the [`ec2/`](ec2/) subfolder.
 
 ### AWS SQS
@@ -45,14 +45,14 @@ profile. These requests are implemented as
 [SQS messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html).
 
 To create this SQS queue:
-* [set up AWS CLI](#settings-up-aws-cli), and
+* [set up AWS CLI](#setting-up-aws-cli), and
 * go to the [`sqs/`](sqs/) subfolder.
 
 ### AWS Route 53
 
 We bought the `ghuser.io` domain from [Route 53](https://aws.amazon.com/route53/).
 To see how this is set up:
-* [set up AWS CLI](#settings-up-aws-cli), and
+* [set up AWS CLI](#setting-up-aws-cli), and
 * go to the [`dns/`](dns/) subfolder.
 
 ## Setting up AWS CLI
