@@ -13,7 +13,7 @@ Profile requests will be added to this queue and processed by the [fetchBot](../
 
 <!-- tocstop -->
 
-## Create the queue
+# Create the queue
 
 ```bash
 $ export AWS_ACCOUNT_ID=123456789012
@@ -22,7 +22,7 @@ $ ./setup_iam_for_sqs.sh
 $ ./create_sqs_queue.sh
 ```
 
-## Push a message to the queue
+# Push a message to the queue
 
 > **WARNING**: don't use in production.
 
@@ -32,7 +32,7 @@ $ sudo apt-get install jq
 $ ./push_to_sqs_queue.sh myMessage
 ```
 
-## Print the queue's content
+# Print the queue's content
 
 ```bash
 $ sudo apt-get update
@@ -40,7 +40,7 @@ $ sudo apt-get install jq
 $ ./print_sqs_queue.sh
 ```
 
-## Delete the queue
+# Delete the queue
 
 > **WARNING**: don't use in production.
 

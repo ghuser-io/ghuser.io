@@ -30,3 +30,5 @@ See [`raven-bash`'s documentation](https://github.com/ViktorStiskala/raven-bash#
 ```bash
 $ ./bot.sh
 ```
+
+> **NOTE**: in production we currently run this bot on an [EC2 instance](../../aws/ec2).

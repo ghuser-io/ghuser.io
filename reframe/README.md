@@ -62,3 +62,5 @@ We run the web app on [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/
 
 > **NOTE**: this can only be done by the
 > [maintainers](https://github.com/AurelienLourot/ghuser.io#team).
+
+The scripts used to set up AWS IAM accordingly can be found [here](../aws/apex-up).
