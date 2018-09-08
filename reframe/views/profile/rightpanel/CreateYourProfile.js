@@ -15,19 +15,9 @@ const CreateYourProfile = props => (
         {urls.repo}
       </a>
     </p>
-    {
-      // issue49 is a hidden work in progress, see #49:
-      props.issue49 &&
-      <p>
-        <a className="btn btn-primary" href={urls.oauthEndpoint} role="button">Get your profile</a>
-      </p>
-      ||
-      <p>
-        <a href={urls.profileRequest} target="_blank"
-           className="external">Create a profile request</a> and we'll set up your profile right
-        away!
-      </p>
-    }
+    <p>
+      <a className="btn btn-primary" href={urls.oauthEndpoint} role="button">Get your profile</a>
+    </p>
   </div>
 );
 

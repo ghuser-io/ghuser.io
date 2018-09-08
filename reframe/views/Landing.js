@@ -55,7 +55,7 @@ class Landing extends React.Component {
                     More on GitHub
                   </a>
                 </p>
-                <a className="btn btn-primary ml-2 mr-4" href={urls.profileRequest}
+                <a className="btn btn-primary ml-2 mr-4" href={urls.oauthEndpoint}
                    role="button">Get your profile</a>
                 <a className="typing" href="AurelienLourot">
                   {urls.landing}/<Typing className="typing" speed={10} loop={true}>{typingText}</Typing>

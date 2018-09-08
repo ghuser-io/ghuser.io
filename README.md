@@ -24,7 +24,6 @@
   * [To the documentation](#to-the-documentation)
   * [Contributors](#contributors)
 - [FAQ](#faq)
-  * [Why do I need to open an issue in order to get a profile?](#why-do-i-need-to-open-an-issue-in-order-to-get-a-profile)
   * [Is my profile static or dynamic?](#is-my-profile-static-or-dynamic)
   * [Some of my repos are not showing up on my profile, why?](#some-of-my-repos-are-not-showing-up-on-my-profile-why)
 
@@ -66,10 +65,7 @@ Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e
 
 # Get your profile!
 
-[ghuser.io](https://ghuser.io) is still a baby but you can already be an early user and get your
-profile by
-[creating a request](https://github.com/AurelienLourot/ghuser.io/issues/new?template=profile-request.md)
-:)
+Request it [here](https://ghuser.io/login).
 
 # Roadmap
 
@@ -77,7 +73,7 @@ profile by
 * [x] `04 Jul 2018` [first prototype](https://github.com/AurelienLourot/ghuser.io/milestone/1)
 * [x] `14 Aug 2018` fix
       [first scaling issues](https://github.com/AurelienLourot/ghuser.io/milestone/4)
-* [ ] `15 Sep 2018` address
+* [ ] `15 Oct 2018` address
       [first user feedback](https://github.com/AurelienLourot/ghuser.io/milestone/3)
 * [ ] `30 Nov 2018` display more data on each profile to really make it a modern
       [programmer resume](https://github.com/AurelienLourot/ghuser.io/milestone/2)
@@ -117,16 +113,6 @@ specification. Contributions of any kind welcome!
 > know!
 
 # FAQ
-
-## Why do I need to open an issue in order to get a profile?
-
-The first crawling for discovering everything you did on GitHub
-[takes hours](https://github.com/AurelienLourot/github-contribs#why-is-it-so-slow) and would need
-several machines in order to be parallelized. Also [ghuser.io](https://ghuser.io) is still a baby
-and this process is only semi-automated.
-
-This is annoying for new users and
-[we're working on it](https://github.com/AurelienLourot/ghuser.io/issues/49).
 
 ## Is my profile static or dynamic?
 
