@@ -38,18 +38,6 @@ class Profile extends React.Component {
       // This profile doesn't exist yet, let's see if it's being created:
       const profilesBeingCreatedData = await fetch(urls.profileQueueEndpoint);
       const profilesBeingCreated = await profilesBeingCreatedData.json();
-
-      // 'issue49' is a hidden work in progress, see #49:
-      if (userId === 'issue49') {
-        profilesBeingCreated.push({
-          login: 'AurelienLourot',
-          avatar_url: 'https://avatars1.githubusercontent.com/u/11795312?v=4'
-        }, {
-          login: userId,
-          avatar_url: 'https://avatars1.githubusercontent.com/u/11795312?v=4'
-        });
-      }
-
       this.setState({ profilesBeingCreated });
       for (const profile of profilesBeingCreated) {
         if (profile.login.toLowerCase() === userId) { // profile is being created
