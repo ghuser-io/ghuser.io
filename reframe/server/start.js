@@ -112,10 +112,7 @@ async function start() {
         let login;
         try {
           login = request.auth.credentials.profile.raw.login;
-          // issue49 is a hidden work in progress, see #49:
-          if (login === 'issue49') {
-            login = 'DipanshKhandelwal';
-          }
+          login = 'DipanshKhandelwal'; // issue49, hidden work in progress, see #49:
           await raven.captureMessage(`Profile request: ${login}`);
           const avatar_url = request.auth.credentials.profile.raw.avatar_url;
           await sendSqsMsg(`${login},${avatar_url}`);
