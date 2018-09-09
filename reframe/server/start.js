@@ -59,6 +59,10 @@ async function start() {
           reject(err);
           return;
         }
+        if (!data.Messages) { // empty queue
+          resolve([]);
+          return;
+        }
         resolve(data.Messages.map(msg => {
           const fields = msg.Body.split(',');
           return {
