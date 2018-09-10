@@ -91,7 +91,9 @@ while true; do
   if [[ ! -z "$job" ]]; then
     addUser "$job"
   fi
-  updateDb
+  if [[ "$job" != "AurelienLourot" ]] && [[ "$job" != "brillout" ]] && [[ "$job" != "ShonFrazier" ]]; then
+    updateDb
+  fi
   if [[ ! -z "$job" ]]; then
     echo "Deleting $job's profile request..."
     getNextSqsMessage 10
