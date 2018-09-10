@@ -91,7 +91,7 @@ while true; do
   if [[ ! -z "$job" ]]; then
     addUser "$job"
   fi
-  if [[ "$job" != "AurelienLourot" ]] && [[ "$job" != "brillout" ]] && [[ "$job" != "ShonFrazier" ]]; then
+  if [[ "$job" != "AurelienLourot" ]] && [[ "$job" != "brillout" ]] && [[ "$job" != "ShonFrazier" ]] && [[ "$job" != "kdaoudieh" ]]; then
     updateDb
   fi
   if [[ ! -z "$job" ]]; then
