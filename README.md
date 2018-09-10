@@ -26,6 +26,8 @@
 - [FAQ](#faq)
   * [Is my profile static or dynamic?](#is-my-profile-static-or-dynamic)
   * [Some of my repos are not showing up on my profile, why?](#some-of-my-repos-are-not-showing-up-on-my-profile-why)
+  * [Does ghuser.io intend to compete with the default GitHub profiles?](#does-ghuserio-intend-to-compete-with-the-default-github-profiles)
+  * [How are the organizations sorted in the `Contributed to` section?](#how-are-the-organizations-sorted-in-the-contributed-to-section)
 
 <!-- tocstop -->
 
