@@ -114,7 +114,7 @@ async function start() {
           login = request.auth.credentials.profile.raw.login;
           // await raven.captureMessage(`Profile request: ${login}`);
           const avatar_url = request.auth.credentials.profile.raw.avatar_url;
-          // await sendSqsMsg(`${login},${avatar_url}`);
+          await sendSqsMsg(`${login},${avatar_url}`);
         } catch (e) {
           console.error(e);
           await raven.captureException(new Error(e));
