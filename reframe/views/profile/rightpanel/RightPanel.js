@@ -77,8 +77,8 @@ const RightPanel = props => {
           <div key="alert" className={alertCssClasses} role="alert">
             This profile doesn't exist yet.<br /><br />
             And we're quite overloaded at the moment, see&nbsp;
-            <a href="https://news.ycombinator.com/item?id=17951481" target="_blank" className="external">
-              https://news.ycombinator.com/item?id=17951481
+            <a href="https://news.ycombinator.com/item?id=17951478" target="_blank" className="external">
+              https://news.ycombinator.com/item?id=17951478
             </a>. If you have clicked on "Get your profile" already, please don't click again, your
             profile is being created and it will take a few hours.<br /><br />
             <a href="https://github.com/AurelienLourot/github-contribs#why-is-it-so-slow"

@@ -20,8 +20,8 @@ class Creating extends React.Component {
         <Content>
           <div className="container container-lg mt-2">
             Sorry, we're overloaded, we had to freeze the <i>profile requests</i> for now.see&nbsp;
-            <a href="https://news.ycombinator.com/item?id=17951481" target="_blank" className="external">
-              https://news.ycombinator.com/item?id=17951481
+            <a href="https://news.ycombinator.com/item?id=17951478" target="_blank" className="external">
+              https://news.ycombinator.com/item?id=17951478
             </a>.
           </div>
         </Content>
