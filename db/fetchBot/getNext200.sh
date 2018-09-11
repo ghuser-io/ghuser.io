@@ -2,6 +2,8 @@
 
 set -e
 
+# temporary script for issue143
+
 source ../../aws/sqs/utils.sh
 
 function getNextSqsMessage {
@@ -11,7 +13,7 @@ function getNextSqsMessage {
   msg="$requestBody,$requestReceiptHandle"
 }
 
-for i in $(seq 1 195); do
+for i in $(seq 1 200); do
   getNextSqsMessage 10
   login="$(echo $msg | cut -d',' -f1)"
   echo "$login"

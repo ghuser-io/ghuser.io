@@ -74,7 +74,7 @@ function waitForJob {
     getNextSqsMessage 0
     job="$(echo $msg | cut -d',' -f1)"
     if [ ! -z "$job" ]; then
-      job=""
+      job="" # break # temporarily disable because of issue143
     fi
 
     if [ "$(($lastRun + 10 * 60 * 60))" -le "$(now)" ]; then
@@ -91,9 +91,7 @@ while true; do
   if [[ ! -z "$job" ]]; then
     addUser "$job"
   fi
-  if [[ "$job" != "AurelienLourot" ]] && [[ "$job" != "brillout" ]] && [[ "$job" != "ShonFrazier" ]] && [[ "$job" != "kdaoudieh" ]]; then
-    updateDb
-  fi
+  updateDb
   if [[ ! -z "$job" ]]; then
     echo "Deleting $job's profile request..."
     getNextSqsMessage 10

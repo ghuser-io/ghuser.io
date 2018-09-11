@@ -1,6 +1,7 @@
+<!-- issue143 -->
 > **WARNING**: We're overloaded at the moment and we can't handle any new profile request. We're
 > sorry and will come back soon with a system that scales better. See
-> https://news.ycombinator.com/item?id=17951478
+> [#143](https://github.com/AurelienLourot/ghuser.io/issues/143).
 
 [![Build Status](https://travis-ci.org/AurelienLourot/ghuser.io.svg?branch=master)](https://travis-ci.org/AurelienLourot/ghuser.io)
 [![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors)

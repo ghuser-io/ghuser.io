@@ -75,16 +75,13 @@ const RightPanel = props => {
       } else {
         repos.push(
           <div key="alert" className={alertCssClasses} role="alert">
-            This profile doesn't exist yet.<br /><br />
-            And we're quite overloaded at the moment, see&nbsp;
-            <a href="https://news.ycombinator.com/item?id=17951478" target="_blank" className="external">
-              https://news.ycombinator.com/item?id=17951478
-            </a>. If you have clicked on "Get your profile" already, please don't click again, your
-            profile is being created and it will take a few hours.<br /><br />
-            <a href="https://github.com/AurelienLourot/github-contribs#why-is-it-so-slow"
-               target="_blank" className="external">
-              Why does it take so long?
-            </a>
+            This profile doesn't exist yet.
+            <!-- temporary for issue143: -->
+            <br /><br />
+            And we're overloaded at the moment, see&nbsp;
+            <a href="https://github.com/AurelienLourot/ghuser.io/issues/143" target="_blank" className="external">
+              #143
+            </a>. We can't onboard any new users for now. We'll be back soon, thanks!
           </div>
         );
       }
