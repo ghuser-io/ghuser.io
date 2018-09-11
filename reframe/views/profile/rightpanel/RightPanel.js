@@ -76,7 +76,7 @@ const RightPanel = props => {
         repos.push(
           <div key="alert" className={alertCssClasses} role="alert">
             This profile doesn't exist yet.
-            <!-- temporary for issue143: -->
+            { /* temporary for issue143: */ }
             <br /><br />
             And we're overloaded at the moment, see&nbsp;
             <a href="https://github.com/AurelienLourot/ghuser.io/issues/143" target="_blank" className="external">
