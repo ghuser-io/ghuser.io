@@ -31,12 +31,13 @@ Several scripts form a pipeline for updating the database. Here is the data flow
                        │       v               │                         │
                        │   [ ./fetchUserDetailsAndContribs.js myUser ]<──┤
                        │                                                 │
-                       ├──────────────────────────>[ ./fetchOrgs.js ]<───┤
-                       │                                    │            │
-                       │                                    v            │
-                       │                                ┌───────────┐    │
-                       │                                │ orgs.json │    │
-                       │                                └─────┬─────┘    │
+                       ├───────────────────────>[ ./fetchOrgs.js ]<──────┤
+                       │                              ^     │            │
+                       │                              │     │            │
+                       │                              v     v            │
+                       │                 ┌──────────────┐ ┌───────────┐  │
+                       │                 │ nonOrgs.json │ │ orgs.json │  │
+                       │                 └──────────────┘ └───┬───────┘  │
                        │                                      │          │
                        ├──>[ ./fetchRepos.js ]<──────────────────────────┘
                        │             │                        │

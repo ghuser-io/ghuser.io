@@ -23,6 +23,12 @@
     orgs._comment = 'DO NOT EDIT MANUALLY - See ../README.md';
     orgs.orgs = orgs.orgs || {};
 
+    // In this file we store repo owners that we know aren't organizations. This avoids querying
+    // them next time.
+    const nonOrgs = new DbFile('data/nonOrgs.json');
+    nonOrgs._comment = 'DO NOT EDIT MANUALLY - See ../README.md';
+    nonOrgs.non_orgs = nonOrgs.non_orgs || [];
+
     const users = [];
     for (const file of fs.readdirSync('data/users/')) {
       if (file.endsWith('.json')) {
@@ -58,9 +64,15 @@
           spinner.succeed(`Organization ${owner} is already known`);
           continue;
         }
+        if (nonOrgs.non_orgs.indexOf(owner) !== -1) {
+          spinner.succeed(`${owner} is a user`);
+          continue;
+        }
         for (const user of users) {
           if (user.login === owner) {
             spinner.succeed(`${owner} is a user`);
+            nonOrgs.non_orgs.push(owner);
+            nonOrgs.write();
             continue owners;
           }
         }
@@ -69,6 +81,8 @@
         const orgJson = await fetchJson(github.authify(orgUrl), spinner, [404]);
         if (orgJson === 404) {
           spinner.succeed(`${owner} must be a user`);
+          nonOrgs.non_orgs.push(owner);
+          nonOrgs.write();
           continue;
         }
         spinner.succeed(`Fetched organization ${owner}`);
