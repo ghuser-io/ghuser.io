@@ -13,10 +13,10 @@ function getNextSqsMessage {
   msg="$requestBody,$requestReceiptHandle"
 }
 
-for i in $(seq 1 200); do
+for i in $(seq 1 1000); do
   getNextSqsMessage 10
   login="$(echo $msg | cut -d',' -f1)"
-  echo "$login"
+  echo "$i: $login"
   receiptHandle="$(echo $msg | cut -d',' -f3)"
   aws sqs delete-message --queue-url "$(queueUrl)" --receipt-handle "$receiptHandle"
 done
