@@ -8,7 +8,7 @@
 
   const cli = meow(`
 usage:
-  $ ./rmUser.js USER REASON
+  $ ./rmUser.js USER REASON [--force]
   $ ./rmUser.js --help
   $ ./rmUser.js --version
 
@@ -16,7 +16,14 @@ positional arguments:
   USER        GitHub username, e.g. AurelienLourot
   REASON      Will be concatenated to a string ending with "because ", e.g.
               "you asked us to remove your profile in https://github.com/AurelienLourot/ghuser.io/issues/666"
-`);
+
+optional arguments:
+  --force     If the user is marked as not to be deleted, delete anyway
+`, {
+    boolean: [
+      'force',
+    ],
+  });
 
   if (cli.input.length < 2) {
     console.error('Error: USER and/or REASON arguments missing. See `./rmUser.js --help`.');
@@ -34,7 +41,7 @@ positional arguments:
   const userId = user.toLowerCase();
   const userFile = new DbFile(`data/users/${userId}.json`);
 
-  if (userFile.ghuser_keep_because) {
+  if (!cli.flags.force && userFile.ghuser_keep_because) {
     throw `${user} is marked as not to be deleted: ${userFile.ghuser_keep_because}`;
   }
 
