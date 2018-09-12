@@ -1,0 +1,24 @@
+.icon-crown {
+  width: 32px;
+  height: 32px;
+  background-image: url('./crown.svg');
+}
+.icon-contrib-bronze {
+  background-image: url('./medal_bronze.svg');
+}
+.icon-contrib-silver {
+  background-image: url('./medal_silver.svg');
+}
+.icon-contrib-gold {
+  background-image: url('./medal_gold.svg');
+}
+
+
+.contrib-type-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.contrib-type-text {
+  font-size: .9em;
+}
