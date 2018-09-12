@@ -321,7 +321,7 @@
           break;
         }
 
-        if (page >= 1000) {
+        if (page >= 10000) {
           spinner.fail();
           throw 'fetchRepoPullRequests(): Infinite loop?';
         }

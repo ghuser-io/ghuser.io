@@ -13,7 +13,7 @@ function getNextSqsMessage {
   msg="$requestBody,$requestReceiptHandle"
 }
 
-for i in $(seq 1 100); do
+for i in $(seq 1 339); do
   getNextSqsMessage 20
   login="$(echo $msg | cut -d',' -f1)"
   echo "$i" >&2
