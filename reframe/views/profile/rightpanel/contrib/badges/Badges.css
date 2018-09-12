@@ -1,6 +1,4 @@
 .icon-crown {
-  width: 32px;
-  height: 32px;
   background-image: url('./crown.svg');
 }
 .icon-contrib-bronze {
@@ -15,8 +13,8 @@
 
 
 .contrib-type-icon, .repo-scale-icon {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   background-size: contain;
 }
 
@@ -24,11 +22,12 @@
   font-size: .8em;
 }
 .badge-header {
-  height: 32px;
+  height: 28px;
 }
 
 .repo-scale-icon {
   background-image: url('./biceps.svg');
+  background-image: url('./biceps.png');
 }
 
 .repo-scale-icon-tiny {
@@ -44,15 +43,16 @@
   filter: grayscale(10%);
 }
 
-.earned-stars-text {
+.earned-stars-text,
+.contrib-range-title
+{
+  position: relative;
+  top: -5px;
   font-size: 1.4em;
-}
-.earned-stars-text-color {
-  color: #119f11;
 }
 
-.contrib-range-title {
-  font-size: 1.4em;
+.earned-stars-text-color {
+  color: #119f11;
 }
 
 .big-badge {
