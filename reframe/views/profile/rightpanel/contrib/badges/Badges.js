@@ -19,13 +19,37 @@ function Badges({contrib}) {
     );
 }
 
+function EarnedStars({earnedStars, stargazers_count}) {
+    return (
+        <Badge smallText={'from ★ '+bigNum(stargazers_count)}>
+            <div className={'earned-stars-text earned-stars-text-color'}>★ {bigNum(earnedStars)}</div>
+        </Badge>
+    );
+}
+
+function RepoScale({repoScale}) {
+    return (
+        <Badge smallText={repoScale+' project'}>
+            <div className={'repo-scale-icon repo-scale-icon-'+repoScale}/>
+        </Badge>
+    );
+}
+
+function ContribRange({contribRange}) {
+    return (
+        <Badge smallText={contribRange.precise.from+' -> '+contribRange.precise.to}>
+            <div className="contrib-range-title">{contribRange.coarse}</div>
+            <div className="contrib-type-text"></div>
+        </Badge>
+    );
+}
+
 function ContribType({contribType}) {
     const {iconClassName, text} = getInfo();
 
     return (
-        <Badge>
+        <Badge smallText={text}>
             <div className={'contrib-type-icon '+iconClassName}/>
-            <div className="contrib-type-text">{text}</div>
         </Badge>
     );
 
@@ -41,7 +65,7 @@ function ContribType({contribType}) {
             const contrib_type_name = contribType.slice(CONTRIB_PREFIX.length);
             return {
                 iconClassName: 'icon-contrib-'+contrib_type_name,
-                text: contrib_type_name+' contributor',
+                text: contrib_type_name+' contrib',
             };
         }
 
@@ -49,37 +73,11 @@ function ContribType({contribType}) {
     }
 }
 
-function EarnedStars({earnedStars, stargazers_count}) {
-    return (
-        <Badge>
-            <div className={'earned-stars-text'}>★ {bigNum(earnedStars)}</div>
-            <div className="contrib-type-text">Earned from ★ {bigNum(stargazers_count)}</div>
-        </Badge>
-    );
-}
-
-function RepoScale({repoScale}) {
-    return (
-        <Badge>
-            <div className={'repo-scale-icon repo-scale-icon-'+repoScale}/>
-            <div className="contrib-type-text">{repoScale} project</div>
-        </Badge>
-    );
-}
-
-function ContribRange({contribRange}) {
-    return (
-        <Badge>
-            <div className="contrib-range-title">{contribRange.coarse}</div>
-            <div className="contrib-type-text">from {contribRange.precise.from} to {contribRange.precise.to}</div>
-        </Badge>
-    );
-}
-
-function Badge({children}) {
+function Badge({children, smallText}) {
     return (
         <div className="big-badge">
-            {children}
+            <div className="badge-header">{children}</div>
+            <div className="badge-small-text">{smallText}</div>
         </div>
     );
 }
@@ -192,7 +190,7 @@ function getEarnedStars(contrib, contribType) {
 
     const earnedStars_bronze = Math.min(10, stars);
     const earnedStars_silver = Math.min(100, stars);
-    const earnedStars_gold = Math.round(Math.min(earnedStars_silver, Math.ceil((contrib.percentage/100)*stars)));
+    const earnedStars_gold = Math.round(Math.max(earnedStars_silver, Math.ceil((contrib.percentage/100)*stars)));
 
     const earnedStars = (
         isMaintainer && stars ||

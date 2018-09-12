@@ -20,8 +20,11 @@
   background-size: contain;
 }
 
-.contrib-type-text {
-  font-size: .9em;
+.badge-small-text {
+  font-size: .8em;
+}
+.badge-header {
+  height: 32px;
 }
 
 .repo-scale-icon {
@@ -42,8 +45,10 @@
 }
 
 .earned-stars-text {
-  color: green;
   font-size: 1.4em;
+}
+.earned-stars-text-color {
+  color: #119f11;
 }
 
 .contrib-range-title {
