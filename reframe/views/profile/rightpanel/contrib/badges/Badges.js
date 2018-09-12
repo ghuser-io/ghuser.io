@@ -25,10 +25,10 @@ function ContribType({contribType}) {
     const {iconClassName, text} = getInfo();
 
     return (
-        <div>
+        <Badge>
             <div className={'contrib-type-icon '+iconClassName}/>
             <div className="contrib-type-text">{text}</div>
-        </div>
+        </Badge>
     );
 
     function getInfo() {
@@ -49,6 +49,21 @@ function ContribType({contribType}) {
 
         assert(false, 'getting info for contrib type section');
     }
+}
+
+function Badge({children}) {
+    const style = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
+        width: 80,
+    };
+    return (
+        <div style={style}>
+            {children}
+        </div>
+    );
 }
 
 function EarnedStars(badgeInfos) {

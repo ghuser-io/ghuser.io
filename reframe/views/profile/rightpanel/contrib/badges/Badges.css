@@ -15,8 +15,9 @@
 
 
 .contrib-type-icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
+  background-size: contain;
 }
 
 .contrib-type-text {
