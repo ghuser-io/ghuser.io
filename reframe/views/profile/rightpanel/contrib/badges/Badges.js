@@ -1,22 +1,20 @@
 import React from 'react';
+import {bigNum} from '../../../numbers';
+import './Badges.css';
 
 export {Badges};
-
 export {getInfoForBadges};
-
 export {getSortValue};
-
-import './Badges.css';
 
 function Badges({contrib}) {
     const badgeInfos = getInfoForBadges(contrib);
 
     return (
         <div style={{display: 'flex'}}>
-            <ContribType {...badgeInfos}/>
-            {
-         // ['contrib type: '+contribType, 'earned stars: '+contribStars, repoScale, contribRange].join(', ')
-            }
+            <ContribType {...badgeInfos} />
+            <RepoScale {...badgeInfos} />
+            <EarnedStars {...{...contrib, ...badgeInfos}} />
+            <ContribRange {...badgeInfos} />
         </div>
     );
 }
@@ -51,38 +49,45 @@ function ContribType({contribType}) {
     }
 }
 
-function Badge({children}) {
-    const style = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        width: 80,
-    };
+function EarnedStars({earnedStars, stargazers_count}) {
     return (
-        <div style={style}>
+        <Badge>
+            <div className={'earned-stars-text'}>★ {bigNum(earnedStars)}</div>
+            <div className="contrib-type-text">Earned from ★ {bigNum(stargazers_count)}</div>
+        </Badge>
+    );
+}
+
+function RepoScale({repoScale}) {
+    return (
+        <Badge>
+            <div className={'repo-scale-icon repo-scale-icon-'+repoScale}/>
+            <div className="contrib-type-text">{repoScale} project</div>
+        </Badge>
+    );
+}
+
+function ContribRange({contribRange}) {
+    return (
+        <Badge>
+            <div className="contrib-range-title">{contribRange.coarse}</div>
+            <div className="contrib-type-text">from {contribRange.precise.from} to {contribRange.precise.to}</div>
+        </Badge>
+    );
+}
+
+function Badge({children}) {
+    return (
+        <div className="big-badge">
             {children}
         </div>
     );
 }
 
-function EarnedStars(badgeInfos) {
-    
-}
-
-function RepoScale(badgeInfos) {
-    
-}
-
-function ContribRange(badgeInfos) {
-    
-}
-
 function getInfoForBadges(contrib) {
     const contribType = getContribType(contrib);
 
-    const {name} = contrib;
-    const contribRange = name.charCodeAt(0)<name.charCodeAt(1)?"'17-'18":"'18";
+    const contribRange = getContribRange(contrib);
 
     const repoScale = getRepoScale(contrib);
 
@@ -141,19 +146,36 @@ function getContribType(contrib) {
     return contribType;
 }
 
+function getContribRange(contrib) {
+    const {name} = contrib;
+
+    const coarse = name.charCodeAt(0)<name.charCodeAt(1)?"'17-'18":"'18";
+
+    const precise = {
+        from: '03.18',
+        to: '09.18',
+    };
+
+    const contribRange = {coarse, precise};
+
+    return contribRange;
+}
+
 function getRepoScale(contrib) {
     const THREADSHOLD_BIG = 2000;
     const THREADSHOLD_MEDIUM = 500;
-    const THREADSHOLD_LIGHT = 100;
+    const THREADSHOLD_SMALL = 100;
 
     const {total_commits_count} = contrib;
 
-    return (
+    const repoScale = (
         total_commits_count > THREADSHOLD_BIG && 'big' ||
         total_commits_count > THREADSHOLD_MEDIUM && 'medium' ||
-        total_commits_count > THREADSHOLD_LIGHT && 'light' ||
+        total_commits_count > THREADSHOLD_SMALL && 'small' ||
         'tiny'
     );
+
+    return repoScale;
 }
 
 function getEarnedStars(contrib, contribType) {

@@ -14,7 +14,7 @@
 }
 
 
-.contrib-type-icon {
+.contrib-type-icon, .repo-scale-icon {
   width: 26px;
   height: 26px;
   background-size: contain;
@@ -22,4 +22,38 @@
 
 .contrib-type-text {
   font-size: .9em;
+}
+
+.repo-scale-icon {
+  background-image: url('./biceps.svg');
+}
+
+.repo-scale-icon-tiny {
+  opacity: 0.2;
+  filter: grayscale(100%);
+}
+.repo-scale-icon-small {
+  opacity: 0.4;
+  filter: grayscale(30%);
+}
+.repo-scale-icon-medium {
+  opacity: 0.6;
+  filter: grayscale(10%);
+}
+
+.earned-stars-text {
+  color: green;
+  font-size: 1.4em;
+}
+
+.contrib-range-title {
+  font-size: 1.4em;
+}
+
+.big-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 120px;
 }
