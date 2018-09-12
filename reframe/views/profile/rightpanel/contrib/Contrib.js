@@ -105,6 +105,34 @@ class Contrib extends React.Component {
 
     const userIsMaintainer = this.props.contrib.percentage >= 15;
 
+    const contribType = getContribType(this.props.contrib);
+
+    const {name} = this.props.contrib;
+    const contribRange = name.charCodeAt(0)<name.charCodeAt(1)?"'17-'18":"'18";
+
+    const repoScale = getRepoScale(this.props.contrib);
+
+    const contribStars = getEarnedStars(this.props.contrib, contribType);
+
+    if ( this.props.contrib.full_name.split('/')[0]!=='brillout') {
+        console.log(this.props.contrib.full_name);
+        console.log(this.props);
+        console.log('commits - '+this.props.contrib.total_commits_count);
+        console.log('commits % - '+this.props.contrib.percentage);
+        console.log('stars - '+this.props.contrib.stargazers_count);
+        console.log('--');
+        console.log(contribType);
+        console.log(contribRange);
+        console.log(repoScale);
+        console.log(contribStars);
+        console.log('\n');
+        console.log('\n');
+        console.log('\n');
+        console.log('\n');
+        console.log('\n');
+        console.log('\n');
+    }
+
     return (
       <div className={withSeparator('bottom', 4)}>
         {avatar()}
@@ -127,7 +155,11 @@ class Contrib extends React.Component {
         }
         {
           this.state.repo &&
-            earnedStars(this.props.contrib.percentage, this.state.repo.stargazers_count)}
+            earnedStars(this.props.contrib.percentage, this.state.repo.stargazers_count)
+        }
+        <div>
+            {'contrib type: '+'ewhi'+''}
+        </div>
         {
           this.state.repo &&
             <RepoDescrAndDetails contrib={this.props.contrib} descr={this.state.repo.description}
@@ -146,3 +178,68 @@ class Contrib extends React.Component {
 }
 
 export default Contrib;
+
+function getContribType(contrib) {
+    const MAINTAINER_THRESHOLD = 0.1;
+    const CONTRIBUTOR_GOLD_THRESHOLD = 50;
+    const CONTRIBUTOR_SILVER_THRESHOLD = 5;
+
+    const {total_commits_count: commits_count__total} = contrib;
+    const commits_count__percentage = contrib.percentage/100;
+    const commits_count__user = Math.round(commits_count__percentage*commits_count__total);
+
+    const contribType = (
+        commits_count__user > 1 && (commits_count__total * MAINTAINER_THRESHOLD <= 1 || commits_count__percentage >= MAINTAINER_THRESHOLD) && 'maintainer' ||
+        commits_count__user > CONTRIBUTOR_GOLD_THRESHOLD && 'contributor_gold' ||
+        commits_count__user > CONTRIBUTOR_SILVER_THRESHOLD && 'contributor_silver' ||
+        'contributor_bronze'
+    );
+
+    console.log('pre');
+    console.log(contrib.name);
+    console.log(commits_count__total);
+    console.log(MAINTAINER_THRESHOLD);
+    console.log(commits_count__percentage);
+    console.log(contribType);
+    console.log('aft');
+
+    return contribType;
+}
+
+function getRepoScale(contrib) {
+    const THREADSHOLD_BIG = 2000;
+    const THREADSHOLD_MEDIUM = 500;
+    const THREADSHOLD_LIGHT = 100;
+
+    const {total_commits_count} = contrib;
+
+    return (
+        total_commits_count > THREADSHOLD_BIG && 'big' ||
+        total_commits_count > THREADSHOLD_MEDIUM && 'medium' ||
+        total_commits_count > THREADSHOLD_LIGHT && 'light' ||
+        'tiny'
+    );
+}
+
+function getEarnedStars(contrib, contribType) {
+    const {stargazers_count: stars} = contrib;
+
+    const isMaintainer = contribType==='maintainer';
+    const isBronzeContributor = contribType==='contributor_bronze';
+    const isSilverContributor = contribType==='contributor_silver';
+    const isGoldContributor = contribType==='contributor_gold';
+    if( isMaintainer + isBronzeContributor + isSilverContributor + isGoldContributor !== 1 ) {
+        throw new Error('Internal error computing earned stars');
+    }
+
+    const earnedStars_bronze = Math.max(10, stars);
+    const earnedStars_silver = Math.max(100, stars);
+    const earnedStars_gold = Math.min(earnedStars_silver, Math.ceil((contrib.percentage/100)*stars));
+
+    return (
+        isMaintainer && stars ||
+        isGoldContributor && earnedStars_gold ||
+        isSilverContributor && earnedStars_silver ||
+        earnedStars_bronze
+    );
+}
