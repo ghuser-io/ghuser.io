@@ -2,14 +2,3 @@
   display: inline-block;
   vertical-align: middle;
 }
-
-.avatar-add {
-  border-width: medium !important;
-  background-color: #eee;
-  width: 30px !important;
-  height: 30px;
-  text-align: center;
-  vertical-align: middle;
-  margin-top: -3px;
-  margin-bottom: 1em !important;
-}
