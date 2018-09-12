@@ -107,8 +107,8 @@
         return;
       }
 
-      const ghDataJson = await fetchJson(github.authify(ghRepoUrl), spinner, [304, 404, 451],
-                                         new Date(repos[repo].fetched_at));
+      const ghDataJson = await github.fetchGHJson(ghRepoUrl, spinner, [304, 404, 451],
+                                                  new Date(repos[repo].fetched_at));
       switch (ghDataJson) {
       case 304:
         spinner.succeed(`${repo} didn't change`);
@@ -200,7 +200,7 @@
 
         let ghDataJson;
         for (let i = 3; i >= 0; --i) {
-          ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+          ghDataJson = await github.fetchGHJson(ghUrl, spinner);
 
           if (ghDataJson && Object.keys(ghDataJson).length > 0) {
             break; // worked
@@ -236,7 +236,7 @@
         const perPage = 100;
         for (let page = 1; page <= 5; ++page) {
           const ghUrl = `https://api.github.com/repos/${repo}/contributors?page=${page}&per_page=${perPage}`;
-          const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+          const ghDataJson = await github.fetchGHJson(ghUrl, spinner);
           for (const contributor of ghDataJson) {
             repos[repo].contributors[contributor.login] = contributor.contributions;
           }
@@ -252,7 +252,7 @@
         const perPage = 100;
         for (let page = 1;; ++page) {
           const ghUrl = `https://api.github.com/repos/${repo}/commits?page=${page}&per_page=${perPage}`;
-          const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+          const ghDataJson = await github.fetchGHJson(ghUrl, spinner);
           for (const commit of ghDataJson) {
             const author_login = commit.author && commit.author.login;
             const committer_login = commit.committer && commit.committer.login;
@@ -305,7 +305,7 @@
       const perPage = 100;
       for (let page = 1;; ++page) {
         const ghUrl = `${pullsUrl}?state=all&page=${page}&per_page=${perPage}`;
-        const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+        const ghDataJson = await github.fetchGHJson(ghUrl, spinner);
         for (const pr of ghDataJson) {
           authors.add(pr.user.login);
         }
@@ -343,7 +343,7 @@
         return;
       }
 
-      const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+      const ghDataJson = await github.fetchGHJson(ghUrl, spinner);
       spinner.succeed(`Fetched ${ghUrl}`);
 
       for (let language in ghDataJson) {

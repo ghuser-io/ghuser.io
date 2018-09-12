@@ -8,7 +8,6 @@
   const ora = require('ora');
 
   const DbFile = require('./impl/dbFile');
-  const fetchJson = require('./impl/fetchJson');
   const github = require('./impl/github');
   const scriptUtils = require('./impl/scriptUtils');
 
@@ -54,17 +53,17 @@ available commands:
     }
   case 'stop':
     {
-      if (!rateLimitFile.rate) {
+      if (!rateLimitFile.remaining) {
         console.error(
           `Error: ${rateLimitFilePath} malformed. Did you run './measureApiRate.js start'?`
         );
         process.exit(1);
       }
       const rateLimit = await fetchRateLimit();
-      if (rateLimit.rate.reset !== rateLimitFile.rate.reset) {
+      if (rateLimit.reset !== rateLimitFile.reset) {
         console.log("GitHub's rate limit got reset in between.");
       } else {
-        const numApiCalls = rateLimitFile.rate.remaining - rateLimit.rate.remaining;
+        const numApiCalls = rateLimitFile.remaining - rateLimit.remaining;
         console.log(`${numApiCalls} GitHub API calls were made.`);
       }
       fs.unlinkSync(rateLimitFilePath);
@@ -79,12 +78,10 @@ available commands:
   return;
 
   async function fetchRateLimit() {
-    let spinner;
-    const ghUrl = `https://api.github.com/rate_limit`;
-    spinner = ora(`Fetching ${ghUrl}...`).start();
-    const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
-    spinner.succeed(`Fetched ${ghUrl}`);
-    return ghDataJson;
+    const spinner = ora(`Fetching rate limit...`).start();
+    const result = await github.fetchGHRateLimit(spinner);
+    spinner.succeed(`Fetched rate limit`);
+    return result;
   }
 
 })();

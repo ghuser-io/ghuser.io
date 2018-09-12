@@ -4,6 +4,7 @@
   "description": "Edit data/**/*.json",
   "dependencies": {
     "@ghuser/github-contribs": "^2.1.0",
+    "await-sleep": "0.0.1",
     "fetch-retry": "^1.2.1",
     "github-colors": "^2.2.17",
     "meow": "^5.0.0",

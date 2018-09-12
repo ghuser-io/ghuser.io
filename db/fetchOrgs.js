@@ -7,7 +7,6 @@
   const ora = require('ora');
 
   const DbFile = require('./impl/dbFile');
-  const fetchJson = require('./impl/fetchJson');
   const github = require('./impl/github');
   const scriptUtils = require('./impl/scriptUtils');
 
@@ -78,7 +77,7 @@
         }
 
         const orgUrl = `https://api.github.com/orgs/${owner}`;
-        const orgJson = await fetchJson(github.authify(orgUrl), spinner, [404]);
+        const orgJson = await github.fetchGHJson(orgUrl, spinner, [404]);
         if (orgJson === 404) {
           spinner.succeed(`${owner} must be a user`);
           nonOrgs.non_orgs.push(owner);

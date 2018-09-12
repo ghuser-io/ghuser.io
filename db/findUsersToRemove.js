@@ -7,7 +7,6 @@
   const ora = require('ora');
 
   const DbFile = require('./impl/dbFile');
-  const fetchJson = require('./impl/fetchJson');
   const github = require('./impl/github');
   const scriptUtils = require('./impl/scriptUtils');
 
@@ -62,7 +61,7 @@ to make sure we're not wasting resources, I'd like to know if you'd like to keep
     async function fetchStargazers(repo) {
       const ghUrl = `https://api.github.com/repos/${repo}/stargazers`;
       spinner = ora(`Fetching ${ghUrl}...`).start();
-      const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+      const ghDataJson = await github.fetchGHJson(ghUrl, spinner);
       spinner.succeed(`Fetched ${ghUrl}`);
       return ghDataJson.map(stargazer => stargazer.login);
     }

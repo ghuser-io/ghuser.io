@@ -64,8 +64,8 @@ positional arguments:
       const userLogin = userFile.login;
       const ghUserUrl = `https://api.github.com/users/${userLogin}`;
       spinner = ora(`Fetching ${ghUserUrl}...`).start();
-      const ghDataJson = await fetchJson(
-        github.authify(ghUserUrl), spinner, [304],
+      const ghDataJson = await github.fetchGHJson(
+        ghUserUrl, spinner, [304],
         userFile.contribs && userFile.contribs.fetched_at && new Date(userFile.contribs.fetched_at)
       );
       if (ghDataJson === 304) {
@@ -92,7 +92,7 @@ positional arguments:
     async function fetchOrgs() {
       const orgsUrl = userFile.organizations_url;
       spinner = ora(`Fetching ${orgsUrl}...`).start();
-      const orgsDataJson = await fetchJson(github.authify(orgsUrl), spinner);
+      const orgsDataJson = await github.fetchGHJson(orgsUrl, spinner);
       spinner.succeed(`Fetched ${orgsUrl}`);
 
       userFile.organizations = [];
@@ -139,7 +139,7 @@ positional arguments:
       const perPage = 100;
       for (let page = 1; page <= 5; ++page) {
         const ghUrl = `${userFile.repos_url}?page=${page}&per_page=${perPage}`;
-        const ghDataJson = await fetchJson(github.authify(ghUrl), spinner);
+        const ghDataJson = await github.fetchGHJson(ghUrl, spinner);
 
         for (const repo of ghDataJson) {
           if (repo.fork && repo.stargazers_count >= 1 &&
