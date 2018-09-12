@@ -107,12 +107,13 @@ class Contrib extends React.Component {
     const userIsMaintainer = this.props.contrib.percentage >= 15;
 
     return (
-      <div className={withSeparator('bottom', 4)}>
+      <div className={withSeparator('bottom', 3)}>
         {avatar()}
         <h4 className="contrib-name mr-1">
           <a href={`https://github.com/${this.props.contrib.full_name}`}
              target="_blank" className="text-bold contrib-name external"
              title={this.props.contrib.full_name}>{this.props.contrib.name}</a>
+          {this.state.repo && this.state.repo.description}
           {
             this.state.repo && this.state.repo.fork &&
               <i className="fas fa-code-branch contrib-name ml-2 text-gray" title="fork"></i>
