@@ -31,7 +31,7 @@
 
   const fetchGHRateLimit = async oraSpinner => {
     const ghUrl = `https://api.github.com/rate_limit`;
-    const ghDataJson = await fetchJson(ghUrl, oraSpinner);
+    const ghDataJson = await fetchJson(authify(ghUrl), oraSpinner);
     return ghDataJson.resources.core;
   };
 
