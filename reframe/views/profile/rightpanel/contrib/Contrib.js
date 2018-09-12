@@ -114,6 +114,7 @@ class Contrib extends React.Component {
 
     const contribStars = getEarnedStars(this.props.contrib, contribType);
 
+    /*
     if ( this.props.contrib.full_name.split('/')[0]!=='brillout') {
         console.log(this.props.contrib.full_name);
         console.log(this.props);
@@ -132,6 +133,7 @@ class Contrib extends React.Component {
         console.log('\n');
         console.log('\n');
     }
+    */
 
     return (
       <div className={withSeparator('bottom', 4)}>
@@ -158,7 +160,7 @@ class Contrib extends React.Component {
             earnedStars(this.props.contrib.percentage, this.state.repo.stargazers_count)
         }
         <div>
-            {'contrib type: '+'ewhi'+''}
+            {['contrib type: '+contribType, 'earned stars: '+contribStars, repoScale, contribRange].join(', ')}
         </div>
         {
           this.state.repo &&
@@ -195,6 +197,7 @@ function getContribType(contrib) {
         'contributor_bronze'
     );
 
+    /*
     console.log('pre');
     console.log(contrib.name);
     console.log(commits_count__total);
@@ -202,6 +205,7 @@ function getContribType(contrib) {
     console.log(commits_count__percentage);
     console.log(contribType);
     console.log('aft');
+    */
 
     return contribType;
 }
@@ -222,24 +226,36 @@ function getRepoScale(contrib) {
 }
 
 function getEarnedStars(contrib, contribType) {
+    const assert_ = val => assert(val, 'computing earned stars');
+
     const {stargazers_count: stars} = contrib;
 
     const isMaintainer = contribType==='maintainer';
     const isBronzeContributor = contribType==='contributor_bronze';
     const isSilverContributor = contribType==='contributor_silver';
     const isGoldContributor = contribType==='contributor_gold';
-    if( isMaintainer + isBronzeContributor + isSilverContributor + isGoldContributor !== 1 ) {
-        throw new Error('Internal error computing earned stars');
-    }
 
-    const earnedStars_bronze = Math.max(10, stars);
-    const earnedStars_silver = Math.max(100, stars);
-    const earnedStars_gold = Math.min(earnedStars_silver, Math.ceil((contrib.percentage/100)*stars));
+    assert_(isMaintainer + isBronzeContributor + isSilverContributor + isGoldContributor === 1);
 
-    return (
+    const earnedStars_bronze = Math.min(10, stars);
+    const earnedStars_silver = Math.min(100, stars);
+    const earnedStars_gold = Math.round(Math.min(earnedStars_silver, Math.ceil((contrib.percentage/100)*stars)));
+
+    const earnedStars = (
         isMaintainer && stars ||
         isGoldContributor && earnedStars_gold ||
         isSilverContributor && earnedStars_silver ||
-        earnedStars_bronze
+        isBronzeContributor && earnedStars_bronze
     );
+
+    assert_(earnedStars>=0 && (earnedStars|0)===earnedStars);
+
+    return earnedStars;
+}
+
+function assert(val, doingWhat) {
+    if( val ) {
+        return;
+    }
+    throw new Error('Internal error '+doingWhat);
 }
