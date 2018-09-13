@@ -38,7 +38,7 @@
     let referencedRepos = new Set([]);
     if (!fastResumeTempFileExists) {
       for (const user of users) {
-        for (const repo in user.contribs.repos) {
+        for (const repo in (user.contribs && user.contribs.repos || [])) {
           const full_name = user.contribs.repos[repo];
           referencedRepos.add(full_name);
 
