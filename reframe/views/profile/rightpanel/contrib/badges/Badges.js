@@ -2,7 +2,7 @@ import React from 'react';
 import {bigNum} from '../../../numbers';
 import './Badges.css';
 
-export {Badges};
+export {Badges, BadgesMini};
 export {getDisplaySettings};
 
 function Badges({contrib}) {
@@ -18,10 +18,24 @@ function Badges({contrib}) {
     );
 }
 
-function RepoScale({repoScale}) {
+function BadgesMini({contrib}) {
+    const {contribTypeIcon, repoScaleIcon} = getInfoForBadges(contrib);
+
+    return (
+        <div
+            style={{textAlign: 'right', width: 67, display: 'inline-block'}}
+        >
+            {contribTypeIcon}
+            &nbsp;
+            {repoScaleIcon}
+        </div>
+    );
+}
+
+function RepoScale({repoScale, repoScaleIcon}) {
     return (
         <Badge
-          head={<div className={'repo-scale-icon repo-scale-icon-'+repoScale}/>}
+          head={repoScaleIcon}
           desc={repoScale+' project'}
           width={130}
         />
@@ -58,35 +72,14 @@ function EarnedStars({earnedStars, stargazers_count}) {
     );
 }
 
-function ContribType({contribType}) {
-    const {iconClassName, text} = getInfo();
-
+function ContribType({contribTypeIcon, contribTypeText}) {
     return (
         <Badge
-          head={<div className={'contrib-type-icon '+iconClassName}/>}
-          desc={text}
+          head={contribTypeIcon}
+          desc={contribTypeText}
           width={130}
         />
     );
-
-    function getInfo() {
-        if( contribType==='maintainer' ) {
-            return {
-                iconClassName: 'icon-crown',
-                text: 'maintainer',
-            };
-        }
-        const CONTRIB_PREFIX = 'contributor_';
-        if( contribType.startsWith(CONTRIB_PREFIX) ) {
-            const contrib_type_name = contribType.slice(CONTRIB_PREFIX.length);
-            return {
-                iconClassName: 'icon-contrib-'+contrib_type_name,
-                text: contrib_type_name+' contrib',
-            };
-        }
-
-        assert(false, 'getting info for contrib type section');
-    }
 }
 
 function Badge({head, desc, width}) {
@@ -103,7 +96,7 @@ function Badge({head, desc, width}) {
 
 function getDisplaySettings(contrib) {
     const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
-    const {contribType, contribRange, earnedStars, repoScale} = getInfoForBadges(contrib);
+ // const {contribType, contribRange, earnedStars, repoScale} = getInfoForBadges(contrib);
 
     const miniDisplay = commits_count__user < 50;
 
@@ -113,15 +106,24 @@ function getDisplaySettings(contrib) {
 }
 
 function getInfoForBadges(contrib) {
-    const contribType = getContribType(contrib);
+    const {contribType, contribTypeIcon, contribTypeText} = getContribType(contrib);
 
     const contribRange = getContribRange(contrib);
 
     const repoScale = getRepoScale(contrib);
+    const repoScaleIcon = <div className={'icon-repo-scale icon-repo-scale-'+repoScale}/>;
 
     const earnedStars = getEarnedStars(contrib, contribType);
 
-    return {contribType, contribRange, earnedStars, repoScale};
+    return {
+        contribType,
+        contribTypeIcon,
+        contribTypeText,
+        contribRange,
+        earnedStars,
+        repoScale,
+        repoScaleIcon,
+    };
 
     /*
     if ( contrib.full_name.split('/')[0]!=='brillout') {
@@ -169,7 +171,30 @@ function getContribType(contrib) {
     console.log('aft');
     */
 
-    return contribType;
+    const {iconClassName, text} = getInfo();
+    const contribTypeIcon = <div className={'contrib-type-icon '+iconClassName}/>;
+    const contribTypeText = text;
+
+    return {contribType, contribTypeText, contribTypeIcon};
+
+    function getInfo() {
+        if( contribType==='maintainer' ) {
+            return {
+                iconClassName: 'icon-crown',
+                text: 'maintainer',
+            };
+        }
+        const CONTRIB_PREFIX = 'contributor_';
+        if( contribType.startsWith(CONTRIB_PREFIX) ) {
+            const contrib_type_name = contribType.slice(CONTRIB_PREFIX.length);
+            return {
+                iconClassName: 'icon-contrib-'+contrib_type_name,
+                text: contrib_type_name+' contrib',
+            };
+        }
+
+        assert(false, 'getting info for contrib type section');
+    }
 }
 
 function getCommitCounts(contrib) {

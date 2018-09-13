@@ -10,35 +10,40 @@
 .icon-contrib-gold {
   background-image: url('./medal_gold.svg');
 }
+.icon-repo-scale {
+  background-image: url('./biceps.png');
+}
+.icon-crown,
+.icon-contrib-bronze,
+.icon-contrib-silver,
+.icon-contrib-gold,
+.icon-repo-scale {
+  display: inline-block;
+}
 
-
-.contrib-type-icon, .repo-scale-icon {
+.contrib-type-icon, .icon-repo-scale {
   width: 13px;
   height: 13px;
   background-size: contain;
 }
-.contrib-type-icon {
+.big-bage .contrib-type-icon {
   margin: 4px 0;
 }
-.repo-scale-icon {
+.big-bage .icon-repo-scale {
   margin-top: 3px;
   margin-bottom: 5px;
 }
 
 
-.repo-scale-icon {
-  background-image: url('./biceps.png');
-}
-
-.repo-scale-icon-micro {
+.icon-repo-scale-micro {
   opacity: 0.2;
   filter: grayscale(100%);
 }
-.repo-scale-icon-small {
+.icon-repo-scale-small {
   opacity: 0.6;
   filter: grayscale(10%);
 }
-.repo-scale-icon-medium {
+.icon-repo-scale-medium {
   opacity: 0.8;
   filter: grayscale(5%);
 }

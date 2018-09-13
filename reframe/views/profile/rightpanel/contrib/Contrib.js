@@ -7,10 +7,10 @@ import './Contrib.css';
 import Avatar from '../../Avatar';
 import AvatarAdd from '../../AvatarAdd';
 import * as db from '../../../../db';
-import {withSeparator} from '../../css';
+//import {withSeparator} from '../../css';
 import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
-import {Badges, getDisplaySettings} from './badges/Badges';
+import {Badges, BadgesMini, getDisplaySettings} from './badges/Badges';
 
 class Contrib extends React.Component {
   constructor(props) {
@@ -163,11 +163,15 @@ class Contrib extends React.Component {
 }
 
 function ContribMini(props) {
-    return <ContribHeader {...props} />;
+    return (
+        <div className="border-bottom border-gray-light" style={{paddingBottom: 0, paddingTop: 4}}>
+          <ContribHeader {...props} badgeLine={<BadgesMini {...props}/>}/>
+        </div>
+    );
 }
 
 
-function ContribHeader({username, contrib: {name, full_name}, repo}) {
+function ContribHeader({username, contrib: {name, full_name}, repo, badgeLine}) {
       if( ! repo ) {
           return null;
       }
@@ -176,6 +180,8 @@ function ContribHeader({username, contrib: {name, full_name}, repo}) {
           <div
             style={{marginBottom: 4, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
           >
+            {badgeLine}
+            {badgeLine && <span>&nbsp;</span>}
             <a href={`https://github.com/${full_name}`}
                target="_blank">
                { repo.owner !== username &&
