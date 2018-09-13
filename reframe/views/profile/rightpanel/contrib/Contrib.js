@@ -10,7 +10,7 @@ import * as db from '../../../../db';
 import {withSeparator} from '../../css';
 import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
-import {Badges} from './badges/Badges';
+import {Badges, getDisplaySettings} from './badges/Badges';
 
 class Contrib extends React.Component {
   constructor(props) {
@@ -33,6 +33,10 @@ class Contrib extends React.Component {
   }
 
   render() {
+    if( ! this.state.loading && this.state.repo && getDisplaySettings(this.props.contrib).miniDisplay ) {
+        return <ContribMini {...{...this.props, ...this.state}}/>;
+    }
+
     const strStars = numStars => `★ ${bigNum(numStars)}`;
     const strLastPushed = pushedAt => `last pushed ${moment(pushedAt).fromNow()}`;
     const strNumCommits = numCommits => `${bigNum(numCommits)} non-merge commits`;
@@ -158,6 +162,11 @@ class Contrib extends React.Component {
   }
 }
 
+function ContribMini(props) {
+    return <ContribHeader {...props} />;
+}
+
+
 function ContribHeader({username, contrib: {name, full_name}, repo}) {
       if( ! repo ) {
           return null;
@@ -165,7 +174,7 @@ function ContribHeader({username, contrib: {name, full_name}, repo}) {
       const display_name = repo.owner===username ? name : full_name;
       return (
           <div
-          style={{marginBottom: 4, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
+            style={{marginBottom: 4, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
           >
             <a href={`https://github.com/${full_name}`}
                target="_blank">

@@ -105,7 +105,7 @@ function getDisplaySettings(contrib) {
     const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
     const {contribType, contribRange, earnedStars, repoScale} = getInfoForBadges(contrib);
 
-    const miniDisplay = commits_count__user < 10;
+    const miniDisplay = commits_count__user < 50;
 
     const sortValue = commits_count__user;
 
