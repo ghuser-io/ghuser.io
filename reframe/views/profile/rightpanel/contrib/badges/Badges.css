@@ -60,7 +60,10 @@
 }
 
 .earned-stars-text-color {
+  /*
   color: #119f11;
+  */
+  color: #0c0;
 }
 
 .big-badge {
