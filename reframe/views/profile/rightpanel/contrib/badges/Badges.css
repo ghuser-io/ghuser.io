@@ -63,11 +63,15 @@
   color: #66f;
 }
 
-.earned-stars-text-color {
+.earned-stars-icon-color {
   /*
   color: #119f11;
-  */
   color: #0c0;
+  */
+  color: #4b4;
+}
+.earned-stars-text-color {
+  color: #119f11;
 }
 
 .big-badge {

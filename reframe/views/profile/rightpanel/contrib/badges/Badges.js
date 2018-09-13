@@ -66,8 +66,8 @@ function EarnedStars({earnedStars, stargazers_count}) {
     */
     return (
         <Badge
-          head={<span className="earned-stars-text earned-stars-text-color"><Star/></span>}
-          desc={<span style={{marginLeft: -3}}>{bigNum(earnedStars)}{earnedStars!==stargazers_count && <span> / <Star/> {bigNum(stargazers_count)}</span>}</span>}
+          head={<span className="earned-stars-text earned-stars-icon-color"><Star/></span>}
+          desc={<span style={{marginLeft: -3}}><span className="earned-stars-text-color">{bigNum(earnedStars)}</span>{earnedStars!==stargazers_count && <span> / <Star/> {bigNum(stargazers_count)}</span>}</span>}
           width={170}
         />
     );
@@ -139,15 +139,13 @@ function getOrder__one_sided(contrib1, contrib2) {
     } = getInfoForBadges(contrib2);
 
 
-    if( ['large', 'medium'].includes(repoScale1) && ! ['large', 'medium'].includes(repoScale2) ) {
-        return -1;
-    }
-
     if( repoScale1==='micro' && repoScale2!=='micro' ) {
         return 1;
     }
-
     if( repoScale1!=='micro' && repoScale2==='micro' ) {
+        return -1;
+    }
+    if( contribType!=='contributor_bronze' && ['large', 'medium'].includes(repoScale1) && ! ['large', 'medium'].includes(repoScale2) ) {
         return -1;
     }
 
