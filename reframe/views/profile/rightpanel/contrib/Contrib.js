@@ -107,7 +107,7 @@ class Contrib extends React.Component {
     const userIsMaintainer = this.props.contrib.percentage >= 15;
 
     return (
-      <div className={withSeparator('bottom', 3)}>
+      <div className="border-bottom border-gray-light" style={{paddingBottom: 10, paddingTop: 15}}>
         {avatar()}
         <div style={{width: 10, height: 50, float: 'left'}}/>
         <ContribHeader {...{...this.props, ...this.state}}/>
@@ -165,7 +165,7 @@ function ContribHeader({username, contrib: {name, full_name}, repo}) {
       const display_name = repo.owner===username ? name : full_name;
       return (
           <div
-          style={{marginBottom: 10, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
+          style={{marginBottom: 4, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
           >
             <a href={`https://github.com/${full_name}`}
                target="_blank">

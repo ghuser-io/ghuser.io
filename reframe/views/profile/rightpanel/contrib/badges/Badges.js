@@ -83,10 +83,11 @@ function ContribType({contribType}) {
 function Badge({head, desc, width}) {
     return (
         <div style={{width}}>
-        <div className="big-badge">
-            <div className="badge-head">{head}</div>
-            <div className="badge-desc">{desc}</div>
-        </div>
+            <div className="big-badge text-gray">
+                <div>{head}</div>
+                <div className="badge-desc">{desc}</div>
+                <div className="badge-border"/>
+            </div>
         </div>
     );
 }

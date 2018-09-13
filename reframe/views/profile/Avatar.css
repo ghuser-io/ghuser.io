@@ -1,8 +1,9 @@
 .avatar {
   max-width: 100%;
   height: auto;
-  display: flow;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .avatar-add-sign {
@@ -20,6 +21,11 @@
 .avatar-add {
   border-width: medium !important;
   text-align: center;
+  opacity: 0.55;
+  transition: opacity 0.5s;
+}
+.avatar-add:hover {
+  opacity: 1;
 }
 .avatar-add-sign {
   display: inline-block;
