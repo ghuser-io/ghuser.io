@@ -13,16 +13,22 @@
 
 
 .contrib-type-icon, .repo-scale-icon {
-  width: 22px;
-  height: 22px;
+  width: 13px;
+  height: 13px;
   background-size: contain;
 }
-
-.badge-small-text {
-  font-size: .8em;
+.contrib-type-icon {
+  margin: 5px 0;
 }
-.badge-header {
-  height: 28px;
+.repo-scale-icon {
+  margin-top: 4px;
+  margin-bottom: 6px;
+}
+
+
+.badge-desc {
+  font-size: .8em;
+  margin-left: 5px;
 }
 
 .repo-scale-icon {
@@ -42,12 +48,20 @@
   filter: grayscale(10%);
 }
 
+/*
 .earned-stars-text,
 .contrib-range-title
 {
   position: relative;
   top: -5px;
-  font-size: 1.4em;
+}
+*/
+.earned-stars-text {
+  font-size: 1.1em;
+}
+.contrib-range-title {
+  font-size: 1.1em;
+  color: #66f;
 }
 
 .earned-stars-text-color {
@@ -55,9 +69,11 @@
 }
 
 .big-badge {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   align-items: center;
   text-align: center;
-  width: 120px;
+  border: 1px solid #ddd;
+  padding: 0px 7px;
+  border-radius: 5px;
+  margin-right: 10px;
 }

@@ -13,18 +13,9 @@ function Badges({contrib}) {
         <div style={{display: 'flex'}}>
             <ContribType {...badgeInfos} />
             <RepoScale {...badgeInfos} />
-            <EarnedStars {...{...contrib, ...badgeInfos}} />
             <ContribRange {...badgeInfos} />
+            <EarnedStars {...{...contrib, ...badgeInfos}} />
         </div>
-    );
-}
-
-function EarnedStars({earnedStars, stargazers_count}) {
-    return (
-        <Badge
-          head={<span className={'earned-stars-text earned-stars-text-color'}>★ {bigNum(earnedStars)}</span>}
-          desc={'from ★ '+bigNum(stargazers_count)}
-        />
     );
 }
 
@@ -33,6 +24,7 @@ function RepoScale({repoScale}) {
         <Badge
           head={<div className={'repo-scale-icon repo-scale-icon-'+repoScale}/>}
           desc={repoScale+' project'}
+          width={140}
         />
     );
 }
@@ -42,6 +34,17 @@ function ContribRange({contribRange}) {
         <Badge
           head={<div className="contrib-range-title">{contribRange.coarse}</div>}
           desc={contribRange.precise.from+' -> '+contribRange.precise.to}
+          width={165}
+        />
+    );
+}
+
+function EarnedStars({earnedStars, stargazers_count}) {
+    return (
+        <Badge
+          head={<span className={'earned-stars-text earned-stars-text-color'}>★ {bigNum(earnedStars)}</span>}
+          desc={earnedStars!==stargazers_count && '/ ★ '+bigNum(stargazers_count)}
+          width={170}
         />
     );
 }
@@ -53,6 +56,7 @@ function ContribType({contribType}) {
         <Badge
           head={<div className={'contrib-type-icon '+iconClassName}/>}
           desc={text}
+          width={135}
         />
     );
 
@@ -76,11 +80,13 @@ function ContribType({contribType}) {
     }
 }
 
-function Badge({head, desc}) {
+function Badge({head, desc, width}) {
     return (
+        <div style={{width}}>
         <div className="big-badge">
-            <div className="badge-header">{head}</div>
-            <div className="badge-small-text">{desc}</div>
+            <div className="badge-head">{head}</div>
+            <div className="badge-desc">{desc}</div>
+        </div>
         </div>
     );
 }
