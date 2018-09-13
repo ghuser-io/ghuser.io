@@ -1,6 +1,6 @@
 const urls = {
   landing: 'https://ghuser.io',
-  repo: 'https://github.com/AurelienLourot/ghuser.io',
+  repo: 'https://github.com/ghuser-io/ghuser.io',
   oauthEndpoint: '/login',
   profileQueueEndpoint: '/queue'
 };

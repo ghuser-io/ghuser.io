@@ -15,7 +15,7 @@ usage:
 positional arguments:
   USER        GitHub username, e.g. AurelienLourot
   REASON      Will be concatenated to a string ending with "because ", e.g.
-              "you asked us to remove your profile in https://github.com/AurelienLourot/ghuser.io/issues/666"
+              "you asked us to remove your profile in https://github.com/ghuser-io/ghuser.io/issues/666"
 
 optional arguments:
   --force     If the user is marked as not to be deleted, delete anyway

@@ -26,7 +26,7 @@ class Creating extends React.Component {
               {urls.landing}/{this.props.username}
             </a> in a few seconds... */ }
             Sorry, we're overloaded, we had to freeze the <i>profile requests</i> for now. See&nbsp;
-            <a href="https://github.com/AurelienLourot/ghuser.io/issues/143" target="_blank" className="external">
+            <a href="https://github.com/ghuser-io/ghuser.io/issues/143" target="_blank" className="external">
               #143
             </a>.
           </div>

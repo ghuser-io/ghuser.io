@@ -16,7 +16,7 @@ You can tweak your profile by creating a `<your-username>/ghuser.io.settings` re
 
 ```json
 {
-  "_comment": "User metadata for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/user-settings.md",
+  "_comment": "User metadata for ghuser.io. See https://github.com/ghuser-io/ghuser.io/blob/master/docs/user-settings.md",
   "twitter_username": "AurelienLourot",
   "reddit_username": "lourot",
   "linkedin_id": "aurelien-lourot-67317748",

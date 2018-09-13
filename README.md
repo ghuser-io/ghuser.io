@@ -1,14 +1,14 @@
 <!-- issue143 -->
 > **WARNING**: We're overloaded at the moment and we can't handle any new profile request. We're
 > sorry and we'll come back soon with a system that scales better. See
-> [#143](https://github.com/AurelienLourot/ghuser.io/issues/143).
+> [#143](https://github.com/ghuser-io/ghuser.io/issues/143).
 
-[![Build Status](https://travis-ci.org/AurelienLourot/ghuser.io.svg?branch=master)](https://travis-ci.org/AurelienLourot/ghuser.io)
+[![Build Status](https://travis-ci.org/ghuser-io/ghuser.io.svg?branch=master)](https://travis-ci.org/ghuser-io/ghuser.io)
 [![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors)
 
 <p align="center">
   <a href="https://ghuser.io">
-    <img src="https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo.png"
+    <img src="https://rawgit.com/ghuser-io/ghuser.io/master/docs/logo.png"
          width="400" height="108" />
   </a>
 </p>
@@ -68,7 +68,7 @@ We love the default GitHub profiles and we want to enhance them:
 Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e.g.
 [ghuser.io/AurelienLourot](https://ghuser.io/AurelienLourot).
 
-<a name="footnote1"><sup>1</sup></a> We achieve this by using [github-contribs](https://github.com/AurelienLourot/github-contribs).
+<a name="footnote1"><sup>1</sup></a> We achieve this by using [github-contribs](https://github.com/ghuser-io/github-contribs).
 
 # Get your profile!
 
@@ -77,15 +77,15 @@ Request it [here](https://ghuser.io/login).
 # Roadmap
 
 * [x] `19 Jun 2018` start coding
-* [x] `04 Jul 2018` [first prototype](https://github.com/AurelienLourot/ghuser.io/milestone/1)
+* [x] `04 Jul 2018` [first prototype](https://github.com/ghuser-io/ghuser.io/milestone/1)
 * [x] `14 Aug 2018` fix
-      [first scaling issues](https://github.com/AurelienLourot/ghuser.io/milestone/4)
+      [first scaling issues](https://github.com/ghuser-io/ghuser.io/milestone/4)
 * [ ] `15 Oct 2018` fix
-      [second round of scaling issues](https://github.com/AurelienLourot/ghuser.io/milestone/5)
+      [second round of scaling issues](https://github.com/ghuser-io/ghuser.io/milestone/5)
 * [ ] `31 Oct 2018` address
-      [first user feedback](https://github.com/AurelienLourot/ghuser.io/milestone/3)
+      [first user feedback](https://github.com/ghuser-io/ghuser.io/milestone/3)
 * [ ] `30 Nov 2018` display more data on each profile to really make it a modern
-      [programmer resume](https://github.com/AurelienLourot/ghuser.io/milestone/2)
+      [programmer resume](https://github.com/ghuser-io/ghuser.io/milestone/2)
 
 # Contributing
 
@@ -94,14 +94,14 @@ Request it [here](https://ghuser.io/login).
 * Fork this project.
 * Make some changes to the [web app](reframe/).
 * Validate your changes by [running the app locally](reframe/README.md#run-locally).
-* Create a [pull request](https://github.com/AurelienLourot/ghuser.io/compare) :)
+* Create a [pull request](https://github.com/ghuser-io/ghuser.io/compare) :)
 
 ## To the documentation
 
 * Fork this project.
 * Make some changes to the markdown files.
 * Validate your changes by running `./build.sh`.
-* Create a [pull request](https://github.com/AurelienLourot/ghuser.io/compare) :)
+* Create a [pull request](https://github.com/ghuser-io/ghuser.io/compare) :)
 
 ## Contributors
 
@@ -109,9 +109,9 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars1.githubusercontent.com/u/11795312?v=4" width="100px;"/><br /><sub><b>Aurelien Lourot</b></sub>](https://ghuser.io/AurelienLourot)<br />[💬](#question-AurelienLourot "Answering Questions") [🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3AAurelienLourot "Bug reports") [💻](https://github.com/AurelienLourot/ghuser.io/commits?author=AurelienLourot "Code") [📖](https://github.com/AurelienLourot/ghuser.io/commits?author=AurelienLourot "Documentation") [🤔](#ideas-AurelienLourot "Ideas, Planning, & Feedback") [👀](#review-AurelienLourot "Reviewed Pull Requests") | [<img src="https://avatars2.githubusercontent.com/u/1005638?v=4" width="100px;"/><br /><sub><b>Romuald Brillout</b></sub>](https://twitter.com/brillout)<br />[🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3Abrillout "Bug reports") [💻](https://github.com/AurelienLourot/ghuser.io/commits?author=brillout "Code") [🤔](#ideas-brillout "Ideas, Planning, & Feedback") [🚇](#infra-brillout "Infrastructure (Hosting, Build-Tools, etc)") [👀](#review-brillout "Reviewed Pull Requests") [💬](#question-brillout "Answering Questions") | [<img src="https://avatars2.githubusercontent.com/u/25279263?v=4" width="100px;"/><br /><sub><b>James George</b></sub>](https://ghuser.io/jamesgeorge007)<br />[🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3Ajamesgeorge007 "Bug reports") [💻](https://github.com/AurelienLourot/ghuser.io/commits?author=jamesgeorge007 "Code") | [<img src="https://avatars1.githubusercontent.com/u/15092?v=4" width="100px;"/><br /><sub><b>John Vandenberg</b></sub>](https://jayvdb.github.io/)<br />[🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3Ajayvdb "Bug reports") [🤔](#ideas-jayvdb "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/30195193?v=4" width="100px;"/><br /><sub><b>Naveen Naidu</b></sub>](https://github.com/Naveenaidu)<br />[🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3ANaveenaidu "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/15799589?v=4" width="100px;"/><br /><sub><b>Shubham Rath</b></sub>](https://sr6033.github.io/)<br />[🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3Asr6033 "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/15871340?v=4" width="100px;"/><br /><sub><b>Aditya Agarwal</b></sub>](http://adi.surge.sh)<br />[📝](#blog-itaditya "Blogposts") |
+| [<img src="https://avatars1.githubusercontent.com/u/11795312?v=4" width="100px;"/><br /><sub><b>Aurelien Lourot</b></sub>](https://ghuser.io/AurelienLourot)<br />[💬](#question-AurelienLourot "Answering Questions") [🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3AAurelienLourot "Bug reports") [💻](https://github.com/ghuser-io/ghuser.io/commits?author=AurelienLourot "Code") [📖](https://github.com/ghuser-io/ghuser.io/commits?author=AurelienLourot "Documentation") [🤔](#ideas-AurelienLourot "Ideas, Planning, & Feedback") [👀](#review-AurelienLourot "Reviewed Pull Requests") | [<img src="https://avatars2.githubusercontent.com/u/1005638?v=4" width="100px;"/><br /><sub><b>Romuald Brillout</b></sub>](https://twitter.com/brillout)<br />[🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3Abrillout "Bug reports") [💻](https://github.com/ghuser-io/ghuser.io/commits?author=brillout "Code") [🤔](#ideas-brillout "Ideas, Planning, & Feedback") [🚇](#infra-brillout "Infrastructure (Hosting, Build-Tools, etc)") [👀](#review-brillout "Reviewed Pull Requests") [💬](#question-brillout "Answering Questions") | [<img src="https://avatars2.githubusercontent.com/u/25279263?v=4" width="100px;"/><br /><sub><b>James George</b></sub>](https://ghuser.io/jamesgeorge007)<br />[🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3Ajamesgeorge007 "Bug reports") [💻](https://github.com/ghuser-io/ghuser.io/commits?author=jamesgeorge007 "Code") | [<img src="https://avatars1.githubusercontent.com/u/15092?v=4" width="100px;"/><br /><sub><b>John Vandenberg</b></sub>](https://jayvdb.github.io/)<br />[🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3Ajayvdb "Bug reports") [🤔](#ideas-jayvdb "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/30195193?v=4" width="100px;"/><br /><sub><b>Naveen Naidu</b></sub>](https://github.com/Naveenaidu)<br />[🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3ANaveenaidu "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/15799589?v=4" width="100px;"/><br /><sub><b>Shubham Rath</b></sub>](https://sr6033.github.io/)<br />[🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3Asr6033 "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/15871340?v=4" width="100px;"/><br /><sub><b>Aditya Agarwal</b></sub>](http://adi.surge.sh)<br />[📝](#blog-itaditya "Blogposts") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://avatars1.githubusercontent.com/u/31209617?v=4" width="100px;"/><br /><sub><b>Rupesh Krishna Jha</b></sub>](https://www.linkedin.com/in/rupesh-jha-7aab6b155/)<br />[🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3ARupeshiya "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/1951866?v=4" width="100px;"/><br /><sub><b>CrazyMax</b></sub>](https://github.com/crazy-max)<br />[🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3Acrazy-max "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/16784959?v=4" width="100px;"/><br /><sub><b>Michal Weizman</b></sub>](http://hakabuk.com)<br />[🐛](https://github.com/AurelienLourot/ghuser.io/issues?q=author%3Azurda "Bug reports") [🤔](#ideas-zurda "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/12212282?v=4" width="100px;"/><br /><sub><b>Wei WANG</b></sub>](https://www.marsrainbow.cn)<br />[🚇](#infra-tianshanghong "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars1.githubusercontent.com/u/166162?v=4" width="100px;"/><br /><sub><b>Brandon Rhodes</b></sub>](http://rhodesmill.org/brandon)<br />[🚇](#infra-brandon-rhodes "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars3.githubusercontent.com/u/910753?v=4" width="100px;"/><br /><sub><b>Richard Littauer</b></sub>](https://burntfen.com)<br />[🤔](#ideas-RichardLitt "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/131818?v=4" width="100px;"/><br /><sub><b>Jordan Sissel</b></sub>](http://www.semicomplete.com/)<br />[🚇](#infra-jordansissel "Infrastructure (Hosting, Build-Tools, etc)") |
+| [<img src="https://avatars1.githubusercontent.com/u/31209617?v=4" width="100px;"/><br /><sub><b>Rupesh Krishna Jha</b></sub>](https://www.linkedin.com/in/rupesh-jha-7aab6b155/)<br />[🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3ARupeshiya "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/1951866?v=4" width="100px;"/><br /><sub><b>CrazyMax</b></sub>](https://github.com/crazy-max)<br />[🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3Acrazy-max "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/16784959?v=4" width="100px;"/><br /><sub><b>Michal Weizman</b></sub>](http://hakabuk.com)<br />[🐛](https://github.com/ghuser-io/ghuser.io/issues?q=author%3Azurda "Bug reports") [🤔](#ideas-zurda "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/12212282?v=4" width="100px;"/><br /><sub><b>Wei WANG</b></sub>](https://www.marsrainbow.cn)<br />[🚇](#infra-tianshanghong "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars1.githubusercontent.com/u/166162?v=4" width="100px;"/><br /><sub><b>Brandon Rhodes</b></sub>](http://rhodesmill.org/brandon)<br />[🚇](#infra-brandon-rhodes "Infrastructure (Hosting, Build-Tools, etc)") | [<img src="https://avatars3.githubusercontent.com/u/910753?v=4" width="100px;"/><br /><sub><b>Richard Littauer</b></sub>](https://burntfen.com)<br />[🤔](#ideas-RichardLitt "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/131818?v=4" width="100px;"/><br /><sub><b>Jordan Sissel</b></sub>](http://www.semicomplete.com/)<br />[🚇](#infra-jordansissel "Infrastructure (Hosting, Build-Tools, etc)") |
 | [<img src="https://avatars2.githubusercontent.com/u/19894116?v=4" width="100px;"/><br /><sub><b>JPBotelho</b></sub>](https://github.com/JPBotelho)<br />[🤔](#ideas-JPBotelho "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/3104386?v=4" width="100px;"/><br /><sub><b>George Xie</b></sub>](http://xiegeo.com)<br />[🤔](#ideas-xiegeo "Ideas, Planning, & Feedback") | [<img src="https://avatars0.githubusercontent.com/u/357499?v=4" width="100px;"/><br /><sub><b>Anish Karandikar</b></sub>](https://github.com/anishkny)<br />[🤔](#ideas-anishkny "Ideas, Planning, & Feedback") | [<img src="https://avatars0.githubusercontent.com/u/21367710?v=4" width="100px;"/><br /><sub><b>Palash Nigam</b></sub>](https://www.linkedin.com/in/palash25/)<br />[📝](#blog-palash25 "Blogposts") | [<img src="https://avatars0.githubusercontent.com/u/96793?v=4" width="100px;"/><br /><sub><b>Andrew Bredow</b></sub>](http://andrewbredow.com)<br />[🤔](#ideas-andrewbredow "Ideas, Planning, & Feedback") | [<img src="https://avatars0.githubusercontent.com/u/1449512?v=4" width="100px;"/><br /><sub><b>Shadab Zafar</b></sub>](http://dufferzafar.github.io)<br />[🤔](#ideas-dufferzafar "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/633283?v=4" width="100px;"/><br /><sub><b>Phil de Joux</b></sub>](https://github.com/philderbeast)<br />[🤔](#ideas-philderbeast "Ideas, Planning, & Feedback") |
 | [<img src="https://avatars3.githubusercontent.com/u/1855021?v=4" width="100px;"/><br /><sub><b>Sam Johnson</b></sub>](https://github.com/sam0x17)<br />[🤔](#ideas-sam0x17 "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/22138672?v=4" width="100px;"/><br /><sub><b>Arseniy Klempner</b></sub>](https://github.com/adklempner)<br />[🤔](#ideas-adklempner "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/827205?v=4" width="100px;"/><br /><sub><b>Daniel Ruf</b></sub>](https://daniel-ruf.de)<br />[🤔](#ideas-DanielRuf "Ideas, Planning, & Feedback") | [<img src="https://avatars1.githubusercontent.com/u/229881?v=4" width="100px;"/><br /><sub><b>Steven</b></sub>](https://www.ceriously.com)<br />[🤔](#ideas-styfle "Ideas, Planning, & Feedback") | [<img src="https://avatars0.githubusercontent.com/u/1803556?v=4" width="100px;"/><br /><sub><b>Joe Cohen</b></sub>](https://joecohens.com)<br />[🤔](#ideas-joecohens "Ideas, Planning, & Feedback") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
@@ -146,5 +146,5 @@ No, in fact we'd love GitHub to copy ghuser.io or to even do better, so that thi
 ## How are the organizations sorted in the `Contributed to` section?
 
 For now it's kind of random. See
-[#142](https://github.com/AurelienLourot/ghuser.io/issues/142#issuecomment-419743403) for more
+[#142](https://github.com/ghuser-io/ghuser.io/issues/142#issuecomment-419743403) for more
 details.

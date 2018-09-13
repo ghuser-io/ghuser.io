@@ -61,6 +61,6 @@ We run the web app on [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/
 [How to deploy a Reframe web app on Up](https://github.com/AurelienLourot/reframe-on-up/).
 
 > **NOTE**: this can only be done by the
-> [maintainers](https://github.com/AurelienLourot/ghuser.io#team).
+> [maintainers](https://github.com/orgs/ghuser-io/people).
 
 The scripts used to set up AWS IAM accordingly can be found [here](../aws/apex-up).

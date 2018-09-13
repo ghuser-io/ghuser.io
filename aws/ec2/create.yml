@@ -115,7 +115,7 @@
           val: "{{ github_password }}"
     - name: git clone ghuser.io
       git:
-        repo: "https://{{ github_username }}:{{ github_password }}@github.com/AurelienLourot/ghuser.io.git"
+        repo: "https://{{ github_username }}:{{ github_password }}@github.com/ghuser-io/ghuser.io.git"
         dest: /home/ubuntu/ghuser.io/
     - name: npm install ghuser.io's DB
       command: npm install

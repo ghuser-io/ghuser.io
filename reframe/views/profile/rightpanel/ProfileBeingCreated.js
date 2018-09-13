@@ -34,7 +34,7 @@ class ProfileBeingCreated extends React.Component {
         {queue}
         <div className="mt-3">
           Refresh this page in a few hours.&nbsp;
-          <a href="https://github.com/AurelienLourot/github-contribs#why-is-it-so-slow"
+          <a href="https://github.com/ghuser-io/github-contribs#why-is-it-so-slow"
              target="_blank" className="external">
             Why does it take so long?
           </a>

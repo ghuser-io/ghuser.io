@@ -108,6 +108,6 @@ $ ./fetchAndCalculateAll.sh
 ## Deleting a profile
 
 ```bash
-$ ./rmUser.js formerUser "you asked us to remove your profile in https://github.com/AurelienLourot/ghuser.io/issues/666"
+$ ./rmUser.js formerUser "you asked us to remove your profile in https://github.com/ghuser-io/ghuser.io/issues/666"
 $ ./fetchAndCalculateAll.sh # will also perform some garbage collection
 ```

@@ -1,6 +1,6 @@
 {
-  "_comment": "Repo metadata for ghuser.io. See https://github.com/AurelienLourot/ghuser.io/blob/master/docs/repo-settings.md",
-  "avatar_url": "https://rawgit.com/AurelienLourot/ghuser.io/master/docs/logo_square.png",
+  "_comment": "Repo metadata for ghuser.io. See https://github.com/ghuser-io/ghuser.io/blob/master/docs/repo-settings.md",
+  "avatar_url": "https://rawgit.com/ghuser-io/ghuser.io/master/docs/logo_square.png",
   "techs": ["React", "Node.js", "Reframe", "GitHub API", "hapi", "Bootstrap", "Semantic UI", "AWS",
             "Ansible", "Travis CI"]
 }

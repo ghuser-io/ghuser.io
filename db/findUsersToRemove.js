@@ -36,7 +36,7 @@
       }
     }
 
-    const stargazers = await fetchStargazers('AurelienLourot/ghuser.io');
+    const stargazers = await fetchStargazers('ghuser-io/ghuser.io');
     const toRemove = users.map(user => user.login).filter(user => stargazers.indexOf(user) === -1);
 
     if (toRemove.length) {
