@@ -73,26 +73,27 @@ $ ./fetchAndCalculateAll.sh
 ...
 data/
   users/
-    65 users
-    largest: jordansissel.json (11 KB)
-    total: 189 KB
+    262 users
+    largest: moul.json (20 KB)
+    total: 634 KB
   contribs/
-    largest: calinou.json (111 KB)
-    total: 1134 KB
+    largest: moul.json (216 KB)
+    total: 3823 KB
   repos/
-    2346 repos
-    largest: deadlyvipers/dojo_rules.json (164 KB)
-    total: 7687 KB
-  orgs.json: 181 KB
-  total: 9192 KB
+    8159 repos
+    largest: jlord/patchwork.json (379 KB)
+    total: 23889 KB
+  orgs.json: 639 KB
+  nonOrgs.json: 35 KB
+  total: 28984 KB
 
-=> 141 KB/user
+=> 111 KB/user
+GitHub API key found.
+GitHub credentials found.
 
-2888 GitHub API calls were made.
-
-real    18m26.658s
-user    0m41.492s
-sys     0m4.604s
+real    78m44.200s
+user    2m58.520s
+sys     0m23.160s
 ```
 
 > **NOTE**: API keys can be created [here](https://github.com/settings/developers).
