@@ -40,10 +40,11 @@ function ContribRange({contribRange}) {
 }
 
 function EarnedStars({earnedStars, stargazers_count}) {
+    const Star = () => <span style={{fontSize: '0.92em', position: 'relative', top: '-0.08em'}}>★</span>;
     return (
         <Badge
-          head={<span className={'earned-stars-text earned-stars-text-color'}>★ {bigNum(earnedStars)}</span>}
-          desc={earnedStars!==stargazers_count && '/ ★ '+bigNum(stargazers_count)}
+          head={<span className={'earned-stars-text earned-stars-text-color'}><Star/> {bigNum(earnedStars)}</span>}
+          desc={earnedStars!==stargazers_count && <span>/ <Star/> {bigNum(stargazers_count)}</span>}
           width={170}
         />
     );
@@ -85,7 +86,7 @@ function Badge({head, desc, width}) {
         <div style={{width}}>
             <div className="big-badge text-gray">
                 <div>{head}</div>
-                <div className="badge-desc">{desc}</div>
+                {desc && <div className="badge-desc">{desc}</div>}
                 <div className="badge-border"/>
             </div>
         </div>

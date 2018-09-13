@@ -18,11 +18,11 @@
   background-size: contain;
 }
 .contrib-type-icon {
-  margin: 5px 0;
+  margin: 4px 0;
 }
 .repo-scale-icon {
-  margin-top: 4px;
-  margin-bottom: 6px;
+  margin-top: 3px;
+  margin-bottom: 5px;
 }
 
 
@@ -52,10 +52,10 @@
 }
 */
 .earned-stars-text {
-  font-size: 1.1em;
+  font-size: 1em;
 }
 .contrib-range-title {
-  font-size: 1.1em;
+  font-size: 1em;
   color: #66f;
 }
 
@@ -67,7 +67,8 @@
   display: inline-flex;
   align-items: center;
   text-align: center;
-  padding: 0px 7px;
+  padding-left: 8px;
+  padding-right: 7px;
   margin-right: 10px;
 }
 .badge-desc {
