@@ -99,8 +99,11 @@ function getDisplaySettings(contrib) {
     const {commits_count__user, commits_count__percentage, commits_count__total, contribType, contribRange, earnedStars, repoScale} = getInfoForBadges(contrib);
 
     const miniDisplay = ! (
+        repoScale!=='micro'
+        /*
         ['large', 'medium'].includes(repoScale) ||
         repoScale==='small' && ['maintainer', 'contributor_gold', 'contributor_silver'].includes(contribType)
+        */
     );
 
     return {miniDisplay};
@@ -118,11 +121,39 @@ function getDisplayOrder(contrib1, contrib2) {
     }
 
     const {
+        contribType: contribType1,
+        repoScale: repoScale1,
         commits_count__user: commits_count__user1,
     } = getInfoForBadges(contrib1);
     const {
+        contribType: contribType2,
+        repoScale: repoScale2,
         commits_count__user: commits_count__user2,
     } = getInfoForBadges(contrib2);
+
+    const getContribOrder = (contribType, repoScale) => (
+        contribType==='maintainer' && repoScale==='micro' && -1 ||
+        contribType==='maintainer' && 3 ||
+        contribType==='contributor_gold' && 2 ||
+        contribType==='contributor_silver' && 1 ||
+        contribType==='contributor_bronze' && 0
+    );
+    const contribOrder = getContribOrder(contribType2, repoScale2) - getContribOrder(contribType1, repoScale1);
+    if( contribOrder!==0 ) {
+        return contribOrder;
+    }
+
+    const getRepoOrder = repoScale => (
+        repoScale==='large' && 3 ||
+        repoScale==='medium' && 2 ||
+        repoScale==='small' && 1 ||
+        repoScale==='micro' && 0
+    );
+    const repoOrder = getRepoOrder(repoScale2) - getRepoOrder(repoScale1);
+    if( repoOrder!==0 ) {
+        return repoOrder;
+    }
+
     return commits_count__user2 - commits_count__user1;
 }
 
@@ -139,25 +170,15 @@ function getOrder__one_sided(contrib1, contrib2) {
     } = getInfoForBadges(contrib2);
 
 
-    if( repoScale1==='micro' && repoScale2!=='micro' ) {
-        return 1;
-    }
     if( repoScale1!=='micro' && repoScale2==='micro' ) {
         return -1;
     }
-    if( contribType!=='contributor_bronze' && ['large', 'medium'].includes(repoScale1) && ! ['large', 'medium'].includes(repoScale2) ) {
-        return -1;
+    if( repoScale1==='micro' && repoScale2!=='micro' ) {
+        return 1;
     }
 
-    const getContribOrder = contribType => (
-        contribType==='maintainer' && 3 ||
-        contribType==='contributor_gold' && 2 ||
-        contribType==='contributor_silver' && 1 ||
-        contribType==='contributor_bronze' && 0
-    );
-    const contribOrder = getContribOrder(contribType2) - getContribOrder(contribType1);
-    if( contribOrder!==0 ) {
-        return contribOrder;
+    if( contribType1!=='contributor_bronze' && ['large', 'medium'].includes(repoScale1) && ! ['large', 'medium'].includes(repoScale2) ) {
+        return -1;
     }
 
     return null;
