@@ -46,8 +46,10 @@
 
     let contribOwners = new Set([]);
     for (const user of users) {
-      contribOwners = new Set([...contribOwners,
-                               ...user.contribs.repos.map(repo => repo.split('/')[0])]);
+      contribOwners = new Set([
+        ...contribOwners,
+        ...(user.contribs && user.contribs.repos.map(repo => repo.split('/')[0]) || [])
+      ]);
     }
     await fetchOrgs(contribOwners);
 
