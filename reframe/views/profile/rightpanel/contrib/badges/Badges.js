@@ -21,26 +21,28 @@ function Badges({contrib}) {
 
 function EarnedStars({earnedStars, stargazers_count}) {
     return (
-        <Badge smallText={'from ★ '+bigNum(stargazers_count)}>
-            <div className={'earned-stars-text earned-stars-text-color'}>★ {bigNum(earnedStars)}</div>
-        </Badge>
+        <Badge
+          head={<span className={'earned-stars-text earned-stars-text-color'}>★ {bigNum(earnedStars)}</span>}
+          desc={'from ★ '+bigNum(stargazers_count)}
+        />
     );
 }
 
 function RepoScale({repoScale}) {
     return (
-        <Badge smallText={repoScale+' project'}>
-            <div className={'repo-scale-icon repo-scale-icon-'+repoScale}/>
-        </Badge>
+        <Badge
+          head={<div className={'repo-scale-icon repo-scale-icon-'+repoScale}/>}
+          desc={repoScale+' project'}
+        />
     );
 }
 
 function ContribRange({contribRange}) {
     return (
-        <Badge smallText={contribRange.precise.from+' -> '+contribRange.precise.to}>
-            <div className="contrib-range-title">{contribRange.coarse}</div>
-            <div className="contrib-type-text"></div>
-        </Badge>
+        <Badge
+          head={<div className="contrib-range-title">{contribRange.coarse}</div>}
+          desc={contribRange.precise.from+' -> '+contribRange.precise.to}
+        />
     );
 }
 
@@ -48,9 +50,10 @@ function ContribType({contribType}) {
     const {iconClassName, text} = getInfo();
 
     return (
-        <Badge smallText={text}>
-            <div className={'contrib-type-icon '+iconClassName}/>
-        </Badge>
+        <Badge
+          head={<div className={'contrib-type-icon '+iconClassName}/>}
+          desc={text}
+        />
     );
 
     function getInfo() {
@@ -73,11 +76,11 @@ function ContribType({contribType}) {
     }
 }
 
-function Badge({children, smallText}) {
+function Badge({head, desc}) {
     return (
         <div className="big-badge">
-            <div className="badge-header">{children}</div>
-            <div className="badge-small-text">{smallText}</div>
+            <div className="badge-header">{head}</div>
+            <div className="badge-small-text">{desc}</div>
         </div>
     );
 }
