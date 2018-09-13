@@ -30,7 +30,7 @@
   background-image: url('./biceps.png');
 }
 
-.repo-scale-icon-tiny {
+.repo-scale-icon-micro {
   opacity: 0.2;
   filter: grayscale(100%);
 }

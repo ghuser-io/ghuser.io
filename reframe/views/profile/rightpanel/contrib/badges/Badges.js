@@ -24,7 +24,7 @@ function RepoScale({repoScale}) {
         <Badge
           head={<div className={'repo-scale-icon repo-scale-icon-'+repoScale}/>}
           desc={repoScale+' project'}
-          width={140}
+          width={130}
         />
     );
 }
@@ -34,7 +34,7 @@ function ContribRange({contribRange}) {
         <Badge
           head={<div className="contrib-range-title">{contribRange.coarse}</div>}
           desc={contribRange.precise.from+' -> '+contribRange.precise.to}
-          width={165}
+          width={160}
         />
     );
 }
@@ -57,7 +57,7 @@ function ContribType({contribType}) {
         <Badge
           head={<div className={'contrib-type-icon '+iconClassName}/>}
           desc={text}
-          width={135}
+          width={130}
         />
     );
 
@@ -178,10 +178,10 @@ function getRepoScale(contrib) {
     const {total_commits_count} = contrib;
 
     const repoScale = (
-        total_commits_count > THREADSHOLD_BIG && 'big' ||
+        total_commits_count > THREADSHOLD_BIG && 'large' ||
         total_commits_count > THREADSHOLD_MEDIUM && 'medium' ||
         total_commits_count > THREADSHOLD_SMALL && 'small' ||
-        'tiny'
+        'micro'
     );
 
     return repoScale;
