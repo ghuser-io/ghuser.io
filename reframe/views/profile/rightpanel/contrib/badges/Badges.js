@@ -3,8 +3,7 @@ import {bigNum} from '../../../numbers';
 import './Badges.css';
 
 export {Badges};
-export {getInfoForBadges};
-export {getSortValue};
+export {getDisplaySettings};
 
 function Badges({contrib}) {
     const badgeInfos = getInfoForBadges(contrib);
@@ -102,6 +101,17 @@ function Badge({head, desc, width}) {
     );
 }
 
+function getDisplaySettings(contrib) {
+    const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
+    const {contribType, contribRange, earnedStars, repoScale} = getInfoForBadges(contrib);
+
+    const miniDisplay = commits_count__user < 10;
+
+    const sortValue = commits_count__user;
+
+    return {sortValue, miniDisplay};
+}
+
 function getInfoForBadges(contrib) {
     const contribType = getContribType(contrib);
 
@@ -140,9 +150,7 @@ function getContribType(contrib) {
     const CONTRIBUTOR_GOLD_THRESHOLD = 50;
     const CONTRIBUTOR_SILVER_THRESHOLD = 5;
 
-    const {total_commits_count: commits_count__total} = contrib;
-    const commits_count__percentage = contrib.percentage/100;
-    const commits_count__user = Math.round(commits_count__percentage*commits_count__total);
+    const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
 
     const contribType = (
         commits_count__user > 1 && (commits_count__total * MAINTAINER_THRESHOLD <= 1 || commits_count__percentage >= MAINTAINER_THRESHOLD) && 'maintainer' ||
@@ -162,6 +170,13 @@ function getContribType(contrib) {
     */
 
     return contribType;
+}
+
+function getCommitCounts(contrib) {
+    const {total_commits_count: commits_count__total} = contrib;
+    const commits_count__percentage = contrib.percentage/100;
+    const commits_count__user = Math.round(commits_count__percentage*commits_count__total);
+    return {commits_count__user, commits_count__percentage, commits_count__total};
 }
 
 function getContribRange(contrib) {
