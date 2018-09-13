@@ -4,6 +4,7 @@ import './Badges.css';
 
 export {Badges, BadgesMini};
 export {getDisplaySettings};
+export {getDisplayOrder};
 
 function Badges({contrib}) {
     const badgeInfos = getInfoForBadges(contrib);
@@ -95,14 +96,73 @@ function Badge({head, desc, width}) {
 }
 
 function getDisplaySettings(contrib) {
-    const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
- // const {contribType, contribRange, earnedStars, repoScale} = getInfoForBadges(contrib);
+    const {commits_count__user, commits_count__percentage, commits_count__total, contribType, contribRange, earnedStars, repoScale} = getInfoForBadges(contrib);
 
-    const miniDisplay = commits_count__user < 50;
+    const miniDisplay = ! (
+        ['large', 'medium'].includes(repoScale) ||
+        repoScale==='small' && ['maintainer', 'contributor_gold', 'contributor_silver'].includes(contribType)
+    );
 
-    const sortValue = commits_count__user;
+    return {miniDisplay};
+}
 
-    return {sortValue, miniDisplay};
+function getDisplayOrder(contrib1, contrib2) {
+    let orderVal;
+    orderVal = getOrder__one_sided(contrib1, contrib2);
+    if( orderVal!==null ) {
+        return orderVal;
+    }
+    orderVal = getOrder__one_sided(contrib2, contrib1);
+    if( orderVal!==null ) {
+        return -1*orderVal;
+    }
+
+    const {
+        commits_count__user: commits_count__user1,
+    } = getInfoForBadges(contrib1);
+    const {
+        commits_count__user: commits_count__user2,
+    } = getInfoForBadges(contrib2);
+    return commits_count__user2 - commits_count__user1;
+}
+
+function getOrder__one_sided(contrib1, contrib2) {
+    const {
+        contribType: contribType1,
+        repoScale: repoScale1,
+        earnedStars: earnedStars1,
+    } = getInfoForBadges(contrib1);
+    const {
+        contribType: contribType2,
+        repoScale: repoScale2,
+        earnedStars: earnedStars2,
+    } = getInfoForBadges(contrib2);
+
+
+    if( ['large', 'medium'].includes(repoScale1) && ! ['large', 'medium'].includes(repoScale2) ) {
+        return -1;
+    }
+
+    if( repoScale1==='micro' && repoScale2!=='micro' ) {
+        return 1;
+    }
+
+    if( repoScale1!=='micro' && repoScale2==='micro' ) {
+        return -1;
+    }
+
+    const getContribOrder = contribType => (
+        contribType==='maintainer' && 3 ||
+        contribType==='contributor_gold' && 2 ||
+        contribType==='contributor_silver' && 1 ||
+        contribType==='contributor_bronze' && 0
+    );
+    const contribOrder = getContribOrder(contribType2) - getContribOrder(contribType1);
+    if( contribOrder!==0 ) {
+        return contribOrder;
+    }
+
+    return null;
 }
 
 function getInfoForBadges(contrib) {
@@ -116,6 +176,7 @@ function getInfoForBadges(contrib) {
     const earnedStars = getEarnedStars(contrib, contribType);
 
     return {
+        ...getCommitCounts(contrib),
         contribType,
         contribTypeIcon,
         contribTypeText,

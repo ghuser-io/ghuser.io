@@ -26,12 +26,11 @@
   height: 13px;
   background-size: contain;
 }
-.big-bage .contrib-type-icon {
-  margin: 4px 0;
-}
-.big-bage .icon-repo-scale {
+.big-badge .contrib-type-icon {
   margin-top: 3px;
-  margin-bottom: 5px;
+}
+.big-badge .icon-repo-scale {
+  margin-top: 3px;
 }
 
 
