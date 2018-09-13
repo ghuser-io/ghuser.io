@@ -109,16 +109,19 @@ class Contrib extends React.Component {
     return (
       <div className={withSeparator('bottom', 3)}>
         {avatar()}
+        <div style={{width: 10, height: 50, float: 'left'}}/>
+        <ContribHeader {...{...this.props, ...this.state}}/>
+        {/*
         <h4 className="contrib-name mr-1">
           <a href={`https://github.com/${this.props.contrib.full_name}`}
              target="_blank" className="text-bold contrib-name external"
              title={this.props.contrib.full_name}>{this.props.contrib.name}</a>
-          {this.state.repo && this.state.repo.description}
           {
             this.state.repo && this.state.repo.fork &&
               <i className="fas fa-code-branch contrib-name ml-2 text-gray" title="fork"></i>
           }
         </h4>
+        */}
         {
           /*
           this.state.repo &&
@@ -153,6 +156,30 @@ class Contrib extends React.Component {
       </div>
     );
   }
+}
+
+function ContribHeader({username, contrib: {name, full_name}, repo}) {
+      if( ! repo ) {
+          return null;
+      }
+      const display_name = repo.owner===username ? name : full_name;
+      return (
+          <div
+          style={{marginBottom: 10, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
+          >
+            <a href={`https://github.com/${full_name}`}
+               target="_blank">
+               { repo.owner !== username &&
+                   repo.owner+'/'
+               }
+               <span className="text-bold">{name}</span>
+            </a>
+            &nbsp; &nbsp;
+            <span
+              className="repo-descr text-gray"
+            >{repo.description}</span>
+          </div>
+      );
 }
 
 export default Contrib;
