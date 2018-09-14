@@ -9,6 +9,7 @@
 
 [![Build Status](https://travis-ci.org/ghuser-io/ghuser.io.svg?branch=master)](https://travis-ci.org/ghuser-io/ghuser.io)
 [![All Contributors](https://img.shields.io/badge/all_contributors-29-orange.svg?style=flat-square)](#contributors)
+[![Twitter](https://img.shields.io/badge/-twitter-black.svg?style=flat-square&logo=twitter&colorB=555555)](https://twitter.com/ghuserio)
 
 <p align="center">
   <a href="https://ghuser.io">
