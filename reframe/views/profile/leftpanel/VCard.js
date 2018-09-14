@@ -15,13 +15,13 @@ const VCard = props => (
   </div>
 );
 
-const Stars = ({stars}) => {
+const Stars = ({stars, login}) => {
   stars = Math.round(stars);
   if( stars < 1 ) {
     return null;
   }
   return (
-    <span className="vcard-stars">
+    <span className="vcard-stars" title={login+" has earned a total of "+stars+" stars"}>
       <span className="earned-stars-icon-color">★</span>
       <span className="earned-stars-text-color">{bigNum(stars)}</span>
     </span>

@@ -111,7 +111,7 @@ class Contrib extends React.Component {
     const userIsMaintainer = this.props.contrib.percentage >= 15;
 
     return (
-      <div className="border-bottom border-gray-light" style={{paddingBottom: 10, paddingTop: 15}}>
+      <div className="border-bottom border-gray-light" style={{paddingBottom: 15, paddingTop: 15}}>
         {avatar()}
         <div style={{width: 10, height: 50, float: 'left'}}/>
         <ContribHeader {...{...this.props, ...this.state}}/>
