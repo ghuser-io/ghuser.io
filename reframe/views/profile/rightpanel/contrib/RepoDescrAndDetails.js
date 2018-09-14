@@ -28,7 +28,7 @@ class RepoDescrAndDetails extends React.Component {
   }
 
   setupSemanticUi() {
-    this.props.pushToFunctionQueue(1, () => $(this.semanticAccordion.current).accordion());
+ // this.props.pushToFunctionQueue(1, () => $(this.semanticAccordion.current).accordion());
   }
 
   render() {
@@ -54,7 +54,7 @@ class RepoDescrAndDetails extends React.Component {
 
     return (
       <div className="ui accordion" ref={this.semanticAccordion}>
-        <div className="title p-0">
+        <div className="title">
           <span className="repo-descr text-gray">
             {
               Parser(emoji.emojify(

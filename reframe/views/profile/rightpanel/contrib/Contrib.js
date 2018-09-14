@@ -12,6 +12,7 @@ import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
 import {Badges, BadgesMini, getDisplaySettings} from './badges/Badges';
 import RichText from './RichText';
+import {Accordion, AccordionIcon} from './Accordion';
 
 class Contrib extends React.Component {
   constructor(props) {
@@ -143,7 +144,11 @@ class Contrib extends React.Component {
             earnedStars(this.props.contrib.percentage, this.state.repo.stargazers_count)
           */
         }
-        <Badges contrib={this.props.contrib} username={this.props.username}/>
+        <Accordion
+          pushToFunctionQueue={this.props.pushToFunctionQueue}
+          head={<div><Badges contrib={this.props.contrib} username={this.props.username}/><AccordionIcon/></div>}
+          content={'hello'}
+        />
         {
           /*
           this.state.repo &&

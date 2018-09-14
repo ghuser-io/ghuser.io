@@ -10,7 +10,7 @@ function Badges({contrib, username}) {
     const badgeInfos = getInfoForBadges(contrib, username);
 
     return (
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'inline-flex'}}>
             <ContribType {...badgeInfos} />
             <RepoScale {...badgeInfos} />
             {/*
@@ -75,7 +75,7 @@ function EarnedStars({earnedStars, earnedStarsHint, stargazers_count}) {
           head={<span className="earned-stars-text earned-stars-icon-color"><Star/></span>}
           desc={<span style={{marginLeft: -3}}><span className="earned-stars-text-color">{bigNum(earnedStars)}</span>{earnedStars!==stargazers_count && <span> / <Star/> {bigNum(stargazers_count)}</span>}</span>}
           hint={earnedStarsHint}
-          width={170}
+          width={105}
         />
     );
 }
