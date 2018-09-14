@@ -1,10 +1,12 @@
 const AWS = require('aws-sdk');
 const Bell = require('bell');
+const fetch = require('fetch-retry');
 const Hapi = require('hapi');
 const Raven = require('raven');
 const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
 const {symbolSuccess, colorEmphasis} = require('@brillout/cli-theme');
 
+const db = require('../db');
 const urls = require('../ghuser').urls;
 
 module.exports = start();
@@ -112,6 +114,11 @@ async function start() {
         let login;
         try {
           login = request.auth.credentials.profile.raw.login;
+          try {
+            await (await fetch(`${db.url}/contribs/${login.toLowerCase()}.json`)).json();
+            // if we reach this point, then this profile exists already, so we skip the SQS queue:
+            return h.redirect(`/${login}`);
+          } catch(e) {}
           // temporarily disabled for issue143: await raven.captureMessage(`Profile request: ${login}`);
           const avatar_url = request.auth.credentials.profile.raw.avatar_url;
           await sendSqsMsg(`${login},${avatar_url}`);

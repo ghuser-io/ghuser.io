@@ -5,9 +5,9 @@ import Badge from './Badge';
 import RepoDescrAndDetails from './RepoDescrAndDetails';
 import './Contrib.css';
 import Avatar from '../../Avatar';
-import * as db from '../../../db';
 import {withSeparator} from '../../css';
 import {bigNum, roundHalf} from '../../numbers';
+import * as db from '../../../../db';
 import {urls} from '../../../../ghuser';
 
 class Contrib extends React.Component {

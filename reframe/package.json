@@ -28,6 +28,7 @@
     "autolinker": "^1.6.2",
     "aws-sdk": "^2.305.0",
     "bell": "^9.3.1",
+    "fetch-retry": "^1.2.1",
     "hapi": "^17.3.1",
     "html-entities": "^1.2.1",
     "html-react-parser": "^0.4.6",
