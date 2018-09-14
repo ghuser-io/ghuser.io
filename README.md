@@ -128,7 +128,7 @@ specification. Contributions of any kind welcome!
 ## Is my profile static or dynamic?
 
 For now it's static and the data<sup>[2](#footnote2)</sup> is refreshed at least
-[once per day](db/README.md). If you scroll down to the bottom of your profile you can see how old
+[once per day](https://github.com/ghuser-io/db). If you scroll down to the bottom of your profile you can see how old
 the data is:
 
 > ![screenshot](docs/screenshot-data-age.png)

@@ -4,6 +4,7 @@ import {XmlEntities} from 'html-entities';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
 
+import * as db from './db';
 import {urls} from '../ghuser';
 import Content from './Content';
 import LogoWithPunchline from './LogoWithPunchline';
@@ -12,19 +13,39 @@ import PageContent from './PageContent';
 import './Landing.css';
 import './All.css';
 
-import aurelienlourot from '../../db/data/users/aurelienlourot.json';
-import brillout from '../../db/data/users/brillout.json';
-
 class Landing extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      featuredUsers: [{
+        login: 'AurelienLourot',
+      }, {
+        login: 'brillout',
+      }]
+    };
+  }
+
+  async componentDidMount() {
+    const newFeaturedUsers = [...this.state.featuredUsers];
+    for (const i in newFeaturedUsers) {
+      const userId = newFeaturedUsers[i].login.toLowerCase();
+      const userData = await fetch(`${db.url}/users/${userId}.json`);
+      newFeaturedUsers[i] = await userData.json();
+      this.setState({
+        featuredUsers: newFeaturedUsers
+      });
+    }
+  }
+
   render() {
     const typingText = [];
-    for (const str of ['your-github-username', aurelienlourot.login, brillout.login]) {
+    for (const str of ['your-github-username', ...this.state.featuredUsers.map(user => user.login)]) {
       typingText.push(<span key={str}>{str}</span>);
       typingText.push(<Typing.Delay key={`${str}-delay`} ms={2000} />);
       typingText.push(<Typing.Backspace key={`${str}-backspace`} count={str.length} />);
     }
 
-    const cards = [aurelienlourot, brillout].map(user => (
+    const cards = this.state.featuredUsers.filter(user => user.avatar_url).map(user => (
       <div key={user.login} className="card">
         <div className="crop-img">
           <img className="card-img-top" src={user.avatar_url} alt="avatar" />
@@ -51,13 +72,13 @@ class Landing extends React.Component {
               <div className="ml-3">
                 <p>
                   We love the default GitHub profiles and we want to enhance them.
-                  <a href={urls.repo} target="_blank" className="landing-to-github external ml-3">
+                  <a href={urls.mainRepo} target="_blank" className="landing-to-github external ml-3">
                     More on GitHub
                   </a>
                 </p>
                 <a className="btn btn-primary ml-2 mr-4" href={urls.oauthEndpoint}
                    role="button">Get your profile</a>
-                <a className="typing" href="AurelienLourot">
+                <a className="typing" href={this.state.featuredUsers[0].login}>
                   {urls.landing}/<Typing className="typing" speed={10} loop={true}>{typingText}</Typing>
                 </a>
               </div>

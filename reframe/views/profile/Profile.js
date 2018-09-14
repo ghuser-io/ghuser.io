@@ -8,7 +8,7 @@ import '../All.css';
 import LeftPanel from './leftpanel/LeftPanel';
 import RightPanel from './rightpanel/RightPanel';
 import './Profile.css';
-import * as db from './db';
+import * as db from '../db';
 import {urls} from '../../ghuser';
 
 class Profile extends React.Component {
@@ -20,6 +20,7 @@ class Profile extends React.Component {
         login: props.username
       },
       contribs: null,
+      orgs: null,
       profilesBeingCreated: []
     };
   }
@@ -34,6 +35,10 @@ class Profile extends React.Component {
       const contribsData = await fetch(`${db.url}/contribs/${userId}.json`);
       const contribs = await contribsData.json();
       this.setState({ contribs });
+
+      const orgsData = await fetch(`${db.url}/orgs.json`);
+      const orgs = (await orgsData.json()).orgs;
+      this.setState({ orgs });
     } catch (_) {
       // This profile doesn't exist yet, let's see if it's being created:
       const profilesBeingCreatedData = await fetch(urls.profileQueueEndpoint);
@@ -60,7 +65,7 @@ class Profile extends React.Component {
       <div><i className="fas fa-spinner fa-pulse"></i> {this.state.user.login}'s profile</div> ||
       <div className="row">
         <LeftPanel user={this.state.user} contribs={this.state.contribs}
-                   orgs={this.props.orgs} />
+                   orgs={this.state.orgs} />
         <RightPanel username={this.state.user.login}
                     fetchedat={this.state.user.contribs && this.state.user.contribs.fetched_at}
                     contribs={this.state.contribs}

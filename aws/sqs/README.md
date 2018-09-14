@@ -1,6 +1,7 @@
 This will create an
 [AWS SQS queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html).
-Profile requests will be added to this queue and processed by the [fetchBot](../../db/fetchBot/).
+Profile requests will be added to this queue and processed by the
+[fetchBot](https://github.com/ghuser-io/db/blob/master/fetchBot).
 
 # Table of Contents
 

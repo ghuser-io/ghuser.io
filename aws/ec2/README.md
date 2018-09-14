@@ -1,6 +1,6 @@
 This will create the cheapest possible EC2 instance for
 
-* running the [fetchBot](../../db/fetchBot/), or
+* running the [fetchBot](https://github.com/ghuser-io/db/blob/master/fetchBot), or
 * just playing around.
 
 # Table of Contents

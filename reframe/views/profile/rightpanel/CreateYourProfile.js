@@ -11,8 +11,8 @@ const CreateYourProfile = props => (
       We're building profiles like this one:&nbsp;
       <a href="/AurelienLourot">{urls.landing}/AurelienLourot</a><br />
       More details on&nbsp;
-      <a href={urls.repo} target="_blank" className="external">
-        {urls.repo}
+      <a href={urls.mainRepo} target="_blank" className="external">
+        {urls.mainRepo}
       </a>
     </p>
     <p>

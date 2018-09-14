@@ -31,8 +31,8 @@ A few AWS IAM adjustments are necessary:
 
 ### AWS EC2
 
-The [data](../db) of all profiles needs to be refreshed every day. For this we run
-[a bot](../db/fetchBot) on an EC2 instance.
+The [data](https://github.com/ghuser-io/db) of all profiles needs to be refreshed every day. For
+this we run [a bot](https://github.com/ghuser-io/db/blob/master/fetchBot) on an EC2 instance.
 
 To create this EC2 instance:
 * [set up AWS CLI](#setting-up-aws-cli), and
@@ -40,7 +40,7 @@ To create this EC2 instance:
 
 ### AWS SQS
 
-[The bot](../db/fetchBot) also processes profile requests, i.e. when a new user wants to get their
+[The bot](https://github.com/ghuser-io/db/blob/master/fetchBot) also processes profile requests, i.e. when a new user wants to get their
 profile. These requests are implemented as
 [SQS messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html).
 

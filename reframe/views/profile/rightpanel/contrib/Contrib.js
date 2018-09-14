@@ -5,7 +5,7 @@ import Badge from './Badge';
 import RepoDescrAndDetails from './RepoDescrAndDetails';
 import './Contrib.css';
 import Avatar from '../../Avatar';
-import * as db from '../../db';
+import * as db from '../../../db';
 import {withSeparator} from '../../css';
 import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';

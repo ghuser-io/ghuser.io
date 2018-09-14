@@ -28,7 +28,7 @@ class ProfileBeingCreated extends React.Component {
         <LogoWithPunchline />
         <p>
           Your <i>profile request</i> has been enqueued and is being processed by our&nbsp;
-          <a href={`${urls.masterBranch}/db/fetchBot`} target="_blank" className="external">fetchBot</a>
+          <a href={urls.fetchBot} target="_blank" className="external">fetchBot</a>
           . Each request takes about 3 hours to process:
         </p>
         {queue}
