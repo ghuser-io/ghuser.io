@@ -13,7 +13,9 @@ function Badges({contrib, username}) {
         <div style={{display: 'flex'}}>
             <ContribType {...badgeInfos} />
             <RepoScale {...badgeInfos} />
+            {/*
             <ContribRange {...badgeInfos} />
+            */}
             <EarnedStars {...{...contrib, ...badgeInfos}} />
         </div>
     );
@@ -36,27 +38,28 @@ function BadgesMini({contrib, username}) {
   );
 }
 
-function RepoScale({repoScale, repoScaleIcon}) {
+function RepoScale({repoScale, repoScaleIcon, repoScaleHint}) {
     return (
         <Badge
           head={repoScaleIcon}
           desc={repoScale+' project'}
+          hint={repoScaleHint}
           width={130}
         />
     );
 }
 
 function ContribRange({contribRange}) {
+       // desc={contribRange.precise.from+' -> '+contribRange.precise.to}
     return (
         <Badge
-          head={<div className="contrib-range-title">{contribRange.coarse}</div>}
-          desc={contribRange.precise.from+' -> '+contribRange.precise.to}
+          head={<div className="contrib-range-title text-gray">{contribRange.coarse}</div>}
           width={160}
         />
     );
 }
 
-function EarnedStars({earnedStars, stargazers_count}) {
+function EarnedStars({earnedStars, earnedStarsHint, stargazers_count}) {
     const Star = () => <span style={{fontSize: '0.92em', position: 'relative', top: '-0.08em'}}>★</span>;
     /*
     return (
@@ -71,6 +74,7 @@ function EarnedStars({earnedStars, stargazers_count}) {
         <Badge
           head={<span className="earned-stars-text earned-stars-icon-color"><Star/></span>}
           desc={<span style={{marginLeft: -3}}><span className="earned-stars-text-color">{bigNum(earnedStars)}</span>{earnedStars!==stargazers_count && <span> / <Star/> {bigNum(stargazers_count)}</span>}</span>}
+          hint={earnedStarsHint}
           width={170}
         />
     );
@@ -193,19 +197,13 @@ function getInfoForBadges(contrib, username) {
 
     const contribRange = getContribRange(contrib);
 
-    const repoScale = getRepoScale(contrib);
-    const repoScaleIcon = <div className={'icon-repo-scale icon-repo-scale-'+repoScale}/>;
-
-    const earnedStars = getEarnedStars(contrib, contribType);
-
     return {
         ...getCommitCounts(contrib),
         contribType,
         ...contribInfos,
         contribRange,
-        earnedStars,
-        repoScale,
-        repoScaleIcon,
+        ...getEarnedStars(contrib, contribType, username),
+        ...getRepoScale(contrib),
     };
 
     /*
@@ -309,7 +307,7 @@ function getCommitCounts(contrib) {
 function getContribRange(contrib) {
     const {name} = contrib;
 
-    const coarse = name.charCodeAt(0)<name.charCodeAt(1)?"'17-'18":"'18";
+    const coarse = name.charCodeAt(0)<name.charCodeAt(1)?"'17 - '18":"'18";
 
     const precise = {
         from: '03.18',
@@ -335,10 +333,14 @@ function getRepoScale(contrib) {
         'micro'
     );
 
-    return repoScale;
+    const repoScaleIcon = <div className={'icon-repo-scale icon-repo-scale-'+repoScale}/>;
+
+    const repoScaleHint = contrib.full_name+' seems to be a '+repoScale+' project';
+
+    return {repoScale, repoScaleIcon, repoScaleHint};
 }
 
-function getEarnedStars(contrib, contribType) {
+function getEarnedStars(contrib, contribType, username) {
     const assert_ = val => assert(val, 'computing earned stars');
 
     const {stargazers_count: stars} = contrib;
@@ -361,9 +363,11 @@ function getEarnedStars(contrib, contribType) {
         isBronzeContributor && earnedStars_bronze
     );
 
+    const earnedStarsHint = username+' earned '+earnedStars+' stars from '+contrib.full_name+"'s total "+stars+" stars";
+
     assert_(earnedStars>=0 && (earnedStars|0)===earnedStars);
 
-    return earnedStars;
+    return {earnedStars, earnedStarsHint};
 }
 
 function assert(val, doingWhat) {
