@@ -11,6 +11,7 @@ import * as db from '../../../../db';
 import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
 import {Badges, BadgesMini, getDisplaySettings} from './badges/Badges';
+import RichText from './RichText';
 
 class Contrib extends React.Component {
   constructor(props) {
@@ -193,7 +194,7 @@ function ContribHeader({username, contrib: {name, full_name}, repo, badgeLine}) 
             &nbsp; &nbsp;
             <span
               className="repo-descr text-gray"
-            >{repo.description}</span>
+            >{RichText(repo.description)}</span>
           </div>
       );
 }
