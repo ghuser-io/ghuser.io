@@ -1,7 +1,11 @@
 <!-- issue143 -->
-> **WARNING**: We're overloaded at the moment and we can't handle any new profile request. We're
-> sorry and we'll come back soon with a system that scales better. See
-> [#143](https://github.com/ghuser-io/ghuser.io/issues/143).
+> **WARNING**:
+> * We're overloaded at the moment and we can't handle any new profile request. We're sorry and
+>   we'll come back soon with a system that scales better. See
+>   [#143](https://github.com/ghuser-io/ghuser.io/issues/143).
+> * We just (2018-09-14 16:30 UTC) push-forced a new history without the
+>   [database](https://github.com/ghuser-io/db) in order to reduce the size of this repo.
+>   [#146](https://github.com/ghuser-io/ghuser.io/issues/146).
 
 [![Build Status](https://travis-ci.org/ghuser-io/ghuser.io.svg?branch=master)](https://travis-ci.org/ghuser-io/ghuser.io)
 [![All Contributors](https://img.shields.io/badge/all_contributors-29-orange.svg?style=flat-square)](#contributors)
