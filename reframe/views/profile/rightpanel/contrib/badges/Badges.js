@@ -6,8 +6,8 @@ export {Badges, BadgesMini};
 export {getDisplaySettings};
 export {getDisplayOrder};
 
-function Badges({contrib}) {
-    const badgeInfos = getInfoForBadges(contrib);
+function Badges({contrib, username}) {
+    const badgeInfos = getInfoForBadges(contrib, username);
 
     return (
         <div style={{display: 'flex'}}>
@@ -19,18 +19,21 @@ function Badges({contrib}) {
     );
 }
 
-function BadgesMini({contrib}) {
-    const {contribTypeIcon, repoScaleIcon} = getInfoForBadges(contrib);
+function HintWrapper({hint, children}) {
+  return (
+    <div style={{display: 'inline-block'}} title={hint}>{children}</div>
+  );
+}
+function BadgesMini({contrib, username}) {
+  const {contribTypeIcon, contribTypeHint, repoScaleIcon, repoScaleHint} = getInfoForBadges(contrib, username);
 
-    return (
-        <div
-            style={{textAlign: 'right', width: 67, display: 'inline-block'}}
-        >
-            {contribTypeIcon}
-            &nbsp;
-            {repoScaleIcon}
-        </div>
-    );
+  return (
+    <div style={{textAlign: 'right', width: 67, display: 'inline-block'}}>
+      <HintWrapper hint={contribTypeHint}>{contribTypeIcon}</HintWrapper>
+      &nbsp;
+      <HintWrapper hint={repoScaleHint}>{repoScaleIcon}</HintWrapper>
+    </div>
+  );
 }
 
 function RepoScale({repoScale, repoScaleIcon}) {
@@ -73,20 +76,21 @@ function EarnedStars({earnedStars, stargazers_count}) {
     );
 }
 
-function ContribType({contribTypeIcon, contribTypeText}) {
+function ContribType({contribTypeIcon, contribTypeText, contribTypeHint}) {
     return (
         <Badge
           head={contribTypeIcon}
           desc={contribTypeText}
+          hint={contribTypeHint}
           width={130}
         />
     );
 }
 
-function Badge({head, desc, width}) {
+function Badge({head, desc, width, hint}) {
     return (
         <div style={{width}}>
-            <div className="big-badge text-gray">
+            <div className="big-badge text-gray" title={hint}>
                 <div>{head}</div>
                 {desc && <div className="badge-desc">{desc}</div>}
                 <div className="badge-border"/>
@@ -184,8 +188,8 @@ function getOrder__one_sided(contrib1, contrib2) {
     return null;
 }
 
-function getInfoForBadges(contrib) {
-    const {contribType, contribTypeIcon, contribTypeText} = getContribType(contrib);
+function getInfoForBadges(contrib, username) {
+    const {contribType, ...contribInfos} = getContribType(contrib, username);
 
     const contribRange = getContribRange(contrib);
 
@@ -197,8 +201,7 @@ function getInfoForBadges(contrib) {
     return {
         ...getCommitCounts(contrib),
         contribType,
-        contribTypeIcon,
-        contribTypeText,
+        ...contribInfos,
         contribRange,
         earnedStars,
         repoScale,
@@ -227,7 +230,7 @@ function getInfoForBadges(contrib) {
 }
 
 
-function getContribType(contrib) {
+function getContribType(contrib, username="user") {
     const MAINTAINER_THRESHOLD = 0.1;
     const CONTRIBUTOR_GOLD_THRESHOLD = 50;
     const CONTRIBUTOR_SILVER_THRESHOLD = 5;
@@ -251,25 +254,44 @@ function getContribType(contrib) {
     console.log('aft');
     */
 
-    const {iconClassName, text} = getInfo();
+    const {iconClassName, text, hint} = getAssets();
     const contribTypeIcon = <div className={'contrib-type-icon '+iconClassName}/>;
     const contribTypeText = text;
+    const contribTypeHint = hint;
 
-    return {contribType, contribTypeText, contribTypeIcon};
+    return {contribType, contribTypeText, contribTypeIcon, contribTypeHint};
 
-    function getInfo() {
+    function getAssets() {
         if( contribType==='maintainer' ) {
             return {
                 iconClassName: 'icon-crown',
                 text: 'maintainer',
+                hint: username+' has substantially contributed to '+contrib.full_name,
             };
         }
         const CONTRIB_PREFIX = 'contributor_';
         if( contribType.startsWith(CONTRIB_PREFIX) ) {
             const contrib_type_name = contribType.slice(CONTRIB_PREFIX.length);
+            /*
+            const hint = (
+              contribType==='contributor_silver' && (
+                username+' has often contributed to '+contrib.full_name
+              ) || (
+                username+' has contributed to '+contrib.full_name+' '+(contribType==='contributor_gold' && 'a lot' || 'couple')+' of times'
+              )
+            );
+            */
+            const contribFrequency = (
+              contribType==='maintainer' && 'substantially' ||
+              contribType==='contributor_gold' && 'a lot of times' ||
+              contribType==='contributor_silver' && 'often' ||
+              contribType==='contributor_bronze' && 'a couple of times'
+            );
+            const hint = username+' has '+contribFrequency+' contributed to '+contrib.full_name;
             return {
                 iconClassName: 'icon-contrib-'+contrib_type_name,
                 text: contrib_type_name+' contrib',
+                hint,
             };
         }
 
@@ -302,7 +324,7 @@ function getContribRange(contrib) {
 function getRepoScale(contrib) {
     const THREADSHOLD_BIG = 2000;
     const THREADSHOLD_MEDIUM = 500;
-    const THREADSHOLD_SMALL = 100;
+    const THREADSHOLD_SMALL = 50;
 
     const {total_commits_count} = contrib;
 

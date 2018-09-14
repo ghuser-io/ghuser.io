@@ -31,11 +31,9 @@ const LeftPanel = props => {
                     company={props.user.company} settings={props.user.settings}
                     blog={!props.user.ghuser_created_at && urls.landing || props.user.blog}
                     gist_username={props.user.public_gists && props.user.login || null}/>
-      {/*
       <Orgs userOrgs={props.user.organizations || []}
             contribOrgs={props.contribs && props.contribs.organizations || []}
             allOrgs={props.orgs}/>
-      */}
     </div>
   );
 };

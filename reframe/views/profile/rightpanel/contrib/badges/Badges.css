@@ -34,6 +34,7 @@
 }
 
 
+  /*
 .icon-repo-scale-micro {
   opacity: 0.2;
   filter: grayscale(100%);
@@ -45,6 +46,19 @@
 .icon-repo-scale-medium {
   opacity: 0.8;
   filter: grayscale(5%);
+}
+  */
+.icon-repo-scale-micro {
+  opacity: 0.4;
+  filter: grayscale(100%);
+}
+.icon-repo-scale-small {
+  opacity: 0.6;
+  filter: grayscale(60%);
+}
+.icon-repo-scale-medium {
+  opacity: 0.8;
+  filter: grayscale(30%);
 }
 
 /*
@@ -96,6 +110,13 @@
   top: 0px;
   left: 0;
   box-sizing: content-box;
-  border: 1px solid #e3e3e3;
+
+  border: 1px solid #e0e0e0;
+  background-color: #fafafa;
+
+  border: 1px solid #efefef;
+  background-color: #fbfbfb;
+
   border-radius: 5px;
+  z-index: -1;
 }

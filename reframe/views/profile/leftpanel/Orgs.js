@@ -24,22 +24,24 @@ const Orgs = props => {
     }
   }
 
-  if (!memberOf.length && !contributedTo.length) {
-    return <div></div>;
-  }
-
   const sections = [];
   let classes = 'mb-1';
+  /*
   if (memberOf.length) {
     sections.push(<div key='memberOf'><h4 className={classes}>Member of</h4>{memberOf}</div>);
   }
+  */
   if (contributedTo.length) {
-    if (memberOf.length) {
+    if (sections.length) {
       classes = `mt-4 ${classes}`;
     }
     sections.push(
       <div key='contributedTo'><h4 className={classes}>Contributed to</h4>{contributedTo}</div>
     );
+  }
+
+  if( sections.length===0 ) {
+    return null;
   }
 
   return (

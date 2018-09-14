@@ -142,7 +142,7 @@ class Contrib extends React.Component {
             earnedStars(this.props.contrib.percentage, this.state.repo.stargazers_count)
           */
         }
-        <Badges contrib={this.props.contrib}/>
+        <Badges contrib={this.props.contrib} username={this.props.username}/>
         {
           /*
           this.state.repo &&
@@ -165,7 +165,7 @@ class Contrib extends React.Component {
 function ContribMini(props) {
     return (
         <div className="border-bottom border-gray-light" style={{paddingBottom: 0, paddingTop: 4}}>
-          <ContribHeader {...props} badgeLine={<BadgesMini {...props}/>}/>
+          <ContribHeader {...props} badgeLine={<BadgesMini contrib={props.contrib} username={props.username}/>}/>
         </div>
     );
 }
@@ -183,6 +183,7 @@ function ContribHeader({username, contrib: {name, full_name}, repo, badgeLine}) 
             {badgeLine}
             {badgeLine && <span>&nbsp;</span>}
             <a href={`https://github.com/${full_name}`}
+               className="external"
                target="_blank">
                { repo.owner !== username &&
                    repo.owner+'/'
