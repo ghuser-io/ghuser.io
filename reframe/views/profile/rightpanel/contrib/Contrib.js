@@ -126,7 +126,7 @@ class Contrib extends React.Component {
       <Badges contrib={this.props.contrib} username={this.props.username}/>
     );
     const bodyContent = (
-      <div>
+      <div style={{paddingTop: 15}}>
         <Languages repo={this.state.repo}/>
         <BadgesMultiLine contrib={this.props.contrib} username={this.props.username}/>
       </div>
@@ -254,7 +254,7 @@ function Languages({repo}) {
     }
 
     return (
-      <div>
+      <div style={{paddingLeft: 3}}>
         {languageViews}
         <AddSettings href={`${urls.docs}/repo-settings.md`} title="Add a tech" />
       </div>

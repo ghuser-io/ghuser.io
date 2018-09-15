@@ -7,34 +7,33 @@ export {getDisplaySettings};
 export {getDisplayOrder};
 
 function Badges({contrib, username}) {
-    const badgeInfos = getInfoForBadges(contrib, username);
+  const badgeInfos = getInfoForBadges(contrib, username);
+  const badgeProps = {...contrib, ...badgeInfos, fixedWidth: true};
 
-    return (
-        <div style={{display: 'inline-flex'}}>
-            <ContribType {...badgeInfos} />
-            <RepoScale {...badgeInfos} />
-            {/*
-            <ContribRange {...badgeInfos} />
-            */}
-            <EarnedStars {...{...contrib, ...badgeInfos}} />
-        </div>
-    );
+  return (
+    <div>
+      <ContribType {...badgeProps}/>
+      <RepoScale {...badgeProps}/>
+      {/*
+      <ContribRange {...badgeProps}/>
+      */}
+      <EarnedStars {...badgeProps}/>
+    </div>
+  );
 }
 
 function BadgesMultiLine({contrib, username}) {
-    const badgeInfos = getInfoForBadges(contrib, username);
+  const badgeInfos = getInfoForBadges(contrib, username);
+  const badgeProps = {...contrib, ...badgeInfos, inlineHint: true, style: {marginBottom: 5}};
 
   return (
-    <div style={{display: 'flex'}}>
-        <ContribType {...badgeInfos} />
-        <br/>
-        <RepoScale {...badgeInfos} />
-        <br/>
+    <div style={{marginTop: 10}}>
+        <ContribType {...badgeProps}/>
+        <RepoScale {...badgeProps}/>
         {/*
-        <ContribRange {...badgeInfos} />
-        <br/>
+        <ContribRange {...badgeProps}/>
         */}
-        <EarnedStars {...{...contrib, ...badgeInfos}} />
+        <EarnedStars {...badgeProps}/>
     </div>
   );
 }
@@ -57,28 +56,30 @@ function HintWrapper({hint, children}) {
   );
 }
 
-function RepoScale({repoScale, repoScaleIcon, repoScaleHint}) {
+function RepoScale({repoScale, repoScaleIcon, repoScaleHint, ...props}) {
     return (
         <Badge
           head={repoScaleIcon}
           desc={repoScale+' project'}
           hint={repoScaleHint}
           width={130}
+          {...props}
         />
     );
 }
 
-function ContribRange({contribRange}) {
+function ContribRange({contribRange, ...props}) {
        // desc={contribRange.precise.from+' -> '+contribRange.precise.to}
     return (
         <Badge
           head={<div className="contrib-range-title text-gray">{contribRange.coarse}</div>}
           width={160}
+          {...props}
         />
     );
 }
 
-function EarnedStars({earnedStars, earnedStarsHint, stargazers_count}) {
+function EarnedStars({earnedStars, earnedStarsHint, stargazers_count, ...props}) {
     const Star = () => <span style={{fontSize: '0.92em', position: 'relative', top: '-0.08em'}}>★</span>;
     /*
     return (
@@ -86,6 +87,7 @@ function EarnedStars({earnedStars, earnedStarsHint, stargazers_count}) {
           head={<span className={'earned-stars-text earned-stars-text-color'}><Star/> {bigNum(earnedStars)}</span>}
           desc={earnedStars!==stargazers_count && <span>/ <Star/> {bigNum(stargazers_count)}</span>}
           width={170}
+          {...props}
         />
     );
     */
@@ -95,30 +97,53 @@ function EarnedStars({earnedStars, earnedStarsHint, stargazers_count}) {
           desc={<span style={{marginLeft: -3}}><span className="earned-stars-text-color">{bigNum(earnedStars)}</span>{earnedStars!==stargazers_count && <span> / <Star/> {bigNum(stargazers_count)}</span>}</span>}
           hint={earnedStarsHint}
           width={105}
+          {...props}
         />
     );
 }
 
-function ContribType({contribTypeIcon, contribTypeText, contribTypeHint}) {
+function ContribType({contribTypeIcon, contribTypeText, contribTypeHint, ...props}) {
     return (
         <Badge
           head={contribTypeIcon}
           desc={contribTypeText}
           hint={contribTypeHint}
           width={130}
+          {...props}
         />
     );
 }
 
-function Badge({head, desc, width, hint}) {
-    return (
-        <div style={{width}}>
-            <div className="big-badge text-gray" title={hint}>
+function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
+    const innerStyle = {display: 'inline-block', width: fixedWidth && width};
+    const badge = (
+        <div style={innerStyle}>
+            <div className="big-badge text-gray" title={!inlineHint && hint}>
                 <div>{head}</div>
                 {desc && <div className="badge-desc">{desc}</div>}
                 <div className="badge-border"/>
             </div>
         </div>
+    );
+
+    if( ! inlineHint ) {
+      if( ! inlineHint ) {
+        Object.assign(innerStyle, style);
+      }
+      return badge;
+    };
+
+    const hintGithubIssue = (
+      <a href="https://github.com/ghuser-io/ghuser.io/issues/1"
+         target="_blank"
+         className="external"
+      >here</a>
+    );
+
+    return (
+      <div style={style}>
+        {badge}&nbsp; :&nbsp; {hint}, explanation {hintGithubIssue}
+      </div>
     );
 }
 
