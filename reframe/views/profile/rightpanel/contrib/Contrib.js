@@ -127,7 +127,7 @@ class Contrib extends React.Component {
     );
     const bodyContent = (
       <div style={{paddingTop: 15}}>
-        <Languages repo={this.state.repo}/>
+        <Languages repo={this.state.repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={this.props.contrib} username={this.props.username}/>
       </div>
     );
@@ -228,7 +228,7 @@ function ContribHeader({username, contrib: {name, full_name}, repo, badgeLine}) 
       );
 }
 
-function Languages({repo}) {
+function Languages({repo, style={}}) {
 
     const languageViews = [];
 
@@ -254,7 +254,7 @@ function Languages({repo}) {
     }
 
     return (
-      <div style={{paddingLeft: 3}}>
+      <div style={{paddingLeft: 3, ...style}}>
         {languageViews}
         <AddSettings href={`${urls.docs}/repo-settings.md`} title="Add a tech" />
       </div>

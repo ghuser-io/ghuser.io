@@ -27,7 +27,7 @@ function BadgesMultiLine({contrib, username}) {
   const badgeProps = {...contrib, ...badgeInfos, inlineHint: true, style: {marginBottom: 5}};
 
   return (
-    <div style={{marginTop: 10}}>
+    <div>
         <ContribType {...badgeProps}/>
         <RepoScale {...badgeProps}/>
         {/*
