@@ -119,7 +119,7 @@ class Contrib extends React.Component {
     /*
     const bodyLine = (
       <div>
-        <Badges contrib={this.props.contrib} username={this.props.username}/>
+        <Badges contrib={this.props.contrib} username={this.props.username}/>/>;
         <AccordionIcon/>
       </div>
     );
@@ -127,17 +127,12 @@ class Contrib extends React.Component {
     const bodyLine = (
       <Badges contrib={this.props.contrib} username={this.props.username}/>
     );
-    const bodyContent = (
-      <div style={{paddingTop: 15}}>
-        <Languages repo={this.state.repo} style={{marginBottom: 9, marginTop: -4}}/>
-        <BadgesMultiLine contrib={this.props.contrib} username={this.props.username}/>
-      </div>
-    );
+    const expandedContent = <ContribExpandedContent {...{...this.props, ...this.state}}/>;
     const body = (
         <Accordion
           pushToFunctionQueue={this.props.pushToFunctionQueue}
           head={bodyLine}
-          content={bodyContent}
+          content={expandedContent}
         />
     );
 
@@ -197,18 +192,31 @@ class Contrib extends React.Component {
 function ContribMini(props) {
     const badgeLine = (
       <BadgesMini
-        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: 50}}
+        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: 50, marginTop: 4}}
         contrib={props.contrib}
         username={props.username}
       />
     );
+
+    const head = (
+        <div>
+          {badgeLine}
+          <ContribHeader {...props}/>
+        </div>
+    );
+
+    const expandedContent = <ContribExpandedContent {...props} style={{paddingBottom: 10}}/>;
+
     return (
         <div
           className="border-bottom border-gray-light"
-          style={{paddingBottom: 0, paddingTop: 3, paddingBottom: 3, position: 'relative', paddingLeft: LEFT_PADDING}}
+          style={{paddingTop: 3, paddingBottom: 3, position: 'relative', paddingLeft: LEFT_PADDING}}
         >
-          {badgeLine}
-          <ContribHeader {...props}/>
+          <Accordion
+            pushToFunctionQueue={props.pushToFunctionQueue}
+            head={head}
+            content={expandedContent}
+          />
         </div>
     );
 }
@@ -268,6 +276,15 @@ function Languages({repo, style={}}) {
       <div style={{paddingLeft: 3, ...style}}>
         {languageViews}
         <AddSettings href={`${urls.docs}/repo-settings.md`} title="Add a tech" />
+      </div>
+    );
+}
+
+function ContribExpandedContent({repo, username, contrib, style}) {
+    return (
+      <div style={{paddingTop: 15, ...style}}>
+        <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
+        <BadgesMultiLine contrib={contrib} username={username}/>
       </div>
     );
 }

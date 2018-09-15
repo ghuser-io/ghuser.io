@@ -68,3 +68,7 @@ a:hover
 .text-bold {
   font-weight: 600;
 }
+
+body {
+  padding-bottom: 150px;
+}
