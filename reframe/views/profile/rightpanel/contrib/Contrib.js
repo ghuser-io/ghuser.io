@@ -140,11 +140,10 @@ class Contrib extends React.Component {
     );
 
     return (
-      <div className="border-bottom border-gray-light" style={{paddingBottom: 15, paddingTop: 15}}>
-        <div style={{height: '100%'}}>
+      <div className="border-bottom border-gray-light" style={{paddingBottom: 15, paddingTop: 15, paddingLeft: 67, position: 'relative'}}>
+        <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
           {avatar()}
         </div>
-        <div style={{width: 10, height: 50, float: 'left'}}/>
         <ContribHeader {...{...this.props, ...this.state}}/>
         {/*
         <h4 className="contrib-name mr-1">
