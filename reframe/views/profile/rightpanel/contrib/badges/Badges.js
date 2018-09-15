@@ -38,13 +38,11 @@ function BadgesMultiLine({contrib, username}) {
   );
 }
 
-function BadgesMini({contrib, username}) {
+function BadgesMini({contrib, username, style={}}) {
   const {contribTypeIcon, contribTypeHint, repoScaleIcon, repoScaleHint} = getInfoForBadges(contrib, username);
-
   return (
-    <div style={{textAlign: 'right', width: 67, display: 'inline-block'}}>
+    <div style={{display: 'inline-flex', justifyContent: 'space-evenly', ...style}}>
       <HintWrapper hint={contribTypeHint}>{contribTypeIcon}</HintWrapper>
-      &nbsp;
       <HintWrapper hint={repoScaleHint}>{repoScaleIcon}</HintWrapper>
     </div>
   );

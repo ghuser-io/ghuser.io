@@ -16,6 +16,8 @@ import {Accordion, AccordionIcon} from './Accordion';
 import Language from './Language';
 import AddSettings from '../../AddSettings';
 
+const LEFT_PADDING = 67;
+
 class Contrib extends React.Component {
   constructor(props) {
     super(props);
@@ -140,7 +142,7 @@ class Contrib extends React.Component {
     );
 
     return (
-      <div className="border-bottom border-gray-light" style={{paddingBottom: 15, paddingTop: 15, paddingLeft: 67, position: 'relative'}}>
+      <div className="border-bottom border-gray-light" style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}>
         <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
           {avatar()}
         </div>
@@ -193,25 +195,34 @@ class Contrib extends React.Component {
 }
 
 function ContribMini(props) {
+    const badgeLine = (
+      <BadgesMini
+        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: 50}}
+        contrib={props.contrib}
+        username={props.username}
+      />
+    );
     return (
-        <div className="border-bottom border-gray-light" style={{paddingBottom: 0, paddingTop: 4}}>
-          <ContribHeader {...props} badgeLine={<BadgesMini contrib={props.contrib} username={props.username}/>}/>
+        <div
+          className="border-bottom border-gray-light"
+          style={{paddingBottom: 0, paddingTop: 3, paddingBottom: 3, position: 'relative', paddingLeft: LEFT_PADDING}}
+        >
+          {badgeLine}
+          <ContribHeader {...props}/>
         </div>
     );
 }
 
 
-function ContribHeader({username, contrib: {name, full_name}, repo, badgeLine}) {
+function ContribHeader({username, contrib: {name, full_name}, repo}) {
       if( ! repo ) {
           return null;
       }
       const display_name = repo.owner===username ? name : full_name;
       return (
           <div
-            style={{marginBottom: 4, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
+            style={{whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
           >
-            {badgeLine}
-            {badgeLine && <span>&nbsp;</span>}
             <a href={`https://github.com/${full_name}`}
                className="external"
                target="_blank">
