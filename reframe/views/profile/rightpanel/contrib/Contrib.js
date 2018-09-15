@@ -10,9 +10,11 @@ import * as db from '../../../../db';
 //import {withSeparator} from '../../css';
 import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
-import {Badges, BadgesMini, getDisplaySettings} from './badges/Badges';
+import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine} from './badges/Badges';
 import RichText from './RichText';
 import {Accordion, AccordionIcon} from './Accordion';
+import Language from './Language';
+import AddSettings from '../../AddSettings';
 
 class Contrib extends React.Component {
   constructor(props) {
@@ -112,9 +114,36 @@ class Contrib extends React.Component {
 
     const userIsMaintainer = this.props.contrib.percentage >= 15;
 
+    /*
+    const bodyLine = (
+      <div>
+        <Badges contrib={this.props.contrib} username={this.props.username}/>
+        <AccordionIcon/>
+      </div>
+    );
+    */
+    const bodyLine = (
+      <Badges contrib={this.props.contrib} username={this.props.username}/>
+    );
+    const bodyContent = (
+      <div>
+        <Languages repo={this.state.repo}/>
+        <BadgesMultiLine contrib={this.props.contrib} username={this.props.username}/>
+      </div>
+    );
+    const body = (
+        <Accordion
+          pushToFunctionQueue={this.props.pushToFunctionQueue}
+          head={bodyLine}
+          content={bodyContent}
+        />
+    );
+
     return (
       <div className="border-bottom border-gray-light" style={{paddingBottom: 15, paddingTop: 15}}>
-        {avatar()}
+        <div style={{height: '100%'}}>
+          {avatar()}
+        </div>
         <div style={{width: 10, height: 50, float: 'left'}}/>
         <ContribHeader {...{...this.props, ...this.state}}/>
         {/*
@@ -144,11 +173,7 @@ class Contrib extends React.Component {
             earnedStars(this.props.contrib.percentage, this.state.repo.stargazers_count)
           */
         }
-        <Accordion
-          pushToFunctionQueue={this.props.pushToFunctionQueue}
-          head={<div><Badges contrib={this.props.contrib} username={this.props.username}/><AccordionIcon/></div>}
-          content={'hello'}
-        />
+        {body}
         {
           /*
           this.state.repo &&
@@ -202,6 +227,39 @@ function ContribHeader({username, contrib: {name, full_name}, repo, badgeLine}) 
             >{RichText(repo.description)}</span>
           </div>
       );
+}
+
+function Languages({repo}) {
+
+    const languageViews = [];
+
+    const languages = repo && repo.languages;
+
+    const techs = repo && repo.settings && repo.settings.techs;
+
+    if (languages) {
+      for (const language of Object.keys(languages)) {
+        languageViews.push(<Language key={language} name={language}
+                       color={languages[language].color} />);
+      }
+    }
+    if( techs ) {
+      for (const tech of techs) {
+        languageViews.push(<Language key={tech} name={tech}
+                                 color="#ccc" />);
+      }
+    }
+
+    if( languageViews.length === 0 ) {
+      return null;
+    }
+
+    return (
+      <div>
+        {languageViews}
+        <AddSettings href={`${urls.docs}/repo-settings.md`} title="Add a tech" />
+      </div>
+    );
 }
 
 export default Contrib;

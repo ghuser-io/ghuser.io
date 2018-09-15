@@ -2,7 +2,7 @@ import React from 'react';
 import {bigNum} from '../../../numbers';
 import './Badges.css';
 
-export {Badges, BadgesMini};
+export {Badges, BadgesMini, BadgesMultiLine};
 export {getDisplaySettings};
 export {getDisplayOrder};
 
@@ -21,11 +21,24 @@ function Badges({contrib, username}) {
     );
 }
 
-function HintWrapper({hint, children}) {
+function BadgesMultiLine({contrib, username}) {
+    const badgeInfos = getInfoForBadges(contrib, username);
+
   return (
-    <div style={{display: 'inline-block'}} title={hint}>{children}</div>
+    <div style={{display: 'flex'}}>
+        <ContribType {...badgeInfos} />
+        <br/>
+        <RepoScale {...badgeInfos} />
+        <br/>
+        {/*
+        <ContribRange {...badgeInfos} />
+        <br/>
+        */}
+        <EarnedStars {...{...contrib, ...badgeInfos}} />
+    </div>
   );
 }
+
 function BadgesMini({contrib, username}) {
   const {contribTypeIcon, contribTypeHint, repoScaleIcon, repoScaleHint} = getInfoForBadges(contrib, username);
 
@@ -35,6 +48,12 @@ function BadgesMini({contrib, username}) {
       &nbsp;
       <HintWrapper hint={repoScaleHint}>{repoScaleIcon}</HintWrapper>
     </div>
+  );
+}
+
+function HintWrapper({hint, children}) {
+  return (
+    <div style={{display: 'inline-block'}} title={hint}>{children}</div>
   );
 }
 

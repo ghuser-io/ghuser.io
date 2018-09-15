@@ -23,6 +23,7 @@ const Stars = ({stars, login}) => {
   return (
     <span className="vcard-stars" title={login+" has earned a total of "+stars+" stars"}>
       <span className="earned-stars-icon-color">★</span>
+      &nbsp;
       <span className="earned-stars-text-color">{bigNum(stars)}</span>
     </span>
   );
