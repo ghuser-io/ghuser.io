@@ -85,8 +85,9 @@ Request it [here](https://ghuser.io/login).
 * [x] `04 Jul 2018` [first prototype](https://github.com/ghuser-io/ghuser.io/milestone/1)
 * [x] `14 Aug 2018` fix
       [first scaling issues](https://github.com/ghuser-io/ghuser.io/milestone/4)
-* [ ] `15 Oct 2018` fix
-      [second round of scaling issues](https://github.com/ghuser-io/ghuser.io/milestone/5)
+* [ ] `15 Oct 2018` fix second round of scaling issues listed
+      [here](https://github.com/ghuser-io/ghuser.io/milestone/5) and
+      [here](https://github.com/ghuser-io/db/milestone/1)
 * [ ] `31 Oct 2018` address
       [first user feedback](https://github.com/ghuser-io/ghuser.io/milestone/3)
 * [ ] `30 Nov 2018` display more data on each profile to really make it a modern
