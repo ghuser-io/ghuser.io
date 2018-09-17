@@ -12,7 +12,7 @@ import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
 import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine} from './badges/Badges';
 import RichText from './RichText';
-import {Accordion, AccordionIcon} from './Accordion';
+import {Accordion, AccordionIcon, stopPropagationOnLinks} from './Accordion';
 import Language from './Language';
 import AddSettings from '../../AddSettings';
 
@@ -248,6 +248,7 @@ function ContribHeader({username, contrib: {name, full_name}, repo}) {
       return (
           <div
             style={{whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
+            ref={stopPropagationOnLinks}
           >
             <a href={`https://github.com/${full_name}`}
                className="external"

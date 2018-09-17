@@ -3,6 +3,7 @@ import '../../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
 
 export {Accordion};
 export {AccordionIcon};
+export {stopPropagationOnLinks}
 
 const AccordionIcon = () => <span><i className="dropdown icon text-gray mx-1"></i></span>;
 
@@ -46,7 +47,6 @@ function stopPropagationOnLinks(domEl) {
     return;
   }
   const linkEls = Array.from(domEl.querySelectorAll('a'));
-  console.log(linkEls);
   linkEls.forEach(linkEl => {
     linkEl.onclick = ev => ev.stopPropagation();
   });
