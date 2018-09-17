@@ -7,7 +7,7 @@ const VCard = props => (
   <div className="py-3">
     <h1>
       <div className="vcard-fullname">{props.name}</div>
-      <div className="vcard-username">
+      <div className="vcard-username" style={{marginTop: -3, lineHeight: '1.7em'}}>
         <a className="vcard-username-login mr-3" href={props.url} target="_blank"><i className="fab fa-github"></i> {props.login}</a>
         <Stars {...props}/>
       </div>

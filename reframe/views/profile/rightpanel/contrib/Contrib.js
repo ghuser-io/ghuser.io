@@ -119,14 +119,15 @@ class Contrib extends React.Component {
     /*
     const bodyLine = (
       <div>
-        <Badges contrib={this.props.contrib} username={this.props.username}/>/>;
         <AccordionIcon/>
+        <Badges contrib={this.props.contrib} username={this.props.username}/>
       </div>
     );
-    */
+    /*/
     const bodyLine = (
       <Badges contrib={this.props.contrib} username={this.props.username}/>
     );
+    //*/
     const expandedContent = <ContribExpandedContent {...{...this.props, ...this.state}}/>;
     const body = (
         <Accordion
