@@ -6,12 +6,12 @@ export {Badges, BadgesMini, BadgesMultiLine};
 export {getDisplaySettings};
 export {getDisplayOrder};
 
-function Badges({contrib, username}) {
+function Badges({contrib, username, style={}}) {
   const badgeInfos = getInfoForBadges(contrib, username);
   const badgeProps = {...contrib, ...badgeInfos, fixedWidth: true};
 
   return (
-    <div style={{display: 'inline-block'}}>
+    <div style={{display: 'inline-block', ...style}}>
       <ContribType {...badgeProps}/>
       <RepoScale {...badgeProps}/>
       {/*

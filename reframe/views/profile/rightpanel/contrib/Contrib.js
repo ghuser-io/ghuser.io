@@ -58,8 +58,14 @@ class Contrib extends React.Component {
           this.state.repo.organization.avatar_url) {
         return <Avatar url={this.state.repo.organization.avatar_url} classes="avatar-small" />;
       }
-      return <a href={`${urls.docs}/repo-settings.md`} title="Add an avatar"
-                target="_blank"><AvatarAdd/></a>;
+      return (
+        <a
+          href={`${urls.docs}/repo-settings.md`}
+          title="Add an avatar"
+          target="_blank"
+          ref={stopPropagationOnLinks}
+        ><AvatarAdd/></a>
+      );
     };
 
     const badges = (owner, isFork, percentage, numContributors, popularity, numStars, activity,
@@ -125,7 +131,7 @@ class Contrib extends React.Component {
     );
     /*/
     const badgesLine = (
-      <Badges contrib={this.props.contrib} username={this.props.username}/>
+      <Badges contrib={this.props.contrib} username={this.props.username} style={{marginTop: 3}}/>
     );
     //*/
     const expandedContent = <ContribExpandedContent {...{...this.props, ...this.state}}/>;
@@ -217,19 +223,18 @@ function ContribMini(props) {
     );
 
     const head = (
-        <div>
+        <div
+          style={{paddingTop: 3, paddingBottom: 3, position: 'relative', paddingLeft: LEFT_PADDING}}
+        >
           {badgeLine}
           <ContribHeader {...props}/>
         </div>
     );
 
-    const expandedContent = <ContribExpandedContent {...props} style={{paddingBottom: 10}}/>;
+    const expandedContent = <ContribExpandedContent {...props} style={{paddingTop: 10}}/>;
 
     return (
-        <div
-          className="border-bottom border-gray-light"
-          style={{paddingTop: 3, paddingBottom: 3, position: 'relative', paddingLeft: LEFT_PADDING}}
-        >
+        <div className="border-bottom border-gray-light">
           <Accordion
             pushToFunctionQueue={props.pushToFunctionQueue}
             head={head}
@@ -299,9 +304,10 @@ function Languages({repo, style={}}) {
     );
 }
 
-function ContribExpandedContent({repo, username, contrib, style}) {
+function ContribExpandedContent({repo, username, contrib, style={}}) {
+    console.log(style);
     return (
-      <div style={{paddingTop: 15, ...style}}>
+      <div style={{paddingBottom: 15, paddingLeft: LEFT_PADDING, ...style}}>
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={contrib} username={username}/>
       </div>

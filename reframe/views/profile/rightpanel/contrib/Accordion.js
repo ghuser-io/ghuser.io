@@ -46,8 +46,10 @@ function stopPropagationOnLinks(domEl) {
   if( ! domEl ) {
     return;
   }
+  const applyStop = el => el.onclick = ev => ev.stopPropagation();
+  if( domEl.tagName.toLowerCase()==='a' ) {
+    applyStop(domEl);
+  }
   const linkEls = Array.from(domEl.querySelectorAll('a'));
-  linkEls.forEach(linkEl => {
-    linkEl.onclick = ev => ev.stopPropagation();
-  });
+  linkEls.forEach(applyStop);
 }
