@@ -17,6 +17,7 @@ class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      meta: null,
       featuredUsers: [{
         login: 'AurelienLourot',
       }, {
@@ -26,6 +27,11 @@ class Landing extends React.Component {
   }
 
   async componentDidMount() {
+    const meta = await (await fetch(`${db.url}/meta.json`)).json();
+    this.setState({
+      meta,
+    });
+
     const newFeaturedUsers = [...this.state.featuredUsers];
     for (const i in newFeaturedUsers) {
       const userId = newFeaturedUsers[i].login.toLowerCase();
@@ -75,6 +81,14 @@ class Landing extends React.Component {
                   <a href={urls.mainRepo} target="_blank" className="landing-to-github external ml-3">
                     More on GitHub
                   </a>
+                  {
+                    this.state.meta &&
+                    <span>
+                      <br />
+                      We are currently refreshing {this.state.meta.num_contribs}
+                      &nbsp;contributions daily on {this.state.meta.num_users} user profiles.
+                    </span> || ''
+                  }
                 </p>
                 <a className="btn btn-primary ml-2 mr-4" href={urls.oauthEndpoint}
                    role="button">Get your profile</a>
