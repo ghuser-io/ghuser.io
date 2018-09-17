@@ -119,7 +119,7 @@ class Contrib extends React.Component {
         {
           this.state.repo &&
             badges(this.state.repo.owner, this.state.repo.fork, this.props.contrib.percentage,
-                   Object.keys(this.state.repo.contributors).length, this.props.contrib.popularity,
+                   Object.keys(this.state.repo.contributors || []).length, this.props.contrib.popularity,
                    this.state.repo.stargazers_count, this.props.contrib.activity,
                    this.state.repo.pushed_at, this.props.contrib.maturity,
                    this.props.contrib.total_commits_count, userIsMaintainer)
