@@ -27,7 +27,10 @@ class Accordion extends React.Component {
   render() {
     return (
       <div className="ui accordion" ref={this.semanticAccordion}>
-        <div className="title ui">
+        <div
+          className="title ui"
+          ref={stopPropagationOnLinks}
+        >
           {this.props.head}
         </div>
         <div className="content ui">
@@ -36,4 +39,15 @@ class Accordion extends React.Component {
       </div>
     );
   }
+}
+
+function stopPropagationOnLinks(domEl) {
+  if( ! domEl ) {
+    return;
+  }
+  const linkEls = Array.from(domEl.querySelectorAll('a'));
+  console.log(linkEls);
+  linkEls.forEach(linkEl => {
+    linkEl.onclick = ev => ev.stopPropagation();
+  });
 }

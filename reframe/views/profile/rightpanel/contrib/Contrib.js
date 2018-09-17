@@ -251,11 +251,6 @@ function ContribHeader({username, contrib: {name, full_name}, repo}) {
           >
             <a href={`https://github.com/${full_name}`}
                className="external"
-               ref={domEl => {
-                 if( domEl ) {
-                   domEl.onclick = ev => ev.stopPropagation();
-                 }
-               }}
                target="_blank">
                { repo.owner !== username &&
                    repo.owner+'/'
