@@ -117,24 +117,41 @@ class Contrib extends React.Component {
     const userIsMaintainer = this.props.contrib.percentage >= 15;
 
     /*
-    const bodyLine = (
+    const badgesLine = (
       <div>
         <AccordionIcon/>
         <Badges contrib={this.props.contrib} username={this.props.username}/>
       </div>
     );
     /*/
-    const bodyLine = (
+    const badgesLine = (
       <Badges contrib={this.props.contrib} username={this.props.username}/>
     );
     //*/
     const expandedContent = <ContribExpandedContent {...{...this.props, ...this.state}}/>;
-    const body = (
+
+    const head = (
+      <div style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}>
+        <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
+          {avatar()}
+        </div>
+        <ContribHeader {...{...this.props, ...this.state}}/>
+        {badgesLine}
+      </div>
+    );
+
+    const accordion = (
         <Accordion
           pushToFunctionQueue={this.props.pushToFunctionQueue}
-          head={bodyLine}
+          head={head}
           content={expandedContent}
         />
+    );
+
+    return (
+      <div className="border-bottom border-gray-light">
+        {accordion}
+      </div>
     );
 
     return (
@@ -234,6 +251,11 @@ function ContribHeader({username, contrib: {name, full_name}, repo}) {
           >
             <a href={`https://github.com/${full_name}`}
                className="external"
+               ref={domEl => {
+                 if( domEl ) {
+                   domEl.onclick = ev => ev.stopPropagation();
+                 }
+               }}
                target="_blank">
                { repo.owner !== username &&
                    repo.owner+'/'
