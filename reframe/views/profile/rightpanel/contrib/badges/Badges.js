@@ -5,6 +5,7 @@ import './Badges.css';
 export {Badges, BadgesMini, BadgesMultiLine};
 export {getDisplaySettings};
 export {getDisplayOrder};
+export {getInfoForBadges};
 
 function Badges({contrib, username, style={}}) {
   const badgeInfos = getInfoForBadges(contrib, username);

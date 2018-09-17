@@ -10,7 +10,7 @@ import * as db from '../../../../db';
 //import {withSeparator} from '../../css';
 import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
-import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine} from './badges/Badges';
+import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine, getInfoForBadges} from './badges/Badges';
 import RichText from './RichText';
 import {Accordion, AccordionIcon, stopPropagationOnLinks} from './Accordion';
 import Language from './Language';
@@ -305,13 +305,41 @@ function Languages({repo, style={}}) {
 }
 
 function ContribExpandedContent({repo, username, contrib, style={}}) {
-    console.log(style);
     return (
       <div style={{paddingBottom: 15, paddingLeft: LEFT_PADDING, ...style}}>
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={contrib} username={username}/>
+        <ContribLinks {...{repo, username, contrib}} />
       </div>
     );
+}
+
+function ContribLinks({contrib, username, repo}) {
+
+  const {contribType} = getInfoForBadges(contrib, username);
+
+  if( contribType === 'maintainer' ) {
+    return null;
+  }
+  return (
+    <div style={{marginTop: 15}}>
+      <a href={`https://github.com/${contrib.full_name}/commits?author=${username}`}
+         target="_blank" className="external">
+        <i className="fas fa-code icon contrib-link-icon text-gray"></i>&nbsp;
+        {username}'s commits
+      </a>
+      <br/>
+      {
+        repo && repo.pulls_authors && repo.pulls_authors.indexOf(username) !== -1 && (
+          <a href={`https://github.com/${contrib.full_name}/pulls?q=is%3Apr+author%3A${username}`}
+             target="_blank" className="external">
+            <i className="fas fa-code-branch icon contrib-link-icon text-gray"></i>&nbsp;
+            {username}'s pull requests
+          </a>
+        ) || null
+      }
+    </div>
+  );
 }
 
 export default Contrib;
