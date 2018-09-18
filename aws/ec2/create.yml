@@ -89,6 +89,7 @@
       apt:
         name: nodejs
       become: True
+
     - name: Setup Git user name
       git_config:
         name: user.name
@@ -99,6 +100,7 @@
         name: user.email
         scope: global
         value: "{{ git_email }}"
+
     - name: Setup .bashrc
       lineinfile:
         path: /home/ubuntu/.bashrc
@@ -113,10 +115,12 @@
           val: "{{ github_username }}"
         - key: GITHUB_PASSWORD
           val: "{{ github_password }}"
+
     - name: git clone ghuser.io's DB
       git:
         repo: "https://{{ github_username }}:{{ github_password }}@github.com/ghuser-io/db.git"
         dest: /home/ubuntu/db/
+        depth: 10
     - name: npm install ghuser.io's DB
       command: npm install
       args:
@@ -125,6 +129,7 @@
       command: git reset --hard HEAD
       args:
         chdir: /home/ubuntu/db/
+
     - name: Install pip
       apt:
         name: python3-pip
@@ -161,6 +166,7 @@
       apt:
         name: jq
       become: True
+
     - name: Hint
       vars:
         msg: |
