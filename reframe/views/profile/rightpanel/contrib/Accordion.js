@@ -26,15 +26,20 @@ class Accordion extends React.Component {
   }
 
   render() {
+    const {style={}, className=""} = this.props;
     return (
-      <div className="ui accordion" ref={this.semanticAccordion}>
+      <div
+        className={"ui accordion "+className}
+        style={style}
+        ref={this.semanticAccordion}
+      >
         <div
-          className="title ui"
+          className="ui title"
           ref={stopPropagationOnLinks}
         >
           {this.props.head}
         </div>
-        <div className="content ui">
+        <div className="ui content">
           {this.props.content}
         </div>
       </div>

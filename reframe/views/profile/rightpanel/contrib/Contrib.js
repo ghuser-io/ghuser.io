@@ -235,13 +235,12 @@ function ContribMini(props) {
     const expandedContent = <ContribExpandedContent {...props} style={{paddingTop: 10}}/>;
 
     return (
-        <div className="border-bottom border-gray-light">
-          <Accordion
-            pushToFunctionQueue={props.pushToFunctionQueue}
-            head={head}
-            content={expandedContent}
-          />
-        </div>
+        <Accordion
+          pushToFunctionQueue={props.pushToFunctionQueue}
+          head={head}
+          content={expandedContent}
+          className="border-bottom border-gray-light"
+        />
     );
 }
 
