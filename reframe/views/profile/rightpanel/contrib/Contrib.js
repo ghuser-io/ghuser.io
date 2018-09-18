@@ -219,6 +219,7 @@ function ContribMini(props) {
         style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: 50, marginTop: 4}}
         contrib={props.contrib}
         username={props.username}
+        repo={props.repo}
       />
     );
 

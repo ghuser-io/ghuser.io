@@ -25,7 +25,7 @@ function Badges({contrib, username, style={}}) {
 
 function BadgesMultiLine({contrib, username}) {
   const badgeInfos = getInfoForBadges(contrib, username);
-  const badgeProps = {...contrib, ...badgeInfos, inlineHint: true, style: {marginBottom: 5}};
+  const badgeProps = {...contrib, ...badgeInfos, inlineHint: true, showMoreInfo: true, style: {marginBottom: 5}};
 
   return (
     <div>
@@ -39,12 +39,31 @@ function BadgesMultiLine({contrib, username}) {
   );
 }
 
-function BadgesMini({contrib, username, style={}}) {
-  const {contribTypeIcon, contribTypeHint, repoScaleIcon, repoScaleHint} = getInfoForBadges(contrib, username);
+function BadgesMini({contrib, repo, username, style={}}) {
+  const {contribTypeIcon, contribTypeHint, repoScaleIcon, repoScaleHint, earnedStars, earnedStarsHint} = getInfoForBadges(contrib, username);
+  const avatar_url = repo && repo.settings && repo.settings.avatar_url;
+  const repoImage = (
+    avatar_url && (
+        <img className={`avatar border border-white rounded`} src={avatar_url} style={{width: 18, height: 18}} />
+    ) || (
+        <div style={{display: 'inline-block', width: 18, height: 18}}/>
+    )
+  );
+
+  const Star = () => <span style={{fontSize: '0.92em', position: 'relative', top: '-0.08em'}}>★</span>;
+  const starsView = (
+        <BadgeMini
+          head={<span className="earned-stars-text earned-stars-icon-color"><Star/><span className="earned-stars-text-color">{bigNum(earnedStars)}</span></span>}
+          hint={earnedStarsHint}
+          width={25}
+        />
+  );
   return (
     <div style={{display: 'inline-flex', justifyContent: 'space-evenly', ...style}}>
+      {repoImage}
       <HintWrapper hint={contribTypeHint}>{contribTypeIcon}</HintWrapper>
       <HintWrapper hint={repoScaleHint}>{repoScaleIcon}</HintWrapper>
+      {starsView}
     </div>
   );
 }
@@ -78,7 +97,7 @@ function ContribRange({contribRange, ...props}) {
     );
 }
 
-function EarnedStars({earnedStars, earnedStarsHint, stargazers_count, ...props}) {
+function EarnedStars({earnedStars, earnedStarsHint, stargazers_count, showMoreInfo, ...props}) {
     const Star = () => <span style={{fontSize: '0.92em', position: 'relative', top: '-0.08em'}}>★</span>;
     /*
     return (
@@ -93,7 +112,7 @@ function EarnedStars({earnedStars, earnedStarsHint, stargazers_count, ...props})
     return (
         <Badge
           head={<span className="earned-stars-text earned-stars-icon-color"><Star/></span>}
-          desc={<span style={{marginLeft: -3}}><span className="earned-stars-text-color">{bigNum(earnedStars)}</span>{earnedStars!==stargazers_count && <span> / <Star/> {bigNum(stargazers_count)}</span>}</span>}
+          desc={<span style={{marginLeft: -3}}><span className="earned-stars-text-color">{bigNum(earnedStars)}</span>{(showMoreInfo || earnedStars!==stargazers_count) && <span> / <Star/> {bigNum(stargazers_count)}</span>}</span>}
           hint={earnedStarsHint}
           width={105}
           {...props}
@@ -144,6 +163,18 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
         {badge}&nbsp; :&nbsp; {hint}, explanation {hintGithubIssue}
       </div>
     );
+}
+
+function BadgeMini({head, width, hint, fixedWidth, style={}}) {
+    return (
+        <div style={{display: 'inline-block', width: fixedWidth && width}}>
+            <div className="badge-mini text-gray" title={hint || null}>
+                <div>{head}</div>
+                <div className="badge-border"/>
+            </div>
+        </div>
+    );
+
 }
 
 function getDisplaySettings(contrib) {

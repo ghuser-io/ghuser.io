@@ -91,7 +91,7 @@
   color: #119f11;
 }
 
-.big-badge {
+.big-badge, .badge-mini {
   display: inline-flex;
   align-items: center;
   text-align: center;
@@ -102,7 +102,7 @@
   font-size: .8em;
   margin-left: 5px;
 }
-.big-badge {
+.big-badge, .badge-mini {
   position: relative;
 }
 .badge-border {
@@ -121,4 +121,9 @@
 
   border-radius: 5px;
   z-index: -1;
+}
+.badge-mini {
+  padding-left: 3px;
+  padding-right: 2px;
+  font-size: 0.8em;
 }
