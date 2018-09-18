@@ -2,10 +2,25 @@ import React from 'react';
 import '../../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
 
 export {Accordion};
+export {AccordionHead, AccordionBody};
 export {AccordionIcon};
 export {stopPropagationOnLinks}
 
 const AccordionIcon = () => <span><i className="dropdown icon text-gray mx-1"></i></span>;
+
+const AccordionHead = ({className, ...props}) => (
+  <div
+    className={"ui title "+className}
+    ref={stopPropagationOnLinks}
+    {...props}
+  />
+);
+const AccordionBody = ({className, ...props}) => (
+  <div
+    className={"ui content "+className}
+    {...props}
+  />
+);
 
 class Accordion extends React.Component {
   constructor(props) {
@@ -26,23 +41,13 @@ class Accordion extends React.Component {
   }
 
   render() {
-    const {style={}, className=""} = this.props;
+    const {className="", ...props} = this.props;
     return (
       <div
         className={"ui accordion "+className}
-        style={style}
         ref={this.semanticAccordion}
-      >
-        <div
-          className="ui title"
-          ref={stopPropagationOnLinks}
-        >
-          {this.props.head}
-        </div>
-        <div className="ui content">
-          {this.props.content}
-        </div>
-      </div>
+        {...props}
+      />
     );
   }
 }

@@ -12,7 +12,7 @@ import {bigNum, roundHalf} from '../../numbers';
 import {urls} from '../../../../ghuser';
 import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine, getInfoForBadges} from './badges/Badges';
 import RichText from './RichText';
-import {Accordion, AccordionIcon, stopPropagationOnLinks} from './Accordion';
+import {Accordion, AccordionHead, AccordionBody, AccordionIcon, stopPropagationOnLinks} from './Accordion';
 import Language from './Language';
 import AddSettings from '../../AddSettings';
 
@@ -134,30 +134,26 @@ class Contrib extends React.Component {
       <Badges contrib={this.props.contrib} username={this.props.username} style={{marginTop: 3}}/>
     );
     //*/
-    const expandedContent = <ContribExpandedContent {...{...this.props, ...this.state}}/>;
+    const accordionBody = <ContribExpandedContent {...{...this.props, ...this.state}}/>;
 
     const head = (
-      <div style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}>
+      <AccordionHead style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}>
         <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
           {avatar()}
         </div>
         <ContribHeader {...{...this.props, ...this.state}}/>
         {badgesLine}
-      </div>
-    );
-
-    const accordion = (
-        <Accordion
-          pushToFunctionQueue={this.props.pushToFunctionQueue}
-          head={head}
-          content={expandedContent}
-        />
+      </AccordionHead>
     );
 
     return (
-      <div className="border-bottom border-gray-light">
-        {accordion}
-      </div>
+        <Accordion
+          pushToFunctionQueue={this.props.pushToFunctionQueue}
+          className="border-bottom border-gray-light"
+        >
+        {head}
+        {accordionBody}
+        </Accordion>
     );
 
     return (
@@ -224,23 +220,24 @@ function ContribMini(props) {
     );
 
     const head = (
-        <div
+        <AccordionHead
           style={{paddingTop: 3, paddingBottom: 3, position: 'relative', paddingLeft: LEFT_PADDING}}
         >
           {badgeLine}
           <ContribHeader {...props}/>
-        </div>
+        </AccordionHead>
     );
 
-    const expandedContent = <ContribExpandedContent {...props} style={{paddingTop: 10}}/>;
+    const body = <ContribExpandedContent {...props} style={{paddingTop: 10}}/>;
 
     return (
-        <Accordion
-          pushToFunctionQueue={props.pushToFunctionQueue}
-          head={head}
-          content={expandedContent}
-          className="border-bottom border-gray-light"
-        />
+      <Accordion
+        pushToFunctionQueue={props.pushToFunctionQueue}
+        className="border-bottom border-gray-light"
+      >
+        {head}
+        {body}
+      </Accordion>
     );
 }
 
@@ -306,11 +303,11 @@ function Languages({repo, style={}}) {
 
 function ContribExpandedContent({repo, username, contrib, style={}}) {
     return (
-      <div style={{paddingBottom: 15, paddingLeft: LEFT_PADDING, ...style}}>
+      <AccordionBody style={{paddingBottom: 15, paddingLeft: LEFT_PADDING, ...style}}>
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={contrib} username={username}/>
         <ContribLinks {...{repo, username, contrib}} />
-      </div>
+      </AccordionBody>
     );
 }
 
