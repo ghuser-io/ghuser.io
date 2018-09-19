@@ -8,12 +8,14 @@ import VCardDetails from './VCardDetails';
 import './LeftPanel.css';
 import Avatar from '../Avatar';
 import {urls} from '../../../ghuser';
+import {getInfoForBadges} from './../rightpanel/contrib/badges/Badges';
 
 const LeftPanel = props => {
   let stars = 0;
   for (const repo in props.contribs && props.contribs.repos) {
     const contrib = props.contribs.repos[repo];
-    stars += contrib.percentage * contrib.stargazers_count / 100;
+    const {earnedStars} = getInfoForBadges(contrib);
+    stars += earnedStars;
   }
 
   return (
