@@ -59,7 +59,7 @@ function BadgesMini({contrib, repo, username, style={}}) {
         />
   );
   return (
-    <div style={{display: 'inline-flex', justifyContent: 'space-evenly', ...style}}>
+    <div style={{...style}}>
       {repoImage}
       <HintWrapper hint={contribTypeHint}>{contribTypeIcon}</HintWrapper>
       <HintWrapper hint={repoScaleHint}>{repoScaleIcon}</HintWrapper>
@@ -167,11 +167,13 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
 
 function BadgeMini({head, width, hint, fixedWidth, style={}}) {
     return (
-        <div style={{display: 'inline-block', width: fixedWidth && width}}>
-            <div className="badge-mini text-gray" title={hint || null}>
-                <div>{head}</div>
-                <div className="badge-border"/>
-            </div>
+        <div
+          className="badge-mini text-gray"
+          title={hint || null}
+          style={{display: 'inline-block', width: fixedWidth && width, ...style}}
+        >
+          <div>{head}</div>
+          <div className="badge-border"/>
         </div>
     );
 

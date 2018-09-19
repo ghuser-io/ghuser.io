@@ -212,7 +212,7 @@ class Contrib extends React.Component {
 function ContribMini(props) {
     const badgeLine = (
       <BadgesMini
-        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: 50, marginTop: 4}}
+        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: 70, marginTop: 4}}
         contrib={props.contrib}
         username={props.username}
         repo={props.repo}
@@ -228,7 +228,12 @@ function ContribMini(props) {
         </AccordionHead>
     );
 
-    const body = <ContribExpandedContent {...props} style={{paddingTop: 10}}/>;
+    const body = (
+      <ContribExpandedContent
+        style={{paddingTop: 10}}
+        {...props}
+      />
+    );
 
     return (
       <Accordion
@@ -301,9 +306,9 @@ function Languages({repo, style={}}) {
     );
 }
 
-function ContribExpandedContent({repo, username, contrib, style={}}) {
+function ContribExpandedContent({repo, username, contrib, style={}, className=""}) {
     return (
-      <AccordionBody style={{paddingBottom: 15, paddingLeft: LEFT_PADDING, ...style}}>
+      <AccordionBody className={className} style={{paddingBottom: 15, paddingLeft: LEFT_PADDING, ...style}}>
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={contrib} username={username}/>
         <ContribLinks {...{repo, username, contrib}} />
