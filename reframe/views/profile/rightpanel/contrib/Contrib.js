@@ -16,8 +16,6 @@ import {Accordion, AccordionHead, AccordionBody, AccordionIcon, stopPropagationO
 import Language from './Language';
 import AddSettings from '../../AddSettings';
 
-const LEFT_PADDING = 67;
-
 class Contrib extends React.Component {
   constructor(props) {
     super(props);
@@ -122,6 +120,8 @@ class Contrib extends React.Component {
 
     const userIsMaintainer = this.props.contrib.percentage >= 15;
 
+    const LEFT_PADDING = 67;
+
     /*
     const badgesLine = (
       <div>
@@ -134,7 +134,7 @@ class Contrib extends React.Component {
       <Badges contrib={this.props.contrib} username={this.props.username} style={{marginTop: 3}}/>
     );
     //*/
-    const accordionBody = <ContribExpandedContent {...{...this.props, ...this.state}}/>;
+    const accordionBody = <ContribExpandedContent {...{...this.props, ...this.state}} style={{paddingLeft: LEFT_PADDING}}/>;
 
     const head = (
       <AccordionHead style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}>
@@ -210,9 +210,11 @@ class Contrib extends React.Component {
 }
 
 function ContribMini(props) {
+    const LEFT_PADDING = 100;
+
     const badgeLine = (
       <BadgesMini
-        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: 70, marginTop: 4}}
+        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: LEFT_PADDING-4, marginTop: 4}}
         contrib={props.contrib}
         username={props.username}
         repo={props.repo}
@@ -230,7 +232,7 @@ function ContribMini(props) {
 
     const body = (
       <ContribExpandedContent
-        style={{paddingTop: 10}}
+        style={{paddingTop: 10, paddingLeft: LEFT_PADDING}}
         {...props}
       />
     );
@@ -308,7 +310,7 @@ function Languages({repo, style={}}) {
 
 function ContribExpandedContent({repo, username, contrib, style={}, className=""}) {
     return (
-      <AccordionBody className={className} style={{paddingBottom: 15, paddingLeft: LEFT_PADDING, ...style}}>
+      <AccordionBody className={className} style={{paddingBottom: 15, ...style}}>
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={contrib} username={username}/>
         <ContribLinks {...{repo, username, contrib}} />

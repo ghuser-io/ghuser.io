@@ -41,7 +41,7 @@ class Accordion extends React.Component {
   }
 
   render() {
-    const {className="", ...props} = this.props;
+    const {className="", pushToFunctionQueue, ...props} = this.props;
     return (
       <div
         className={"ui accordion "+className}

@@ -55,11 +55,12 @@ function BadgesMini({contrib, repo, username, style={}}) {
         <BadgeMini
           head={<span className="earned-stars-text earned-stars-icon-color"><Star/><span className="earned-stars-text-color">{bigNum(earnedStars)}</span></span>}
           hint={earnedStarsHint}
-          width={25}
+          outerStyle={{textAlign: 'left', minWidth: 35}}
+          fixedWidth={true}
         />
   );
   return (
-    <div style={{...style}}>
+    <div style={{display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', ...style}}>
       {repoImage}
       <HintWrapper hint={contribTypeHint}>{contribTypeIcon}</HintWrapper>
       <HintWrapper hint={repoScaleHint}>{repoScaleIcon}</HintWrapper>
@@ -165,15 +166,19 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
     );
 }
 
-function BadgeMini({head, width, hint, fixedWidth, style={}}) {
+function BadgeMini({head, width, hint, innerStyle={}, outerStyle={}}) {
     return (
         <div
-          className="badge-mini text-gray"
-          title={hint || null}
-          style={{display: 'inline-block', width: fixedWidth && width, ...style}}
+          style={{display: 'inline-block', textAlign: 'center', ...outerStyle}}
         >
-          <div>{head}</div>
-          <div className="badge-border"/>
+          <div
+            className="badge-mini text-gray"
+            title={hint || null}
+            style={innerStyle}
+          >
+            <div>{head}</div>
+            <div className="badge-border"/>
+          </div>
         </div>
     );
 
