@@ -55,7 +55,7 @@ function BadgesMini({contrib, repo, username, style={}}) {
         <BadgeMini
           head={<span className="earned-stars-text earned-stars-icon-color"><Star/><span className="earned-stars-text-color">{bigNum(earnedStars)}</span></span>}
           hint={earnedStarsHint}
-          outerStyle={{textAlign: 'left', minWidth: 35}}
+          outerStyle={{textAlign: 'left', minWidth: 40}}
           fixedWidth={true}
         />
   );
@@ -71,7 +71,7 @@ function BadgesMini({contrib, repo, username, style={}}) {
 
 function HintWrapper({hint, children}) {
   return (
-    <div style={{display: 'inline-block'}} title={hint}>{children}</div>
+    <div style={{display: 'inline-block', lineHeight: 0}} title={hint}>{children}</div>
   );
 }
 
@@ -169,12 +169,26 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
 function BadgeMini({head, width, hint, innerStyle={}, outerStyle={}}) {
     return (
         <div
-          style={{display: 'inline-block', textAlign: 'center', ...outerStyle}}
+          style={{
+            display: 'block',
+            textAlign: 'center',
+              lineHeight: 0,
+            ...outerStyle
+          }}
         >
           <div
-            className="badge-mini text-gray"
+            style={{
+              position: 'relative',
+              display: 'inline-block',
+              paddingLeft: 3,
+              paddingRight: 2,
+              top: 1,
+              paddingBottom: 2,
+              fontSize: '0.8em',
+              lineHeight: 'normal',
+              ...innerStyle
+            }}
             title={hint || null}
-            style={innerStyle}
           >
             <div>{head}</div>
             <div className="badge-border"/>

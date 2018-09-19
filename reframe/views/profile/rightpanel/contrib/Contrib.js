@@ -214,7 +214,7 @@ function ContribMini(props) {
 
     const badgeLine = (
       <BadgesMini
-        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: LEFT_PADDING-4, marginTop: 4}}
+        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: LEFT_PADDING, marginTop: 1}}
         contrib={props.contrib}
         username={props.username}
         repo={props.repo}
