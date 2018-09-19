@@ -15,5 +15,15 @@ const bigNum = num => {
 
 export {
   roundHalf,
-  bigNum
+  bigNum,
+  numberOf,
 };
+
+function numberOf(n, what, abbreviate) {
+  return (
+    (abbreviate?bigNum(n):n)+
+    ' '+
+    what+
+    (n===1 ? '' : 's')
+  );
+}

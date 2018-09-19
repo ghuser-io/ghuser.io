@@ -1,5 +1,5 @@
 import React from 'react';
-import {bigNum} from '../../../numbers';
+import {bigNum, numberOf} from '../../../numbers';
 import './Badges.css';
 
 export {Badges, BadgesMini, BadgesMultiLine};
@@ -458,7 +458,7 @@ function getEarnedStars(contrib, contribType, username) {
         isBronzeContributor && earnedStars_bronze
     );
 
-    const earnedStarsHint = username+' earned '+earnedStars+' stars from '+contrib.full_name+"'s total "+stars+" stars";
+    const earnedStarsHint = username+' earned '+numberOf(earnedStars, 'star')+' from '+contrib.full_name+"'s total "+numberOf(stars, 'star');
 
     assert_(earnedStars>=0 && (earnedStars|0)===earnedStars);
 

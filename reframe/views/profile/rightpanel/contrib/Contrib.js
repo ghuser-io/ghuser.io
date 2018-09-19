@@ -8,13 +8,14 @@ import Avatar from '../../Avatar';
 import AvatarAdd from '../../AvatarAdd';
 import * as db from '../../../../db';
 //import {withSeparator} from '../../css';
-import {bigNum, roundHalf} from '../../numbers';
+import {bigNum, roundHalf, numberOf} from '../../numbers';
 import {urls} from '../../../../ghuser';
 import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine, getInfoForBadges} from './badges/Badges';
 import RichText from './RichText';
 import {Accordion, AccordionHead, AccordionBody, AccordionIcon, stopPropagationOnLinks} from './Accordion';
 import Language from './Language';
 import AddSettings from '../../AddSettings';
+import ProgressBar from './ProgressBar';
 
 class Contrib extends React.Component {
   constructor(props) {
@@ -134,7 +135,12 @@ class Contrib extends React.Component {
       <Badges contrib={this.props.contrib} username={this.props.username} style={{marginTop: 3}}/>
     );
     //*/
-    const accordionBody = <ContribExpandedContent {...{...this.props, ...this.state}} style={{paddingLeft: LEFT_PADDING}}/>;
+    const accordionBody = (
+      <ContribExpandedContent
+        {...{...this.props, ...this.state}}
+        style={{paddingLeft: LEFT_PADDING}}
+      />
+    );
 
     const head = (
       <AccordionHead style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}>
@@ -232,8 +238,8 @@ function ContribMini(props) {
 
     const body = (
       <ContribExpandedContent
-        style={{paddingTop: 10, paddingLeft: LEFT_PADDING}}
         {...props}
+        style={{paddingTop: 10, paddingLeft: LEFT_PADDING}}
       />
     );
 
@@ -308,33 +314,44 @@ function Languages({repo, style={}}) {
     );
 }
 
-function ContribExpandedContent({repo, username, contrib, style={}, className=""}) {
+function ContribExpandedContent({repo, username, contrib, style={}, className="", pushToFunctionQueue}) {
     return (
       <AccordionBody className={className} style={{paddingBottom: 15, ...style}}>
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={contrib} username={username}/>
-        <ContribLinks {...{repo, username, contrib}} />
+        <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
       </AccordionBody>
     );
 }
 
-function ContribLinks({contrib, username, repo}) {
+function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
 
-  const {contribType} = getInfoForBadges(contrib, username);
+  const {commits_count__user, commits_count__percentage, commits_count__total, contribType} = getInfoForBadges(contrib, username);
 
-  if( contribType === 'maintainer' ) {
-    return null;
-  }
+  const isMaintainer = contribType === 'maintainer';
+
+  const CommitLink = ({children}) => (
+    isMaintainer ? (
+      children
+    ) : (
+      <a href={`https://github.com/${contrib.full_name}/commits?author=${username}`}
+         target="_blank" className="external">{children}</a>
+    )
+  );
+
   return (
     <div style={{marginTop: 15}}>
-      <a href={`https://github.com/${contrib.full_name}/commits?author=${username}`}
-         target="_blank" className="external">
+      <div>
         <i className="fas fa-code icon contrib-link-icon text-gray"></i>&nbsp;
-        {username}'s commits
-      </a>
-      <br/>
+        <ProgressBar color="green" percentage={commits_count__percentage*100}
+                     pushToFunctionQueue={pushToFunctionQueue} />
+          {' '}
+          {username} wrote <CommitLink>{numberOf(commits_count__user, 'commit')}</CommitLink>
+          {' '}
+          ({Math.round(commits_count__percentage*100)}% of all {numberOf(commits_count__total, 'commit')})
+      </div>
       {
-        repo && repo.pulls_authors && repo.pulls_authors.indexOf(username) !== -1 && (
+        !isMaintainer && repo && repo.pulls_authors && repo.pulls_authors.indexOf(username) !== -1 && (
           <a href={`https://github.com/${contrib.full_name}/pulls?q=is%3Apr+author%3A${username}`}
              target="_blank" className="external">
             <i className="fas fa-code-branch icon contrib-link-icon text-gray"></i>&nbsp;
