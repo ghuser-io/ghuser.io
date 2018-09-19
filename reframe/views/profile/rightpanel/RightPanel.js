@@ -41,6 +41,13 @@ const RightPanel = props => {
 
     const uniqueNames = [];
     for (const contrib of contribs) {
+      // Don't include repos where user has made 0 commits. This happens when a user
+      // makes a PR that is not merged.
+      if( contrib.percentage===0 ) {
+        continue;
+      }
+
+
       // We don't want to have two repos with the same name. This happens when a user is
       // contributing to a project and has a fork with the same name:
       if (uniqueNames.indexOf(contrib.name) > -1) {
