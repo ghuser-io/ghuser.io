@@ -10,7 +10,7 @@ import * as db from '../../../../db';
 //import {withSeparator} from '../../css';
 import {bigNum, roundHalf, numberOf} from '../../numbers';
 import {urls} from '../../../../ghuser';
-import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine, getInfoForBadges, getContribRank} from './badges/Badges';
+import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine, getInfoForBadges, getContribScore} from './badges/Badges';
 import RichText from './RichText';
 import {Accordion, AccordionHead, AccordionBody, AccordionIcon, stopPropagationOnLinks} from './Accordion';
 import Language from './Language';
@@ -316,28 +316,52 @@ function Languages({repo, style={}}) {
 
 function ContribExpandedContent({repo, username, contrib, style={}, className="", pushToFunctionQueue}) {
     return (
-      <AccordionBody className={className} style={{paddingBottom: 15, ...style}}>
+      <AccordionBody className={"text-gray "+className} style={{paddingBottom: 15, ...style}}>
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={contrib} username={username}/>
         <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
-        <RankView {...{contrib}}/>
+        <ScoreExplanation {...{contrib}}/>
       </AccordionBody>
     );
 }
 
-function RankView({contrib}) {
-  const {rank, userCommitsCount, starBoost, contribBoost} = getContribRank(contrib);
+function ScoreExplanation({contrib}) {
+  const {contribScore, userCommitsCount, starBoost, contribBoost} = getContribScore(contrib);
+
+  const contribScorePretty = Math.round(contribScore);
+  const starBoostPretty = starBoost.toFixed(2);
+  const contribBoostPretty = contribBoost.toFixed(2);
+
+  // TODO remove
+  const Asterix = ({n}) => <span style={{opacity: 1}}>({n})</span>;
+
+  const RELATED_ISSUE_ID = 1; // TODO
+
   return (
-    <div>
-      rank: {rank} (= userCommitsCount * starBoost * contribBoost)
-      <br/>
-      userCommitsCount: {userCommitsCount}
-      <br/>
-      starBoost: {starBoost}
-      <br/>
-      contribBoost: {contribBoost}
+    <div style={{fontSize: '1em', marginTop: 15}}>
+      Contribution score: {contribScorePretty}
+      <div style={{fontSize: '0.8em', opacity: 0.85}}>
+        Calculation: {contribScorePretty} = {userCommitsCount} <Asterix n={1}/> * {starBoostPretty} <Asterix n={2}/> * {contribBoostPretty} <Asterix n={3}/>
+        <br/>
+        (1): Number of user commits
+        <br/>
+        (2): So-called <em>star boost</em> that increases the score depending on how much stars the repo has
+        <br/>
+        (3): So-called <em>contrib boost</em> that increases the score depending on how collaborative your contribution is
+        <br/>
+        All contributions on this page are sorted according to this score, more infos <RelatedGithubIssue/>.
+      </div>
     </div>
   );
+
+  function RelatedGithubIssue () {
+    return (
+      <a href={"https://github.com/ghuser-io/ghuser.io/issues/"+RELATED_ISSUE_ID}
+         target="_blank"
+         className="external"
+      >here</a>
+    );
+  }
 }
 
 function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {

@@ -6,7 +6,7 @@ export {Badges, BadgesMini, BadgesMultiLine};
 export {getDisplaySettings};
 export {getDisplayOrder};
 export {getInfoForBadges};
-export {getContribRank};
+export {getContribScore};
 
 function Badges({contrib, username, style={}}) {
   const badgeInfos = getInfoForBadges(contrib, username);
@@ -153,6 +153,7 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
       return badge;
     };
 
+    // TODO
     const hintGithubIssue = (
       <a href="https://github.com/ghuser-io/ghuser.io/issues/1"
          target="_blank"
@@ -214,10 +215,10 @@ function getDisplaySettings(contrib) {
 }
 
 function getDisplayOrder(contrib1, contrib2) {
-  return getContribRank(contrib2).rank - getContribRank(contrib1).rank;
+  return getContribScore(contrib2).contribScore - getContribScore(contrib1).contribScore;
 }
 
-function getContribRank(contrib) {
+function getContribScore(contrib) {
   const {
       commits_count__user: userCommitsCount,
       commits_count__percentage,
@@ -229,9 +230,9 @@ function getContribRank(contrib) {
 
   const contribBoost = getContribBoost(commits_count__percentage);
 
-  const rank = userCommitsCount*starBoost*contribBoost;
+  const contribScore = userCommitsCount*starBoost*contribBoost;
 
-  return {rank, userCommitsCount, starBoost, contribBoost};
+  return {contribScore, userCommitsCount, starBoost, contribBoost};
 }
 
 function getContribBoost(commits_count__percentage) {
