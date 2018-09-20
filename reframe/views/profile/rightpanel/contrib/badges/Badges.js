@@ -6,6 +6,7 @@ export {Badges, BadgesMini, BadgesMultiLine};
 export {getDisplaySettings};
 export {getDisplayOrder};
 export {getInfoForBadges};
+export {getContribRank};
 
 function Badges({contrib, username, style={}}) {
   const badgeInfos = getInfoForBadges(contrib, username);
@@ -213,6 +214,41 @@ function getDisplaySettings(contrib) {
 }
 
 function getDisplayOrder(contrib1, contrib2) {
+  return getContribRank(contrib2).rank - getContribRank(contrib1).rank;
+}
+
+function getContribRank(contrib) {
+  const {
+      commits_count__user: commitsCount,
+      commits_count__percentage,
+  } = getInfoForBadges(contrib);
+
+  const {stargazers_count: stars} = contrib;
+
+  const starBoost = getStarBoost(stars);
+
+  const contribBoost = getContribBoost(commits_count__percentage);
+
+  const rank = commitsCount*starBoost*contribBoost;
+
+  return {rank, commitsCount, starBoost, contribBoost};
+}
+
+function getContribBoost(commits_count__percentage) {
+  const contribBoost = 1 + ((1 - commits_count__percentage) * 5);
+
+  return contribBoost;
+}
+
+function getStarBoost(stars) {
+  const MAX_STARS = 100*1000;
+  const starBoost = 0.2 + (Math.log10(stars) / Math.log10(MAX_STARS) * 5);
+
+  return starBoost;
+}
+
+/*
+function getDisplayOrder(contrib1, contrib2) {
     let orderVal;
     orderVal = getOrder__one_sided(contrib1, contrib2);
     if( orderVal!==null ) {
@@ -259,6 +295,7 @@ function getDisplayOrder(contrib1, contrib2) {
 
     return commits_count__user2 - commits_count__user1;
 }
+*/
 
 function getOrder__one_sided(contrib1, contrib2) {
     const {

@@ -10,7 +10,7 @@ import * as db from '../../../../db';
 //import {withSeparator} from '../../css';
 import {bigNum, roundHalf, numberOf} from '../../numbers';
 import {urls} from '../../../../ghuser';
-import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine, getInfoForBadges} from './badges/Badges';
+import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine, getInfoForBadges, getContribRank} from './badges/Badges';
 import RichText from './RichText';
 import {Accordion, AccordionHead, AccordionBody, AccordionIcon, stopPropagationOnLinks} from './Accordion';
 import Language from './Language';
@@ -320,8 +320,24 @@ function ContribExpandedContent({repo, username, contrib, style={}, className=""
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
         <BadgesMultiLine contrib={contrib} username={username}/>
         <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
+        <RankView {...{contrib}}/>
       </AccordionBody>
     );
+}
+
+function RankView({contrib}) {
+  const {rank, commitsCount, starBoost, contribBoost} = getContribRank(contrib);
+  return (
+    <div>
+      rank: {rank}
+      <br/>
+      commitsCount: {commitsCount}
+      <br/>
+      starBoost: {starBoost}
+      <br/>
+      contribBoost: {contribBoost}
+    </div>
+  );
 }
 
 function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
