@@ -1,0 +1,10 @@
+{
+  "CORSRules": [
+    {
+      "AllowedOrigins": ["http://localhost:3000", "https://ghuser.io", "https://www.ghuser.io"],
+      "AllowedHeaders": ["*"],
+      "AllowedMethods": ["GET"],
+      "MaxAgeSeconds": 300
+    }
+  ]
+}

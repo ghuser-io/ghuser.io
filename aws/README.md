@@ -10,6 +10,8 @@ AWS by making use of the following services.
 - [Services](#services)
   * [AWS Lambda](#aws-lambda)
   * [AWS EC2](#aws-ec2)
+  * [AWS EFS](#aws-efs)
+  * [AWS S3](#aws-s3)
   * [AWS SQS](#aws-sqs)
   * [AWS Route 53](#aws-route-53)
 - [Setting up AWS CLI](#setting-up-aws-cli)
@@ -38,10 +40,32 @@ To create this EC2 instance:
 * [set up AWS CLI](#setting-up-aws-cli), and
 * go to the [`ec2/`](ec2/) subfolder.
 
+### AWS EFS
+
+The [data](https://github.com/ghuser-io/db) of all profiles is stored as a
+[bare git repository](http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/) on an
+[EFS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEFS.html) mounted on the EC2
+instance.
+
+To create this EFS:
+* [set up AWS CLI](#setting-up-aws-cli), and
+* go to the [`efs/`](efs/) subfolder.
+
+### AWS S3
+
+The web app's front end running in the user's browser fetches the
+[data](https://github.com/ghuser-io/db) of all profiles from
+[S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html). Our S3 bucket is a mirror of the
+data present on the EFS.
+
+To create this S3 bucket:
+* [set up AWS CLI](#setting-up-aws-cli), and
+* go to the [`s3/`](s3/) subfolder.
+
 ### AWS SQS
 
-[The bot](https://github.com/ghuser-io/db/blob/master/fetchBot) also processes profile requests, i.e. when a new user wants to get their
-profile. These requests are implemented as
+[The bot](https://github.com/ghuser-io/db/blob/master/fetchBot) also processes profile requests,
+i.e. when a new user wants to get their profile. These requests are implemented as
 [SQS messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html).
 
 To create this SQS queue:
