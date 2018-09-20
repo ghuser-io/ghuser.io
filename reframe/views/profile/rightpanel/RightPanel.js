@@ -40,7 +40,9 @@ const RightPanel = props => {
     contribs.sort(getDisplayOrder);
 
     const uniqueNames = [];
-    for (const contrib of contribs) {
+    for (const i in contribs) {
+      const contrib = contribs[i];
+
       // Don't include repos where user has made 0 commits. This happens when a user
       // makes a PR that is not merged.
       if( contrib.percentage===0 ) {
@@ -57,6 +59,7 @@ const RightPanel = props => {
 
       repos.push(
           <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
+                   i={i}
                    pushToFunctionQueue={pushToFunctionQueue} />
       );
     }

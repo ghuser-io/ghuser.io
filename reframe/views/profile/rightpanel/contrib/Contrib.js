@@ -38,7 +38,7 @@ class Contrib extends React.Component {
   }
 
   render() {
-    if( ! this.state.loading && this.state.repo && getDisplaySettings(this.props.contrib).miniDisplay ) {
+    if( ! this.state.loading && this.state.repo && /*getDisplaySettings(this.props.contrib).miniDisplay*/ this.props.i>=10 ) {
         return <ContribMini {...{...this.props, ...this.state}}/>;
     }
 
@@ -143,12 +143,16 @@ class Contrib extends React.Component {
     );
 
     const head = (
-      <AccordionHead style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}>
+      <AccordionHead
+        style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}
+        className="contrib-head"
+      >
         <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
           {avatar()}
         </div>
         <ContribHeader {...{...this.props, ...this.state}}/>
         {badgesLine}
+        <div className="badger-accordion__header-icon"/>
       </AccordionHead>
     );
 
@@ -341,6 +345,8 @@ function ScoreExplanation({contrib}) {
     <div style={{fontSize: '1em', marginTop: 15}}>
       Contribution score: {contribScorePretty}
       <div style={{fontSize: '0.8em', opacity: 0.85}}>
+        All contributions on this page are sorted according to this score, more infos <RelatedGithubIssue/>.
+        <br/>
         Calculation: {contribScorePretty} = {userCommitsCount} <Asterix n={1}/> * {starBoostPretty} <Asterix n={2}/> * {contribBoostPretty} <Asterix n={3}/>
         <br/>
         (1): Number of user commits
@@ -348,8 +354,6 @@ function ScoreExplanation({contrib}) {
         (2): So-called <em>star boost</em> that increases the score depending on how much stars the repo has
         <br/>
         (3): So-called <em>contrib boost</em> that increases the score depending on how collaborative the repo is
-        <br/>
-        All contributions on this page are sorted according to this score, more infos <RelatedGithubIssue/>.
       </div>
     </div>
   );

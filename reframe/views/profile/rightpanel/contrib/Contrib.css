@@ -7,3 +7,49 @@
   text-align: center;
   width: 18px;
 }
+
+.badger-accordion__header-icon {
+  float: right;
+  position: absolute;
+  z-index: -1;
+
+  right: 50%;
+  bottom: -10px;
+
+  right: 20px;
+  bottom: 5px;
+}
+
+.badger-accordion__header-icon {
+  display: block;
+  height: 20px;
+  width: 20px;
+  margin-left: auto;
+  position: relative;
+  transition: all ease-in-out 0.2s; }
+  .badger-accordion__header-icon:after, .badger-accordion__header-icon:before {
+    background-color: #ddd;
+    content: "";
+    height: 2px;
+    position: absolute;
+    top: 10px;
+    transition: all ease-in-out 0.13333s, background-color 0.7s;
+    width: 15px; }
+  .badger-accordion__header-icon:before {
+    left: 0;
+    transform: rotate(45deg) translate3d(8px, 14px, 0);
+    transform-origin: 100%; }
+  .badger-accordion__header-icon:after {
+    transform: rotate(-45deg) translate3d(-8px, 14px, 0);
+    right: 0;
+    transform-origin: 0%; }
+
+  .active .badger-accordion__header-icon:before {
+    transform: rotate(45deg) translate3d(10px, 10px, 0); }
+  .active .badger-accordion__header-icon:after {
+    transform: rotate(-45deg) translate3d(-10px, 10px, 0); }
+
+  .contrib-head:hover .badger-accordion__header-icon:after,
+  .contrib-head:hover .badger-accordion__header-icon:before {
+    background-color: #77f;
+  }
