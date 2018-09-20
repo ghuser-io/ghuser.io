@@ -329,7 +329,7 @@ function RankView({contrib}) {
   const {rank, commitsCount, starBoost, contribBoost} = getContribRank(contrib);
   return (
     <div>
-      rank: {rank}
+      rank: {rank} (= commitsCount * starBoost * contribBoost)
       <br/>
       commitsCount: {commitsCount}
       <br/>
