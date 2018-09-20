@@ -347,7 +347,7 @@ function ScoreExplanation({contrib}) {
         <br/>
         (2): So-called <em>star boost</em> that increases the score depending on how much stars the repo has
         <br/>
-        (3): So-called <em>contrib boost</em> that increases the score depending on how collaborative your contribution is
+        (3): So-called <em>contrib boost</em> that increases the score depending on how collaborative the repo is
         <br/>
         All contributions on this page are sorted according to this score, more infos <RelatedGithubIssue/>.
       </div>
