@@ -326,12 +326,12 @@ function ContribExpandedContent({repo, username, contrib, style={}, className=""
 }
 
 function RankView({contrib}) {
-  const {rank, commitsCount, starBoost, contribBoost} = getContribRank(contrib);
+  const {rank, userCommitsCount, starBoost, contribBoost} = getContribRank(contrib);
   return (
     <div>
-      rank: {rank} (= commitsCount * starBoost * contribBoost)
+      rank: {rank} (= userCommitsCount * starBoost * contribBoost)
       <br/>
-      commitsCount: {commitsCount}
+      userCommitsCount: {userCommitsCount}
       <br/>
       starBoost: {starBoost}
       <br/>

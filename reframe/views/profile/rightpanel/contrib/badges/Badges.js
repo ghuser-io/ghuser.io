@@ -219,7 +219,7 @@ function getDisplayOrder(contrib1, contrib2) {
 
 function getContribRank(contrib) {
   const {
-      commits_count__user: commitsCount,
+      commits_count__user: userCommitsCount,
       commits_count__percentage,
   } = getInfoForBadges(contrib);
 
@@ -229,9 +229,9 @@ function getContribRank(contrib) {
 
   const contribBoost = getContribBoost(commits_count__percentage);
 
-  const rank = commitsCount*starBoost*contribBoost;
+  const rank = userCommitsCount*starBoost*contribBoost;
 
-  return {rank, commitsCount, starBoost, contribBoost};
+  return {rank, userCommitsCount, starBoost, contribBoost};
 }
 
 function getContribBoost(commits_count__percentage) {
