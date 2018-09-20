@@ -16,12 +16,12 @@
   * [:black_square_button: What you put instead of the progress bars](#black_square_button-what-you-put-instead-of-the-progress-bars)
   * [:ballot_box_with_check: You removed the tab at the top](#ballot_box_with_check-you-removed-the-tab-at-the-top)
   * [:ballot_box_with_check: Big space at the bottom of the page](#ballot_box_with_check-big-space-at-the-bottom-of-the-page)
-  * [:black_square_button: 10 stars for bronze contributions](#black_square_button-10-stars-for-bronze-contributions)
+  * [:ballot_box_with_check: 10 stars for bronze contributions](#ballot_box_with_check-10-stars-for-bronze-contributions)
   * [:ballot_box_with_check: You display the repo owners](#ballot_box_with_check-you-display-the-repo-owners)
 - [:black_square_button: What I like less](#black_square_button-what-i-like-less)
   * [:black_square_button: You're too generous](#black_square_button-youre-too-generous)
 - [:black_square_button: What I think was better before](#black_square_button-what-i-think-was-better-before)
-  * [:black_square_button: Link to commits and PRs](#black_square_button-link-to-commits-and-prs)
+  * [:ballot_box_with_check: Link to commits and PRs](#ballot_box_with_check-link-to-commits-and-prs)
   * [:black_square_button: Tooltips](#black_square_button-tooltips)
   * [:ballot_box_with_check: Ordering](#ballot_box_with_check-ordering)
 - [:black_square_button: Broken things](#black_square_button-broken-things)
@@ -76,11 +76,9 @@ that was taking space and you probably did a good move.
 
 Maybe too big, but it feels better than before.
 
-### :black_square_button: 10 stars for bronze contributions
+### :ballot_box_with_check: 10 stars for bronze contributions
 
 Avoids the war on the number of commits as you said, so probably a good move.
-
-Update: this seems to have changed. What's the new logic?
 
 ### :ballot_box_with_check: You display the repo owners
 
@@ -95,7 +93,7 @@ barely touched Reframe. I suspect silver contributions are too easy to get and/o
 
 ## :black_square_button: What I think was better before
 
-### :black_square_button: Link to commits and PRs
+### :ballot_box_with_check: Link to commits and PRs
 
 On small contributions, it was possible to jump directly to my commits and PRs, so you could quickly
 get to my code.
@@ -108,6 +106,8 @@ When hovering badges, I was seeing hard facts, like exact number of commits, exa
 Update: yay, you resurrected the tooltips, thanks! Wouldn't it be better to have some hard fact
 instead of "seems to be a small project", which basically repeats what's already on the badge?
 Maybe you could state the amount of commits in that tooltip?
+
+Update 2: agreed that facts will be part of the expandable
 
 ### :ballot_box_with_check: Ordering
 
