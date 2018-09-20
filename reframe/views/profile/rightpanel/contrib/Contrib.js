@@ -368,11 +368,11 @@ function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
       </div>
       {
         !isMaintainer && repo && repo.pulls_authors && repo.pulls_authors.indexOf(username) !== -1 && (
-          <a href={`https://github.com/${contrib.full_name}/pulls?q=is%3Apr+author%3A${username}`}
-             target="_blank" className="external">
+          <span>
             <i className="fas fa-code-branch icon contrib-link-icon text-gray"></i>&nbsp;
-            {username}'s pull requests
-          </a>
+            <a href={`https://github.com/${contrib.full_name}/pulls?q=is%3Apr+author%3A${username}`}
+               target="_blank" className="external">{username}'s pull requests</a>
+          </span>
         ) || null
       }
     </div>
