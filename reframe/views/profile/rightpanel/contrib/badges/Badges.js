@@ -412,7 +412,8 @@ function getContribType(userCommitsCount, userCommitsPercentage, totalCommitsCou
     const THRESHOLD_SILVER = 5;
 
     const contribType = (
-        userCommitsCount > 1 && (totalCommitsCount * THREADSHOLD_CROWN <= 1 || userCommitsPercentage >= THREADSHOLD_CROWN) && (
+        userCommitsCount > 1 &&
+        (totalCommitsCount * THREADSHOLD_CROWN <= 1 || userCommitsPercentage >= THREADSHOLD_CROWN) && (
           'contrib_crown'
         ) ||
         userCommitsCount > THRESHOLD_GOLD && (
