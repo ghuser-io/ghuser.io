@@ -380,7 +380,7 @@ function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
 
   const {commits_count__user, commits_count__percentage, commits_count__total, contribType} = getInfoForBadges(contrib, username);
 
-  const isMaintainer = contribType === 'maintainer';
+  const isMaintainer = contribType === 'contrib_crown';
 
   const CommitLink = ({children}) => (
     isMaintainer ? (

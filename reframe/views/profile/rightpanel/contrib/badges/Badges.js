@@ -207,7 +207,7 @@ function getDisplaySettings(contrib) {
         repoScale!=='micro'
         /*
         ['large', 'medium'].includes(repoScale) ||
-        repoScale==='small' && ['maintainer', 'contributor_gold', 'contributor_silver'].includes(contribType)
+        repoScale==='small' && ['contrib_crown', 'contrib_gold', 'contrib_silver'].includes(contribType)
         */
     );
 
@@ -267,11 +267,11 @@ function getDisplayOrder(contrib1, contrib2) {
     } = getInfoForBadges(contrib2);
 
     const getContribOrder = (contribType, repoScale) => (
-        contribType==='maintainer' && repoScale==='micro' && -1 ||
-        contribType==='maintainer' && 3 ||
-        contribType==='contributor_gold' && 2 ||
-        contribType==='contributor_silver' && 1 ||
-        contribType==='contributor_bronze' && 0
+        contribType==='contrib_crown' && repoScale==='micro' && -1 ||
+        contribType==='contrib_crown' && 3 ||
+        contribType==='contrib_gold' && 2 ||
+        contribType==='contrib_silver' && 1 ||
+        contribType==='contrib_bronze' && 0
     );
     const contribOrder = getContribOrder(contribType2, repoScale2) - getContribOrder(contribType1, repoScale1);
     if( contribOrder!==0 ) {
@@ -313,7 +313,7 @@ function getOrder__one_sided(contrib1, contrib2) {
         return 1;
     }
 
-    if( contribType1!=='contributor_bronze' && ['large', 'medium'].includes(repoScale1) && ! ['large', 'medium'].includes(repoScale2) ) {
+    if( contribType1!=='contrib_bronze' && ['large', 'medium'].includes(repoScale1) && ! ['large', 'medium'].includes(repoScale2) ) {
         return -1;
     }
 
@@ -321,7 +321,7 @@ function getOrder__one_sided(contrib1, contrib2) {
 }
 
 function getInfoForBadges(contrib, username) {
-    const {contribType, ...contribInfos} = getContribType(contrib, username);
+    const {contribType, ...contribInfos} = getContribTypeAssets(contrib, username);
 
     const contribRange = getContribRange(contrib);
 
@@ -331,7 +331,7 @@ function getInfoForBadges(contrib, username) {
         ...contribInfos,
         contribRange,
         ...getEarnedStars(contrib, contribType, username),
-        ...getRepoScale(contrib),
+        ...getRepoScaleAssets(contrib),
     };
 
     /*
@@ -356,82 +356,76 @@ function getInfoForBadges(contrib, username) {
 }
 
 
-function getContribType(contrib, username="user") {
-    const MAINTAINER_THRESHOLD = 0.1;
-    const CONTRIBUTOR_GOLD_THRESHOLD = 50;
-    const CONTRIBUTOR_SILVER_THRESHOLD = 5;
+function getContribTypeAssets(contrib, username="user") {
+  const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
 
-    const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
+  const contribType = getContribType(commits_count__user, commits_count__percentage, commits_count__total);
 
-    const contribType = (
-        commits_count__user > 1 && (commits_count__total * MAINTAINER_THRESHOLD <= 1 || commits_count__percentage >= MAINTAINER_THRESHOLD) && 'maintainer' ||
-        commits_count__user > CONTRIBUTOR_GOLD_THRESHOLD && 'contributor_gold' ||
-        commits_count__user > CONTRIBUTOR_SILVER_THRESHOLD && 'contributor_silver' ||
-        'contributor_bronze'
+  const {iconClassName, text, hint} = getAssets();
+  const contribTypeIcon = <div className={'contrib-type-icon '+iconClassName}/>;
+  const contribTypeText = text;
+  const contribTypeHint = hint;
+
+  return {contribType, contribTypeText, contribTypeIcon, contribTypeHint};
+
+  function getAssets() {
+    const hintPrefix = username+' has ';
+    const hintSuffix = ' to this repo';
+    const hint = (
+      contribType==='contrib_crown' && (
+         hintPrefix+'substantially contributed'+hintSuffix
+      ) ||
+      contribType==='contrib_gold' && (
+         hintPrefix+'contributed a lot of times'+hintSuffix
+      ) ||
+      contribType==='contrib_silver' && (
+         hintPrefix+'often contributed'+hintSuffix
+      ) ||
+      contribType==='contrib_bronze' && (
+         hintPrefix+'contributed one or a couple of times'+hintSuffix
+      )
     );
 
-    /*
-    console.log('pre');
-    console.log(contrib.name);
-    console.log(commits_count__total);
-    console.log(MAINTAINER_THRESHOLD);
-    console.log(commits_count__percentage);
-    console.log(contribType);
-    console.log('aft');
-    */
+    const contrib_type_name = contribType.slice('contrib_'.length);
 
-    const {iconClassName, text, hint} = getAssets();
-    const contribTypeIcon = <div className={'contrib-type-icon '+iconClassName}/>;
-    const contribTypeText = text;
-    const contribTypeHint = hint;
+    const text = (
+      contribType==='contrib_crown' ? (
+        'maintainer'
+      ) : (
+        contrib_type_name+' contrib'
+      )
+    );
 
-    return {contribType, contribTypeText, contribTypeIcon, contribTypeHint};
+    const iconClassName = 'icon-contrib-'+contrib_type_name;
 
-    function getAssets() {
-        if( contribType==='maintainer' ) {
-            return {
-                iconClassName: 'icon-crown',
-                text: 'maintainer',
-                hint: username+' has substantially contributed to this repo',
-            };
-        }
-        const CONTRIB_PREFIX = 'contributor_';
-        if( contribType.startsWith(CONTRIB_PREFIX) ) {
-            const contrib_type_name = contribType.slice(CONTRIB_PREFIX.length);
-            /*
-            const hint = (
-              contribType==='contributor_silver' && (
-                username+' has often contributed to '+contrib.full_name
-              ) || (
-                username+' has contributed to '+contrib.full_name+' '+(contribType==='contributor_gold' && 'a lot' || 'couple')+' of times'
-              )
-            );
-            */
-            const textPrefix = 'username has ';
-            const textSuffix = ' to this repo';
-            const hint = (
-              contribType==='maintainer' && (
-                 textPrefix+'substantially contributed'+textSuffix
-              ) ||
-              contribType==='contributor_gold' && (
-                 textPrefix+'contributed a lot of times'+textSuffix
-              ) ||
-              contribType==='contributor_silver' && (
-                 textPrefix+'often contributed'+textSuffix
-              ) ||
-              contribType==='contributor_bronze' && (
-                 textPrefix+'contributed one or a couple of times'+textSuffix
-              )
-            );
-            return {
-                iconClassName: 'icon-contrib-'+contrib_type_name,
-                text: contrib_type_name+' contrib',
-                hint,
-            };
-        }
+    return {
+      iconClassName,
+      text,
+      hint,
+    };
+  }
+}
 
-        assert(false, 'getting info for contrib type section');
-    }
+function getContribType(userCommitsCount, userCommitsPercentage, totalCommitsCount) {
+    const THREADSHOLD_CROWN = 0.1;
+    const THRESHOLD_GOLD = 50;
+    const THRESHOLD_SILVER = 5;
+
+    const contribType = (
+        userCommitsCount > 1 && (totalCommitsCount * THREADSHOLD_CROWN <= 1 || userCommitsPercentage >= THREADSHOLD_CROWN) && (
+          'contrib_crown'
+        ) ||
+        userCommitsCount > THRESHOLD_GOLD && (
+          'contrib_gold'
+        ) ||
+        userCommitsCount > THRESHOLD_SILVER && (
+          'contrib_silver'
+        ) || (
+          'contrib_bronze'
+        )
+    );
+
+    return contribType;
 }
 
 function getCommitCounts(contrib) {
@@ -456,25 +450,26 @@ function getContribRange(contrib) {
     return contribRange;
 }
 
-function getRepoScale(contrib) {
-    const THREADSHOLD_BIG = 2000;
-    const THREADSHOLD_MEDIUM = 500;
-    const THREADSHOLD_SMALL = 50;
+function getRepoScaleAssets(contrib) {
+  const repoScale = getRepoScale(contrib.total_commits_count);
+  const repoScaleIcon = <div className={'icon-repo-scale icon-repo-scale-'+repoScale}/>;
+  const repoScaleHint = 'this repo seems to be a '+repoScale+' project';
+  return {repoScale, repoScaleIcon, repoScaleHint};
+}
 
-    const {total_commits_count} = contrib;
+function getRepoScale(totalCommitsCount) {
+  const THREADSHOLD_LARGE = 2000;
+  const THREADSHOLD_MEDIUM = 500;
+  const THREADSHOLD_SMALL = 50;
 
-    const repoScale = (
-        total_commits_count > THREADSHOLD_BIG && 'large' ||
-        total_commits_count > THREADSHOLD_MEDIUM && 'medium' ||
-        total_commits_count > THREADSHOLD_SMALL && 'small' ||
-        'micro'
-    );
+  const repoScale = (
+    totalCommitsCount > THREADSHOLD_LARGE && 'large' ||
+    totalCommitsCount > THREADSHOLD_MEDIUM && 'medium' ||
+    totalCommitsCount > THREADSHOLD_SMALL && 'small' ||
+    'micro'
+  );
 
-    const repoScaleIcon = <div className={'icon-repo-scale icon-repo-scale-'+repoScale}/>;
-
-    const repoScaleHint = 'this repo seems to be a '+repoScale+' project';
-
-    return {repoScale, repoScaleIcon, repoScaleHint};
+  return repoScale;
 }
 
 function getEarnedStars(contrib, contribType, username) {
@@ -482,10 +477,10 @@ function getEarnedStars(contrib, contribType, username) {
 
     const {stargazers_count: stars, percentage: userCommitsPercentage} = contrib;
 
-    const isMaintainer = contribType==='maintainer';
-    const isBronzeContributor = contribType==='contributor_bronze';
-    const isSilverContributor = contribType==='contributor_silver';
-    const isGoldContributor = contribType==='contributor_gold';
+    const isMaintainer = contribType==='contrib_crown';
+    const isBronzeContributor = contribType==='contrib_bronze';
+    const isSilverContributor = contribType==='contrib_silver';
+    const isGoldContributor = contribType==='contrib_gold';
 
     assert_(isMaintainer + isBronzeContributor + isSilverContributor + isGoldContributor === 1);
 

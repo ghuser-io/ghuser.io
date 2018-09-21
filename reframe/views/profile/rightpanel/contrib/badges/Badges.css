@@ -1,4 +1,4 @@
-.icon-crown {
+.icon-contrib-crown {
   background-image: url('./crown.svg');
 }
 .icon-contrib-bronze {
@@ -13,7 +13,7 @@
 .icon-repo-scale {
   background-image: url('./biceps.png');
 }
-.icon-crown,
+.icon-contrib-crown,
 .icon-contrib-bronze,
 .icon-contrib-silver,
 .icon-contrib-gold,
