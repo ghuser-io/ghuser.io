@@ -476,7 +476,7 @@ function getRepoScale(contrib) {
 function getEarnedStars(contrib, contribType, username) {
     const assert_ = val => assert(val, 'computing earned stars');
 
-    const {stargazers_count: stars} = contrib;
+    const {stargazers_count: stars, percentage: userCommitsPercentage} = contrib;
 
     const isMaintainer = contribType==='maintainer';
     const isBronzeContributor = contribType==='contributor_bronze';
@@ -485,9 +485,9 @@ function getEarnedStars(contrib, contribType, username) {
 
     assert_(isMaintainer + isBronzeContributor + isSilverContributor + isGoldContributor === 1);
 
-    const earnedStars_bronze = Math.min(10, stars);
-    const earnedStars_silver = Math.min(100, stars);
-    const earnedStars_gold = Math.round(Math.max(earnedStars_silver, Math.ceil((contrib.percentage/100)*stars)));
+    const earnedStars_bronze = Math.min(10, Math.floor(0.5*stars));
+    const earnedStars_silver = Math.max(earnedStars_bronze, Math.min(100, Math.ceil(0.1*stars)));
+    const earnedStars_gold = Math.max(earnedStars_silver, Math.ceil((userCommitsPercentage/100)*stars));
 
     const earnedStars = (
         isMaintainer && stars ||
