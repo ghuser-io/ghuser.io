@@ -163,7 +163,7 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
 
     return (
       <div style={style}>
-        {badge}&nbsp; :&nbsp; {hint}, explanation {hintGithubIssue}
+        {badge}&nbsp; :&nbsp; {hint}
       </div>
     );
 }
@@ -221,30 +221,25 @@ function getDisplayOrder(contrib1, contrib2) {
 function getContribScore(contrib) {
   const {
       commits_count__user: userCommitsCount,
-      commits_count__percentage,
+      commits_count__percentage: userCommitsPercentage,
   } = getInfoForBadges(contrib);
-
   const {stargazers_count: stars} = contrib;
 
   const starBoost = getStarBoost(stars);
-
-  const contribBoost = getContribBoost(commits_count__percentage);
-
+  const contribBoost = getContribBoost(userCommitsPercentage);
   const contribScore = userCommitsCount*starBoost*contribBoost;
 
   return {contribScore, userCommitsCount, starBoost, contribBoost};
 }
 
-function getContribBoost(commits_count__percentage) {
-  const contribBoost = 1 + ((1 - commits_count__percentage) * 5);
-
+function getContribBoost(userCommitsPercentage) {
+  const contribBoost = 1 + ((1 - userCommitsPercentage) * 5);
   return contribBoost;
 }
 
 function getStarBoost(stars) {
   const MAX_STARS = 100*1000;
   const starBoost = 0.2 + (Math.log10(stars) / Math.log10(MAX_STARS) * 5);
-
   return starBoost;
 }
 
@@ -397,7 +392,7 @@ function getContribType(contrib, username="user") {
             return {
                 iconClassName: 'icon-crown',
                 text: 'maintainer',
-                hint: username+' has substantially contributed to '+contrib.full_name,
+                hint: username+' has substantially contributed to this repo',
             };
         }
         const CONTRIB_PREFIX = 'contributor_';
@@ -412,13 +407,22 @@ function getContribType(contrib, username="user") {
               )
             );
             */
-            const contribFrequency = (
-              contribType==='maintainer' && 'substantially' ||
-              contribType==='contributor_gold' && 'a lot of times' ||
-              contribType==='contributor_silver' && 'often' ||
-              contribType==='contributor_bronze' && 'a couple of times'
+            const textPrefix = 'username has ';
+            const textSuffix = ' to this repo';
+            const hint = (
+              contribType==='maintainer' && (
+                 textPrefix+'substantially contributed'+textSuffix
+              ) ||
+              contribType==='contributor_gold' && (
+                 textPrefix+'contributed a lot of times'+textSuffix
+              ) ||
+              contribType==='contributor_silver' && (
+                 textPrefix+'often contributed'+textSuffix
+              ) ||
+              contribType==='contributor_bronze' && (
+                 textPrefix+'contributed one or a couple of times'+textSuffix
+              )
             );
-            const hint = username+' has '+contribFrequency+' contributed to '+contrib.full_name;
             return {
                 iconClassName: 'icon-contrib-'+contrib_type_name,
                 text: contrib_type_name+' contrib',
@@ -468,7 +472,7 @@ function getRepoScale(contrib) {
 
     const repoScaleIcon = <div className={'icon-repo-scale icon-repo-scale-'+repoScale}/>;
 
-    const repoScaleHint = contrib.full_name+' seems to be a '+repoScale+' project';
+    const repoScaleHint = 'this repo seems to be a '+repoScale+' project';
 
     return {repoScale, repoScaleIcon, repoScaleHint};
 }
@@ -496,7 +500,7 @@ function getEarnedStars(contrib, contribType, username) {
         isBronzeContributor && earnedStars_bronze
     );
 
-    const earnedStarsHint = username+' earned '+numberOf(earnedStars, 'star')+' from '+contrib.full_name+"'s total "+numberOf(stars, 'star');
+    const earnedStarsHint = username+' earned '+numberOf(earnedStars, 'star')+' from a total of '+numberOf(stars, 'star');
 
     assert_(earnedStars>=0 && (earnedStars|0)===earnedStars);
 

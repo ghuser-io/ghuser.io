@@ -8,6 +8,11 @@
   width: 18px;
 }
 
+.small-text {
+  font-size: 0.8em;
+  opacity: 0.85;
+}
+
 .badger-accordion__header-icon {
   float: right;
   position: absolute;

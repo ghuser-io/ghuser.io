@@ -319,14 +319,31 @@ function Languages({repo, style={}}) {
 }
 
 function ContribExpandedContent({repo, username, contrib, style={}, className="", pushToFunctionQueue}) {
+    const Spacer = () => <div style={{width: 1, height: 10}}/>;
     return (
       <AccordionBody className={"text-gray "+className} style={{paddingBottom: 15, ...style}}>
+        <Spacer/>
         <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
-        <BadgesMultiLine contrib={contrib} username={username}/>
+        <Spacer/>
+        <BadgesExplanation {...{contrib, username}}/>
+        <Spacer/>
         <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
+        <Spacer/>
         <ScoreExplanation {...{contrib}}/>
+        <Spacer/>
       </AccordionBody>
     );
+}
+
+function BadgesExplanation(props) {
+  return (
+    <div>
+      <BadgesMultiLine {...props} />
+      <div className='small-text'>
+        How these badges are determined and the earned stars calculated is explained <ExplainerTicket/>
+      </div>
+    </div>
+  );
 }
 
 function ScoreExplanation({contrib}) {
@@ -336,36 +353,27 @@ function ScoreExplanation({contrib}) {
   const starBoostPretty = starBoost.toFixed(2);
   const contribBoostPretty = contribBoost.toFixed(2);
 
-  // TODO remove
-  const Asterix = ({n}) => <span style={{opacity: 1}}>({n})</span>;
-
-  const RELATED_ISSUE_ID = 1; // TODO
-
   return (
     <div style={{fontSize: '1em', marginTop: 15}}>
       Contribution score: {contribScorePretty}
-      <div style={{fontSize: '0.8em', opacity: 0.85}}>
-        All contributions on this page are sorted according to this score, more infos <RelatedGithubIssue/>.
+      <div className="small-text">
+        Calculation: {contribScorePretty} = {userCommitsCount} (user commits) * {starBoostPretty} (star boost) * {contribBoostPretty} (contrib boost)
         <br/>
-        Calculation: {contribScorePretty} = {userCommitsCount} <Asterix n={1}/> * {starBoostPretty} <Asterix n={2}/> * {contribBoostPretty} <Asterix n={3}/>
-        <br/>
-        (1): Number of user commits
-        <br/>
-        (2): So-called <em>star boost</em> that increases the score depending on how much stars the repo has
-        <br/>
-        (3): So-called <em>contrib boost</em> that increases the score depending on how collaborative the repo is
+        The contributions on this page are sorted according to this score, more infos <ExplainerTicket/>
       </div>
     </div>
   );
 
-  function RelatedGithubIssue () {
-    return (
-      <a href={"https://github.com/ghuser-io/ghuser.io/issues/"+RELATED_ISSUE_ID}
-         target="_blank"
-         className="external"
-      >here</a>
-    );
-  }
+}
+
+function ExplainerTicket () {
+  const RELATED_ISSUE_ID = 156;
+  return (
+    <a href={"https://github.com/ghuser-io/ghuser.io/issues/"+RELATED_ISSUE_ID}
+       target="_blank"
+       className="external"
+    >here</a>
+  );
 }
 
 function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
