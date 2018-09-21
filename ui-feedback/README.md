@@ -32,6 +32,7 @@
   * [:ballot_box_with_check: Mini avatars on the one-liner contributions](#ballot_box_with_check-mini-avatars-on-the-one-liner-contributions)
   * [:black_square_button: Other stuff](#black_square_button-other-stuff)
   * [:ballot_box_with_check: Readme to be adapted?](#ballot_box_with_check-readme-to-be-adapted)
+  * [:black_square_button: Screenshots to be adapted](#black_square_button-screenshots-to-be-adapted)
 
 <!-- tocstop -->
 
@@ -172,3 +173,5 @@ now be incorrect, e.g.:
 >   add all these stars and clearly show how many of them you earned in total.
 > * The GitHub profiles don't clearly show how big your contribution to a repo was, when you don't own
 >   it. Maybe you wrote 5%. Maybe 90%. We **make it clear**.
+
+### :black_square_button: Screenshots to be adapted
