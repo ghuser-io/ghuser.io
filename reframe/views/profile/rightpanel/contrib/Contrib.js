@@ -320,11 +320,20 @@ function Languages({repo, style={}}) {
 
 function ContribExpandedContent({repo, username, contrib, style={}, className="", pushToFunctionQueue}) {
     const Spacer = ({mod}) => <div style={{width: 1, height: 20+mod}}/>;
+
+    const languagesView = Languages({repo});
+    console.log(languagesView);
+    console.log(languagesView===null);
+
     return (
       <AccordionBody className={"text-gray "+className} style={{paddingBottom: 15, ...style}}>
         <Spacer mod={-12}/>
-        <Languages repo={repo}/>
-        <Spacer mod={1}/>
+        {languagesView && (
+          <React.Fragment>
+            {languagesView}
+            <Spacer mod={1}/>
+          </React.Fragment>
+        )}
         <BadgesExplanation {...{contrib, username}}/>
         <Spacer mod={3}/>
         <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
