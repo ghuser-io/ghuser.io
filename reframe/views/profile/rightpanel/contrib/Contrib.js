@@ -319,18 +319,18 @@ function Languages({repo, style={}}) {
 }
 
 function ContribExpandedContent({repo, username, contrib, style={}, className="", pushToFunctionQueue}) {
-    const Spacer = () => <div style={{width: 1, height: 10}}/>;
+    const Spacer = ({mod}) => <div style={{width: 1, height: 20+mod}}/>;
     return (
       <AccordionBody className={"text-gray "+className} style={{paddingBottom: 15, ...style}}>
-        <Spacer/>
-        <Languages repo={repo} style={{marginBottom: 9, marginTop: -4}}/>
-        <Spacer/>
+        <Spacer mod={-12}/>
+        <Languages repo={repo}/>
+        <Spacer mod={1}/>
         <BadgesExplanation {...{contrib, username}}/>
-        <Spacer/>
+        <Spacer mod={3}/>
         <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
-        <Spacer/>
+        <Spacer mod={-2}/>
         <ScoreExplanation {...{contrib}}/>
-        <Spacer/>
+        <Spacer mod={-7}/>
       </AccordionBody>
     );
 }
@@ -354,7 +354,7 @@ function ScoreExplanation({contrib}) {
   const contribBoostPretty = contribBoost.toFixed(2);
 
   return (
-    <div style={{fontSize: '1em', marginTop: 15}}>
+    <div style={{fontSize: '1em'}}>
       Contribution score: {contribScorePretty}
       <div className="small-text">
         Calculation: {contribScorePretty} = {userCommitsCount} (user commits) * {starBoostPretty} (star boost) * {contribBoostPretty} (contrib boost)
@@ -392,7 +392,7 @@ function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
   );
 
   return (
-    <div style={{marginTop: 15}}>
+    <div>
       <div>
         <i className="fas fa-code icon contrib-link-icon text-gray"></i>&nbsp;
         <ProgressBar color="green" percentage={commits_count__percentage*100}
