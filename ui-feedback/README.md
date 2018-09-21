@@ -11,26 +11,28 @@
   * [:ballot_box_with_check: "Contributed to" and external link icon](#ballot_box_with_check-contributed-to-and-external-link-icon)
   * [:ballot_box_with_check: Repo descriptions next to repo name](#ballot_box_with_check-repo-descriptions-next-to-repo-name)
   * [:ballot_box_with_check: One-liner contributions](#ballot_box_with_check-one-liner-contributions)
-- [:black_square_button: What I like](#black_square_button-what-i-like)
+  * [:ballot_box_with_check: The new collapsible](#ballot_box_with_check-the-new-collapsible)
+  * [:ballot_box_with_check: You centered the "non-avatars" (plus sign)](#ballot_box_with_check-you-centered-the-non-avatars-plus-sign)
+- [:ballot_box_with_check: What I like](#ballot_box_with_check-what-i-like)
   * [:ballot_box_with_check: "Member of" is gone](#ballot_box_with_check-member-of-is-gone)
-  * [:black_square_button: What you put instead of the progress bars](#black_square_button-what-you-put-instead-of-the-progress-bars)
+  * [:ballot_box_with_check: What you put instead of the progress bars](#ballot_box_with_check-what-you-put-instead-of-the-progress-bars)
   * [:ballot_box_with_check: You removed the tab at the top](#ballot_box_with_check-you-removed-the-tab-at-the-top)
   * [:ballot_box_with_check: Big space at the bottom of the page](#ballot_box_with_check-big-space-at-the-bottom-of-the-page)
   * [:ballot_box_with_check: 10 stars for bronze contributions](#ballot_box_with_check-10-stars-for-bronze-contributions)
   * [:ballot_box_with_check: You display the repo owners](#ballot_box_with_check-you-display-the-repo-owners)
-- [:black_square_button: What I like less](#black_square_button-what-i-like-less)
-  * [:black_square_button: You're too generous](#black_square_button-youre-too-generous)
-- [:black_square_button: What I think was better before](#black_square_button-what-i-think-was-better-before)
+- [:ballot_box_with_check: What I like less](#ballot_box_with_check-what-i-like-less)
+  * [:ballot_box_with_check: You're too generous](#ballot_box_with_check-youre-too-generous)
+- [:ballot_box_with_check: What I think was better before](#ballot_box_with_check-what-i-think-was-better-before)
   * [:ballot_box_with_check: Link to commits and PRs](#ballot_box_with_check-link-to-commits-and-prs)
-  * [:black_square_button: Tooltips](#black_square_button-tooltips)
+  * [:ballot_box_with_check: Tooltips](#ballot_box_with_check-tooltips)
   * [:ballot_box_with_check: Ordering](#ballot_box_with_check-ordering)
-- [:black_square_button: Broken things](#black_square_button-broken-things)
-  * [:black_square_button: "explanation here" link](#black_square_button-explanation-here-link)
+- [:ballot_box_with_check: Broken things](#ballot_box_with_check-broken-things)
+  * [:ballot_box_with_check: "explanation here" link](#ballot_box_with_check-explanation-here-link)
   * [:ballot_box_with_check: Total amount of stars](#ballot_box_with_check-total-amount-of-stars)
 - [:black_square_button: Minor things](#black_square_button-minor-things)
-  * [:ballot_box_with_check: Browser console warning](#ballot_box_with_check-browser-console-warning)
+  * [:black_square_button: Browser console warning](#black_square_button-browser-console-warning)
   * [:ballot_box_with_check: Mini avatars on the one-liner contributions](#ballot_box_with_check-mini-avatars-on-the-one-liner-contributions)
-  * [:black_square_button: Other stuff](#black_square_button-other-stuff)
+  * [:ballot_box_with_check: Other stuff](#ballot_box_with_check-other-stuff)
   * [:ballot_box_with_check: Readme to be adapted?](#ballot_box_with_check-readme-to-be-adapted)
   * [:black_square_button: Screenshots to be adapted](#black_square_button-screenshots-to-be-adapted)
 
@@ -54,19 +56,25 @@ Good move!
 
 That's really cool!
 
-## :black_square_button: What I like
+### :ballot_box_with_check: The new collapsible
+
+That looks so nice!
+
+### :ballot_box_with_check: You centered the "non-avatars" (plus sign)
+
+This looks much better now!
+
+## :ballot_box_with_check: What I like
 
 ### :ballot_box_with_check: "Member of" is gone
 
 I can see some users complaining about it but I guess it's a good move and this gives us room to
 spare some API queries.
 
-### :black_square_button: What you put instead of the progress bars
+### :ballot_box_with_check: What you put instead of the progress bars
 
 I really liked the progress bars, but I have to admit that what you created instead looks quite
 cool as well.
-
-Update: it seems to contain some debugging info now. You're probably still working on that part :)
 
 ### :ballot_box_with_check: You removed the tab at the top
 
@@ -85,21 +93,23 @@ Avoids the war on the number of commits as you said, so probably a good move.
 
 Probably a good move, because `ghuser-io/db` makes more sense than just `db` ;)
 
-## :black_square_button: What I like less
+## :ballot_box_with_check: What I like less
 
-### :black_square_button: You're too generous
+### :ballot_box_with_check: You're too generous
 
 I get a silver contrib for Reframe, 100 stars out of it, this feels strange honestly, because I
 barely touched Reframe. I suspect silver contributions are too easy to get and/or too rewarding.
 
-## :black_square_button: What I think was better before
+Update: it's perfect now, thanks!
+
+## :ballot_box_with_check: What I think was better before
 
 ### :ballot_box_with_check: Link to commits and PRs
 
 On small contributions, it was possible to jump directly to my commits and PRs, so you could quickly
 get to my code.
 
-### :black_square_button: Tooltips
+### :ballot_box_with_check: Tooltips
 
 When hovering badges, I was seeing hard facts, like exact number of commits, exact contrib size,
 "last pushed one month ago".
@@ -123,9 +133,9 @@ profile:
 * Writing this, I understand what bothers me most: I can't understand/reverse-engineer the sorting
   algorithm and it makes me suspect a bug.
 
-## :black_square_button: Broken things
+## :ballot_box_with_check: Broken things
 
-### :black_square_button: "explanation here" link
+### :ballot_box_with_check: "explanation here" link
 
 Doesn't lead to an explanation, but good move though.
 
@@ -136,7 +146,7 @@ I think it's not the sum of all the contributions anymore. I didn't check precis
 
 ## :black_square_button: Minor things
 
-### :ballot_box_with_check: Browser console warning
+### :black_square_button: Browser console warning
 
 ```
 Warning: Received `false` for a non-boolean attribute `title`.
@@ -151,11 +161,13 @@ If you used to conditionally omit it with title={condition && value}, pass title
 ...
 ```
 
+Update: now we have a few debugging traces.
+
 ### :ballot_box_with_check: Mini avatars on the one-liner contributions
 
 I'd love to have mini org/repo avatars on the one-liner contributions.
 
-### :black_square_button: Other stuff
+### :ballot_box_with_check: Other stuff
 
 ![other](other.png)
 
