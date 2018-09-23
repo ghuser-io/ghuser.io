@@ -1,5 +1,4 @@
-const githubRef = 'master';
-const url = `https://rawgit.com/ghuser-io/db/${githubRef}/data`;
+const url = `https://s3.amazonaws.com/ghuser/data`;
 
 module.exports = {
   url,
