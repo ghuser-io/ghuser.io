@@ -1,0 +1,28 @@
+---
+
+- name: Setup Git user name
+  git_config:
+    name: user.name
+    scope: global
+    value: "{{ git_name }}"
+
+- name: Setup Git user e-mail address
+  git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_email }}"
+
+- name: Setup .bashrc
+  lineinfile:
+    path: /home/ubuntu/.bashrc
+    regexp: "export\\s{{ item.key }}="
+    line: "export {{ item.key }}=\"{{ item.val }}\""
+  with_items:
+    - key: GITHUB_CLIENT_ID
+      val: "{{ github_client_id }}"
+    - key: GITHUB_CLIENT_SECRET
+      val: "{{ github_client_secret }}"
+    - key: GITHUB_USERNAME
+      val: "{{ github_username }}"
+    - key: GITHUB_PASSWORD
+      val: "{{ github_password }}"

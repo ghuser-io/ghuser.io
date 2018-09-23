@@ -1,0 +1,7 @@
+---
+
+dependencies:
+  - role: nodejs-interpreter
+  - role: git-client
+  - role: pip-client
+  - role: aws-client

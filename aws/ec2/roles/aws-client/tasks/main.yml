@@ -1,0 +1,16 @@
+---
+
+- name: Create ~/.aws/
+  file:
+    path: /home/ubuntu/.aws
+    state: directory
+    mode: 0700
+
+- name: Upload AWS config and credentials
+  copy:
+    src: "{{ lookup('env','HOME') }}/.aws/{{ item }}"
+    dest: "/home/ubuntu/.aws/{{ item }}"
+    mode: 0400
+  with_items:
+    - config
+    - credentials

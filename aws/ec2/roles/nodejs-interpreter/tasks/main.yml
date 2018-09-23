@@ -1,0 +1,16 @@
+---
+
+- name: Download Node.js setup script
+  get_url:
+    url: https://deb.nodesource.com/setup_10.x
+    dest: /tmp/
+    mode: 0755
+
+- name: Run Node.js setup script
+  command: /tmp/setup_10.x
+  become: True
+
+- name: Install Node.js
+  apt:
+    name: nodejs
+  become: True

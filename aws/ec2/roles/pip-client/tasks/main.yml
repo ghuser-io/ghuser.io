@@ -1,0 +1,6 @@
+---
+
+- name: Install pip
+  apt:
+    name: python3-pip
+  become: True
