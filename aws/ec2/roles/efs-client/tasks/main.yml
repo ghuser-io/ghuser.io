@@ -1,0 +1,16 @@
+---
+
+- name: Install NFS tooling
+  apt:
+    name: nfs-common
+  become: True
+
+- name: Create ~/efs/
+  file:
+    path: /home/ubuntu/efs
+    state: directory
+    mode: 0700
+
+- name: Mount the EFS
+  command: "mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport {{ efs_fs_id }}.efs.us-east-1.amazonaws.com:/ /home/ubuntu/efs"
+  become: True

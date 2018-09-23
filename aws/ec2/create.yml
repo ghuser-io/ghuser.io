@@ -76,6 +76,15 @@
     - name: sentry_dns
       prompt: Sentry DNS (e.g. https://0123456789abcdef0123456789abcdef:0123456789abcdef0123456789abcdef@sentry.io/1234567)
       private: yes
+    - name: aws_access_key_id
+      prompt: AWS access key ID (e.g. ABCDEFGHIJ0123456789)
+      private: no
+    - name: aws_secret_access_key
+      prompt: AWS secret access key (e.g. 1234567890AbCdEfGhIjKlMnOpQrStUvWxYz0123)
+      private: yes
+    - name: efs_fs_id
+      prompt: EFS filesystem ID (e.g. fs-a0123456)
+      private: no
 
   roles:
     - ghuser-db-client
