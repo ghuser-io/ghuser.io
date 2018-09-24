@@ -322,8 +322,6 @@ function ContribExpandedContent({repo, username, contrib, style={}, className=""
     const Spacer = ({mod}) => <div style={{width: 1, height: 20+mod}}/>;
 
     const languagesView = Languages({repo});
-    console.log(languagesView);
-    console.log(languagesView===null);
 
     return (
       <AccordionBody className={"text-gray "+className} style={{paddingBottom: 15, ...style}}>
