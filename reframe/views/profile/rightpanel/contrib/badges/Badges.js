@@ -1,12 +1,11 @@
 import React from 'react';
 import {bigNum, numberOf} from '../../../numbers';
 import './Badges.css';
+import {getCommitCounts} from '../getContribInfo';
 
 export {Badges, BadgesMini, BadgesMultiLine};
-export {getDisplaySettings};
-export {getDisplayOrder};
-export {getInfoForBadges};
-export {getContribScore};
+export {getContribType};
+export {getTotalEarnedStars};
 
 function Badges({contrib, username, style={}}) {
   const badgeInfos = getInfoForBadges(contrib, username);
@@ -101,16 +100,6 @@ function ContribRange({contribRange, ...props}) {
 
 function EarnedStars({earnedStars, earnedStarsHint, stargazers_count, showMoreInfo, ...props}) {
     const Star = () => <span style={{fontSize: '0.92em', position: 'relative', top: '-0.08em'}}>★</span>;
-    /*
-    return (
-        <Badge
-          head={<span className={'earned-stars-text earned-stars-text-color'}><Star/> {bigNum(earnedStars)}</span>}
-          desc={earnedStars!==stargazers_count && <span>/ <Star/> {bigNum(stargazers_count)}</span>}
-          width={170}
-          {...props}
-        />
-    );
-    */
     return (
         <Badge
           head={<span className="earned-stars-text earned-stars-icon-color"><Star/></span>}
@@ -153,14 +142,6 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
       return badge;
     };
 
-    // TODO
-    const hintGithubIssue = (
-      <a href="https://github.com/ghuser-io/ghuser.io/issues/1"
-         target="_blank"
-         className="external"
-      >here</a>
-    );
-
     return (
       <div style={style}>
         {badge}&nbsp; :&nbsp; {hint}
@@ -200,162 +181,19 @@ function BadgeMini({head, width, hint, innerStyle={}, outerStyle={}}) {
 
 }
 
-function getDisplaySettings(contrib) {
-    const {commits_count__user, commits_count__percentage, commits_count__total, contribType, contribRange, earnedStars, repoScale} = getInfoForBadges(contrib);
-
-    const miniDisplay = ! (
-        repoScale!=='micro'
-        /*
-        ['large', 'medium'].includes(repoScale) ||
-        repoScale==='small' && ['contrib_crown', 'contrib_gold', 'contrib_silver'].includes(contribType)
-        */
-    );
-
-    return {miniDisplay};
-}
-
-function getDisplayOrder(contrib1, contrib2) {
-  return getContribScore(contrib2).contribScore - getContribScore(contrib1).contribScore;
-}
-
-function getContribScore(contrib) {
-  const {
-      commits_count__user: userCommitsCount,
-      commits_count__percentage: userCommitsPercentage,
-  } = getInfoForBadges(contrib);
-  const {stargazers_count: stars} = contrib;
-
-  const starBoost = getStarBoost(stars);
-  const contribBoost = getContribBoost(userCommitsPercentage);
-  const contribScore = userCommitsCount*starBoost*contribBoost;
-
-  return {contribScore, userCommitsCount, starBoost, contribBoost};
-}
-
-function getContribBoost(userCommitsPercentage) {
-  const contribBoost = 1 + ((1 - userCommitsPercentage) * 5);
-  return contribBoost;
-}
-
-function getStarBoost(stars) {
-  const MAX_STARS = 100*1000;
-  const starBoost = 0.2 + (Math.log10(stars) / Math.log10(MAX_STARS) * 5);
-  return starBoost;
-}
-
-/*
-function getDisplayOrder(contrib1, contrib2) {
-    let orderVal;
-    orderVal = getOrder__one_sided(contrib1, contrib2);
-    if( orderVal!==null ) {
-        return orderVal;
-    }
-    orderVal = getOrder__one_sided(contrib2, contrib1);
-    if( orderVal!==null ) {
-        return -1*orderVal;
-    }
-
-    const {
-        contribType: contribType1,
-        repoScale: repoScale1,
-        commits_count__user: commits_count__user1,
-    } = getInfoForBadges(contrib1);
-    const {
-        contribType: contribType2,
-        repoScale: repoScale2,
-        commits_count__user: commits_count__user2,
-    } = getInfoForBadges(contrib2);
-
-    const getContribOrder = (contribType, repoScale) => (
-        contribType==='contrib_crown' && repoScale==='micro' && -1 ||
-        contribType==='contrib_crown' && 3 ||
-        contribType==='contrib_gold' && 2 ||
-        contribType==='contrib_silver' && 1 ||
-        contribType==='contrib_bronze' && 0
-    );
-    const contribOrder = getContribOrder(contribType2, repoScale2) - getContribOrder(contribType1, repoScale1);
-    if( contribOrder!==0 ) {
-        return contribOrder;
-    }
-
-    const getRepoOrder = repoScale => (
-        repoScale==='large' && 3 ||
-        repoScale==='medium' && 2 ||
-        repoScale==='small' && 1 ||
-        repoScale==='micro' && 0
-    );
-    const repoOrder = getRepoOrder(repoScale2) - getRepoOrder(repoScale1);
-    if( repoOrder!==0 ) {
-        return repoOrder;
-    }
-
-    return commits_count__user2 - commits_count__user1;
-}
-*/
-
-function getOrder__one_sided(contrib1, contrib2) {
-    const {
-        contribType: contribType1,
-        repoScale: repoScale1,
-        earnedStars: earnedStars1,
-    } = getInfoForBadges(contrib1);
-    const {
-        contribType: contribType2,
-        repoScale: repoScale2,
-        earnedStars: earnedStars2,
-    } = getInfoForBadges(contrib2);
-
-
-    if( repoScale1!=='micro' && repoScale2==='micro' ) {
-        return -1;
-    }
-    if( repoScale1==='micro' && repoScale2!=='micro' ) {
-        return 1;
-    }
-
-    if( contribType1!=='contrib_bronze' && ['large', 'medium'].includes(repoScale1) && ! ['large', 'medium'].includes(repoScale2) ) {
-        return -1;
-    }
-
-    return null;
-}
-
 function getInfoForBadges(contrib, username) {
-    const {contribType, ...contribInfos} = getContribTypeAssets(contrib, username);
+    const {contribType, ...contribTypeAssets} = getContribTypeAssets(contrib, username);
 
     const contribRange = getContribRange(contrib);
 
     return {
-        ...getCommitCounts(contrib),
         contribType,
-        ...contribInfos,
+        ...contribTypeAssets,
         contribRange,
         ...getEarnedStars(contrib, contribType, username),
         ...getRepoScaleAssets(contrib),
     };
-
-    /*
-    if ( contrib.full_name.split('/')[0]!=='brillout') {
-        console.log(contrib.full_name);
-        console.log('commits - '+contrib.total_commits_count);
-        console.log('commits % - '+contrib.percentage);
-        console.log('stars - '+contrib.stargazers_count);
-        console.log('--');
-        console.log(contribType);
-        console.log(contribRange);
-        console.log(repoScale);
-        console.log(earnedStars);
-        console.log('\n');
-        console.log('\n');
-        console.log('\n');
-        console.log('\n');
-        console.log('\n');
-        console.log('\n');
-    }
-    */
 }
-
-
 function getContribTypeAssets(contrib, username="user") {
   const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
 
@@ -405,7 +243,6 @@ function getContribTypeAssets(contrib, username="user") {
     };
   }
 }
-
 function getContribType(userCommitsCount, userCommitsPercentage, totalCommitsCount) {
     const THREADSHOLD_CROWN = 0.1;
     const THRESHOLD_GOLD = 50;
@@ -428,14 +265,6 @@ function getContribType(userCommitsCount, userCommitsPercentage, totalCommitsCou
 
     return contribType;
 }
-
-function getCommitCounts(contrib) {
-    const {total_commits_count: commits_count__total} = contrib;
-    const commits_count__percentage = contrib.percentage/100;
-    const commits_count__user = Math.round(commits_count__percentage*commits_count__total);
-    return {commits_count__user, commits_count__percentage, commits_count__total};
-}
-
 function getContribRange(contrib) {
     const {name} = contrib;
 
@@ -450,14 +279,12 @@ function getContribRange(contrib) {
 
     return contribRange;
 }
-
 function getRepoScaleAssets(contrib) {
   const repoScale = getRepoScale(contrib.total_commits_count);
   const repoScaleIcon = <div className={'icon-repo-scale icon-repo-scale-'+repoScale}/>;
   const repoScaleHint = 'this repo seems to be a '+repoScale+' project';
   return {repoScale, repoScaleIcon, repoScaleHint};
 }
-
 function getRepoScale(totalCommitsCount) {
   const THREADSHOLD_LARGE = 2000;
   const THREADSHOLD_MEDIUM = 500;
@@ -472,7 +299,6 @@ function getRepoScale(totalCommitsCount) {
 
   return repoScale;
 }
-
 function getEarnedStars(contrib, contribType, username) {
     const assert_ = val => assert(val, 'computing earned stars');
 
@@ -501,6 +327,16 @@ function getEarnedStars(contrib, contribType, username) {
     assert_(earnedStars>=0 && (earnedStars|0)===earnedStars);
 
     return {earnedStars, earnedStarsHint};
+}
+
+function getTotalEarnedStars(contribs) {
+  let totalEarnedStars = 0;
+  for (const repo in contribs && contribs.repos) {
+    const contrib = contribs.repos[repo];
+    const {earnedStars} = getInfoForBadges(contrib);
+    totalEarnedStars += earnedStars;
+  }
+  return totalEarnedStars;
 }
 
 function assert(val, doingWhat) {

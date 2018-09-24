@@ -1,12 +1,16 @@
 import React from 'react';
 import '../../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
+import './Accordion.css';
 
 export {Accordion};
-export {AccordionHead, AccordionBody};
+export {AccordionHead}
+export {AccordionBody};
 export {AccordionIcon};
+export {AccordionBadgerIcon};
 export {stopPropagationOnLinks}
 
-const AccordionIcon = () => <span><i className="dropdown icon text-gray mx-1"></i></span>;
+const AccordionBadgerIcon = () => <div className="badger-accordion__header-icon"/>;
+const AccordionIcon = () => <span><i className="dropdown icon-vertical-align text-gray mx-1"></i></span>;
 
 const AccordionHead = ({className, ...props}) => (
   <div

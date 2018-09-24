@@ -7,7 +7,7 @@ import {urls} from '../../../ghuser';
 import CreateYourProfile from './CreateYourProfile';
 import ProfileBeingCreated from './ProfileBeingCreated';
 import Contrib from './contrib/Contrib';
-import {getDisplayOrder} from './contrib/badges/Badges';
+import {getContribDisplayOrder} from './contrib/getContribScore';
 import './RightPanel.css';
 
 const RightPanel = props => {
@@ -22,22 +22,11 @@ const RightPanel = props => {
     );
   };
 
-  const compare = (a, b) => {
-    if (a.total_score < b.total_score) {
-      return 1;
-    }
-    if (a.total_score > b.total_score) {
-      return -1;
-    }
-    return 0;
-  };
-
   const repos = [];
 
   if (props.contribs) {
     const contribs = Object.values(props.contribs.repos);
- // contribs.sort(compare);
-    contribs.sort(getDisplayOrder);
+    contribs.sort(getContribDisplayOrder);
 
     const uniqueNames = [];
     for (const i in contribs) {

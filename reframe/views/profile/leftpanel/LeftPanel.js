@@ -8,22 +8,17 @@ import VCardDetails from './VCardDetails';
 import './LeftPanel.css';
 import Avatar from '../Avatar';
 import {urls} from '../../../ghuser';
-import {getInfoForBadges} from './../rightpanel/contrib/badges/Badges';
+import {getTotalEarnedStars} from './../rightpanel/contrib/badges/Badges';
 
 const LeftPanel = props => {
-  let stars = 0;
-  for (const repo in props.contribs && props.contribs.repos) {
-    const contrib = props.contribs.repos[repo];
-    const {earnedStars} = getInfoForBadges(contrib);
-    stars += earnedStars;
-  }
+  const totalEarnedStars = getTotalEarnedStars(props.contribs);
 
   return (
     <div className="col-3 p-0 pr-4">
       <Avatar url={props.user.avatar_url || AvatarUnknown} classes="avatar-user" />
       <VCard login={props.user.login}
              name={!props.user.ghuser_created_at && 'Your name here' || props.user.name}
-             url={props.user.html_url} stars={stars} />
+             url={props.user.html_url} stars={totalEarnedStars} />
       <Bio text={
         props.user.ghuser_being_created && "This profile is being created..." ||
         !props.user.ghuser_created_at && "I love coding and I'm about to create my profile on ghuser.io :)" ||

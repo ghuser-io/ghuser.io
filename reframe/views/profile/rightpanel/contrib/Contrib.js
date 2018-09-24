@@ -1,18 +1,23 @@
 import React from 'react';
-import * as moment from 'moment';
 
-import Badge from './Badge';
-import RepoDescrAndDetails from './RepoDescrAndDetails';
+// TODO never use wildcard imports
+import * as moment from 'moment';
+import * as db from '../../../../db';
+
 import './Contrib.css';
+
+/*
+import Badge from './Badge';
+*/
 import Avatar from '../../Avatar';
 import AvatarAdd from '../../AvatarAdd';
-import * as db from '../../../../db';
-//import {withSeparator} from '../../css';
 import {bigNum, roundHalf, numberOf} from '../../numbers';
 import {urls} from '../../../../ghuser';
-import {Badges, BadgesMini, getDisplaySettings, BadgesMultiLine, getInfoForBadges, getContribScore} from './badges/Badges';
+import {Badges, BadgesMini, BadgesMultiLine, getContribType} from './badges/Badges';
+import {getContribScore} from './getContribScore';
+import {getCommitCounts} from './getContribInfo';
 import RichText from './RichText';
-import {Accordion, AccordionHead, AccordionBody, AccordionIcon, stopPropagationOnLinks} from './Accordion';
+import {Accordion, AccordionHead, AccordionBody, AccordionIcon, AccordionBadgerIcon, stopPropagationOnLinks} from './Accordion';
 import Language from './Language';
 import AddSettings from '../../AddSettings';
 import ProgressBar from './ProgressBar';
@@ -38,7 +43,7 @@ class Contrib extends React.Component {
   }
 
   render() {
-    if( ! this.state.loading && this.state.repo && /*getDisplaySettings(this.props.contrib).miniDisplay*/ this.props.i>=10 ) {
+    if( ! this.state.loading && this.state.repo && this.props.i>=10 ) {
         return <ContribMini {...{...this.props, ...this.state}}/>;
     }
 
@@ -123,18 +128,9 @@ class Contrib extends React.Component {
 
     const LEFT_PADDING = 67;
 
-    /*
-    const badgesLine = (
-      <div>
-        <AccordionIcon/>
-        <Badges contrib={this.props.contrib} username={this.props.username}/>
-      </div>
-    );
-    /*/
     const badgesLine = (
       <Badges contrib={this.props.contrib} username={this.props.username} style={{marginTop: 3}}/>
     );
-    //*/
     const accordionBody = (
       <ContribExpandedContent
         {...{...this.props, ...this.state}}
@@ -152,7 +148,7 @@ class Contrib extends React.Component {
         </div>
         <ContribHeader {...{...this.props, ...this.state}}/>
         {badgesLine}
-        <div className="badger-accordion__header-icon"/>
+        <AccordionBadgerIcon/>
       </AccordionHead>
     );
 
@@ -370,7 +366,6 @@ function ScoreExplanation({contrib}) {
       </div>
     </div>
   );
-
 }
 
 function ExplainerTicket () {
@@ -385,7 +380,7 @@ function ExplainerTicket () {
 
 function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
 
-  const {commits_count__user, commits_count__percentage, commits_count__total, contribType} = getInfoForBadges(contrib, username);
+  const {commits_count__user, commits_count__percentage, commits_count__total, contribType} = getCommitCounts(contrib, username);
 
   const isMaintainer = contribType === 'contrib_crown';
 
