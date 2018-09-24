@@ -15,13 +15,7 @@
     - config
     - credentials
 
-- name: Setup .bashrc
-  lineinfile:
-    path: /home/ubuntu/.bashrc
-    regexp: "export\\s{{ item.key }}="
-    line: "export {{ item.key }}=\"{{ item.val }}\""
-  with_items:
-    - key: AWS_ACCESS_KEY_ID
-      val: "{{ aws_access_key_id }}"
-    - key: AWS_SECRET_ACCESS_KEY
-      val: "{{ aws_secret_access_key }}"
+- name: Upload .bash_profile
+  template:
+    src: bash_profile.j2
+    dest: /home/ubuntu/.bash_profile

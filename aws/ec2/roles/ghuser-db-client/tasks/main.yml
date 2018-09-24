@@ -4,7 +4,6 @@
   git:
     repo: "https://{{ github_username }}:{{ github_password }}@github.com/ghuser-io/db.git"
     dest: /home/ubuntu/db/
-    depth: 10
 
 - name: npm install ghuser.io's DB scripts' deps
   command: npm install
