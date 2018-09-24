@@ -6,7 +6,7 @@ import * as Parser from 'html-react-parser';
 import {urls} from '../../../ghuser';
 import CreateYourProfile from './CreateYourProfile';
 import ProfileBeingCreated from './ProfileBeingCreated';
-import Contrib from './contrib/Contrib';
+import {Contrib} from './contrib/Contrib';
 import {getContribDisplayOrder} from './contrib/getContribScore';
 
 const RightPanel = props => {

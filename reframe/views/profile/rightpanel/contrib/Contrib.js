@@ -18,6 +18,9 @@ import AddSettings from '../../AddSettings';
 import ProgressBar from './ProgressBar';
 
 
+export {Contrib};
+
+
 class Contrib extends React.Component {
   constructor(props) {
     super(props);
@@ -306,5 +309,3 @@ function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
     </div>
   );
 }
-
-export default Contrib;
