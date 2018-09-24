@@ -26,11 +26,11 @@
   height: 13px;
   background-size: contain;
 }
-.big-badge .contrib-type-icon {
+.contrib-badge .contrib-type-icon {
   margin-top: 4px;
   margin-bottom: -1px;
 }
-.big-badge .icon-repo-scale {
+.contrib-badge .icon-repo-scale {
   margin-top: 3px;
 }
 
@@ -62,7 +62,7 @@
   color: #119f11;
 }
 
-.big-badge {
+.contrib-badge {
   display: inline-flex;
   align-items: center;
   text-align: center;
@@ -73,7 +73,7 @@
   font-size: .8em;
   margin-left: 5px;
 }
-.big-badge {
+.contrib-badge {
   position: relative;
 }
 .badge-border {

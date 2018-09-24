@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './VCard.css';
-import {bigNum} from '../numbers';
+import {bigNum} from '../../utils/pretty-numbers';
 
 const VCard = props => (
   <div className="py-3">

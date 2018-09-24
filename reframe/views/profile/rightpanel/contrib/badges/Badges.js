@@ -1,5 +1,5 @@
 import React from 'react';
-import {bigNum, numberOf} from '../../../numbers';
+import {bigNum, numberOf} from '../../../../utils/pretty-numbers';
 import './Badges.css';
 import {getCommitCounts} from '../getContribInfo';
 
@@ -127,7 +127,7 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
     const innerStyle = {display: 'inline-block', width: fixedWidth && width};
     const badge = (
         <div style={innerStyle}>
-            <div className="big-badge text-gray" title={!inlineHint && hint || null}>
+            <div className="contrib-badge text-gray" title={!inlineHint && hint || null}>
                 <div>{head}</div>
                 {desc && <div className="badge-desc">{desc}</div>}
                 <div className="badge-border"/>

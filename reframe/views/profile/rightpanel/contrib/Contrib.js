@@ -1,21 +1,22 @@
 import React from 'react';
 
 import * as db from '../../../../db';
+import {urls} from '../../../../ghuser';
 
-import './Contrib.css';
+import RichText from '../../../utils/RichText';
+import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon, stopPropagationOnLinks} from '../../../utils/Accordion';
+import ProgressBar from '../../../utils/ProgressBar';
+import {numberOf} from '../../../utils/pretty-numbers';
 
 import Avatar from '../../Avatar';
 import AvatarAdd from '../../AvatarAdd';
-import {numberOf} from '../../numbers';
-import {urls} from '../../../../ghuser';
+import AddSettings from '../../AddSettings';
 import {Badges, BadgesMini, BadgesMultiLine, getContribType} from './badges/Badges';
 import {getContribScore} from './getContribScore';
 import {getCommitCounts} from './getContribInfo';
-import RichText from './RichText';
-import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon, stopPropagationOnLinks} from './Accordion';
 import Language from './Language';
-import AddSettings from '../../AddSettings';
-import ProgressBar from './ProgressBar';
+
+import './Contrib.css';
 
 
 export {Contrib};

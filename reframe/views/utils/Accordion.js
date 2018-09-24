@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
+import '../../browser/thirdparty/semantic-ui-2.3.2/accordion.min.css';
 import './Accordion.css';
 
 export {Accordion};
