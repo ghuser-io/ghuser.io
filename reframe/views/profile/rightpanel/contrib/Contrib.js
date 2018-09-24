@@ -103,16 +103,6 @@ class Contrib extends React.Component {
           {accordionBody}
         </Accordion>
     );
-
-    return (
-      <div className="border-bottom border-gray-light" style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}>
-        <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
-          {avatar()}
-        </div>
-        <ContribHeader {...{...this.props, ...this.state}}/>
-        {body}
-      </div>
-    );
   }
 }
 
