@@ -195,9 +195,7 @@ function getInfoForBadges(contrib, username) {
     };
 }
 function getContribTypeAssets(contrib, username="user") {
-  const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
-
-  const contribType = getContribType(commits_count__user, commits_count__percentage, commits_count__total);
+  const contribType = getContribType(contrib);
 
   const {iconClassName, text, hint} = getAssets();
   const contribTypeIcon = <div className={'contrib-type-icon '+iconClassName}/>;
@@ -243,7 +241,13 @@ function getContribTypeAssets(contrib, username="user") {
     };
   }
 }
-function getContribType(userCommitsCount, userCommitsPercentage, totalCommitsCount) {
+function getContribType(contrib) {
+    const {
+      commits_count__user: userCommitsCount,
+      commits_count__percentage: userCommitsPercentage,
+      commits_count__total: totalCommitsCount,
+    } = getCommitCounts(contrib);
+
     const THREADSHOLD_CROWN = 0.1;
     const THRESHOLD_GOLD = 50;
     const THRESHOLD_SILVER = 5;

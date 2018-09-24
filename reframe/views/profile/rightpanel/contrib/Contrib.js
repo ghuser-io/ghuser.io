@@ -273,7 +273,8 @@ function ExplainerTicket () {
 
 function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
 
-  const {commits_count__user, commits_count__percentage, commits_count__total, contribType} = getCommitCounts(contrib, username);
+  const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
+  const contribType = getContribType(contrib);
 
   const isMaintainer = contribType === 'contrib_crown';
 
