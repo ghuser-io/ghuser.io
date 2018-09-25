@@ -6,10 +6,6 @@
   justify-content: center;
 }
 
-.avatar-add-sign {
-  vertical-align: middle;
-}
-
 .avatar-small {
   float: left;
   width: 50px;
@@ -29,6 +25,7 @@
 }
 .avatar-add-sign {
   display: inline-block;
+  vertical-align: middle;
   background-color: #eee;
   width: 24px;
   margin-top: -5px;

@@ -93,7 +93,7 @@ const RightPanel = props => {
 
   return (
     <div className="col-9 pl-2 pr-0">
-      <div className="contribs" style={{fontSize: '14px'}}>
+      <div style={{fontSize: '14px'}}>
         {repos}
       </div>
       {
