@@ -1,4 +1,5 @@
-const profileQueueEndpoint = '/queue';
+const profileQueueEndpoint = '/_queue';
+const dataEndpoint = '/_data';
 const baseUrl = 'https://ghuser.io';
 
 const urls = {
@@ -8,6 +9,7 @@ const urls = {
   oauthEndpoint: '/login',
   profileQueueEndpoint,
   profileQueueUrl: baseUrl+profileQueueEndpoint,
+  dataEndpoint,
 };
 urls.masterBranch = `${urls.mainRepo}/blob/master`;
 urls.docs = `${urls.masterBranch}/docs`;

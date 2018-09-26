@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk');
 const Bell = require('bell');
 const fetch = require('fetch-retry');
+const h2o2 = require('h2o2');
 const Hapi = require('hapi');
 const Raven = require('raven');
 const config = require('@brillout/reconfig').getConfig({configFileName: 'reframe.config.js'});
@@ -32,6 +33,8 @@ async function start() {
     location: urls.landing,
     scope: []
   });
+
+  await server.register({ plugin: h2o2 }); // see https://github.com/hapijs/h2o2
 
   const awsSqsQueueUrl = process.env.AWS_SQS_QUEUE_URL || 'AWS_SQS_QUEUE_URL';
   AWS.config.update({region: 'us-east-1'});
@@ -144,6 +147,16 @@ async function start() {
         await raven.captureException(new Error(e));
       }
       return profileQueue;
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: `${urls.dataEndpoint}/{bar}`,
+    handler: {
+      proxy: {
+        uri: 'http://localhost:8080/{bar}'
+      }
     }
   });
 
