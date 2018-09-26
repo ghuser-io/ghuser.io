@@ -136,9 +136,7 @@ function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
     );
 
     if( ! inlineHint ) {
-      if( ! inlineHint ) {
-        Object.assign(innerStyle, style);
-      }
+      Object.assign(innerStyle, style);
       return badge;
     };
 
