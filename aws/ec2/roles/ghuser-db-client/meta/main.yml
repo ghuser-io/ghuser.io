@@ -5,5 +5,4 @@ dependencies:
   - role: git-client
   - role: pip-client
   - role: aws-client
-  - role: s3-client
   - role: efs-client
