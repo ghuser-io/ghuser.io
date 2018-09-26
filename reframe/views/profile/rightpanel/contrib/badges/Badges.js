@@ -1,7 +1,7 @@
 import React from 'react';
 import {bigNum, numberOf} from '../../../../utils/pretty-numbers';
 import './Badges.css';
-import {getCommitCounts} from '../getContribInfo';
+import {getCommitCounts, getRepoAvatar} from '../getContribInfo';
 
 export {Badges, BadgesMini, BadgesMultiLine};
 export {getContribType};
@@ -41,10 +41,10 @@ function BadgesMultiLine({contrib, username}) {
 
 function BadgesMini({contrib, repo, username, style={}}) {
   const {contribTypeIcon, contribTypeHint, repoScaleIcon, repoScaleHint, earnedStars, earnedStarsHint} = getInfoForBadges(contrib, username);
-  const avatar_url = repo && repo.settings && repo.settings.avatar_url;
+  const repoAvatar = getRepoAvatar(repo);
   const repoImage = (
-    avatar_url && (
-        <img className={`avatar border border-white rounded`} src={avatar_url} style={{width: 18, height: 18}} />
+    repoAvatar && (
+        <img className={`avatar border border-white rounded`} src={repoAvatar} style={{width: 18, height: 18}} />
     ) || (
         <div style={{display: 'inline-block', width: 18, height: 18}}/>
     )

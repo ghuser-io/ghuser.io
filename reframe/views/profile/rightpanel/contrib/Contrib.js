@@ -13,7 +13,7 @@ import AvatarAdd from '../../AvatarAdd';
 import AddSettings from '../../AddSettings';
 import {Badges, BadgesMini, BadgesMultiLine, getContribType} from './badges/Badges';
 import {getContribScore} from './getContribScore';
-import {getCommitCounts} from './getContribInfo';
+import {getCommitCounts, getRepoAvatar} from './getContribInfo';
 import Language from './Language';
 
 import './Contrib.css';
@@ -55,12 +55,9 @@ class Contrib extends React.Component {
           </span>
         );
       }
-      if (this.state.repo && this.state.repo.settings && this.state.repo.settings.avatar_url) {
-        return <Avatar url={this.state.repo.settings.avatar_url} classes="avatar-small" />;
-      }
-      if (this.state.repo && this.state.repo.organization &&
-          this.state.repo.organization.avatar_url) {
-        return <Avatar url={this.state.repo.organization.avatar_url} classes="avatar-small" />;
+      const repoAvatar = getRepoAvatar(this.state.repo);
+      if( repoAvatar ) {
+        return <Avatar url={repoAvatar} classes="avatar-small" />;
       }
       return (
         <a
