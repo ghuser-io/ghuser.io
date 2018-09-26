@@ -6,8 +6,8 @@ import * as Parser from 'html-react-parser';
 import {urls} from '../../../ghuser';
 import CreateYourProfile from './CreateYourProfile';
 import ProfileBeingCreated from './ProfileBeingCreated';
-import Contrib from './contrib/Contrib';
-import './RightPanel.css';
+import {Contrib} from './contrib/Contrib';
+import {getContribDisplayOrder} from './contrib/getContribScore';
 
 const RightPanel = props => {
   // Use these queues to avoid filling up the event loop:
@@ -21,24 +21,23 @@ const RightPanel = props => {
     );
   };
 
-  const compare = (a, b) => {
-    if (a.total_score < b.total_score) {
-      return 1;
-    }
-    if (a.total_score > b.total_score) {
-      return -1;
-    }
-    return 0;
-  };
-
   const repos = [];
 
   if (props.contribs) {
     const contribs = Object.values(props.contribs.repos);
-    contribs.sort(compare);
+    contribs.sort(getContribDisplayOrder);
 
     const uniqueNames = [];
-    for (const contrib of contribs) {
+    for (const i in contribs) {
+      const contrib = contribs[i];
+
+      // Don't include repos where user has made 0 commits. This happens when a user
+      // makes a PR that is not merged.
+      if( contrib.percentage===0 ) {
+        continue;
+      }
+
+
       // We don't want to have two repos with the same name. This happens when a user is
       // contributing to a project and has a fork with the same name:
       if (uniqueNames.indexOf(contrib.name) > -1) {
@@ -48,6 +47,7 @@ const RightPanel = props => {
 
       repos.push(
           <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
+                   i={i}
                    pushToFunctionQueue={pushToFunctionQueue} />
       );
     }
@@ -93,22 +93,12 @@ const RightPanel = props => {
 
   return (
     <div className="col-9 pl-2 pr-0">
-      <div className="user-profile-nav">
-        <nav className="UnderlineNav-body">
-          <a href="javascript:;" className="UnderlineNav-item selected" aria-selected="true" role="tab">
-            Contributions
-          </a>
-          {/*<a href="javascript:;" className="UnderlineNav-item" aria-selected="false" role="tab">
-            Other tab
-          </a>*/}
-        </nav>
-      </div>
-      <div className="contribs">
+      <div style={{fontSize: '14px'}}>
         {repos}
       </div>
       {
         props.contribs &&
-        <div className="updated-hint text-gray">
+        <div className="text-gray" style={{textAlign: 'right'}}>
           <small><i>Updated {moment(props.fetchedat).fromNow()}.</i></small>
         </div>
       }

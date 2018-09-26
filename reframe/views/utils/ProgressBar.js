@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../../../browser/thirdparty/semantic-ui-2.3.2/progress.min.css';
+import '../../browser/thirdparty/semantic-ui-2.3.2/progress.min.css';
 
 import './ProgressBar.css';
 

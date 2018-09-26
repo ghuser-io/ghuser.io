@@ -1,21 +1,31 @@
 import React from 'react';
 
 import './VCard.css';
-import {bigNum} from '../numbers';
+import {bigNum} from '../../utils/pretty-numbers';
 
-const VCard = props => {
-  const stars = Math.round(props.stars);
+const VCard = props => (
+  <div className="py-3">
+    <h1>
+      <div className="vcard-fullname">{props.name}</div>
+      <div className="vcard-username" style={{marginTop: -3, lineHeight: '1.7em'}}>
+        <a className="vcard-username-login mr-3" href={props.url} target="_blank"><i className="fab fa-github"></i> {props.login}</a>
+        <Stars {...props}/>
+      </div>
+    </h1>
+  </div>
+);
 
+const Stars = ({stars, login}) => {
+  stars = Math.round(stars);
+  if( stars < 1 ) {
+    return null;
+  }
   return (
-    <div className="py-3">
-      <h1>
-        <div className="vcard-fullname">{props.name}</div>
-        <div className="vcard-username">
-          <a className="vcard-username-login mr-3" href={props.url} target="_blank"><i className="fab fa-github"></i> {props.login}</a>
-          {stars >= 1 && <span className="vcard-stars">★ {bigNum(stars)}</span>}
-        </div>
-      </h1>
-    </div>
+    <span className="vcard-stars" title={login+" has earned a total of "+stars+" stars"}>
+      <span className="earned-stars-icon-color">★</span>
+      &nbsp;
+      <span className="earned-stars-text-color">{bigNum(stars)}</span>
+    </span>
   );
 };
 

@@ -1,0 +1,91 @@
+.icon-contrib-crown {
+  background-image: url('./crown.svg');
+}
+.icon-contrib-bronze {
+  background-image: url('./medal_bronze.svg');
+}
+.icon-contrib-silver {
+  background-image: url('./medal_silver.svg');
+}
+.icon-contrib-gold {
+  background-image: url('./medal_gold.svg');
+}
+.icon-repo-scale {
+  background-image: url('./biceps.png');
+}
+.icon-contrib-crown,
+.icon-contrib-bronze,
+.icon-contrib-silver,
+.icon-contrib-gold,
+.icon-repo-scale {
+  display: inline-block;
+}
+
+.contrib-type-icon, .icon-repo-scale {
+  width: 13px;
+  height: 13px;
+  background-size: contain;
+}
+.contrib-badge .contrib-type-icon {
+  margin-top: 4px;
+  margin-bottom: -1px;
+}
+.contrib-badge .icon-repo-scale {
+  margin-top: 3px;
+}
+
+
+.icon-repo-scale-micro {
+  opacity: 0.4;
+  filter: grayscale(100%);
+}
+.icon-repo-scale-small {
+  opacity: 0.6;
+  filter: grayscale(60%);
+}
+.icon-repo-scale-medium {
+  opacity: 0.8;
+  filter: grayscale(30%);
+}
+
+.earned-stars-text {
+  font-size: 1em;
+}
+.contrib-range-title {
+  font-size: 1em;
+}
+
+.earned-stars-icon-color {
+  color: #4b4;
+}
+.earned-stars-text-color {
+  color: #119f11;
+}
+
+.contrib-badge {
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  padding-left: 8px;
+  padding-right: 7px;
+}
+.badge-desc {
+  font-size: .8em;
+  margin-left: 5px;
+}
+.contrib-badge {
+  position: relative;
+}
+.badge-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  box-sizing: content-box;
+  width: 100%;
+  height: 85%;
+  border-radius: 5px;
+
+  border: 1px solid #efefef;
+  background-color: #fbfbfb;
+}

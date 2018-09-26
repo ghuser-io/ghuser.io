@@ -33,7 +33,8 @@ See [this example](../.ghuser.io.json).
 ```json
 {
   "_comment": "Repo metadata for ghuser.io. See https://github.com/ghuser-io/ghuser.io/blob/master/docs/repo-settings.md",
-  "techs": ["React", "Node.js", "Reframe", "Bootstrap", "Semantic UI", "AWS"]
+  "techs": ["React", "Node.js", "Reframe", "hapi", "Bootstrap", "Semantic UI", "AWS", "Ansible",
+            "Travis CI"]
 }
 ```
 

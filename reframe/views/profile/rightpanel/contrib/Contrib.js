@@ -1,14 +1,26 @@
 import React from 'react';
-import * as moment from 'moment';
 
-import Badge from './Badge';
-import RepoDescrAndDetails from './RepoDescrAndDetails';
-import './Contrib.css';
-import Avatar from '../../Avatar';
-import {withSeparator} from '../../css';
-import {bigNum, roundHalf} from '../../numbers';
 import * as db from '../../../../db';
 import {urls} from '../../../../ghuser';
+
+import RichText from '../../../utils/RichText';
+import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon, stopPropagationOnLinks} from '../../../utils/Accordion';
+import ProgressBar from '../../../utils/ProgressBar';
+import {numberOf} from '../../../utils/pretty-numbers';
+
+import Avatar from '../../Avatar';
+import AvatarAdd from '../../AvatarAdd';
+import AddSettings from '../../AddSettings';
+import {Badges, BadgesMini, BadgesMultiLine, getContribType} from './badges/Badges';
+import {getContribScore} from './getContribScore';
+import {getCommitCounts, getRepoAvatar} from './getContribInfo';
+import Language from './Language';
+
+import './Contrib.css';
+
+
+export {Contrib};
+
 
 class Contrib extends React.Component {
   constructor(props) {
@@ -31,117 +43,268 @@ class Contrib extends React.Component {
   }
 
   render() {
-    const strStars = numStars => `★ ${bigNum(numStars)}`;
-    const strLastPushed = pushedAt => `last pushed ${moment(pushedAt).fromNow()}`;
-    const strNumCommits = numCommits => `${bigNum(numCommits)} non-merge commits`;
+    if( ! this.state.loading && this.state.repo && this.props.i>=10 ) {
+        return <ContribMini {...{...this.props, ...this.state}}/>;
+    }
 
     const avatar = () => {
       if (this.state.loading) {
-        return <span className="contrib-name mb-2 mr-2"><i className="fas fa-spinner fa-pulse"></i></span>;
-      }
-      if (this.state.repo && this.state.repo.settings && this.state.repo.settings.avatar_url) {
-        return <Avatar url={this.state.repo.settings.avatar_url} classes="avatar-small" />;
-      }
-      if (this.state.repo && this.state.repo.organization &&
-          this.state.repo.organization.avatar_url) {
-        return <Avatar url={this.state.repo.organization.avatar_url} classes="avatar-small" />;
-      }
-      return <a href={`${urls.docs}/repo-settings.md`} title="Add an avatar"
-                target="_blank"><Avatar type="add" classes="avatar-small avatar-add text-gray" /></a>;
-    };
-
-    const badges = (owner, isFork, percentage, numContributors, popularity, numStars, activity,
-                    pushedAt, maturity, numCommits, isMaintainer) => {
-      const result = [];
-      if (!isFork && this.props.username === owner || percentage >= 80) {
-        result.push(
-            <Badge key="percentage" classes="badge-success contrib-name" text="owner"
-                   tooltip={`${this.props.username} wrote ${roundHalf(percentage)}% of it`}/>
-        );
-      } else if (isMaintainer) {
-        result.push(
-            <Badge key="percentage" classes="badge-danger contrib-name" text="maintainer"
-                   tooltip={`${this.props.username} wrote ${roundHalf(percentage)}% of it`}/>
+        return (
+          <span className="mb-2 mr-2" style={{display: 'inline-block', verticalAlign: 'middle'}}>
+            <i className="fas fa-spinner fa-pulse"/>
+          </span>
         );
       }
-      if (numContributors > 1) {
-        result.push(<Badge key="collaborative" classes="badge-secondary contrib-name"
-                           text="collaborative"
-                           tooltip={`${numContributors} people worked on it`}/>);
+      const repoAvatar = getRepoAvatar(this.state.repo);
+      if( repoAvatar ) {
+        return <Avatar url={repoAvatar} classes="avatar-small" />;
       }
-      if (popularity > 2.5) {
-        result.push(<Badge key="popular" classes="badge-secondary contrib-name" text="popular"
-                           tooltip={strStars(numStars)}/>);
-      }
-      if (activity > 2.5) {
-        result.push(<Badge key="active" classes="badge-secondary contrib-name" text="active"
-                           tooltip={strLastPushed(pushedAt)}/>);
-      }
-      if (maturity > 2.5) {
-        result.push(<Badge key="mature" classes="badge-secondary contrib-name" text="mature"
-                           tooltip={strNumCommits(numCommits)}/>);
-      }
-      return result;
-    };
-
-    const earnedStars = (percentage, numStars) => {
-      let earned = percentage * numStars / 100;
-      if (earned < .5) {
-        return '';
-      }
-
-      earned = bigNum(earned);
-      const total = bigNum(numStars);
-      let displayStr = `★ ${earned}`;
-      if (earned !== total) {
-        displayStr += ` / ${total}`;
-      }
-
       return (
-        <span className="ml-2 mb-2 contrib-name text-gray">{displayStr}</span>
+        <a
+          href={`${urls.docs}/repo-settings.md`}
+          title="Add an avatar"
+          target="_blank"
+          ref={stopPropagationOnLinks}
+        ><AvatarAdd/></a>
       );
     };
 
-    const userIsMaintainer = this.props.contrib.percentage >= 15;
+    const LEFT_PADDING = 67;
+
+    const badgesLine = (
+      <Badges contrib={this.props.contrib} username={this.props.username} style={{marginTop: 3}}/>
+    );
+    const accordionHead = (
+      <AccordionHead
+        style={{paddingBottom: 15, paddingTop: 15, paddingLeft: LEFT_PADDING, position: 'relative'}}
+        className="contrib-head"
+      >
+        <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
+          {avatar()}
+        </div>
+        <ContribHeader {...{...this.props, ...this.state}}/>
+        {badgesLine}
+        <AccordionBadgerIcon/>
+      </AccordionHead>
+    );
+
+    const accordionBody = (
+      <ContribExpandedContent
+        {...{...this.props, ...this.state}}
+        style={{paddingLeft: LEFT_PADDING}}
+      />
+    );
 
     return (
-      <div className={withSeparator('bottom', 4)}>
-        {avatar()}
-        <h4 className="contrib-name mr-1">
-          <a href={`https://github.com/${this.props.contrib.full_name}`}
-             target="_blank" className="text-bold contrib-name external"
-             title={this.props.contrib.full_name}>{this.props.contrib.name}</a>
-          {
-            this.state.repo && this.state.repo.fork &&
-              <i className="fas fa-code-branch contrib-name ml-2 text-gray" title="fork"></i>
-          }
-        </h4>
-        {
-          this.state.repo &&
-            badges(this.state.repo.owner, this.state.repo.fork, this.props.contrib.percentage,
-                   Object.keys(this.state.repo.contributors || []).length, this.props.contrib.popularity,
-                   this.state.repo.stargazers_count, this.props.contrib.activity,
-                   this.state.repo.pushed_at, this.props.contrib.maturity,
-                   this.props.contrib.total_commits_count, userIsMaintainer)
-        }
-        {
-          this.state.repo &&
-            earnedStars(this.props.contrib.percentage, this.state.repo.stargazers_count)}
-        {
-          this.state.repo &&
-            <RepoDescrAndDetails contrib={this.props.contrib} descr={this.state.repo.description}
-              languages={this.state.repo.languages}
-              techs={this.state.repo.settings && this.state.repo.settings.techs || []}
-              pulls_authors={this.state.repo.pulls_authors}
-              strStars={strStars(this.state.repo.stargazers_count)}
-              strLastPushed={strLastPushed(this.state.repo.pushed_at)}
-              strNumCommits={strNumCommits(this.props.contrib.total_commits_count)}
-              username={this.props.username} userIsMaintainer={userIsMaintainer}
-              pushToFunctionQueue={this.props.pushToFunctionQueue}/>
-        }
-      </div>
+        <Accordion
+          pushToFunctionQueue={this.props.pushToFunctionQueue}
+          className="border-bottom border-gray-light"
+        >
+          {accordionHead}
+          {accordionBody}
+        </Accordion>
     );
   }
 }
 
-export default Contrib;
+function ContribMini(props) {
+    const LEFT_PADDING = 100;
+
+    const badgeLine = (
+      <BadgesMini
+        style={{position: 'absolute', left: 0, top:0, paddingTop: 'inherit', width: LEFT_PADDING, marginTop: 1}}
+        contrib={props.contrib}
+        username={props.username}
+        repo={props.repo}
+      />
+    );
+
+    const accordionHead = (
+        <AccordionHead
+          style={{paddingTop: 3, paddingBottom: 3, position: 'relative', paddingLeft: LEFT_PADDING}}
+        >
+          {badgeLine}
+          <ContribHeader {...props}/>
+        </AccordionHead>
+    );
+
+    const accordionBody = (
+      <ContribExpandedContent
+        {...props}
+        style={{paddingTop: 10, paddingLeft: LEFT_PADDING}}
+      />
+    );
+
+    return (
+      <Accordion
+        pushToFunctionQueue={props.pushToFunctionQueue}
+        className="border-bottom border-gray-light"
+      >
+        {accordionHead}
+        {accordionBody}
+      </Accordion>
+    );
+}
+
+function ContribHeader({username, contrib: {name, full_name}, repo}) {
+      if( ! repo ) {
+          return null;
+      }
+      const display_name = repo.owner===username ? name : full_name;
+      return (
+          <div
+            style={{whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
+            ref={stopPropagationOnLinks}
+          >
+            <a href={`https://github.com/${full_name}`}
+               className="external"
+               target="_blank">
+               { repo.owner !== username &&
+                   repo.owner+'/'
+               }
+               <span className="text-bold">{name}</span>
+            </a>
+            &nbsp; &nbsp;
+            <span
+              className="repo-descr text-gray"
+            >{RichText(repo.description)}</span>
+          </div>
+      );
+}
+
+function Languages({repo, style={}}) {
+
+    const languageViews = [];
+
+    const languages = repo && repo.languages;
+
+    const techs = repo && repo.settings && repo.settings.techs;
+
+    if (languages) {
+      for (const language of Object.keys(languages)) {
+        languageViews.push(<Language key={language} name={language}
+                       color={languages[language].color} />);
+      }
+    }
+    if( techs ) {
+      for (const tech of techs) {
+        languageViews.push(<Language key={tech} name={tech}
+                                 color="#ccc" />);
+      }
+    }
+
+    if( languageViews.length === 0 ) {
+      return null;
+    }
+
+    return (
+      <div style={{paddingLeft: 3, ...style}}>
+        {languageViews}
+        <AddSettings href={`${urls.docs}/repo-settings.md`} title="Add a tech" />
+      </div>
+    );
+}
+
+function ContribExpandedContent({repo, username, contrib, style={}, className="", pushToFunctionQueue}) {
+    const Spacer = ({mod}) => <div style={{width: 1, height: 20+mod}}/>;
+
+    const languagesView = Languages({repo});
+
+    return (
+      <AccordionBody className={"text-gray "+className} style={{paddingBottom: 15, ...style}}>
+        <Spacer mod={-12}/>
+        {languagesView && (
+          <React.Fragment>
+            {languagesView}
+            <Spacer mod={1}/>
+          </React.Fragment>
+        )}
+        <BadgesExplanation {...{contrib, username}}/>
+        <Spacer mod={3}/>
+        <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
+        <Spacer mod={-2}/>
+        <ScoreExplanation {...{contrib}}/>
+        <Spacer mod={-7}/>
+      </AccordionBody>
+    );
+}
+
+function BadgesExplanation(props) {
+  return (
+    <div>
+      <BadgesMultiLine {...props} />
+      <div className='small-text'>
+        How these badges are determined and the earned stars calculated is explained <ExplainerTicket/>
+      </div>
+    </div>
+  );
+}
+
+function ScoreExplanation({contrib}) {
+  const {contribScore, userCommitsCount, starBoost, contribBoost} = getContribScore(contrib);
+
+  const contribScorePretty = Math.round(contribScore);
+  const starBoostPretty = starBoost.toFixed(2);
+  const contribBoostPretty = contribBoost.toFixed(2);
+
+  return (
+    <div style={{fontSize: '1em'}}>
+      Contribution score: {contribScorePretty}
+      <div className="small-text">
+        Calculation: {contribScorePretty} = {userCommitsCount} (user commits) * {starBoostPretty} (star boost) * {contribBoostPretty} (contrib boost)
+        <br/>
+        The contributions on this page are sorted according to this score, more infos <ExplainerTicket/>
+      </div>
+    </div>
+  );
+}
+
+function ExplainerTicket () {
+  const RELATED_ISSUE_ID = 156;
+  return (
+    <a href={"https://github.com/ghuser-io/ghuser.io/issues/"+RELATED_ISSUE_ID}
+       target="_blank"
+       className="external"
+    >here</a>
+  );
+}
+
+function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
+
+  const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
+  const contribType = getContribType(contrib);
+
+  const isMaintainer = contribType === 'contrib_crown';
+
+  const CommitLink = ({children}) => (
+    isMaintainer ? (
+      children
+    ) : (
+      <a href={`https://github.com/${contrib.full_name}/commits?author=${username}`}
+         target="_blank" className="external">{children}</a>
+    )
+  );
+
+  return (
+    <div>
+      <div>
+        <i className="fas fa-code icon contrib-link-icon text-gray"></i>&nbsp;
+        <ProgressBar color="green" percentage={commits_count__percentage*100}
+                     pushToFunctionQueue={pushToFunctionQueue} />
+          {' '}
+          {username} wrote <CommitLink>{numberOf(commits_count__user, 'commit')}</CommitLink>
+          {' '}
+          ({Math.round(commits_count__percentage*100)}% of all {numberOf(commits_count__total, 'commit')})
+      </div>
+      {
+        !isMaintainer && repo && repo.pulls_authors && repo.pulls_authors.indexOf(username) !== -1 && (
+          <span>
+            <i className="fas fa-code-branch icon contrib-link-icon text-gray"></i>&nbsp;
+            <a href={`https://github.com/${contrib.full_name}/pulls?q=is%3Apr+author%3A${username}`}
+               target="_blank" className="external">{username}'s pull requests</a>
+          </span>
+        ) || null
+      }
+    </div>
+  );
+}

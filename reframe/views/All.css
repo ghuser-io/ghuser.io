@@ -49,6 +49,10 @@ a:hover
   display: inline-block;
   color: #bcc0c4;
 }
+/* avoid external link icon above to be shown in a new line */
+.external {
+  white-space: nowrap;
+}
 
 .container-lg {
   max-width: 1012px;
@@ -63,4 +67,23 @@ a:hover
 
 .text-bold {
   font-weight: 600;
+}
+
+body {
+  padding-bottom: 90px;
+}
+
+.emoji {
+  height: 1.3em;
+  width: auto;
+}
+
+.icon-vertical-align {
+  vertical-align: middle !important;
+}
+
+/* TODO remove this */
+/* this is too global */
+.icon {
+  vertical-align: middle !important;
 }
