@@ -2,14 +2,12 @@ const roundHalf = num => Math.round(num * 2) / 2;
 
 const bigNum = num => {
   let suffix='';
-  let val = roundHalf(num);
+  let val = num;
   if (val >= 1000) {
     suffix = 'k';
-    val = roundHalf(val / 1000);
+    val /= 1000;
   }
-  if (val >= 10) {
-    val = Math.round(val);
-  }
+  val = val >= 10 && Math.round(val) || roundHalf(val);
   return `${val}${suffix}`;
 };
 
