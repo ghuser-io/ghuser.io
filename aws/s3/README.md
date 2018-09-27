@@ -5,5 +5,6 @@ This will create an S3 bucket for
 To create the bucket, run
 
 ```bash
+$ export AWS_ACCOUNT_ID=123456789012
 $ ./create_s3_bucket.sh
 ```

@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::ghuser/*"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::$AWS_ACCOUNT_ID:root"
+            },
+            "Action": [
+                "s3:DeleteObject",
+                "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::ghuser/*"
+        }
+    ]
+}
