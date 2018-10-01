@@ -47,7 +47,6 @@ class Contrib extends React.Component {
   render() {
     const repo = this.state.repo || this.props.repo;
 
-    console.log(repo);
     if( ! this.state.loading && repo && this.props.i>=10 ) {
         return <ContribMini {...{...this.props, ...this.state, repo}}/>;
     }

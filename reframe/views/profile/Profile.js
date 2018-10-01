@@ -15,7 +15,8 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
+   // loading: true,
       user: {
         login: props.username
       },
