@@ -3,30 +3,48 @@ import React from 'react';
 import './Orgs.css';
 import {withSeparator} from '../css';
 import Avatar from '../Avatar';
+import * as db from '../../../db';
 
-const Orgs = props => {
-  const orgAvatar = org => (
-    <a key={org} href={`https://github.com/${org}`} target="_blank" title={org}>
-      <Avatar url={props.allOrgs[org].avatar_url} classes="avatar-org" />
-    </a>
-  );
+class Orgs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      orgs: props.contribOrgs.map(name => ({
+        name,
+        avatarUrl: null
+      })),
+    };
+  }
 
-  const contributedTo = [];
-  for (const org of props.contribOrgs) {
-    if (props.allOrgs[org]) {
-      contributedTo.push(orgAvatar(org));
+  async componentDidMount() {
+    const orgs = [...this.state.orgs];
+    for (const org of orgs) {
+      const orgData = await (await fetch(`${db.url}/orgs/${org.name}.json`)).json();
+      org.avatarUrl = orgData.avatar_url;
+      this.setState({
+        orgs: [...orgs]
+      });
     }
   }
 
-  if( contributedTo.length===0 ) {
-    return null;
-  }
+  render() {
+    const orgAvatar = org => (
+      <a key={org.name} href={`https://github.com/${org.name}`} target="_blank" title={org.name}>
+        <Avatar url={org.avatarUrl} classes="avatar-org" />
+      </a>
+    );
 
-  return (
-    <div className={withSeparator('top', 3)}>
-      <div key='contributedTo'><h4 className="mb-1">Contributed to</h4>{contributedTo}</div>
-    </div>
-  );
+    const contributedTo = this.state.orgs.filter(org => org.avatarUrl).map(org => orgAvatar(org));
+    if( contributedTo.length===0 ) {
+      return null;
+    }
+
+    return (
+      <div className={withSeparator('top', 3)}>
+        <div key='contributedTo'><h4 className="mb-1">Contributed to</h4>{contributedTo}</div>
+      </div>
+    );
+  }
 };
 
 export default Orgs;

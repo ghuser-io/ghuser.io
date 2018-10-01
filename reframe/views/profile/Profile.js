@@ -20,7 +20,6 @@ class Profile extends React.Component {
         login: props.username
       },
       contribs: null,
-      orgs: null,
       profilesBeingCreated: []
     };
   }
@@ -35,10 +34,6 @@ class Profile extends React.Component {
       const contribsData = await fetch(`${db.url}/contribs/${userId}.json`);
       const contribs = await contribsData.json();
       this.setState({ contribs });
-
-      const orgsData = await fetch(`${db.url}/orgs.json`);
-      const orgs = (await orgsData.json()).orgs;
-      this.setState({ orgs });
     } catch (_) {
       // This profile doesn't exist yet, let's see if it's being created:
       const profilesBeingCreatedData = await fetch(urls.profileQueueEndpoint);
@@ -64,8 +59,7 @@ class Profile extends React.Component {
     const content = this.state.loading &&
       <div><i className="fas fa-spinner fa-pulse"></i> {this.state.user.login}'s profile</div> ||
       <div className="row">
-        <LeftPanel user={this.state.user} contribs={this.state.contribs}
-                   orgs={this.state.orgs} />
+        <LeftPanel user={this.state.user} contribs={this.state.contribs} />
         <RightPanel username={this.state.user.login}
                     fetchedat={this.state.user.contribs && this.state.user.contribs.fetched_at}
                     contribs={this.state.contribs}
