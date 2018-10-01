@@ -6,7 +6,7 @@ import {getAllData} from '../views/profile/rightpanel/contrib/getContribInfo';
 
 const ProfilePage = {
   route: '/:username',
-  view: ({route: {args: {username}}}) => <Profile username={username} />,
+  view: ({route: {args: {username}}, ...props}) => <Profile username={username} {...props} />,
   getInitialProps: async ({route: {args: {username}}}) => {
     if( typeof window === "undefined" ) {
       return {IS_SERVER_SIDE_RENDERING: true};

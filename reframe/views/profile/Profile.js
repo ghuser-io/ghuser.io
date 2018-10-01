@@ -68,6 +68,7 @@ class Profile extends React.Component {
 
   render() {
     const content = this.state.loading &&
+    /*
       <div><i className="fas fa-spinner fa-pulse"></i> {this.state.user.login}'s profile</div> ||
       <div className="row">
         <LeftPanel user={this.state.user} contribs={this.state.contribs} />
@@ -76,6 +77,19 @@ class Profile extends React.Component {
                     contribs={this.state.contribs}
                     being_created={this.state.user.ghuser_being_created}
                     deleted_because={this.state.user.ghuser_deleted_because}
+                    allRepoData={this.props.allRepoData}
+                    profilesBeingCreated={this.state.profilesBeingCreated} />
+      </div>;
+   */
+      <div><i className="fas fa-spinner fa-pulse"></i> {this.props.username}'s profile</div> ||
+      <div className="row">
+        <LeftPanel user={this.props.user} contribs={this.props.contribs}
+                   orgs={this.props.orgs} />
+        <RightPanel username={this.props.user.login}
+                    fetchedat={this.props.user.contribs && this.props.user.contribs.fetched_at}
+                    contribs={this.props.contribs}
+                    being_created={this.props.user.ghuser_being_created}
+                    deleted_because={this.props.user.ghuser_deleted_because}
                     allRepoData={this.props.allRepoData}
                     profilesBeingCreated={this.state.profilesBeingCreated} />
       </div>;

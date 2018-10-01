@@ -26,9 +26,10 @@ const RightPanel = props => {
   if (props.contribs) {
     const shownContribs = getShownContribs(props.contribs);
     shownContribs.forEach((contrib, i) => {
+      const repo = props.allRepoData[contrib.full_name];
       repos.push(
         <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
-                 repo={props.allRepoData[contrib.full_name]}
+                 repo={repo}
                  i={i}
                  pushToFunctionQueue={pushToFunctionQueue} />
       )

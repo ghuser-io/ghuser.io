@@ -47,8 +47,9 @@ class Contrib extends React.Component {
   render() {
     const repo = this.state.repo || this.props.repo;
 
+    console.log(repo);
     if( ! this.state.loading && repo && this.props.i>=10 ) {
-        return <ContribMini {...{...this.props, ...this.state}}/>;
+        return <ContribMini {...{...this.props, ...this.state, repo}}/>;
     }
 
     const avatar = () => {
@@ -86,7 +87,7 @@ class Contrib extends React.Component {
         <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
           {avatar()}
         </div>
-        <ContribHeader {...{...this.props, ...this.state}}/>
+        <ContribHeader {...{...this.props, ...this.state, repo}}/>
         {badgesLine}
         <AccordionBadgerIcon/>
       </AccordionHead>
