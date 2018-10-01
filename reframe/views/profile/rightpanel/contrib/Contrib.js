@@ -4,7 +4,7 @@ import React from 'react';
 import {urls} from '../../../../ghuser';
 
 import RichText from '../../../utils/RichText';
-import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon, stopPropagationOnLinks} from '../../../utils/Accordion';
+import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon} from '../../../utils/Accordion';
 import {ProgressBar} from '../../../utils/ProgressBar';
 import {numberOf} from '../../../utils/pretty-numbers';
 
@@ -68,7 +68,6 @@ class Contrib extends React.Component {
           href={`${urls.docs}/repo-settings.md`}
           title="Add an avatar"
           target="_blank"
-          ref={stopPropagationOnLinks}
         ><AvatarAdd/></a>
       );
     };
@@ -101,7 +100,6 @@ class Contrib extends React.Component {
 
     return (
         <Accordion
-          pushToFunctionQueue={this.props.pushToFunctionQueue}
           className="border-bottom border-gray-light"
         >
           {accordionHead}
@@ -141,7 +139,6 @@ function ContribMini(props) {
 
     return (
       <Accordion
-        pushToFunctionQueue={props.pushToFunctionQueue}
         className="border-bottom border-gray-light"
       >
         {accordionHead}
@@ -158,7 +155,6 @@ function ContribHeader({username, contrib: {name, full_name}, repo}) {
       return (
           <div
             style={{whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
-            ref={stopPropagationOnLinks}
           >
             <a href={`https://github.com/${full_name}`}
                className="external"

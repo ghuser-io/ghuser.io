@@ -8,6 +8,7 @@ import CreateYourProfile from './CreateYourProfile';
 import ProfileBeingCreated from './ProfileBeingCreated';
 import {Contrib} from './contrib/Contrib';
 import {getShownContribs} from './contrib/getContribInfo';
+import {AccordionListContainer} from '../../utils/Accordion';
 
 const RightPanel = props => {
   // Use these queues to avoid filling up the event loop:
@@ -76,9 +77,9 @@ const RightPanel = props => {
 
   return (
     <div className="col-9 pl-2 pr-0">
-      <div style={{fontSize: '14px'}}>
+      <AccordionListContainer style={{fontSize: '14px'}}>
         {repos}
-      </div>
+      </AccordionListContainer>
       {
         props.contribs &&
         <div className="text-gray" style={{textAlign: 'right'}}>
