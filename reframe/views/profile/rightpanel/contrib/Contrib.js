@@ -12,8 +12,7 @@ import Avatar from '../../Avatar';
 import AvatarAdd from '../../AvatarAdd';
 import AddSettings from '../../AddSettings';
 import {Badges, BadgesMini, BadgesMultiLine, getContribType} from './badges/Badges';
-import {getContribScore} from './getContribScore';
-import {getCommitCounts, getRepoAvatar} from './getContribInfo';
+import {getCommitCounts, getRepoAvatar, getContribScore} from './getContribInfo';
 import Language from './Language';
 
 import './Contrib.css';
