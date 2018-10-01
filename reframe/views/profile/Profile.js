@@ -10,12 +10,13 @@ import RightPanel from './rightpanel/RightPanel';
 import './Profile.css';
 import * as db from '../../db';
 import {urls} from '../../ghuser';
+import assert_internal from 'reassert/internal';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: this.props.isServerRendering ? this.props.doNotRender : true,
       user: {
         login: props.username
       },
@@ -25,16 +26,9 @@ class Profile extends React.Component {
   }
 
   async componentDidMount() {
-    const userId = this.props.username.toLowerCase();
-    try {
-      const userData = await fetch(`${db.url}/users/${userId}.json`);
-      const user = await userData.json();
-      this.setState({ user });
-
-      const contribsData = await fetch(`${db.url}/contribs/${userId}.json`);
-      const contribs = await contribsData.json();
-      this.setState({ contribs });
-    } catch (_) {
+    assert_internal(!this.props.isServerRendering);
+    assert_internal(!this.props.doNotRender);
+    if( this.props.profileDoesNotExist ) {
       // This profile doesn't exist yet, let's see if it's being created:
       const profilesBeingCreatedData = await fetch(urls.profileQueueEndpoint);
       const profilesBeingCreated = await profilesBeingCreatedData.json();
@@ -52,19 +46,24 @@ class Profile extends React.Component {
         }
       }
     }
-    this.setState({ loading: false });
+    if( this.state.loading ) {
+      this.setState({ loading: false });
+    }
   }
 
   render() {
+    assert_internal(!this.props.isServerRendering || !this.props.doNotRender || this.state.loading);
     const content = this.state.loading &&
-      <div><i className="fas fa-spinner fa-pulse"></i> {this.state.user.login}'s profile</div> ||
+      <div><i className="fas fa-spinner fa-pulse"></i> {this.props.username}'s profile</div> ||
       <div className="row">
-        <LeftPanel user={this.state.user} contribs={this.state.contribs} />
-        <RightPanel username={this.state.user.login}
-                    fetchedat={this.state.user.contribs && this.state.user.contribs.fetched_at}
-                    contribs={this.state.contribs}
-                    being_created={this.state.user.ghuser_being_created}
-                    deleted_because={this.state.user.ghuser_deleted_because}
+        <LeftPanel user={this.props.user} contribs={this.props.contribs}
+                   orgsData={this.props.orgsData} />
+        <RightPanel username={this.props.user.login}
+                    fetchedat={this.props.user.contribs && this.props.user.contribs.fetched_at}
+                    contribs={this.props.contribs}
+                    being_created={this.props.user.ghuser_being_created}
+                    deleted_because={this.props.user.ghuser_deleted_because}
+                    allRepoData={this.props.allRepoData}
                     profilesBeingCreated={this.state.profilesBeingCreated} />
       </div>;
 

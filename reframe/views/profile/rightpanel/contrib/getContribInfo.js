@@ -1,8 +1,12 @@
+import fetch from '@brillout/fetch';
+import * as db from '../../../../db';
+
 export {getCommitCounts};
 export {getRepoAvatar};
 export {getShownContribs};
 export {getContribDisplayOrder};
 export {getContribScore};
+export {getAllData};
 
 function getCommitCounts(contrib) {
   const {total_commits_count: commits_count__total} = contrib;
@@ -74,4 +78,57 @@ function getStarBoost(stars) {
   const MAX_STARS = 100*1000;
   const starBoost = 0.2 + (Math.log10(stars) / Math.log10(MAX_STARS) * 5);
   return starBoost;
+}
+
+async function getAllData({username}) {
+  const userData = await getUserData({username});
+  if( userData.profileDoesNotExist ) {
+    return userData;
+  }
+  const allRepoData = await getAllRepoData(userData.contribs);
+  return {allRepoData, ...userData};
+}
+async function getUserData({username}) {
+    const userId = username.toLowerCase();
+
+    const dbBaseUrl = db.url;
+
+    let user;
+    let contribs;
+    try {
+      const userData = await fetch(`${dbBaseUrl}/users/${userId}.json`);
+      user = await userData.json();
+
+      const contribsData = await fetch(`${dbBaseUrl}/contribs/${userId}.json`);
+      contribs = await contribsData.json();
+    } catch (_) {
+      return {profileDoesNotExist: true};
+    }
+
+    const orgsData = contribs && contribs.organizations || [];
+    await Promise.all(
+      orgsData.map(async (orgName, i) => {
+        const newOrgData = await (await fetch(`${db.url}/orgs/${orgName}.json`)).json();
+        orgsData[i] = {name: orgName, ...newOrgData};
+      })
+    );
+
+    return {user, contribs, orgsData};
+}
+async function getAllRepoData(contribs) {
+    const shownContribs = getShownContribs(contribs);
+
+    const allRepoData = {};
+
+    await Promise.all(
+        shownContribs
+        .map(async contrib => {
+          const {full_name} = contrib;
+          const resp = await fetch(`${db.url}/repos/${full_name}.json`);
+          const repo = await resp.json();
+          allRepoData[full_name] = repo;
+        })
+    );
+
+    return allRepoData;
 }
