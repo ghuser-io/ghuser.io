@@ -1,7 +1,7 @@
 import React from 'react';
 import {bigNum, numberOf} from '../../../../utils/pretty-numbers';
 import './Badges.css';
-import {getCommitCounts, getRepoAvatar} from '../getContribInfo';
+import {getCommitCounts, getRepoAvatar, getShownContribs} from '../getContribInfo';
 
 export {Badges, BadgesMini, BadgesMultiLine};
 export {getContribType};
@@ -332,12 +332,12 @@ function getEarnedStars(contrib, contribType, username) {
 }
 
 function getTotalEarnedStars(contribs) {
+  const shownContribs = getShownContribs(contribs);
   let totalEarnedStars = 0;
-  for (const repo in contribs && contribs.repos) {
-    const contrib = contribs.repos[repo];
+  shownContribs.forEach(contrib => {
     const {earnedStars} = getInfoForBadges(contrib);
     totalEarnedStars += earnedStars;
-  }
+  });
   return totalEarnedStars;
 }
 
