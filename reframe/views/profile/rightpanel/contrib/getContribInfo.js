@@ -1,4 +1,8 @@
-export {getCommitCounts, getRepoAvatar};
+export {getCommitCounts};
+export {getRepoAvatar};
+export {getShownContribs};
+export {getContribDisplayOrder};
+export {getContribScore};
 
 function getCommitCounts(contrib) {
   const {total_commits_count: commits_count__total} = contrib;
@@ -13,4 +17,61 @@ function getRepoAvatar(repo) {
     repo && repo.organization && repo.organization.avatar_url ||
     null
   );
+}
+
+function getShownContribs(contribs) {
+    const contribList = Object.values(contribs.repos);
+
+    const shownContribs = [];
+    const uniqueNames = [];
+
+    contribList.forEach(contrib => {
+      // Don't include repos where user has made 0 commits. This happens when a user
+      // makes a PR that is not merged.
+      if( contrib.percentage===0 ) {
+        return;
+      }
+
+      // We don't want to have two repos with the same name. This happens when a user is
+      // contributing to a project and has a fork with the same name:
+      if (uniqueNames.indexOf(contrib.name) > -1) {
+        return;
+      }
+      uniqueNames.push(contrib.name);
+
+      shownContribs.push(contrib);
+    });
+
+    shownContribs.sort(getContribDisplayOrder);
+
+    return shownContribs;
+}
+
+function getContribDisplayOrder(contrib1, contrib2) {
+  return getContribScore(contrib2).contribScore - getContribScore(contrib1).contribScore;
+}
+
+function getContribScore(contrib) {
+  const {
+      commits_count__user: userCommitsCount,
+      commits_count__percentage: userCommitsPercentage,
+  } = getCommitCounts(contrib);
+  const {stargazers_count: stars} = contrib;
+
+  const starBoost = getStarBoost(stars);
+  const contribBoost = getContribBoost(userCommitsPercentage);
+  const contribScore = userCommitsCount*starBoost*contribBoost;
+
+  return {contribScore, userCommitsCount, starBoost, contribBoost};
+}
+
+function getContribBoost(userCommitsPercentage) {
+  const contribBoost = 1 + ((1 - userCommitsPercentage) * 5);
+  return contribBoost;
+}
+
+function getStarBoost(stars) {
+  const MAX_STARS = 100*1000;
+  const starBoost = 0.2 + (Math.log10(stars) / Math.log10(MAX_STARS) * 5);
+  return starBoost;
 }
