@@ -28,6 +28,7 @@ const RightPanel = props => {
     shownContribs.forEach((contrib, i) => {
       repos.push(
         <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
+                 repo={props.allRepoData[contrib.full_name]}
                  i={i}
                  pushToFunctionQueue={pushToFunctionQueue} />
       )

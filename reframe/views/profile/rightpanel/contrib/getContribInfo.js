@@ -1,8 +1,12 @@
+import fetch from '@brillout/fetch';
+import * as db from '../../../../db';
+
 export {getCommitCounts};
 export {getRepoAvatar};
 export {getShownContribs};
 export {getContribDisplayOrder};
 export {getContribScore};
+export {getAllData};
 
 function getCommitCounts(contrib) {
   const {total_commits_count: commits_count__total} = contrib;
@@ -74,4 +78,49 @@ function getStarBoost(stars) {
   const MAX_STARS = 100*1000;
   const starBoost = 0.2 + (Math.log10(stars) / Math.log10(MAX_STARS) * 5);
   return starBoost;
+}
+
+async function getAllData({username}) {
+  const userData = await getUserData({username});
+  if( userData.PROFILE_NOT_READY ) {
+    return userData;
+  }
+  const allRepoData = await getAllRepoData(userData.contribs);
+  return {allRepoData, ...userData};
+}
+async function getUserData({username}) {
+    const userId = username.toLowerCase();
+
+    const dbBaseUrl = db.url;
+    try {
+      const userData = await fetch(`${dbBaseUrl}/users/${userId}.json`);
+      const user = await userData.json();
+
+      const contribsData = await fetch(`${dbBaseUrl}/contribs/${userId}.json`);
+      const contribs = await contribsData.json();
+
+      const orgsData = await fetch(`${dbBaseUrl}/orgs.json`);
+      const orgs = (await orgsData.json()).orgs;
+
+      return {user, contribs, orgs};
+    } catch (_) {
+      return {PROFILE_NOT_READY: true};
+    }
+}
+async function getAllRepoData(contribs) {
+    const shownContribs = getShownContribs(contribs);
+
+    const allRepoData = {};
+
+    await Promise.all(
+        shownContribs
+        .map(async contrib => {
+          const {full_name} = contrib;
+          const resp = await fetch(`${db.url}/repos/${full_name}.json`);
+          const repo = await resp.json();
+          allRepoData[full_name] = repo;
+        })
+    );
+
+    return allRepoData;
 }

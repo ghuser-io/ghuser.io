@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as db from '../../../../db';
+//import * as db from '../../../../db';
 import {urls} from '../../../../ghuser';
 
 import RichText from '../../../utils/RichText';
@@ -25,12 +25,14 @@ class Contrib extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+   // loading: true,
+      loading: false,
       repo: null
     };
   }
 
   componentDidMount() {
+    /*
     this.props.pushToFunctionQueue(0, async () => {
       try {
         const repoData = await fetch(`${db.url}/repos/${this.props.contrib.full_name}.json`);
@@ -39,10 +41,13 @@ class Contrib extends React.Component {
       } catch (_) {}
       this.setState({ loading: false });
     });
+    */
   }
 
   render() {
-    if( ! this.state.loading && this.state.repo && this.props.i>=10 ) {
+    const repo = this.state.repo || this.props.repo;
+
+    if( ! this.state.loading && repo && this.props.i>=10 ) {
         return <ContribMini {...{...this.props, ...this.state}}/>;
     }
 
@@ -54,7 +59,7 @@ class Contrib extends React.Component {
           </span>
         );
       }
-      const repoAvatar = getRepoAvatar(this.state.repo);
+      const repoAvatar = getRepoAvatar(repo);
       if( repoAvatar ) {
         return <Avatar url={repoAvatar} classes="avatar-small" />;
       }
