@@ -11,7 +11,7 @@ import {urls} from '../../../ghuser';
 import {getTotalEarnedStars} from './../rightpanel/contrib/badges/Badges';
 
 const LeftPanel = props => {
-  const totalEarnedStars = getTotalEarnedStars(props.contribs);
+  const totalEarnedStars = props.contribs && getTotalEarnedStars(props.contribs) || 0;
 
   return (
     <div className="col-3 p-0 pr-4">
