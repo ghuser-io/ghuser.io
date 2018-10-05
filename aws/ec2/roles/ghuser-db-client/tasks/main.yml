@@ -34,5 +34,8 @@
 
 - name: Install fetchBot's other dependencies
   apt:
-    name: pv
+    name: "{{ item }}"
   become: True
+  with_items:
+    - jq
+    - pv
