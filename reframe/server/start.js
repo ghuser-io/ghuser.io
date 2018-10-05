@@ -115,8 +115,9 @@ async function start() {
         try {
           login = request.auth.credentials.profile.raw.login;
           try {
-            await (await fetch(`${db.url}/contribs/${login.toLowerCase()}.json`)).json();
-            // if we reach this point, then this profile exists already, so we skip the SQS queue:
+            await (await fetch(`${db.url}/users/${login.toLowerCase()}.json`)).json();
+            // if we reach this point, then this profile exists or is already being created, so we
+            // skip the SQS queue:
             return h.redirect(`/${login}`);
           } catch(e) {}
           // temporarily disabled for issue143: await raven.captureMessage(`Profile request: ${login}`);
