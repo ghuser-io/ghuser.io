@@ -38,6 +38,16 @@
       ]
     },
     {
+      "login": "wowawiwa",
+      "name": "Charles",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4883293?v=4",
+      "profile": "https://github.com/wowawiwa",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
       "login": "jamesgeorge007",
       "name": "James George",
       "avatar_url": "https://avatars2.githubusercontent.com/u/25279263?v=4",
@@ -270,15 +280,6 @@
       "name": "Mehtab Zafar",
       "avatar_url": "https://avatars3.githubusercontent.com/u/16623935?v=4",
       "profile": "http://mzfr.github.io",
-      "contributions": [
-        "ideas"
-      ]
-    },
-    {
-      "login": "wowawiwa",
-      "name": "Charles",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/4883293?v=4",
-      "profile": "https://github.com/wowawiwa",
       "contributions": [
         "ideas"
       ]
