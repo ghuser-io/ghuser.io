@@ -82,7 +82,7 @@ function getStarBoost(stars) {
 
 async function getAllData({username}) {
   const userData = await getUserData({username});
-  if( userData.PROFILE_NOT_READY ) {
+  if( userData.profileDoesNotExist ) {
     return userData;
   }
   const allRepoData = await getAllRepoData(userData.contribs);
@@ -102,7 +102,7 @@ async function getUserData({username}) {
       const contribsData = await fetch(`${dbBaseUrl}/contribs/${userId}.json`);
       contribs = await contribsData.json();
     } catch (_) {
-      return {PROFILE_NOT_READY: true};
+      return {profileDoesNotExist: true};
     }
 
     const orgsData = contribs && contribs.organizations || [];

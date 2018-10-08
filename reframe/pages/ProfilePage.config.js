@@ -1,20 +1,34 @@
 import React from 'react';
+import assert_internal from 'reassert/internal';
 
 import Profile from '../views/profile/Profile';
 
 import {getAllData} from '../views/profile/rightpanel/contrib/getContribInfo';
 
+const doNotRenderInBrowser = false;
+const doNotRenderOnServer = true;
+
 const ProfilePage = {
   route: '/:username',
   view: ({route: {args: {username}}, ...props}) => <Profile username={username} {...props} />,
   getInitialProps: async ({route: {args: {username}}}) => {
-    if( typeof window === "undefined" ) {
-      return {IS_SERVER_SIDE_RENDERING: true, doNotRenderOnServer: true};
-    }
-    const allData = await getAllData({username});
-    return allData;
+    const isServerRendering = typeof window === "undefined";
+    const doNotRender = isServerRendering && doNotRenderOnServer;
+    assert_internal(isServerRendering || !doNotRenderInBrowser);
+
+    const allData = (
+      doNotRender ? (
+        {doNotRender}
+      ) : (
+        await getAllData({username})
+      )
+    );
+    return {
+      isServerRendering,
+      ...allData
+    };
   },
-//doNotRenderInBrowser: true,
+  doNotRenderInBrowser,
 };
 
 export default ProfilePage;
