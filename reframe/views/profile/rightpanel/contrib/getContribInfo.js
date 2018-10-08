@@ -92,20 +92,28 @@ async function getUserData({username}) {
     const userId = username.toLowerCase();
 
     const dbBaseUrl = db.url;
+
+    let user;
+    let contribs;
     try {
       const userData = await fetch(`${dbBaseUrl}/users/${userId}.json`);
-      const user = await userData.json();
+      user = await userData.json();
 
       const contribsData = await fetch(`${dbBaseUrl}/contribs/${userId}.json`);
-      const contribs = await contribsData.json();
-
-      const orgsData = await fetch(`${dbBaseUrl}/orgs.json`);
-      const orgs = (await orgsData.json()).orgs;
-
-      return {user, contribs, orgs};
+      contribs = await contribsData.json();
     } catch (_) {
       return {PROFILE_NOT_READY: true};
     }
+
+    const orgsData = contribs && contribs.organizations || [];
+    await Promise.all(
+      orgsData.map(async (orgName, i) => {
+        const newOrgData = await (await fetch(`${db.url}/orgs/${orgName}.json`)).json();
+        orgsData[i] = {name: orgName, ...newOrgData};
+      })
+    );
+
+    return {user, contribs, orgsData};
 }
 async function getAllRepoData(contribs) {
     const shownContribs = getShownContribs(contribs);

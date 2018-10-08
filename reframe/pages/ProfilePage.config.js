@@ -9,7 +9,7 @@ const ProfilePage = {
   view: ({route: {args: {username}}, ...props}) => <Profile username={username} {...props} />,
   getInitialProps: async ({route: {args: {username}}}) => {
     if( typeof window === "undefined" ) {
-      return {IS_SERVER_SIDE_RENDERING: true};
+      return {IS_SERVER_SIDE_RENDERING: true, doNotRenderOnServer: true};
     }
     const allData = await getAllData({username});
     return allData;

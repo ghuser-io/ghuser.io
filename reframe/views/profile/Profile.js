@@ -16,7 +16,7 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: !this.props.IS_SERVER_SIDE_RENDERING,
+      loading: !this.props.IS_SERVER_SIDE_RENDERING || this.props.doNotRenderOnServer,
       user: {
         login: props.username
       },
@@ -83,7 +83,7 @@ class Profile extends React.Component {
       <div><i className="fas fa-spinner fa-pulse"></i> {this.props.username}'s profile</div> ||
       <div className="row">
         <LeftPanel user={this.props.user} contribs={this.props.contribs}
-                   orgs={this.props.orgs} />
+                   orgsData={this.props.orgsData} />
         <RightPanel username={this.props.user.login}
                     fetchedat={this.props.user.contribs && this.props.user.contribs.fetched_at}
                     contribs={this.props.contribs}
