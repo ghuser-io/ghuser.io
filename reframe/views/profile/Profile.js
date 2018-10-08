@@ -10,13 +10,13 @@ import RightPanel from './rightpanel/RightPanel';
 import './Profile.css';
 import * as db from '../../db';
 import {urls} from '../../ghuser';
+import assert_internal from 'reassert/internal';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
-   // loading: true,
+      loading: !this.props.IS_SERVER_SIDE_RENDERING,
       user: {
         login: props.username
       },
@@ -26,9 +26,7 @@ class Profile extends React.Component {
   }
 
   async componentDidMount() {
-    if( this.props.IS_SERVER_SIDE_RENDERING ) {
-      return;
-    }
+    assert_internal(!this.props.IS_SERVER_SIDE_RENDERING);
     if( ! this.props.PROFILE_NOT_READY ) {
       this.setState({ loading: false });
       return;
