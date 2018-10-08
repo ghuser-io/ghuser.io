@@ -1,5 +1,4 @@
 import React from 'react';
-import Typing from 'react-typing-animation';
 import {XmlEntities} from 'html-entities';
 import * as Autolinker from 'autolinker';
 import * as Parser from 'html-react-parser';
@@ -9,6 +8,7 @@ import {urls} from '../ghuser';
 import Content from './Content';
 import LogoWithPunchline from './LogoWithPunchline';
 import NavBar from './NavBar';
+import {Typing} from './utils/Typing'
 import PageContent from './PageContent';
 import './Landing.css';
 import './All.css';
@@ -44,13 +44,6 @@ class Landing extends React.Component {
   }
 
   render() {
-    const typingText = [];
-    for (const str of ['your-github-username', ...this.state.featuredUsers.map(user => user.login)]) {
-      typingText.push(<span key={str}>{str}</span>);
-      typingText.push(<Typing.Delay key={`${str}-delay`} ms={2000} />);
-      typingText.push(<Typing.Backspace key={`${str}-backspace`} count={str.length} />);
-    }
-
     const cards = this.state.featuredUsers.filter(user => user.avatar_url).map(user => (
       <div key={user.login} className="card">
         <div className="crop-img">
@@ -92,8 +85,15 @@ class Landing extends React.Component {
                 </p>
                 <a className="btn btn-primary ml-2 mr-4" href={urls.oauthEndpoint}
                    role="button">Get your profile</a>
-                <a className="typing" href={this.state.featuredUsers[0].login}>
-                  {urls.landing}/<Typing className="typing" speed={10} loop={true}>{typingText}</Typing>
+                <a className="ghuser-url-example" href={this.state.featuredUsers[0].login}>
+                  {urls.landing}
+                  /
+                  <Typing
+                    texts={[
+                      'your-github-username',
+                      ...this.state.featuredUsers.map(user => user.login)
+                    ]}
+                  />
                 </a>
               </div>
             </div>
