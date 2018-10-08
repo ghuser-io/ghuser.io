@@ -25,19 +25,18 @@
   text-decoration: none;
 }
 
-.typing,
-.typing:hover {
+.ghuser-url-example {
   display: inline-block;
-  font-family: ApexSans;
-
-  color: white;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-a.typing {
   position: relative;
   top: .1em;
+
+  font-family: ApexSans;
+  font-size: 20px;
+}
+.ghuser-url-example,
+.ghuser-url-example:hover {
+  text-decoration: none;
+  color: white;
 }
 
 .made-with-reframe {
