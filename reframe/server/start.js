@@ -17,7 +17,7 @@ async function start() {
     debug: {request: ['internal']},
   });
 
-  // Run `$ reframe eject hapi` to eject the integration plugin.
+  // Run `$ reframe eject server-integration` to eject the integration plugin.
   await server.register(config.hapiIntegrationPlugin);
 
   await server.register(Bell); // see https://github.com/hapijs/bell

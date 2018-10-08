@@ -4,6 +4,6 @@ module.exports = {
     ]
 };
 
-module.exports['browserEntryFile'] = require.resolve('./browser/browserEntry.js');
+module.exports['browserInitFile'] = require.resolve('./browser/browserInit.js');
 
 module.exports['serverStartFile'] = require.resolve('./server/start.js');
