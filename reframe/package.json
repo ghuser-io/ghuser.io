@@ -21,11 +21,11 @@
     "logs": "./up logs --since=20m"
   },
   "dependencies": {
-    "@brillout/cli-theme": "0.2.2",
+    "@brillout/cli-theme": "0.2.3",
     "@brillout/fetch": "^0.1.0",
-    "@brillout/reconfig": "0.2.2",
-    "@reframe/cli": "0.2.2",
-    "@reframe/react-kit": "0.2.2",
+    "@brillout/reconfig": "0.2.3",
+    "@reframe/cli": "0.2.3",
+    "@reframe/react-kit": "0.2.3",
     "autolinker": "^1.6.2",
     "aws-sdk": "^2.305.0",
     "bell": "^9.3.1",
