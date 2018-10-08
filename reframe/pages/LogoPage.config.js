@@ -3,8 +3,8 @@ import BigLogo from '../views/BigLogo';
 const LogoPage = {
   route: '/logo',
   view: BigLogo,
-  htmlStatic: true,
-  domStatic: true
+  renderHtmlAtBuildTime: true
+  doNotRenderInBrowser: true
 };
 
 export default LogoPage;
