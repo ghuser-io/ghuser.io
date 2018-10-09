@@ -16,8 +16,7 @@ function ProgressBar({percentage, style}) {
       <div style={{
         width: percentage+'%',
         backgroundColor: '#21ba45',
-        borderTopLeftRadius: borderRadius,
-        borderBottomLeftRadius: borderRadius,
+        borderRadius,
         position: 'absoute',
         top: 0,
         left: 0,
