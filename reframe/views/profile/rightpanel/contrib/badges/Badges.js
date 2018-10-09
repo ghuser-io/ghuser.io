@@ -2,6 +2,7 @@ import React from 'react';
 import {bigNum, numberOf} from '../../../../utils/pretty-numbers';
 import './Badges.css';
 import {getCommitCounts, getRepoAvatar, getShownContribs} from '../getContribInfo';
+import assert_internal from 'reassert/internal';
 
 export {Badges, BadgesMini, BadgesMultiLine};
 export {getContribType};
@@ -302,8 +303,6 @@ function getRepoScale(totalCommitsCount) {
   return repoScale;
 }
 function getEarnedStars(contrib, contribType, username) {
-    const assert_ = val => assert(val, 'computing earned stars');
-
     const {stargazers_count: stars, percentage: userCommitsPercentage} = contrib;
 
     const isMaintainer = contribType==='contrib_crown';
@@ -311,22 +310,35 @@ function getEarnedStars(contrib, contribType, username) {
     const isSilverContributor = contribType==='contrib_silver';
     const isGoldContributor = contribType==='contrib_gold';
 
-    assert_(isMaintainer + isBronzeContributor + isSilverContributor + isGoldContributor === 1);
-
-    const earnedStars_bronze = Math.min(10, Math.floor(0.5*stars));
-    const earnedStars_silver = Math.max(earnedStars_bronze, Math.min(100, Math.ceil(0.1*stars)));
-    const earnedStars_gold = Math.max(earnedStars_silver, Math.ceil((userCommitsPercentage/100)*stars));
-
-    const earnedStars = (
-        isMaintainer && stars ||
-        isGoldContributor && earnedStars_gold ||
-        isSilverContributor && earnedStars_silver ||
-        isBronzeContributor && earnedStars_bronze
+    assert_internal(
+      isMaintainer + isBronzeContributor + isSilverContributor + isGoldContributor === 1,
+      {isMaintainer, isBronzeContributor, isSilverContributor, isGoldContributor}
     );
 
-    const earnedStarsHint = username+' earned '+numberOf(earnedStars, 'star')+' from a total of '+numberOf(stars, 'star');
+    const earnedStars_bronze = Math.min(10, Math.floor(0.5*stars));
+    const earnedStars_silver = Math.max(earnedStars_bronze, Math.min(100, Math.floor(0.1*stars)));
+    const earnedStars_gold = Math.max(earnedStars_silver, Math.floor((userCommitsPercentage/100)*stars));
 
-    assert_(earnedStars>=0 && (earnedStars|0)===earnedStars);
+    let earnedStars;
+    if( isMaintainer ) {
+      assert_internal(earnedStars===undefined);
+      earnedStars = stars;
+    }
+    if ( isGoldContributor ) {
+      assert_internal(earnedStars===undefined);
+      earnedStars = earnedStars_gold;
+    }
+    if( isSilverContributor ) {
+      assert_internal(earnedStars===undefined);
+      earnedStars = earnedStars_silver;
+    }
+    if( isBronzeContributor ) {
+      assert_internal(earnedStars===undefined);
+      earnedStars = earnedStars_bronze;
+    }
+    assert_internal(earnedStars>=0 && (earnedStars|0)===earnedStars, earnedStars);
+
+    const earnedStarsHint = username+' earned '+numberOf(earnedStars, 'star')+' from a total of '+numberOf(stars, 'star');
 
     return {earnedStars, earnedStarsHint};
 }
@@ -339,11 +351,4 @@ function getTotalEarnedStars(contribs) {
     totalEarnedStars += earnedStars;
   });
   return totalEarnedStars;
-}
-
-function assert(val, doingWhat) {
-    if( val ) {
-        return;
-    }
-    throw new Error('Internal error '+doingWhat);
 }
