@@ -1,39 +1,28 @@
 import React from 'react';
 
-import '../../browser/thirdparty/semantic-ui-2.3.2/progress.min.css';
+export {ProgressBar};
 
-import './ProgressBar.css';
-
-class ProgressBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.semanticBar = React.createRef();
-  }
-
-  componentDidMount() {
-    this.setupSemanticUi();
-  }
-
-  componentDidUpdate() {
-    this.setupSemanticUi();
-  }
-
-  setupSemanticUi() {
-    this.props.pushToFunctionQueue(2, () => {
-      $(this.semanticBar.current).progress({
-        showActivity: false
-      });
-    });
-  }
-
-  render() {
-    return (
-      <div className={`ui tiny ${this.props.color} progress mx-1 my-0`} data-percent={this.props.percentage}
-           ref={this.semanticBar}>
-        <div className="bar"></div>
-      </div>
-    );
-  }
+function ProgressBar({percentage, style}) {
+  const borderRadius = 5;
+  return (
+    <div style={{
+      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+      height: 7,
+      width: 55,
+      borderRadius,
+      display: 'inline-block',
+      ...style,
+    }}>
+      <div style={{
+        width: percentage+'%',
+        backgroundColor: '#21ba45',
+        borderTopLeftRadius: borderRadius,
+        borderBottomLeftRadius: borderRadius,
+        position: 'absoute',
+        top: 0,
+        left: 0,
+        height: '100%',
+      }}/>
+    </div>
+  );
 }
-
-export default ProgressBar;

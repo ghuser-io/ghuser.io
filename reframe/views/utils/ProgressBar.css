@@ -1,9 +1,0 @@
-.ui.progress {
-  width: 4em;
-  height: auto;
-  display: inline-block;
-}
-
-.ui.progress .bar {
-  min-width: 0;
-}

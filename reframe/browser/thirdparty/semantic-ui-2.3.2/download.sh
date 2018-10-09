@@ -10,7 +10,7 @@ if [ "$actual_major_bash_version" -lt "$expected_major_bash_version" ]; then
   exit 1
 fi
 
-for component in accordion progress; do
+for component in accordion; do
   for ext in js css; do
     curl -O https://raw.githubusercontent.com/Semantic-Org/UI-${component^}/2.3.2/$component.min.$ext
   done

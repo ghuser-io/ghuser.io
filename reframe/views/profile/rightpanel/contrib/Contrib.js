@@ -5,7 +5,7 @@ import {urls} from '../../../../ghuser';
 
 import RichText from '../../../utils/RichText';
 import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon, stopPropagationOnLinks} from '../../../utils/Accordion';
-import ProgressBar from '../../../utils/ProgressBar';
+import {ProgressBar} from '../../../utils/ProgressBar';
 import {numberOf} from '../../../utils/pretty-numbers';
 
 import Avatar from '../../Avatar';
@@ -288,8 +288,7 @@ function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
     <div>
       <div>
         <i className="fas fa-code icon contrib-link-icon text-gray"></i>&nbsp;
-        <ProgressBar color="green" percentage={commits_count__percentage*100}
-                     pushToFunctionQueue={pushToFunctionQueue} />
+        <ProgressBar percentage={commits_count__percentage*100} style={{marginLeft: 4, marginRight: 4}}/>
           {' '}
           {username} wrote <CommitLink>{numberOf(commits_count__user, 'commit')}</CommitLink>
           {' '}
