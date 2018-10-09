@@ -81,16 +81,23 @@ function getStarBoost(stars) {
 }
 
 async function getAllData({username}) {
-  const userData = await getUserData({username});
-  if( userData.profileDoesNotExist ) {
-    return userData;
-  }
-  const allRepoData = await getAllRepoData(userData.contribs);
-  return {allRepoData, ...userData};
+    const {user, contribs, profileDoesNotExist} = await getUserData({username});
+
+    if( profileDoesNotExist ) {
+      return {profileDoesNotExist};
+    }
+
+    let orgsData;
+    let allRepoData;
+    await Promise.all([
+      getAllRepoData(contribs).then(d => allRepoData=d),
+      getOrgsData(contribs).then(d => orgsData=d),
+    ]);
+
+    return {user, contribs, orgsData, allRepoData};
 }
 async function getUserData({username}) {
     const userId = username.toLowerCase();
-
     const dbBaseUrl = db.url;
 
     let user;
@@ -105,15 +112,18 @@ async function getUserData({username}) {
       return {profileDoesNotExist: true};
     }
 
-    const orgsData = contribs && contribs.organizations || [];
-    await Promise.all(
-      orgsData.map(async (orgName, i) => {
-        const newOrgData = await (await fetch(`${db.url}/orgs/${orgName}.json`)).json();
-        orgsData[i] = {name: orgName, ...newOrgData};
-      })
-    );
+    return {user, contribs};
+}
+async function getOrgsData(contribs) {
+  const orgsData = contribs && contribs.organizations || [];
+  await Promise.all(
+    orgsData.map(async (orgName, i) => {
+      const newOrgData = await (await fetch(`${db.url}/orgs/${orgName}.json`)).json();
+      orgsData[i] = {name: orgName, ...newOrgData};
+    })
+  );
 
-    return {user, contribs, orgsData};
+  return orgsData;
 }
 async function getAllRepoData(contribs) {
     const shownContribs = getShownContribs(contribs);
