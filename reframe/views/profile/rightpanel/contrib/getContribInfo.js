@@ -1,6 +1,7 @@
 import fetch from '@brillout/fetch';
 import * as db from '../../../../db';
 import assert_internal from 'reassert/internal';
+import {urls} from '../../../../ghuser';
 
 export {getCommitCounts};
 export {getRepoAvatar};
@@ -82,39 +83,42 @@ function getStarBoost(stars) {
 }
 
 async function getAllData({username}) {
-    const {user, contribs, profileDoesNotExist} = await getUserData({username});
+  const {user, contribs, profileDoesNotExist} = await getUserData({username});
 
-    if( profileDoesNotExist ) {
-      return {profileDoesNotExist};
-    }
+  if( profileDoesNotExist ) {
+    const {user, profilesBeingCreated} = await getPendingProfilesInfo({username});
+    assert_internal(user && profilesBeingCreated);
+    return {profileDoesNotExist, user, profilesBeingCreated};
+  }
 
-    let orgsData;
-    let allRepoData;
-    await Promise.all([
-      getAllRepoData(contribs).then(d => allRepoData=d),
-      getOrgsData(contribs).then(d => orgsData=d),
-    ]);
+  let orgsData;
+  let allRepoData;
+  await Promise.all([
+    getAllRepoData(contribs).then(d => allRepoData=d),
+    getOrgsData(contribs).then(d => orgsData=d),
+  ]);
 
-    return {user, contribs, orgsData, allRepoData};
+  return {user, contribs, orgsData, allRepoData};
 }
 async function getUserData({username}) {
-    const userId = username.toLowerCase();
-    const dbBaseUrl = db.url;
+  const userId = getUserId({username});
 
-    let user;
-    let contribs;
-    try {
-      const userData = await fetch(`${dbBaseUrl}/users/${userId}.json`);
-      user = await userData.json();
+  const dbBaseUrl = db.url;
 
-      const contribsData = await fetch(`${dbBaseUrl}/contribs/${userId}.json`);
-      contribs = await contribsData.json();
-    } catch (_) {
-      return {profileDoesNotExist: true};
-    }
-    assert_internal(user && contribs, {user, contribs, userId});
+  let user;
+  let contribs;
+  try {
+    const userData = await fetch(`${dbBaseUrl}/users/${userId}.json`);
+    user = await userData.json();
 
-    return {user, contribs};
+    const contribsData = await fetch(`${dbBaseUrl}/contribs/${userId}.json`);
+    contribs = await contribsData.json();
+  } catch (_) {
+    return {profileDoesNotExist: true};
+  }
+  assert_internal(user && contribs, {user, contribs, userId});
+
+  return {user, contribs};
 }
 async function getOrgsData(contribs) {
   const orgsData = contribs && contribs.organizations || [];
@@ -128,20 +132,45 @@ async function getOrgsData(contribs) {
   return orgsData;
 }
 async function getAllRepoData(contribs) {
-    const shownContribs = getShownContribs(contribs);
+  const shownContribs = getShownContribs(contribs);
 
-    const allRepoData = {};
+  const allRepoData = {};
 
-    await Promise.all(
-        shownContribs
-        .map(async contrib => {
-          const {full_name} = contrib;
-          const resp = await fetch(`${db.url}/repos/${full_name}.json`);
-          const repo = await resp.json();
-          assert_internal(repo, {full_name, repo});
-          allRepoData[full_name] = repo;
-        })
-    );
+  await Promise.all(
+    shownContribs
+    .map(async contrib => {
+      const {full_name} = contrib;
+      const resp = await fetch(`${db.url}/repos/${full_name}.json`);
+      const repo = await resp.json();
+      assert_internal(repo, {full_name, repo});
+      allRepoData[full_name] = repo;
+    })
+  );
 
-    return allRepoData;
+  return allRepoData;
+}
+
+async function getPendingProfilesInfo({username}) {
+  const userId = getUserId({username});
+  // This profile doesn't exist yet, let's see if it's being created:
+  const profilesBeingCreatedData = await fetch(urls.profileQueueUrl);
+  const profilesBeingCreated = await profilesBeingCreatedData.json();
+  let user;
+  for (const profile of profilesBeingCreated) {
+    if (profile.login.toLowerCase() === userId) { // profile is being created
+      user = {
+        ...profile,
+        ghuser_being_created: true
+      };
+      break;
+    }
+  }
+  if( ! user ) {
+    user = {login: username};
+  }
+  return {profilesBeingCreated, user};
+}
+function getUserId({username}) {
+  const userId = username.toLowerCase();
+  return userId;
 }

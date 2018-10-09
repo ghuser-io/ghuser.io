@@ -28,10 +28,11 @@ const ProfilePage = {
         await getAllData({username})
       )
     );
-    assert_internal(allData.doNotRender || allData.profileDoesNotExist || allData.user && allData.contribs && allData.orgsData && allData.allRepoData, allData);
+    assert_internal(allData.doNotRender || allData.profileDoesNotExist && allData.user && allData.profilesBeingCreated || allData.user && allData.contribs && allData.orgsData && allData.allRepoData, allData);
 
     return {
       isServerRendering,
+      username,
       ...allData
     };
   },
