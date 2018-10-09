@@ -314,8 +314,8 @@ function getEarnedStars(contrib, contribType, username) {
     assert_(isMaintainer + isBronzeContributor + isSilverContributor + isGoldContributor === 1);
 
     const earnedStars_bronze = Math.min(10, Math.floor(0.5*stars));
-    const earnedStars_silver = Math.max(earnedStars_bronze, Math.min(100, Math.ceil(0.1*stars)));
-    const earnedStars_gold = Math.max(earnedStars_silver, Math.ceil((userCommitsPercentage/100)*stars));
+    const earnedStars_silver = Math.max(earnedStars_bronze, Math.min(100, Math.floor(0.1*stars)));
+    const earnedStars_gold = Math.max(earnedStars_silver, Math.floor((userCommitsPercentage/100)*stars));
 
     const earnedStars = (
         isMaintainer && stars ||
