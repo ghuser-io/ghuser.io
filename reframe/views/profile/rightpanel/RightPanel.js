@@ -52,6 +52,21 @@ function ContribList(props) {
 function ProfileStatus(props) {
   const alertCssClasses = 'alert alert-warning my-3';
 
+  if (props.deleted_because) {
+    return (
+      <React.Fragment>
+        <div className={alertCssClasses} role="alert">
+          This profile was deleted because {Parser(Autolinker.link(props.deleted_because, {
+            className: 'external'
+          }))}<br /><br />
+          If you want to have it again, no problem, just&nbsp;
+          <a href={urls.issues} target="_blank" className="external">create an issue</a> :)
+        </div>
+        <CreateYourProfile alertCssClasses={alertCssClasses}/>
+      </React.Fragment>
+    );
+  }
+
   if (props.being_created) {
     return (
       <React.Fragment>
@@ -62,20 +77,18 @@ function ProfileStatus(props) {
       </React.Fragment>
     );
   }
-
-  if (props.deleted_because) {
-    return (
-      <div className={alertCssClasses} role="alert">
-        This profile was deleted because {Parser(Autolinker.link(props.deleted_because, {
-          className: 'external'
-        }))}<br /><br />
-        If you want to have it again, no problem, just&nbsp;
-        <a href={urls.issues} target="_blank" className="external">create an issue</a> :)
-      </div>
-    );
-  }
-
   return (
-      <CreateYourProfile alertCssClasses={alertCssClasses}/>
+      <React.Fragment>
+        <div key="alert" className={alertCssClasses} role="alert">
+          This profile doesn't exist yet.
+          { /* temporary for issue143: */ }
+          <br /><br />
+          And we're overloaded at the moment, see&nbsp;
+          <a href="https://github.com/ghuser-io/ghuser.io/issues/143" target="_blank" className="external">
+            #143
+          </a>. We can't onboard any new users for now. We'll be back soon, thanks!
+        </div>
+        <CreateYourProfile alertCssClasses={alertCssClasses}/>
+      </React.Fragment>
   );
 }

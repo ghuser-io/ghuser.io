@@ -86,9 +86,9 @@ async function getAllData({username}) {
   const {user, contribs, profileDoesNotExist} = await getUserData({username});
 
   if( profileDoesNotExist ) {
-    const {user, profilesBeingCreated} = await getPendingProfilesInfo({username});
-    assert_internal(user && profilesBeingCreated);
-    return {profileDoesNotExist, user, profilesBeingCreated};
+    const pendingProfilesInfo = await getPendingProfilesInfo({username, user});
+    assert_internal(pendingProfilesInfo.user && pendingProfilesInfo.profilesBeingCreated);
+    return {...pendingProfilesInfo, profileDoesNotExist};
   }
 
   let orgsData;
@@ -114,7 +114,7 @@ async function getUserData({username}) {
     const contribsData = await fetch(`${dbBaseUrl}/contribs/${userId}.json`);
     contribs = await contribsData.json();
   } catch (_) {
-    return {profileDoesNotExist: true};
+    return {profileDoesNotExist: true, user};
   }
   assert_internal(user && contribs, {user, contribs, userId});
 
@@ -150,23 +150,21 @@ async function getAllRepoData(contribs) {
   return allRepoData;
 }
 
-async function getPendingProfilesInfo({username}) {
+async function getPendingProfilesInfo({username, user={}}) {
   const userId = getUserId({username});
   // This profile doesn't exist yet, let's see if it's being created:
   const profilesBeingCreatedData = await fetch(urls.profileQueueUrl);
   const profilesBeingCreated = await profilesBeingCreatedData.json();
-  let user;
+  user.login = user.login || username;
   for (const profile of profilesBeingCreated) {
     if (profile.login.toLowerCase() === userId) { // profile is being created
       user = {
+        ...user,
         ...profile,
         ghuser_being_created: true
       };
       break;
     }
-  }
-  if( ! user ) {
-    user = {login: username};
   }
   return {profilesBeingCreated, user};
 }
