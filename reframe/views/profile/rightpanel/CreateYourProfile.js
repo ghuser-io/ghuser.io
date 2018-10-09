@@ -3,8 +3,17 @@ import React from 'react';
 import {urls} from '../../../ghuser';
 import LogoWithPunchline from '../../LogoWithPunchline';
 
-const CreateYourProfile = props => (
+const CreateYourProfile = ({alertCssClasses}) => (
   <div>
+    <div key="alert" className={alertCssClasses} role="alert">
+      This profile doesn't exist yet.
+      { /* temporary for issue143: */ }
+      <br /><br />
+      And we're overloaded at the moment, see&nbsp;
+      <a href="https://github.com/ghuser-io/ghuser.io/issues/143" target="_blank" className="external">
+        #143
+      </a>. We can't onboard any new users for now. We'll be back soon, thanks!
+    </div>
     <LogoWithPunchline />
     <p>
       Good that you are here :)<br />
