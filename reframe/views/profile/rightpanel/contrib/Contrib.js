@@ -31,19 +31,6 @@ class Contrib extends React.Component {
     };
   }
 
-  componentDidMount() {
-    /*
-    this.props.pushToFunctionQueue(0, async () => {
-      try {
-        const repoData = await fetch(`${db.url}/repos/${this.props.contrib.full_name}.json`);
-        const repo = await repoData.json();
-        this.setState({ repo });
-      } catch (_) {}
-      this.setState({ loading: false });
-    });
-    */
-  }
-
   render() {
     const repo = this.state.repo || this.props.repo;
 
@@ -205,7 +192,7 @@ function Languages({repo, style={}}) {
     );
 }
 
-function ContribExpandedContent({repo, username, contrib, style={}, className="", pushToFunctionQueue}) {
+function ContribExpandedContent({repo, username, contrib, style={}, className=""}) {
     const Spacer = ({mod}) => <div style={{width: 1, height: 20+mod}}/>;
 
     const languagesView = Languages({repo});
@@ -221,7 +208,7 @@ function ContribExpandedContent({repo, username, contrib, style={}, className=""
         )}
         <BadgesExplanation {...{contrib, username}}/>
         <Spacer mod={3}/>
-        <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
+        <ContribLinks {...{repo, username, contrib}} />
         <Spacer mod={-2}/>
         <ScoreExplanation {...{contrib}}/>
         <Spacer mod={8}/>
@@ -269,8 +256,7 @@ function ExplainerTicket () {
   );
 }
 
-function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
-
+function ContribLinks({contrib, username, repo}) {
   const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
   const contribType = getContribType(contrib);
 

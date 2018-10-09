@@ -11,17 +11,6 @@ import {getShownContribs} from './contrib/getContribInfo';
 import {AccordionListContainer} from '../../utils/Accordion';
 
 const RightPanel = props => {
-  // Use these queues to avoid filling up the event loop:
-  let functionQueues = [Promise.resolve(), Promise.resolve(), Promise.resolve()];
-  const pushToFunctionQueue = (index, func) => {
-    functionQueues[index] = functionQueues[index].then(
-      () => new Promise(resolve => setTimeout(() => {
-        func();
-        resolve();
-      }, 0))
-    );
-  };
-
   const repos = [];
 
   if (props.contribs) {
@@ -31,8 +20,7 @@ const RightPanel = props => {
       repos.push(
         <Contrib key={contrib.full_name} username={props.username} contrib={contrib}
                  repo={repo}
-                 i={i}
-                 pushToFunctionQueue={pushToFunctionQueue} />
+                 i={i} />
       )
     });
   } else {
