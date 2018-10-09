@@ -211,7 +211,7 @@ function ContribExpandedContent({repo, username, contrib, style={}, className=""
     const languagesView = Languages({repo});
 
     return (
-      <AccordionBody className={"text-gray "+className} style={{paddingBottom: 15, ...style}}>
+      <AccordionBody className={"text-gray "+className} style={style}>
         <Spacer mod={-12}/>
         {languagesView && (
           <React.Fragment>
@@ -224,7 +224,7 @@ function ContribExpandedContent({repo, username, contrib, style={}, className=""
         <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
         <Spacer mod={-2}/>
         <ScoreExplanation {...{contrib}}/>
-        <Spacer mod={-7}/>
+        <Spacer mod={8}/>
       </AccordionBody>
     );
 }
