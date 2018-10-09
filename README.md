@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="https://ghuser.io">
-    <img src="https://rawgit.com/ghuser-io/ghuser.io/master/docs/logo.png"
+    <img src="https://cdn.jsdelivr.net/gh/ghuser-io/ghuser.io@f44119258dfeade99c800232044cf7c3e3a91982/docs/logo.png"
          width="400" height="108" />
   </a>
 </p>

@@ -18,7 +18,7 @@ You can set properties on any `owner/repo` by committing a file at either:
 ```json
 {
   "_comment": "Repo metadata for ghuser.io. See https://github.com/ghuser-io/ghuser.io/blob/master/docs/repo-settings.md",
-  "avatar_url": "https://rawgit.com/ghuser-io/ghuser.io/master/docs/logo_square.png"
+  "avatar_url": "https://cdn.jsdelivr.net/gh/ghuser-io/ghuser.io@f44119258dfeade99c800232044cf7c3e3a91982/docs/logo_square.png"
 }
 ```
 
