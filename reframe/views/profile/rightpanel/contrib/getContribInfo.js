@@ -125,6 +125,7 @@ async function getOrgsData(contribs) {
   await Promise.all(
     orgsData.map(async (orgName, i) => {
       const newOrgData = await (await fetch(`${db.url}/orgs/${orgName}.json`)).json();
+      assert_internal(newOrgData, {newOrgData, orgName});
       orgsData[i] = {name: orgName, ...newOrgData};
     })
   );
@@ -153,8 +154,10 @@ async function getAllRepoData(contribs) {
 async function getPendingProfilesInfo({username, user={}}) {
   const userId = getUserId({username});
   // This profile doesn't exist yet, let's see if it's being created:
-  const profilesBeingCreatedData = await fetch(urls.profileQueueUrl);
+  const {profileQueueUrl} = urls;
+  const profilesBeingCreatedData = await fetch(profileQueueUrl);
   const profilesBeingCreated = await profilesBeingCreatedData.json();
+  assert_internal(profilesBeingCreated, {profileQueueUrl, profilesBeingCreated});
   user.login = user.login || username;
   for (const profile of profilesBeingCreated) {
     if (profile.login.toLowerCase() === userId) { // profile is being created
