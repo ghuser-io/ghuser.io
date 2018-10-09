@@ -1,5 +1,6 @@
 import fetch from '@brillout/fetch';
 import * as db from '../../../../db';
+import assert_internal from 'reassert/internal';
 
 export {getCommitCounts};
 export {getRepoAvatar};
@@ -111,6 +112,7 @@ async function getUserData({username}) {
     } catch (_) {
       return {profileDoesNotExist: true};
     }
+    assert_internal(user && contribs, {user, contribs, userId});
 
     return {user, contribs};
 }
@@ -136,6 +138,7 @@ async function getAllRepoData(contribs) {
           const {full_name} = contrib;
           const resp = await fetch(`${db.url}/repos/${full_name}.json`);
           const repo = await resp.json();
+          assert_internal(repo, {full_name, repo});
           allRepoData[full_name] = repo;
         })
     );
