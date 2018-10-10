@@ -86,6 +86,7 @@ async function getAllData({username}) {
   const {user, contribs, profileDoesNotExist} = await getUserData({username});
 
   if( profileDoesNotExist ) {
+    // This profile doesn't exist yet, let's see if it's being created:
     const pendingProfilesInfo = await getPendingProfilesInfo({username, user});
     assert_internal(pendingProfilesInfo.user && pendingProfilesInfo.profilesBeingCreated);
     return {...pendingProfilesInfo, profileDoesNotExist};
@@ -153,10 +154,12 @@ async function getAllRepoData(contribs) {
 
 async function getPendingProfilesInfo({username, user={}}) {
   const userId = getUserId({username});
-  // This profile doesn't exist yet, let's see if it's being created:
   const {profileQueueUrl} = urls;
-  const profilesBeingCreatedData = await fetch(profileQueueUrl);
-  const profilesBeingCreated = await profilesBeingCreatedData.json();
+  let profilesBeingCreated = [];
+  try {
+    const profilesBeingCreatedData = await fetch(profileQueueUrl);
+    profilesBeingCreated = await profilesBeingCreatedData.json();
+  } catch (_) {} // when running locally no 'Access-Control-Allow-Origin' header is present
   assert_internal(profilesBeingCreated, {profileQueueUrl, profilesBeingCreated});
   user.login = user.login || username;
   for (const profile of profilesBeingCreated) {
