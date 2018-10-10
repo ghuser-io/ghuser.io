@@ -1,6 +1,5 @@
 import React from 'react';
 
-//import * as db from '../../../../db';
 import {urls} from '../../../../ghuser';
 
 import RichText from '../../../utils/RichText';
@@ -22,31 +21,13 @@ export {Contrib};
 
 
 class Contrib extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-   // loading: true,
-      loading: false,
-      repo: null
-    };
-  }
-
   render() {
-    const repo = this.state.repo || this.props.repo;
-
-    if( ! this.state.loading && repo && this.props.i>=10 ) {
-        return <ContribMini {...{...this.props, ...this.state, repo}}/>;
+    if( this.props.repo && this.props.i>=10 ) {
+        return <ContribMini {...this.props}/>;
     }
 
     const avatar = () => {
-      if (this.state.loading) {
-        return (
-          <span className="mb-2 mr-2" style={{display: 'inline-block', verticalAlign: 'middle'}}>
-            <i className="fas fa-spinner fa-pulse"/>
-          </span>
-        );
-      }
-      const repoAvatar = getRepoAvatar(repo);
+      const repoAvatar = getRepoAvatar(this.props.repo);
       if( repoAvatar ) {
         return <Avatar url={repoAvatar} classes="avatar-small" />;
       }
@@ -72,7 +53,7 @@ class Contrib extends React.Component {
         <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
           {avatar()}
         </div>
-        <ContribHeader {...{...this.props, ...this.state, repo}}/>
+        <ContribHeader {...this.props}/>
         {badgesLine}
         <AccordionBadgerIcon/>
       </AccordionHead>
@@ -80,7 +61,7 @@ class Contrib extends React.Component {
 
     const accordionBody = (
       <ContribExpandedContent
-        {...{...this.props, ...this.state}}
+        {...this.props}
         style={{paddingLeft: LEFT_PADDING}}
       />
     );

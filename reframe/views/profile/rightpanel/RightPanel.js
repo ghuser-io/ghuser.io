@@ -62,7 +62,7 @@ function ProfileStatus(props) {
           If you want to have it again, no problem, just&nbsp;
           <a href={urls.issues} target="_blank" className="external">create an issue</a> :)
         </div>
-        <CreateYourProfile alertCssClasses={alertCssClasses}/>
+        <CreateYourProfile />
       </React.Fragment>
     );
   }
@@ -88,7 +88,7 @@ function ProfileStatus(props) {
             #143
           </a>. We can't onboard any new users for now. We'll be back soon, thanks!
         </div>
-        <CreateYourProfile alertCssClasses={alertCssClasses}/>
+        <CreateYourProfile />
       </React.Fragment>
   );
 }
