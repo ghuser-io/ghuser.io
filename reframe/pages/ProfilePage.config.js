@@ -1,7 +1,7 @@
 import React from 'react';
 import assert_internal from 'reassert/internal';
 
-import Profile from '../views/profile/Profile';
+import {Profile} from '../views/profile/Profile';
 
 import {getAllData} from '../views/profile/rightpanel/contrib/getContribInfo';
 

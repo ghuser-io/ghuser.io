@@ -10,15 +10,31 @@ import RightPanel from './rightpanel/RightPanel';
 import './Profile.css';
 import assert_internal from 'reassert/internal';
 
-export default Profile;
+export {Profile};
 
-function Profile(props) {
-    const isLoading = props.isServerRendering ? props.doNotRender : true;
+class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    if( ! props.isServerRendering ) {
+      this.state = {
+        doNotRenderYet: true,
+      };
+    }
+  }
+  componentDidMount() {
+    this.setState({doNotRenderYet: false});
+  }
+  render() {
+    const {props} = this;
+
+    assert_internal(props.doNotRender===undefined || props.isServerRendering);
+    const showLoadingIcon = props.isServerRendering ? props.doNotRender : this.state.doNotRenderYet;
+
     const content = (
-      isLoading ? (
-        <div><i className="fas fa-spinner fa-pulse"></i> {props.username}'s profile</div>
+      showLoadingIcon ? (
+        <div className="col-12 pl-2 pr-0"><i className="fas fa-spinner fa-pulse"></i> <span>{props.username+"'s profile"}</span></div>
       ) : (
-        <div className="row">
+        <React.Fragment>
           <LeftPanel user={props.user} contribs={props.contribs}
                      orgsData={props.orgsData} />
           <RightPanel username={props.user.login}
@@ -28,7 +44,7 @@ function Profile(props) {
                       deleted_because={props.user.ghuser_deleted_because}
                       allRepoData={props.allRepoData}
                       profilesBeingCreated={props.profilesBeingCreated} />
-        </div>
+        </React.Fragment>
       )
     );
 
@@ -37,9 +53,12 @@ function Profile(props) {
         <NavBar/>
         <Content>
           <div className="container container-lg mt-2">
-            { content }
+            <div className="row">
+              { content }
+            </div>
           </div>
         </Content>
       </PageContent>
     );
+  }
 }
