@@ -7,7 +7,9 @@
   ],
   "lambda": {
     "role": "arn:aws:iam::$AWS_ACCOUNT_ID:role/apex-up-lambda",
-    "memory": 256,
+    "memory": 256
+  },
+  "proxy": {
     "timeout": 25
   },
   "stages": {
