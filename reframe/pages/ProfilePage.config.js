@@ -5,7 +5,7 @@ import {Profile} from '../views/profile/Profile';
 
 import {getAllData} from '../views/profile/rightpanel/contrib/getContribInfo';
 
-/*
+//*
 const doNotRenderInBrowser = false;
 const doNotRenderOnServer = true;
 /*/
