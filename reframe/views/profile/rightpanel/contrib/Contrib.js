@@ -1,10 +1,9 @@
 import React from 'react';
 
-import * as db from '../../../../db';
 import {urls} from '../../../../ghuser';
 
 import RichText from '../../../utils/RichText';
-import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon, stopPropagationOnLinks} from '../../../utils/Accordion';
+import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon} from '../../../utils/Accordion';
 import {ProgressBar} from '../../../utils/ProgressBar';
 import {numberOf} from '../../../utils/pretty-numbers';
 
@@ -22,39 +21,13 @@ export {Contrib};
 
 
 class Contrib extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true,
-      repo: null
-    };
-  }
-
-  componentDidMount() {
-    this.props.pushToFunctionQueue(0, async () => {
-      try {
-        const repoData = await fetch(`${db.url}/repos/${this.props.contrib.full_name}.json`);
-        const repo = await repoData.json();
-        this.setState({ repo });
-      } catch (_) {}
-      this.setState({ loading: false });
-    });
-  }
-
   render() {
-    if( ! this.state.loading && this.state.repo && this.props.i>=10 ) {
-        return <ContribMini {...{...this.props, ...this.state}}/>;
+    if( this.props.repo && this.props.i>=10 ) {
+        return <ContribMini {...this.props}/>;
     }
 
     const avatar = () => {
-      if (this.state.loading) {
-        return (
-          <span className="mb-2 mr-2" style={{display: 'inline-block', verticalAlign: 'middle'}}>
-            <i className="fas fa-spinner fa-pulse"/>
-          </span>
-        );
-      }
-      const repoAvatar = getRepoAvatar(this.state.repo);
+      const repoAvatar = getRepoAvatar(this.props.repo);
       if( repoAvatar ) {
         return <Avatar url={repoAvatar} classes="avatar-small" />;
       }
@@ -63,7 +36,6 @@ class Contrib extends React.Component {
           href={`${urls.docs}/repo-settings.md`}
           title="Add an avatar"
           target="_blank"
-          ref={stopPropagationOnLinks}
         ><AvatarAdd/></a>
       );
     };
@@ -81,7 +53,7 @@ class Contrib extends React.Component {
         <div style={{position: 'absolute', top: 0, left: 0, paddingTop: 'inherit'}}>
           {avatar()}
         </div>
-        <ContribHeader {...{...this.props, ...this.state}}/>
+        <ContribHeader {...this.props}/>
         {badgesLine}
         <AccordionBadgerIcon/>
       </AccordionHead>
@@ -89,14 +61,13 @@ class Contrib extends React.Component {
 
     const accordionBody = (
       <ContribExpandedContent
-        {...{...this.props, ...this.state}}
+        {...this.props}
         style={{paddingLeft: LEFT_PADDING}}
       />
     );
 
     return (
         <Accordion
-          pushToFunctionQueue={this.props.pushToFunctionQueue}
           className="border-bottom border-gray-light"
         >
           {accordionHead}
@@ -136,7 +107,6 @@ function ContribMini(props) {
 
     return (
       <Accordion
-        pushToFunctionQueue={props.pushToFunctionQueue}
         className="border-bottom border-gray-light"
       >
         {accordionHead}
@@ -153,7 +123,6 @@ function ContribHeader({username, contrib: {name, full_name}, repo}) {
       return (
           <div
             style={{whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden'}}
-            ref={stopPropagationOnLinks}
           >
             <a href={`https://github.com/${full_name}`}
                className="external"
@@ -204,13 +173,13 @@ function Languages({repo, style={}}) {
     );
 }
 
-function ContribExpandedContent({repo, username, contrib, style={}, className="", pushToFunctionQueue}) {
+function ContribExpandedContent({repo, username, contrib, style={}, className=""}) {
     const Spacer = ({mod}) => <div style={{width: 1, height: 20+mod}}/>;
 
     const languagesView = Languages({repo});
 
     return (
-      <AccordionBody className={"text-gray "+className} style={{paddingBottom: 15, ...style}}>
+      <AccordionBody className={"text-gray "+className} style={style}>
         <Spacer mod={-12}/>
         {languagesView && (
           <React.Fragment>
@@ -220,10 +189,10 @@ function ContribExpandedContent({repo, username, contrib, style={}, className=""
         )}
         <BadgesExplanation {...{contrib, username}}/>
         <Spacer mod={3}/>
-        <ContribLinks {...{repo, username, contrib, pushToFunctionQueue}} />
+        <ContribLinks {...{repo, username, contrib}} />
         <Spacer mod={-2}/>
         <ScoreExplanation {...{contrib}}/>
-        <Spacer mod={-7}/>
+        <Spacer mod={8}/>
       </AccordionBody>
     );
 }
@@ -268,8 +237,7 @@ function ExplainerTicket () {
   );
 }
 
-function ContribLinks({contrib, username, repo, pushToFunctionQueue}) {
-
+function ContribLinks({contrib, username, repo}) {
   const {commits_count__user, commits_count__percentage, commits_count__total} = getCommitCounts(contrib);
   const contribType = getContribType(contrib);
 

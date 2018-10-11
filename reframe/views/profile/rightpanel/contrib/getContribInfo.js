@@ -1,8 +1,14 @@
+import fetch from '@brillout/fetch';
+import * as db from '../../../../db';
+import assert_internal from 'reassert/internal';
+import {urls} from '../../../../ghuser';
+
 export {getCommitCounts};
 export {getRepoAvatar};
 export {getShownContribs};
 export {getContribDisplayOrder};
 export {getContribScore};
+export {getAllData};
 
 function getCommitCounts(contrib) {
   const {total_commits_count: commits_count__total} = contrib;
@@ -74,4 +80,101 @@ function getStarBoost(stars) {
   const MAX_STARS = 100*1000;
   const starBoost = 0.2 + (Math.log10(stars) / Math.log10(MAX_STARS) * 5);
   return starBoost;
+}
+
+async function getAllData({username}) {
+  const {user, contribs, profileDoesNotExist} = await getUserData({username});
+
+  if( profileDoesNotExist ) {
+    // This profile doesn't exist yet, let's see if it's being created:
+    const pendingProfilesInfo = await getPendingProfilesInfo({username, user});
+    assert_internal(pendingProfilesInfo.user && pendingProfilesInfo.profilesBeingCreated);
+    return {...pendingProfilesInfo, profileDoesNotExist};
+  }
+
+  let orgsData;
+  let allRepoData;
+  await Promise.all([
+    getAllRepoData(contribs).then(d => allRepoData=d),
+    getOrgsData(contribs).then(d => orgsData=d),
+  ]);
+
+  return {user, contribs, orgsData, allRepoData};
+}
+async function getUserData({username}) {
+  const userId = getUserId({username});
+
+  const dbBaseUrl = db.url;
+
+  let user;
+  let contribs;
+  try {
+    const userData = await fetch(`${dbBaseUrl}/users/${userId}.json`);
+    user = await userData.json();
+
+    const contribsData = await fetch(`${dbBaseUrl}/contribs/${userId}.json`);
+    contribs = await contribsData.json();
+  } catch (_) {
+    return {profileDoesNotExist: true, user};
+  }
+  assert_internal(user && contribs, {user, contribs, userId});
+
+  return {user, contribs};
+}
+async function getOrgsData(contribs) {
+  const orgsData = contribs && contribs.organizations || [];
+  await Promise.all(
+    orgsData.map(async (orgName, i) => {
+      const newOrgData = await (await fetch(`${db.url}/orgs/${orgName}.json`)).json();
+      assert_internal(newOrgData, {newOrgData, orgName});
+      orgsData[i] = {name: orgName, ...newOrgData};
+    })
+  );
+
+  return orgsData;
+}
+async function getAllRepoData(contribs) {
+  const shownContribs = getShownContribs(contribs);
+
+  const allRepoData = {};
+
+  await Promise.all(
+    shownContribs
+    .map(async contrib => {
+      const {full_name} = contrib;
+      const resp = await fetch(`${db.url}/repos/${full_name}.json`);
+      const repo = await resp.json();
+      assert_internal(repo, {full_name, repo});
+      allRepoData[full_name] = repo;
+    })
+  );
+
+  return allRepoData;
+}
+
+async function getPendingProfilesInfo({username, user={}}) {
+  const userId = getUserId({username});
+  const {profileQueueUrl} = urls;
+  let profilesBeingCreated = [];
+  try {
+    const profilesBeingCreatedData = await fetch(profileQueueUrl);
+    profilesBeingCreated = await profilesBeingCreatedData.json();
+  } catch (_) {} // when running locally no 'Access-Control-Allow-Origin' header is present
+  assert_internal(profilesBeingCreated, {profileQueueUrl, profilesBeingCreated});
+  user.login = user.login || username;
+  for (const profile of profilesBeingCreated) {
+    if (profile.login.toLowerCase() === userId) { // profile is being created
+      user = {
+        ...user,
+        ...profile,
+        ghuser_being_created: true
+      };
+      break;
+    }
+  }
+  return {profilesBeingCreated, user};
+}
+function getUserId({username}) {
+  const userId = username.toLowerCase();
+  return userId;
 }

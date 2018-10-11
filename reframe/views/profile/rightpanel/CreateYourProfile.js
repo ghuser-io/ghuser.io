@@ -3,7 +3,7 @@ import React from 'react';
 import {urls} from '../../../ghuser';
 import LogoWithPunchline from '../../LogoWithPunchline';
 
-const CreateYourProfile = props => (
+const CreateYourProfile = () => (
   <div>
     <LogoWithPunchline />
     <p>

@@ -8,77 +8,57 @@ import '../All.css';
 import LeftPanel from './leftpanel/LeftPanel';
 import RightPanel from './rightpanel/RightPanel';
 import './Profile.css';
-import * as db from '../../db';
-import {urls} from '../../ghuser';
+import assert_internal from 'reassert/internal';
+
+export {Profile};
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loading: true,
-      user: {
-        login: props.username
-      },
-      contribs: null,
-      profilesBeingCreated: []
-    };
-  }
-
-  async componentDidMount() {
-    const userId = this.props.username.toLowerCase();
-    try {
-      const userData = await fetch(`${db.url}/users/${userId}.json`);
-      const user = await userData.json();
-      this.setState({ user });
-
-      const contribsData = await fetch(`${db.url}/contribs/${userId}.json`);
-      const contribs = await contribsData.json();
-      this.setState({ contribs });
-    } catch (_) {
-      // This profile doesn't exist yet, let's see if it's being created:
-      const profilesBeingCreatedData = await fetch(urls.profileQueueEndpoint);
-      const profilesBeingCreated = await profilesBeingCreatedData.json();
-      this.setState({ profilesBeingCreated });
-      for (const profile of profilesBeingCreated) {
-        if (profile.login.toLowerCase() === userId) { // profile is being created
-          this.setState({
-            user: {
-              ...this.state.user,
-              avatar_url: profile.avatar_url,
-              ghuser_being_created: true
-            }
-          });
-          break;
-        }
-      }
+    if( ! props.isServerRendering ) {
+      this.state = {
+        doNotRenderYet: true,
+      };
     }
-    this.setState({ loading: false });
   }
-
+  componentDidMount() {
+    this.setState({doNotRenderYet: false});
+  }
   render() {
-    const content = this.state.loading &&
-      <div><i className="fas fa-spinner fa-pulse"></i> {this.state.user.login}'s profile</div> ||
-      <div className="row">
-        <LeftPanel user={this.state.user} contribs={this.state.contribs} />
-        <RightPanel username={this.state.user.login}
-                    fetchedat={this.state.user.contribs && this.state.user.contribs.fetched_at}
-                    contribs={this.state.contribs}
-                    being_created={this.state.user.ghuser_being_created}
-                    deleted_because={this.state.user.ghuser_deleted_because}
-                    profilesBeingCreated={this.state.profilesBeingCreated} />
-      </div>;
+    const {props} = this;
+
+    assert_internal(props.doNotRender===undefined || props.isServerRendering);
+    const showLoadingIcon = props.isServerRendering ? props.doNotRender : this.state.doNotRenderYet;
+
+    const content = (
+      showLoadingIcon ? (
+        <div className="col-12 pl-2 pr-0"><i className="fas fa-spinner fa-pulse"></i> <span>{props.username+"'s profile"}</span></div>
+      ) : (
+        <React.Fragment>
+          <LeftPanel user={props.user} contribs={props.contribs}
+                     orgsData={props.orgsData} />
+          <RightPanel username={props.user.login}
+                      fetchedat={props.user.contribs && props.user.contribs.fetched_at}
+                      contribs={props.contribs}
+                      being_created={props.user.ghuser_being_created}
+                      deleted_because={props.user.ghuser_deleted_because}
+                      allRepoData={props.allRepoData}
+                      profilesBeingCreated={props.profilesBeingCreated} />
+        </React.Fragment>
+      )
+    );
 
     return (
       <PageContent>
         <NavBar/>
         <Content>
           <div className="container container-lg mt-2">
-            { content }
+            <div className="row">
+              { content }
+            </div>
           </div>
         </Content>
       </PageContent>
     );
   }
 }
-
-export default Profile;

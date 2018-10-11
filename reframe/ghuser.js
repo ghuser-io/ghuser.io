@@ -1,9 +1,13 @@
+const profileQueueEndpoint = '/queue';
+const baseUrl = 'https://ghuser.io';
+
 const urls = {
-  landing: 'https://ghuser.io',
+  landing: baseUrl,
   mainRepo: 'https://github.com/ghuser-io/ghuser.io',
   fetchBot: 'https://github.com/ghuser-io/db/blob/master/fetchBot',
   oauthEndpoint: '/login',
-  profileQueueEndpoint: '/queue'
+  profileQueueEndpoint,
+  profileQueueUrl: baseUrl+profileQueueEndpoint,
 };
 urls.masterBranch = `${urls.mainRepo}/blob/master`;
 urls.docs = `${urls.masterBranch}/docs`;
