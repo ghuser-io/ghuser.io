@@ -25,7 +25,9 @@ class Creating extends React.Component {
             <a href={`/${this.props.username}`}>
               {urls.landing}/{this.props.username}
             </a> in a few seconds... */ }
-            Sorry, we're overloaded, we had to freeze the <i>profile requests</i> for now. See&nbsp;
+            Sorry, automation has been disabled. Thus the creation of your profile takes a bit more
+            time than expected. Your username has just landed in a queue that we process in a
+            semi-automatic fashion. Come back in 48 hours and your profile will be here. See&nbsp;
             <a href="https://github.com/ghuser-io/ghuser.io/issues/143" target="_blank" className="external">
               #143
             </a>.

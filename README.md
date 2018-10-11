@@ -1,8 +1,3 @@
-<!-- issue143 -->
-> **WARNING**: we're overloaded at the moment and we can't handle any new profile request. We're
-> sorry and we'll come back soon with a system that scales better. See
-> [#143](https://github.com/ghuser-io/ghuser.io/issues/143).
-
 [![Build Status](https://travis-ci.org/ghuser-io/ghuser.io.svg?branch=master)](https://travis-ci.org/ghuser-io/ghuser.io)
 [![All Contributors](https://img.shields.io/badge/all_contributors-29-orange.svg?style=flat-square)](#contributors)
 [![Twitter](https://img.shields.io/badge/-twitter-black.svg?style=flat-square&logo=twitter&colorB=555555)](https://twitter.com/ghuserio)
@@ -74,6 +69,12 @@ Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e
 # Get your profile!
 
 Request it [here](https://ghuser.io/login).
+
+<!-- issue143 -->
+> **WARNING**: automation has been disabled. Thus the creation of your profile takes a bit more time
+> than expected. When requesting your profile, your username lands in a queue that we process in a
+> semi-automatic fashion. It may take up to 48 hours to create your profile. See
+> [#143](https://github.com/ghuser-io/ghuser.io/issues/143).
 
 # Roadmap
 
