@@ -2,7 +2,7 @@ import React from 'react';
 
 import AvatarUnknown from './AvatarUnknown.png';
 import Bio from './Bio';
-import Orgs from './Orgs';
+import {Orgs} from './Orgs';
 import VCard from './VCard';
 import VCardDetails from './VCardDetails';
 import './LeftPanel.css';

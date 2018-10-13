@@ -5,25 +5,30 @@ import {withSeparator} from '../css';
 import Avatar from '../Avatar';
 import * as db from '../../../db';
 
-class Orgs extends React.Component {
-  render() {
-    const orgAvatar = org => (
-      <a key={org.name} href={`https://github.com/${org.name}`} target="_blank" title={org.name}>
-        <Avatar url={org.avatar_url} classes="avatar-org" />
-      </a>
-    );
+export {Orgs};
 
-    const contributedTo = (this.props.orgsData||[]).filter(org => org.avatar_url).map(org => orgAvatar(org));
-    if( contributedTo.length===0 ) {
-      return null;
-    }
-
-    return (
-      <div className={withSeparator('top', 3)}>
-        <div key='contributedTo'><h4 className="mb-1">Contributed to</h4>{contributedTo}</div>
-      </div>
-    );
+function Orgs({orgsData}) {
+  const orgsToShow = (
+    (orgsData||[])
+    .filter(org => org.avatar_url)
+  );
+  if( orgsToShow.length===0 ) {
+    return null;
   }
-};
 
-export default Orgs;
+  return (
+    <div className={withSeparator('top', 3)}>
+      <h4 className="mb-1">Contributed to</h4>
+      {
+        orgsToShow.map(org => {
+          const orgUrl = org.html_url || 'https://github.com/'+org.login;
+          return (
+            <a key={org.name} href={`${orgUrl}`} target="_blank" title={org.name}>
+              <Avatar url={org.avatar_url} classes="avatar-org" />
+            </a>
+          );
+        })
+      }
+    </div>
+  );
+}
