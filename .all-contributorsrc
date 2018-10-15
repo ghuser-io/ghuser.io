@@ -58,6 +58,16 @@
       ]
     },
     {
+      "login": "styfle",
+      "name": "Steven",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/229881?v=4",
+      "profile": "https://www.ceriously.com",
+      "contributions": [
+        "ideas",
+        "code"
+      ]
+    },
+    {
       "login": "jayvdb",
       "name": "John Vandenberg",
       "avatar_url": "https://avatars1.githubusercontent.com/u/15092?v=4",
@@ -244,15 +254,6 @@
       "name": "Daniel Ruf",
       "avatar_url": "https://avatars1.githubusercontent.com/u/827205?v=4",
       "profile": "https://daniel-ruf.de",
-      "contributions": [
-        "ideas"
-      ]
-    },
-    {
-      "login": "styfle",
-      "name": "Steven",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/229881?v=4",
-      "profile": "https://www.ceriously.com",
       "contributions": [
         "ideas"
       ]

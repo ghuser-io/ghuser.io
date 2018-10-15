@@ -285,7 +285,7 @@ function getContribRange(contrib) {
 function getRepoScaleAssets(contrib) {
   const repoScale = getRepoScale(contrib.total_commits_count);
   const repoScaleIcon = <div className={'icon-repo-scale icon-repo-scale-'+repoScale}/>;
-  const repoScaleHint = 'this repo seems to be a '+repoScale+' project';
+  const repoScaleHint = 'this repo has '+contrib.total_commits_count+' commits';
   return {repoScale, repoScaleIcon, repoScaleHint};
 }
 function getRepoScale(totalCommitsCount) {
