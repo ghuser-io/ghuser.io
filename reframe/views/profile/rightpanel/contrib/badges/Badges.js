@@ -247,13 +247,13 @@ function getContribType(contrib) {
       commits_count__total: totalCommitsCount,
     } = getCommitCounts(contrib);
 
-    const THREADSHOLD_CROWN = 0.1;
+    const THRESHOLD_CROWN = 0.1;
     const THRESHOLD_GOLD = 50;
     const THRESHOLD_SILVER = 5;
 
     const contribType = (
         userCommitsCount > 1 &&
-        (totalCommitsCount * THREADSHOLD_CROWN <= 1 || userCommitsPercentage >= THREADSHOLD_CROWN) && (
+        (totalCommitsCount * THRESHOLD_CROWN <= 1 || userCommitsPercentage >= THRESHOLD_CROWN) && (
           'contrib_crown'
         ) ||
         userCommitsCount > THRESHOLD_GOLD && (
@@ -289,14 +289,14 @@ function getRepoScaleAssets(contrib) {
   return {repoScale, repoScaleIcon, repoScaleHint};
 }
 function getRepoScale(totalCommitsCount) {
-  const THREADSHOLD_LARGE = 2000;
-  const THREADSHOLD_MEDIUM = 500;
-  const THREADSHOLD_SMALL = 50;
+  const THRESHOLD_LARGE = 2000;
+  const THRESHOLD_MEDIUM = 500;
+  const THRESHOLD_SMALL = 50;
 
   const repoScale = (
-    totalCommitsCount > THREADSHOLD_LARGE && 'large' ||
-    totalCommitsCount > THREADSHOLD_MEDIUM && 'medium' ||
-    totalCommitsCount > THREADSHOLD_SMALL && 'small' ||
+    totalCommitsCount > THRESHOLD_LARGE && 'large' ||
+    totalCommitsCount > THRESHOLD_MEDIUM && 'medium' ||
+    totalCommitsCount > THRESHOLD_SMALL && 'small' ||
     'micro'
   );
 
