@@ -40,13 +40,13 @@
 
 We love the default GitHub profiles and we want to enhance them:
 
-* The GitHub profiles clearly aren't showing all the repos you have contributed to since you joined
+* The GitHub profiles aren't clearly showing all the repos you have contributed to since you joined
   GitHub. We are showing them **all**, even those you don't own and those owned by organizations
   you're not in.<sup>[1](#footnote1)</sup>
-* The GitHub profiles currently list all the repos you own which are sorted only by age of the
-  latest commit. We prefer to **sort repos** by a combination of how much you 
-  have contributed to them, their size, how popular they are, etc. For each user, we want to see
-  first the latest repos they have most contributed to the most.
+* The GitHub profiles are listing all the repos you own but they sort them only by age of the
+  latest commit. We prefer to **sort repos** by a combination of how much you
+  have contributed to them, their size, how popular they are, etc. For each user we want to see
+  first the latest greatest repos they have most contributed to.
 * On GitHub only repos earn stars. We push it one step further by having **users earn stars**:
   You earn stars when you contribute to a repo.
   We add all these earned stars and show how many you've earned in total.
