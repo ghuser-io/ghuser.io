@@ -82,12 +82,14 @@ Request it [here](https://ghuser.io/login).
 * [x] `04 Jul 2018` [first prototype](https://github.com/ghuser-io/ghuser.io/milestone/1)
 * [x] `14 Aug 2018` fix
       [first scaling issues](https://github.com/ghuser-io/ghuser.io/milestone/4)
-* [ ] `15 Oct 2018` fix second round of scaling issues listed
+* [x] `23 Sep 2018` address
+      [first user feedback](https://github.com/ghuser-io/ghuser.io/milestone/3)
+* [x] `16 Oct 2018` fix second round of scaling issues listed
       [here](https://github.com/ghuser-io/ghuser.io/milestone/5) and
       [here](https://github.com/ghuser-io/db/milestone/1)
-* [ ] `31 Oct 2018` address
-      [first user feedback](https://github.com/ghuser-io/ghuser.io/milestone/3)
-* [ ] `30 Nov 2018` display more data on each profile to really make it a modern
+* [ ] `17 Dec 2018` [automation](https://github.com/ghuser-io/ghuser.io/milestone/6) and
+      [code cleaning](https://github.com/ghuser-io/db/milestone/2)
+* [ ] `13 Jan 2019` display more data on each profile to really make it a modern
       [programmer resume](https://github.com/ghuser-io/ghuser.io/milestone/2)
 
 # Contributing
