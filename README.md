@@ -87,9 +87,9 @@ Request it [here](https://ghuser.io/login).
 * [x] `16 Oct 2018` fix second round of scaling issues listed
       [here](https://github.com/ghuser-io/ghuser.io/milestone/5) and
       [here](https://github.com/ghuser-io/db/milestone/1)
-* [ ] `17 Dec 2018` [automation](https://github.com/ghuser-io/ghuser.io/milestone/6) and
+* [ ] `20 Mar 2019` [automation](https://github.com/ghuser-io/ghuser.io/milestone/6) and
       [code cleaning](https://github.com/ghuser-io/db/milestone/2)
-* [ ] `13 Jan 2019` display more data on each profile to really make it a modern
+* [ ] `?? ??? ????` display more data on each profile to really make it a modern
       [programmer resume](https://github.com/ghuser-io/ghuser.io/milestone/2)
 
 # Contributing
