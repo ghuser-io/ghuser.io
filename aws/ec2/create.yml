@@ -14,17 +14,17 @@
       private: no
       default: subnet-b68a16c0
   tasks:
-    - name: Create EC2 Security Group
-      ec2_group:
-        name: ghuser-sg
-        description: ghuser
-        region: "{{ aws_region }}"
-        vpc_id: "{{ vpc_id }}"
-        rules:
-          - proto: tcp
-            from_port: 22
-            to_port: 22
-            cidr_ip: 0.0.0.0/0
+    #LA_TODO- name: Create EC2 Security Group
+    #LA_TODO  ec2_group:
+    #LA_TODO    name: ghuser-sg
+    #LA_TODO    description: ghuser
+    #LA_TODO    region: "{{ aws_region }}"
+    #LA_TODO    vpc_id: "{{ vpc_id }}"
+    #LA_TODO    rules:
+    #LA_TODO      - proto: tcp
+    #LA_TODO        from_port: 22
+    #LA_TODO        to_port: 22
+    #LA_TODO        cidr_ip: 0.0.0.0/0
     - name: Create EC2 instance
       ec2:
         key_name: "{{ instance_name }}"
@@ -34,7 +34,7 @@
         image: ami-759bc50a # Ubuntu 16.04 hvm:ebs-ssd
 
         # Note: if you want to build the Reframe web app, you'll need at least 2GB RAM (t2.small)
-        instance_type: t2.nano
+        instance_type: t2.small #LA_TODO t2.nano
 
         wait: true
         instance_tags:
