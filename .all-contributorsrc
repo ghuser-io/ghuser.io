@@ -77,6 +77,24 @@
       ]
     },
     {
+      "login": "G7-TheKing",
+      "name": "K Yasaswi Sri Chandra Gandhi",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/35304641?v=4",
+      "profile": "https://github.com/G7-TheKing",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "RDIL",
+      "name": "Reece Dunham",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/34555510?v=4",
+      "profile": "https://rdil.rocks/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "jayvdb",
       "name": "John Vandenberg",
       "avatar_url": "https://avatars1.githubusercontent.com/u/15092?v=4",
@@ -293,15 +311,6 @@
       "profile": "http://mzfr.github.io",
       "contributions": [
         "ideas"
-      ]
-    },
-    {
-      "login": "G7-TheKing",
-      "name": "K Yasaswi Sri Chandra Gandhi",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/35304641?v=4",
-      "profile": "https://github.com/G7-TheKing",
-      "contributions": [
-        "code"
       ]
     }
   ]
