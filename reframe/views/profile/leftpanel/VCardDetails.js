@@ -27,7 +27,7 @@ const VCardDetails = props => {
       <div className="vcard-detail pt-1" key="gist">
         <i className="vcard-icon fab fa-github"></i>&nbsp;
         <a href={`https://gist.github.com/${props.gist_username}`} target="_blank"
-           className="external">GitHubGist</a>
+           className="external">GitHub Gist</a>
         {insertSettingsButtonOnce()}
       </div>
     );
@@ -39,7 +39,7 @@ const VCardDetails = props => {
         <div className="vcard-detail pt-1" key="stackoverflow">
           <i className="vcard-icon fab fa-stack-overflow"></i>&nbsp;
           <a href={`https://stackoverflow.com/users/${props.settings.stackoverflow_id}`}
-             target="_blank" className="external">StackOverflow</a>
+             target="_blank" className="external">Stack Overflow</a>
         </div>
       );
     }
