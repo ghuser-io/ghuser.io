@@ -14,7 +14,7 @@ export default RightPanel;
 
 function RightPanel(props) {
   return (
-    <div className="col-9 pl-2 pr-0" style={{fontSize: '14px'}}>{
+    <div className="col-lg-9 pl-2 pr-0 right-panel" style={{fontSize: '14px'}}>{
       props.contribs ? (
         <React.Fragment>
           <ContribList {...props} />

@@ -127,7 +127,7 @@ function ContribType({contribTypeIcon, contribTypeText, contribTypeHint, ...prop
 function Badge({head, desc, width, hint, fixedWidth, inlineHint, style={}}) {
     const innerStyle = {display: 'inline-block', width: fixedWidth && width};
     const badge = (
-        <div style={innerStyle}>
+        <div style={innerStyle} className="badge-container">
             <div className="contrib-badge text-gray" title={!inlineHint && hint || null}>
                 <div>{head}</div>
                 {desc && <div className="badge-desc">{desc}</div>}

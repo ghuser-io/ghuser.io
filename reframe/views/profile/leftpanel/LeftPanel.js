@@ -14,7 +14,7 @@ const LeftPanel = props => {
   const totalEarnedStars = props.contribs && getTotalEarnedStars(props.contribs) || 0;
 
   return (
-    <div className="col-3 p-0 pr-4">
+    <div className="col-lg-3 p-0 pr-4 left-panel">
       <Avatar url={props.user.avatar_url || AvatarUnknown} classes="avatar-user" />
       <VCard login={props.user.login}
              name={!props.user.ghuser_created_at && 'Your name here' || props.user.name}

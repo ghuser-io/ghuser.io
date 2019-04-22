@@ -12,6 +12,7 @@ import {Typing} from './utils/Typing'
 import PageContent from './PageContent';
 import './Landing.css';
 import './All.css';
+import './Mobile.css';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -76,14 +77,14 @@ class Landing extends React.Component {
                   </a>
                   {
                     this.state.meta &&
-                    <span>
+                    <span className="landing-statistics">
                       <br />
                       We are currently refreshing {this.state.meta.num_contribs}
                       &nbsp;contributions daily on {this.state.meta.num_users} user profiles.
                     </span> || ''
                   }
                 </p>
-                <a className="btn btn-primary ml-2 mr-4" href={urls.oauthEndpoint}
+                <a className="btn btn-primary ml-2 mr-4 cta-button" href={urls.oauthEndpoint}
                    role="button">Get your profile</a>
                 <a className="ghuser-url-example" href={this.state.featuredUsers[0].login}>
                   {urls.landing}
@@ -100,7 +101,7 @@ class Landing extends React.Component {
           </Content>
         </div>
         <Content>
-          <div className="container-lg">
+          <div className="container-lg landing-examples-container">
             {cards}
             <div className="m-4 made-with-reframe">
               <a href="https://github.com/reframejs/reframe" target="_blank"
