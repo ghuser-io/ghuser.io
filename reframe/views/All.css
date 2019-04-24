@@ -56,6 +56,7 @@ a:hover
 
 .container-lg {
   max-width: 1012px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
