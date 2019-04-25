@@ -34,4 +34,14 @@
     .landing-examples-container .card {
         margin-bottom: 1rem;
     }
+    .big-logo .logo {
+        font-size: 20vw;
+    }
+    .card {
+        width: 100% !important;
+        max-width: 302px !important;
+    }
+    .crop-img::after {
+        display: none !important;
+    }
 }
