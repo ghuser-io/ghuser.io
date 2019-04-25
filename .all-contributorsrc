@@ -312,6 +312,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "venarius",
+      "name": "Tim Lange",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13546486?v=4",
+      "profile": "http://timlange.me",
+      "contributions": [
+        "question"
+      ]
     }
   ]
 }
