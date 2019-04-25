@@ -4,6 +4,7 @@ import Content from '../Content';
 import NavBar from '../NavBar';
 import PageContent from '../PageContent';
 import '../All.css';
+import '../Mobile.css';
 
 import LeftPanel from './leftpanel/LeftPanel';
 import RightPanel from './rightpanel/RightPanel';

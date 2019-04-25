@@ -1,0 +1,37 @@
+@media (max-width: 960px) {
+    /* Profile */
+    .left-panel {
+        text-align: center;
+    }
+    .vcard-username-login {
+        width: 100%;
+    }
+    .repo-descr {
+        display: none;
+    }
+    .badge-container {
+        width: auto !important;
+        margin-right: 10px;
+    }
+    .i-amphtml-accordion-content {
+        padding-left: 0 !important;
+    }
+
+    /* Home */
+    .ghuser-url-example {
+        width: 100%;
+    }
+    .cta-button {
+        margin: 1rem 0 1rem 0 !important;
+        width: 100%;
+    }
+    .landing-statistics {
+        display: inline-block;
+    }
+    .landing-examples-container {
+        text-align: center;
+    }
+    .landing-examples-container .card {
+        margin-bottom: 1rem;
+    }
+}

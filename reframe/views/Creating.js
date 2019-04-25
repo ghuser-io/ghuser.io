@@ -5,6 +5,7 @@ import Content from './Content';
 import NavBar from './NavBar';
 import PageContent from './PageContent';
 import './All.css';
+import './Mobile.css';
 
 class Creating extends React.Component {
   componentDidMount() {

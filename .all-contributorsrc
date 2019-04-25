@@ -48,6 +48,16 @@
       ]
     },
     {
+      "login": "venarius",
+      "name": "Tim Lange",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13546486?v=4",
+      "profile": "http://timlange.me",
+      "contributions": [
+        "question",
+        "code"
+      ]
+    },
+    {
       "login": "jamesgeorge007",
       "name": "James George",
       "avatar_url": "https://avatars2.githubusercontent.com/u/25279263?v=4",
@@ -312,15 +322,7 @@
       "contributions": [
         "ideas"
       ]
-    },
-    {
-      "login": "venarius",
-      "name": "Tim Lange",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/13546486?v=4",
-      "profile": "http://timlange.me",
-      "contributions": [
-        "question"
-      ]
     }
-  ]
+  ],
+  "commitConvention": "none"
 }
