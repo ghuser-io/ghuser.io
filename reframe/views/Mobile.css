@@ -2,6 +2,7 @@
     /* Profile */
     .left-panel {
         text-align: center;
+        padding-right: 0 !important;
     }
     .vcard-username-login {
         width: 100%;
