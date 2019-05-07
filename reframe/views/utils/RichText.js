@@ -2,6 +2,7 @@ import {XmlEntities} from 'html-entities';
 import * as Autolinker from 'autolinker';
 import * as emoji from 'node-emoji';
 import * as Parser from 'html-react-parser';
+import * as ghEmojis from '../thirdparty/github-emojis';
 
 export {RichText};
 
@@ -15,9 +16,9 @@ function RichText(text) {
       )
       .replace(/https:\/\/twitter\.com\//g, 'https://github.com/')
       .replace(/__dash__/g, '-')
-      , name => (
+      , name => ( // onMissing
         // See https://developer.github.com/v3/emojis/ :
-        `<img className="emoji" src="https://github.global.ssl.fastly.net/images/icons/emoji/${name}.png?v5" />`
+        `<img className="emoji" src="${ghEmojis.default[name]}" />`
       )
     ))
   );
