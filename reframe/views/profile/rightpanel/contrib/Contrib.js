@@ -2,7 +2,7 @@ import React from 'react';
 
 import {urls} from '../../../../ghuser';
 
-import RichText from '../../../utils/RichText';
+import {RichText} from '../../../utils/RichText';
 import {Accordion, AccordionHead, AccordionBody, AccordionBadgerIcon} from '../../../utils/Accordion';
 import {ProgressBar} from '../../../utils/ProgressBar';
 import {numberOf} from '../../../utils/pretty-numbers';

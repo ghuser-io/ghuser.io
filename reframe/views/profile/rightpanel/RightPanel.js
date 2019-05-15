@@ -1,7 +1,5 @@
 import React from 'react';
-import * as Autolinker from 'autolinker';
 import * as moment from 'moment';
-import * as Parser from 'html-react-parser';
 
 import {urls} from '../../../ghuser';
 import CreateYourProfile from './CreateYourProfile';
@@ -9,6 +7,7 @@ import ProfileBeingCreated from './ProfileBeingCreated';
 import {Contrib} from './contrib/Contrib';
 import {getShownContribs} from './contrib/getContribInfo';
 import {AccordionListContainer} from '../../utils/Accordion';
+import {RichText} from '../../utils/RichText';
 
 export default RightPanel;
 
@@ -56,9 +55,7 @@ function ProfileStatus(props) {
     return (
       <React.Fragment>
         <div className={alertCssClasses} role="alert">
-          This profile was deleted because {Parser(Autolinker.link(props.deleted_because, {
-            className: 'external'
-          }))}<br /><br />
+          This profile was deleted because {RichText(props.deleted_because)}<br /><br />
           If you want to have it again, no problem, just&nbsp;
           <a href={urls.issues} target="_blank" className="external">create an issue</a> :)
         </div>

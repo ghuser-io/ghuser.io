@@ -1,8 +1,7 @@
 import React from 'react';
-import * as Autolinker from 'autolinker';
-import * as Parser from 'html-react-parser';
 
 import {withSeparator} from '../css';
+import {RichText} from '../../utils/RichText';
 import {urls} from '../../../ghuser';
 import AddSettings from '../AddSettings';
 import './VCardDetails.css';
@@ -75,9 +74,7 @@ const VCardDetails = props => {
   if (props.blog) {
     details.unshift(
       <div className="vcard-detail pt-1" key="blog">
-        <i className="vcard-icon fas fa-link"></i> {Parser(Autolinker.link(props.blog, {
-          className: 'external'
-        }))}
+        <i className="vcard-icon fas fa-link"></i> {RichText(props.blog)}
         {insertSettingsButtonOnce()}
       </div>
     );
@@ -86,7 +83,7 @@ const VCardDetails = props => {
   if (props.email) {
     details.unshift(
       <div className="vcard-detail pt-1" key="email">
-        <i className="vcard-icon far fa-envelope"></i> {Parser(Autolinker.link(props.email))}
+        <i className="vcard-icon far fa-envelope"></i> {RichText(props.email)}
         {insertSettingsButtonOnce()}
       </div>
     );
@@ -105,13 +102,7 @@ const VCardDetails = props => {
   if (props.company) {
     details.unshift(
       <div className="vcard-detail pt-1" key="company">
-        <i className="vcard-icon fas fa-suitcase"></i> {
-          Parser(Autolinker.link(props.company.replace(/-/g, '__dash__'), {
-            mention: 'twitter', // Autolinker doesn't support mentions to GitHub orgs, thus this workaround
-            className: 'external'
-          }).replace(/https:\/\/twitter\.com\//g, 'https://github.com/')
-            .replace(/__dash__/g, '-'))
-        }
+        <i className="vcard-icon fas fa-suitcase"></i> {RichText(props.company)}
         {insertSettingsButtonOnce()}
       </div>
     );
