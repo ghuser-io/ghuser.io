@@ -1,12 +1,12 @@
 import React from 'react';
 
 import AvatarUnknown from './AvatarUnknown.png';
-import Bio from './Bio';
 import {Orgs} from './Orgs';
 import VCard from './VCard';
 import VCardDetails from './VCardDetails';
 import './LeftPanel.css';
 import Avatar from '../Avatar';
+import {Bio} from '../../utils/Bio';
 import {urls} from '../../../ghuser';
 import {getTotalEarnedStars} from './../rightpanel/contrib/badges/Badges';
 

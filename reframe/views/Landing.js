@@ -1,13 +1,11 @@
 import React from 'react';
-import {XmlEntities} from 'html-entities';
-import * as Autolinker from 'autolinker';
-import * as Parser from 'html-react-parser';
 
 import * as db from '../db';
 import {urls} from '../ghuser';
 import Content from './Content';
 import LogoWithPunchline from './LogoWithPunchline';
 import NavBar from './NavBar';
+import {Bio} from './utils/Bio';
 import {Typing} from './utils/Typing'
 import PageContent from './PageContent';
 import './Landing.css';
@@ -52,11 +50,7 @@ class Landing extends React.Component {
         </div>
         <div className="card-body">
           <h5 className="card-title">{user.name}</h5>
-          <p className="card-text">{
-            Parser(Autolinker.link((new XmlEntities).encode(user.bio), {
-              className: 'external'
-            }))
-          }</p>
+          <Bio text={user.bio} style={{minHeight: '3em'}}/>
           <a href={user.login} className="btn btn-primary">See this example</a>
         </div>
       </div>

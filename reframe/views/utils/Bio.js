@@ -4,10 +4,16 @@ import * as Autolinker from 'autolinker';
 import * as emoji from 'node-emoji';
 import * as Parser from 'html-react-parser';
 
-import './Bio.css';
+export {Bio};
 
 const Bio = props => (
-  <div className="bio">
+  <div style={{
+    marginBottom: '12px',
+    overflow: 'hidden',
+    fontSize: '14px',
+    color: '#6a737d',
+    ...props.style
+  }}>
     {
       //FIXME this duplicates RepoDescrAndDetails.js
       Parser(emoji.emojify(
@@ -25,5 +31,3 @@ const Bio = props => (
       ))
     }</div>
 );
-
-export default Bio;
