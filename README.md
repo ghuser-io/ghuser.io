@@ -19,7 +19,6 @@
 
 - [What we are building](#what-we-are-building)
 - [Get your profile!](#get-your-profile)
-- [Roadmap](#roadmap)
 - [Contributing](#contributing)
   * [To the web app's implementation](#to-the-web-apps-implementation)
   * [To the documentation](#to-the-documentation)
@@ -75,22 +74,6 @@ Request it [here](https://ghuser.io/login).
 > than expected. When requesting your profile, your username lands in a queue that we process in a
 > semi-automatic fashion. It may take up to 48 hours to create your profile. See
 > [#143](https://github.com/ghuser-io/ghuser.io/issues/143).
-
-# Roadmap
-
-* [x] `19 Jun 2018` start coding
-* [x] `04 Jul 2018` [first prototype](https://github.com/ghuser-io/ghuser.io/milestone/1)
-* [x] `14 Aug 2018` fix
-      [first scaling issues](https://github.com/ghuser-io/ghuser.io/milestone/4)
-* [x] `23 Sep 2018` address
-      [first user feedback](https://github.com/ghuser-io/ghuser.io/milestone/3)
-* [x] `16 Oct 2018` fix second round of scaling issues listed
-      [here](https://github.com/ghuser-io/ghuser.io/milestone/5) and
-      [here](https://github.com/ghuser-io/db/milestone/1)
-* [ ] `20 Mar 2019` [automation](https://github.com/ghuser-io/ghuser.io/milestone/6) and
-      [code cleaning](https://github.com/ghuser-io/db/milestone/2)
-* [ ] `?? ??? ????` display more data on each profile to really make it a modern
-      [programmer resume](https://github.com/ghuser-io/ghuser.io/milestone/2)
 
 # Contributing
 
