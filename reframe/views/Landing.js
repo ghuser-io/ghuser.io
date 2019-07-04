@@ -78,8 +78,9 @@ class Landing extends React.Component {
                     </span> || ''
                   }
                 </p>
-                <a className="btn btn-primary ml-2 mr-4 cta-button" href={urls.oauthEndpoint}
-                   role="button">Get your profile</a>
+                { /* temporarily disabled for issue190 */ }
+                <a className="btn btn-secondary ml-2 mr-4 cta-button disabled"
+                   href={urls.oauthEndpoint} role="button">Get your profile</a>
                 <a className="ghuser-url-example" href={this.state.featuredUsers[0].login}>
                   {urls.landing}
                   /

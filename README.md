@@ -13,12 +13,15 @@
 </p>
 <br />
 
+<!-- issue190 -->
+> **WARNING**: This project
+> [isn't actively maintained anymore](https://github.com/ghuser-io/ghuser.io/issues/190).
+
 # Table of Contents
 
 <!-- toc -->
 
 - [What we are building](#what-we-are-building)
-- [Get your profile!](#get-your-profile)
 - [Contributing](#contributing)
   * [To the web app's implementation](#to-the-web-apps-implementation)
   * [To the documentation](#to-the-documentation)
@@ -64,16 +67,6 @@ Our enhanced profiles are accessible at `https://ghuser.io/<github-username>`, e
 [ghuser.io/AurelienLourot](https://ghuser.io/AurelienLourot).
 
 <a name="footnote1"><sup>1</sup></a> We achieve this by using [github-contribs](https://github.com/ghuser-io/github-contribs).
-
-# Get your profile!
-
-Request it [here](https://ghuser.io/login).
-
-<!-- issue143 -->
-> **WARNING**: automation has been disabled. Thus the creation of your profile takes a bit more time
-> than expected. When requesting your profile, your username lands in a queue that we process in a
-> semi-automatic fashion. It may take up to 48 hours to create your profile. See
-> [#143](https://github.com/ghuser-io/ghuser.io/issues/143).
 
 # Contributing
 

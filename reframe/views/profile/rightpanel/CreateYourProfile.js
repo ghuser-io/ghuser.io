@@ -16,7 +16,9 @@ const CreateYourProfile = () => (
       </a>
     </p>
     <p>
-      <a className="btn btn-primary" href={urls.oauthEndpoint} role="button">Get your profile</a>
+      { /* temporarily disabled for issue190 */ }
+      <a className="btn btn-primary disabled" href={urls.oauthEndpoint}
+         role="button">Get your profile</a>
     </p>
   </div>
 );
