@@ -322,6 +322,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "nealmcb",
+      "name": "Neal McBurnett",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/119472?v=4",
+      "profile": "http://neal.mcburnett.org/",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "commitConvention": "none"
