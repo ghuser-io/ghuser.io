@@ -74,7 +74,7 @@ class Landing extends React.Component {
                     <span className="landing-statistics">
                       <br />
                       We are currently refreshing {this.state.meta.num_contribs}
-                      &nbsp;contributions daily on {this.state.meta.num_users} user profiles.
+                      &nbsp;contributions regularly on {this.state.meta.num_users} user profiles.
                     </span> || ''
                   }
                 </p>
