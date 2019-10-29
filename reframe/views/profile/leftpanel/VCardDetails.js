@@ -60,6 +60,16 @@ const VCardDetails = props => {
         </div>
       );
     }
+    if (props.settings.keybase_username) {
+      details.unshift(
+        <div className="vcard-detail pt-1" key="keybase">
+          <i className="vcard-icon fab fa-key"></i>&nbsp;
+          <a href={`https://keybase.io/${props.settings.keybase_username}`} target="_blank"
+             className="external">Keybase</a>
+        </div>
+      );
+    }
+
     if (props.settings.twitter_username) {
       details.unshift(
         <div className="vcard-detail pt-1" key="twitter">
