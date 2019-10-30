@@ -69,7 +69,6 @@ const VCardDetails = props => {
         </div>
       );
     }
-
     if (props.settings.twitter_username) {
       details.unshift(
         <div className="vcard-detail pt-1" key="twitter">
