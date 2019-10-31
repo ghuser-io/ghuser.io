@@ -8,11 +8,11 @@ You can tweak your profile by creating a `<your-username>/ghuser.io.settings` re
 
 <!-- toc -->
 
-- [Links to Twitter/Reddit/LinkedIn/StackOverflow](#links-to-twitterredditlinkedinstackoverflow)
+- [Links to Twitter/Reddit/LinkedIn/StackOverflow/Keybase](#links-to-twitterredditlinkedinstackoverflowkeybase)
 
 <!-- tocstop -->
 
-## Links to Twitter/Reddit/LinkedIn/StackOverflow
+## Links to Twitter/Reddit/LinkedIn/StackOverflow/Keybase
 
 ```json
 {
@@ -20,7 +20,8 @@ You can tweak your profile by creating a `<your-username>/ghuser.io.settings` re
   "twitter_username": "AurelienLourot",
   "reddit_username": "lourot",
   "linkedin_id": "aurelien-lourot-67317748",
-  "stackoverflow_id": "1855917"
+  "stackoverflow_id": "1855917",
+  "keybase_username": "lourot"
 }
 ```
 
@@ -30,6 +31,7 @@ Your profile will then link to:
 * `https://www.reddit.com/user/<reddit_username>`
 * `https://linkedin.com/in/<linkedin_id>`
 * `https://stackoverflow.com/users/<stackoverflow_id>`
+* `https://keybase.io/<keybase_username>`
 
 > ![screenshot](user-settings.png)
 
